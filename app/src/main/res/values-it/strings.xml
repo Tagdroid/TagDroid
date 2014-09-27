@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>	
+    <string name="app_name">TAGdroid</string> 
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="menu_pdf">PDF Map</string>
+    
+    <string name="ns_menu_main_header">Rete</string>
+    <string name="ns_menu_main_header2">Informazioni</string>
+    
+    <string name="ns_menu_snippet1">Stazioni</string>
+    <string name="ns_menu_snippet2">Preferiti</string>
+    <string name="ns_menu_snippet3">Vicinanza</string>
+    <string name="ns_menu_snippet4">Mappa</string>
+    
+    <string name="ns_menu_snippet5">Traffico</string>
+    <string name="ns_menu_snippet6">Notizie</string>
+    <string name="ns_menu_snippet7">Biglietto di Trasporto</string>
+
+	<!-- WIDGET -->
+	<string name="choose_fav">Scegli la tua stazione preferita :</string>
+    
+	
+     <!-- MENU -->
+	<string name="stations">Stazioni</string>
+	<string name="proximite">Vicinanza</string>
+	<string name="favoris">Preferiti</string>
+	<string name="map">Mappa</string>
+	<string name="trafic">Traffico</string>
+	<string name="news">Notizie</string>
+	<string name="tarif">Biglietto di Trasporto</string>
+	<string name="ticket">Biglietti</string>
+	<string name="pass">Pass\'</string>
+	<string name="combines">Combinata</string>	
+	<string name="rate">Valutare</string>
+	<string name="about">Attorno</string>
+	<string name="reseau">RETE</string>
+	<string name="divers">MISCELLANEO</string>
+	
+	<string name="menu_tram">Tram</string>
+	<string name="menu_bus">Bus</string>
+	<string name="menu_others">Luoghi</string>
+	<string name="menu_map">Tipo di mappa</string>
+	<string name="menu_rss">Flux RSS</string>
+	
+	<!-- Stations  -->
+	<string name="tram">Rete di Tram</string>
+	<string name="bus">Rete di Bus</string>
+	<string name="addtofavoris">Aggiungi ai preferiti</string> 
+	<string name="noconnexion">Connessione a Internet non è disponibile, Riprova</string> 
+	
+	<!-- Stations Details-->
+	<string name="correspondances">Fiammiferi</string>
+	<string name="horaires">Orari</string>
+	<string name="prochain">AVANTI</string>
+	<string name="suivant">SEGUITO</string>
+	
+	<string name="addfavoris">Stazione aggiungi ai preferiti</string>
+	<string name="delfavoris">Stazione cancellazione dei segnalibri</string>
+	<string name="loading">Caricamento ...</string>
+	<string name="nohoraire">Nessun pianificazioni disponibili</string>
+	<string name="travauxE">Linea E è attualmente in costruzione. Messa: 28 Giugno 2014</string>
+	
+	<!-- Proximite et Favoris -->
+	<string name="please_turn_on_gps">Per favore, accendere il GPS</string>
+	<string name="nofavs">Nessuna Scelta</string>	
+	<string name="noproxs">No Localizzazione</string>
+	<string name="noaddress">Nessun indirizzo trovato</string>
+	<string name="searchaddress">Ricerca di indirizzo...</string>
+	
+	<!-- Plan-->
+	<string name="tramlines">Linee di Tram :</string>
+	<string name="buslines">Linee di Bus :</string>
+	<string name="places">Luoghi :</string>
+	<string name="soon">Presto ...</string>
+	<string name="mapstype">Tipo di mappa :</string>	
+
+	<!-- Flux RSS -->	
+	<string name="details">Dettagli</string>
+	<string name="more">Ulteriori informazioni</string>	
+	<string name="fluxchoice">Scegli il tuo RSS flux :</string>	
+	
+	<!-- Changelog -->	
+	<string name="changelog_title">Aggiornamenti :</string>
+    <string name="changelog_show_full">più ...</string>
+    <string name="changelog_full_title">Change Log</string>
+	<string name="changelog_ok_button">OK</string>
+    
+	<!-- Titres de transports -->	
+     <string name="combines_choose">Seleziona vostro "combiné" :</string>
+	<string name="tickets_choose">Seleziona vostro biglietti :</string>
+	<string name="pass_situation">Vostra situazione :</string>
+	<string name="pass_qf">Vostro "Quotient Familial (QF)" :</string>
+	<string name="pass_mensuel">MENSILE</string>
+	<string name="pass_annuel">ANNUALE</string>
+	<string name="pass_2mois">2 mesi gratis</string>
+	<string name="pass_4mois">4 mesi gratis</string>
+	<string name="newtarif">Nuove tariffe a partire dal 1 settembre 2013</string>
+	<string name="cannelle">Muoversi liberamente 8:30-17:30 Lunedi al Sabato e domenica tutto il giorno e nei giorni festivi.</string>
+	<string name="soleil">Riservato ai dipendenti delle aziende impegnate in un processo di Plan Business Travel offre. Verificare con il proprio datore di lavoro!</string>
+	
+	<!-- About -->
+	<string name="auteur">AUTORE</string>
+	<string name="collaborateur">DIPENDENTI</string>
+	<string name="contact">CONTATTO</string>	
+	<string name="description">DESCRIZIONE</string>
+	<string name="informations">INFORMAZIONI</string>	
+	<string name="about_desc">Applicazione non ufficiale</string>	
+	<string name="about_desc2">Compatibile Android 3.0+</string>	
+	<string name="about_description">Questa applicazione consente agli utenti di rete di TAG per essere informato in tempo reale informazioni sul attesa per i tram / ​​autobus, e nelle relazioni di traffico e le notizie di SEMITAG.</string>
+	<string name="footer">TAGdroid è un\'applicazione indipendente. E non ha alcun legame con le società: TAG SEMITAG, SMTC, The Metro. Tutti i loghi, i prodotti e le immagini presenti in questa applicazione sono di proprietà delle rispettive marche.</string>
+	<string name="mail">Inviare mail con :</string>
+	
+	<!-- Welcome -->	
+	<string name="menu_skip">Saltare</string>
+	<string name="welcome_bienvenue">Benvenuto !</string>
+	<string name="welcome_navigation">Navigazione</string>
+	<string name="welcome_favoris">Preferiti</string>
+	<string name="welcome_proximite">Vicinanza &amp; Mappa</string>
+	<string name="welcome_pdf">PDF Mappa &amp; Widget</string>
+	<string name="welcome_texte1">Grazie per installare TAGdroid, l\'applicazione non ufficiale dei trasporti pubblici a Grenoble.</string>
+	<string name="welcome_texte2">TAGdroid è un\'applicazione gratuita che non è affiliato con la società SEMITAG, TAG et SMTC.</string>
+	<string name="welcome_texte3">I dati provengono da Mobitrans webservice gestita da TAG.</string>
+	<string name="welcome_texte4">In caso di problemi, non esitate a e-mail.</string>
+	<string name="welcome_texte5">l\'applicazione presenta un menù scorrevole in parte sinistra dell\'interfaccia. Scorrere verso destra per visualizzare o fare clic sul pulsante del menu in alto a sinistra.</string>
+	<string name="welcome_texte6">Aggiungi le tue stazioni preferite ...</string>
+	<string name="welcome_texte7">e trovare rapidamente in questa sezione.</string>
+	<string name="welcome_texte8">Osservare le stazioni più vicine della vostra posizione.</string>
+	<string name="welcome_texte9">Navigando mappa di Grenoble e direttamente selezionare la stazione da consultare.</string>
+	<string name="welcome_texte10">È anche possibile scaricare il file pdf mappa di linee. Questa mappa soggiorno salvato nella cache di dati, in modo da poter consultare offline.</string>
+	<string name="welcome_texte11">Ora, i segnalibri di visualizzazione direttamente sul tuo desktop grazie al nuovo widget.</string>
+	<string name="welcome_texte12">Scopri troppo sezioni \ "Rapporto sul traffico \", \ "News \" e \ "Trasporti Ticket \" permettete di essere meglio informati sulla rete di TAG.</string>
+	<string name="welcome_texte13">Non esitate a valutare questa applicazione su Google Play Store. In qualche modo, state contribuendo al suo sviluppo.</string>
+	<string name="welcome_texte14">Ok, tu sai tutto di. È possibile premere il tasto verde!</string>
+</resources>

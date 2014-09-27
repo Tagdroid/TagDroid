@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string-array name="ID4000">
+	<item name="id_station"></item> 
+	<item name="station">Palluel</item>
+	<item name="latitude">45.254444</item>
+	<item name="longitude">5.661944</item>
+</string-array>
+<string-array name="ID4001">
+	<item name="id_station"></item> 
+	<item name="station">Rafour</item>
+	<item name="latitude">45.248333</item>
+	<item name="longitude">5.666389</item>
+</string-array>
+<string-array name="ID4002">
+	<item name="id_station"></item> 
+	<item name="station">Karben</item>
+	<item name="latitude">45.242476</item>
+	<item name="longitude">5.67103</item>
+</string-array>
+<string-array name="ID4003">
+	<item name="id_station"></item> 
+	<item name="station">Les Bonnais</item>
+	<item name="latitude">45.240057</item>
+	<item name="longitude">5.672798</item>
+</string-array>
+<string-array name="ID4004">
+	<item name="id_station"></item> 
+	<item name="station">La Pinéa - St Robert</item>
+	<item name="latitude">45.235657</item>
+	<item name="longitude">5.675715</item>
+</string-array>
+<string-array name="ID4005">
+	<item name="id_station"></item> 
+	<item name="station">Pont de Vence</item>
+	<item name="latitude">45.229958</item>
+	<item name="longitude">5.682584</item>
+</string-array>
+<string-array name="ID4006">
+	<item name="id_station"></item> 
+	<item name="station">Le Muret</item>
+	<item name="latitude">45.22621</item>
+	<item name="longitude">5.686101</item>
+</string-array>
+<string-array name="ID4007">
+	<item name="id_station"></item> 
+	<item name="station">Fiancey - Prédieu</item>
+	<item name="latitude">45.223319</item>
+	<item name="longitude">5.688617</item>
+</string-array>
+<string-array name="ID4008">
+	<item name="id_station"></item> 
+	<item name="station">Néron</item>
+	<item name="latitude">45.21733</item>
+	<item name="longitude">5.693878</item>
+</string-array>
+<string-array name="ID4009">
+	<item name="id_station"></item> 
+	<item name="station">Horloge</item>
+	<item name="latitude">45.212983</item>
+	<item name="longitude">5.699944</item>
+</string-array>
+<string-array name="ID4010">
+	<item name="id_station"></item> 
+	<item name="station">Saint-Martin-le-Vinoux - Hôtel de Ville</item>
+	<item name="latitude">45.208558</item>
+	<item name="longitude">5.705764</item>
+</string-array>
+<string-array name="ID4011">
+	<item name="id_station"></item> 
+	<item name="station">Esplanade Nord</item>
+	<item name="latitude">45.198881</item>
+	<item name="longitude">5.716654</item>
+</string-array>
+<string-array name="ID4012">
+	<item name="id_station"></item> 
+	<item name="station">Esplanade Centre</item>
+	<item name="latitude">45.194447</item>
+	<item name="longitude">5.717448</item>
+</string-array>
+<string-array name="ID4013">
+	<item name="id_station"></item> 
+	<item name="station">Alsace Lorraine</item>
+	<item name="latitude">45.1892</item>
+	<item name="longitude">5.719465</item>
+</string-array>
+<string-array name="ID4014">
+	<item name="id_station"></item> 
+	<item name="station">Condorcet</item>
+	<item name="latitude">45.185671</item>
+	<item name="longitude">5.718275</item>
+</string-array>
+<string-array name="ID4015">
+	<item name="id_station"></item> 
+	<item name="station">Vallier - Libération</item>
+	<item name="latitude">45.179864</item>
+	<item name="longitude">5.716317</item>
+</string-array>
+<string-array name="ID4016">
+	<item name="id_station"></item> 
+	<item name="station">Alliés</item>
+	<item name="latitude">45.174216</item>
+	<item name="longitude">5.714394</item>
+</string-array>
+<string-array name="ID4017">
+	<item name="id_station"></item> 
+	<item name="station">Louise Michel</item>
+	<item name="latitude">45.169789</item>
+	<item name="longitude">5.712911</item>
+</string-array>
+</resources>

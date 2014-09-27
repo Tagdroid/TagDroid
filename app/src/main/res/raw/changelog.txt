@@ -1,0 +1,112 @@
+<html>
+  <head>
+  
+    <style type='text/css'>
+   	  body		   { background-color:#ffffff }
+      a            { color:#4c4c4c }
+      div.title    { 
+			          color:#00b4f8; 
+			          font-size:1.2em; 
+			          font-weight:bold; 
+			          margin-top:1em; 
+			          margin-bottom:0.3em; 
+			          text-align:center }
+      div.subtitle { 
+			          color:#00b4f8; 
+			          font-size:0.7em; 
+			          margin-bottom:0.8em; 
+			          text-align:center }
+      div.freetext { color:#6f6f6f }
+      div.list     { color:#4c4c4c }
+    </style>
+    
+    
+  </head>
+  <body>
+<!--$ 3.1.0
+	* Possibilité d'ajouter les bus dans les stations à proximité.-->
+  
+$ 3.0.1
+  % Version 3.0.1
+  _ 23 Décembre 2013
+  _ Version de transition vers la nouvelle plateforme.
+    * Ajout de la ligne E dans "Plan".
+    * Correction du bug des favoris depuis la dernière version
+    
+    
+  
+$ 3.0.0
+  % Version 3.0.0
+  _ 24 Novembre 2013
+  _ (Merci à Alexande Louvrier)
+  _Compatible à partir d'Android 3.0
+    * Nouvelle apparence.
+    * Nouveau logo.
+    * Nouvelle structure de l'application (Fragments, NavigationDrawers, Support-library.v4)
+    * Page de bienvenue pour les nouveaux utilisateurs.
+    * Ajout de la ligne E.
+    * Correction des stations manquantes ou érronées, nouveaux tarifs et autres modifications au 1er Septembre 2013.
+    * Mise à jour de l'API Google Map Android (v2).
+    * Ajout des plans PDF de chaque ligne dans la section "Stations".
+    * Affichage de l'adresse de votre position dans "Proximité".
+    * Suppression des bandeaux publicitaires pour ajout d'une annonce interstitielle.
+    * Pop-up "Alerte Info-trafic" directement sur la page des arrêts.
+    * Ajout d'un nouveau flux d'actualités RSS depuis le site de la SMTC (Syndicat Mixte des Transports en Commun de l'agglomération Grenobloise).
+	* Intégration de Google Analytics pour étudier le comportement d'utilisation.  
+	* Push Notification : Recevez désormais des messages d'informations dans la barre de notification !
+  
+$ 2.0.2
+  % Version 2.0.2
+  _ 3 Novembre 2012
+    * Possibilité de fermer l'application (avec le bouton BACK).
+    * Mise à jour du système de flux RSS (info-trafic et actualité).
+    * Ajout de l'arrêt Edmond Esmonin sur la ligne 23.
+    * Correction du plantage dans "Proximité" lorsque qu'aucune information de localisation n'est transmise par le smartphone.
+    * Ajout des lignes en correspondance dans la liste des stations de tramways.
+    * Ajout des coordonnées GPS de la ligne 1 - Affichage disponible sur "Plan".
+    * Légère mise à jour du thème sur Android 3.0 +
+  
+$ 2.0.1
+  % Version 2.0.1
+  _ 6 Septembre 2012
+    * Correction d'un léger bug sur les horaires.
+    * Correction des Favoris sur l'ajout de stations identiques sur des lignes différentes.
+  
+$ 2.0.0
+  % Version 2.0.0
+  _ 3 Septembre 2012
+    * Nouveau Logo (l'ancien logo (avec le logo de la TAG) n'était pas libre de droit).
+    * Intégration du réseau de bus.
+    * Algorithme de calcul des horaires repensé.
+    * Nouvelle catégorie : Titres de transport.
+    * Choix des réseaux à afficher sur la carte (réseau de bus non-inclus).
+    * Nouveau Menu pour un accès plus rapide entre les pages (Menu slide fonctionne en glissant, ou avec les touches menus(physique et fictive))
+    * Affichage du ChangeLog aux nouvelles mises à jours.
+    * Correction des bugs majeurs
+    * Nouveau Design global(prise en compte du Holo Theme)
+
+$ 1.1.0
+  % Version 1.1.0
+  _ 22 Juillet 2012
+    * Nouvelle permission requise : Localisation (GPS, Réseau)
+    * Nouvel onglet 'Proximité' dans "Stations" : Affiche les 10 stations les plus proches de votre position (à condition d'être localisé).
+    * Affichage de votre localisation sur le plan ainsi que de la précision
+! Rappel : Il existe 3 moyens d'être localisé, le GPS long mais précis, votre réseau Wifi privé (précision d'une dizaine de mètre), et votre réseau mobile (précision de plusieurs centaines de mètres).
+    
+$ 1.0.2
+  % Version 1.0.2
+  _ 14 Juillet 2012
+    * Amélioration de la stabilité.
+    
+$ 1.0.1
+  % Version 1.0.1
+  _ 12 Juillet 2012
+    * Débogage majeur.
+    
+$ 1.0.0
+  % Version 1.0.0
+  _ 11 Juillet 2012
+    
+$ END_OF_CHANGE_LOG
+  </body>
+</html>

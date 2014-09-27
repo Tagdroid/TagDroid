@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+<string-array name="ID413">
+	<item name="id_station">556</item> 
+	<item name="station">Abbé Grégoire</item>
+	<item name="latitude">45.183929</item>
+	<item name="longitude">5.711781</item>
+</string-array>
+<string-array name="ID422">
+	<item name="id_station">557</item> 
+	<item name="station">Albert Reynier</item>
+	<item name="latitude">45.164518</item>
+	<item name="longitude">5.710598</item>
+</string-array>
+<string-array name="ID419">
+	<item name="id_station">559</item> 
+	<item name="station">Anatole France</item>
+	<item name="latitude">45.171963</item>
+	<item name="longitude">5.704996</item>
+</string-array>
+<string-array name="ID421">
+	<item name="id_station">560</item> 
+	<item name="station">Bachelard</item>
+	<item name="latitude">45.166896</item>
+	<item name="longitude">5.705986</item>
+</string-array>
+<string-array name="ID408">
+	<item name="id_station">561</item> 
+	<item name="station">Championnet</item>
+	<item name="latitude">45.18546</item>
+	<item name="longitude">5.722883</item>
+</string-array>
+<string-array name="ID407">
+	<item name="id_station">562</item> 
+	<item name="station">Champollion</item>
+	<item name="latitude">45.18631</item>
+	<item name="longitude">5.725197</item>
+</string-array>
+<string-array name="ID415">
+	<item name="id_station">1629</item> 
+	<item name="station">Champs Elysées</item>
+	<item name="latitude">45.178111</item>
+	<item name="longitude">5.710378</item>
+</string-array>
+<string-array name="ID410">
+	<item name="id_station">564</item> 
+	<item name="station">Chorier - Condorcet</item>
+	<item name="latitude">45.18589</item>
+	<item name="longitude">5.717337</item>
+</string-array>
+<string-array name="ID402">
+	<item name="id_station">1630</item> 
+	<item name="station">Cimetière Du Grand Sablon</item>
+	<item name="latitude">45.19239</item>
+	<item name="longitude">5.744767</item>
+</string-array>
+<string-array name="ID420">
+	<item name="id_station">566</item> 
+	<item name="station">Cité Paul Mistral</item>
+	<item name="latitude">45.168569</item>
+	<item name="longitude">5.704814</item>
+</string-array>
+<string-array name="ID409">
+	<item name="id_station">567</item> 
+	<item name="station">Condorcet</item>
+	<item name="latitude">45.185745</item>
+	<item name="longitude">5.719307</item>
+</string-array>
+<string-array name="ID412">
+	<item name="id_station">1631</item> 
+	<item name="station">D\'alembert</item>
+	<item name="latitude">45.184229</item>
+	<item name="longitude">5.710652</item>
+</string-array>
+<string-array name="ID406">
+	<item name="id_station">569</item> 
+	<item name="station">Docteur Martin</item>
+	<item name="latitude">45.187029</item>
+	<item name="longitude">5.727207</item>
+</string-array>
+<string-array name="ID418">
+	<item name="id_station">568</item> 
+	<item name="station">Docteur Schweitzer</item>
+	<item name="latitude">45.172405</item>
+	<item name="longitude">5.70654</item>
+</string-array>
+<string-array name="ID425">
+	<item name="id_station">570</item> 
+	<item name="station">Edmond Esmonin</item>
+	<item name="latitude">45.159232</item>
+	<item name="longitude">5.726481</item>
+</string-array>
+<string-array name="ID426">
+	<item name="id_station">571</item> 
+	<item name="station">Grand\'place</item>
+	<item name="latitude">45.159074</item>
+	<item name="longitude">5.732315</item>
+</string-array>
+<string-array name="ID417">
+	<item name="id_station">572</item> 
+	<item name="station">Henri Dunant</item>
+	<item name="latitude">45.174424</item>
+	<item name="longitude">5.708356</item>
+</string-array>
+<string-array name="ID429">
+	<item name="id_station">573</item> 
+	<item name="station">Les Saules</item>
+	<item name="latitude">45.162846</item>
+	<item name="longitude">5.741045</item>
+</string-array>
+<string-array name="ID424">
+	<item name="id_station">574</item> 
+	<item name="station">Maison Des Anciens</item>
+	<item name="latitude">45.159555</item>
+	<item name="longitude">5.72338</item>
+</string-array>
+<string-array name="ID430">
+	<item name="id_station">575</item> 
+	<item name="station">Maisons Neuves</item>
+	<item name="latitude">45.164787</item>
+	<item name="longitude">5.742642</item>
+</string-array>
+<string-array name="ID404">
+	<item name="id_station">576</item> 
+	<item name="station">Mutualité</item>
+	<item name="latitude">45.190541</item>
+	<item name="longitude">5.736074</item>
+</string-array>
+<string-array name="ID428">
+	<item name="id_station">577</item> 
+	<item name="station">Place Des Géants</item>
+	<item name="latitude">45.161502</item>
+	<item name="longitude">5.738284</item>
+</string-array>
+<string-array name="ID427">
+	<item name="id_station">578</item> 
+	<item name="station">Raymond Chanas</item>
+	<item name="latitude">45.15954</item>
+	<item name="longitude">5.738012</item>
+</string-array>
+<string-array name="ID411">
+	<item name="id_station">1633</item> 
+	<item name="station">Saint-bruno</item>
+	<item name="latitude">45.185889</item>
+	<item name="longitude">5.713845</item>
+</string-array>
+<string-array name="ID403">
+	<item name="id_station">580</item> 
+	<item name="station">Saint-roch</item>
+	<item name="latitude">45.19156</item>
+	<item name="longitude">5.73984</item>
+</string-array>
+<string-array name="ID416">
+	<item name="id_station">581</item> 
+	<item name="station">Salengro</item>
+	<item name="latitude">45.175575</item>
+	<item name="longitude">5.708887</item>
+</string-array>
+<string-array name="ID414">
+	<item name="id_station">582</item> 
+	<item name="station">Vallier - Docteur Calmette</item>
+	<item name="latitude">45.180428</item>
+	<item name="longitude">5.710715</item>
+</string-array>
+<string-array name="ID405">
+	<item name="id_station">583</item> 
+	<item name="station">Verdun - Préfecture</item>
+	<item name="latitude">45.188397</item>
+	<item name="longitude">5.730949</item>
+</string-array>
+<string-array name="ID423">
+	<item name="id_station">584</item> 
+	<item name="station">Verlaine</item>
+	<item name="latitude">45.16176</item>
+	<item name="longitude">5.716059</item>
+</string-array>
+
+</resources>

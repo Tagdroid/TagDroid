@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+        android:id="@+id/menu_tram"
+        android:icon="@drawable/menu_tram"
+        android:showAsAction="ifRoom"
+        android:title="@string/menu_tram"/>
+     <item
+        android:id="@+id/menu_bus"
+        android:icon="@drawable/menu_bus"
+        android:showAsAction="ifRoom"
+        android:title="@string/menu_bus"/>
+     
+    <item
+        android:id="@+id/menu_others"
+        android:icon="@drawable/menu_others"
+        android:showAsAction="ifRoom"
+        android:title="@string/menu_others"/>
+     <item
+        android:id="@+id/menu_map"
+        android:icon="@drawable/menu_map"
+        android:showAsAction="ifRoom"
+        android:title="@string/menu_map"/>
+</menu>

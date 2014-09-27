@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+<string-array name="ID1284">
+	<item name="id_station">369</item> 
+	<item name="station">8 Mai 1945</item>
+	<item name="latitude">45.171087</item>
+	<item name="longitude">5.756866</item>
+</string-array>
+<string-array name="ID1296">
+	<item name="id_station">370</item> 
+	<item name="station">Albert Reynier</item>
+	<item name="latitude">45.163869</item>
+	<item name="longitude">5.710921</item>
+</string-array>
+<string-array name="ID1299">
+	<item name="id_station">371</item> 
+	<item name="station">Allobroges</item>
+	<item name="latitude">45.166723</item>
+	<item name="longitude">5.698952</item>
+</string-array>
+<string-array name="ID1286">
+	<item name="id_station">372</item> 
+	<item name="station">Chopin</item>
+	<item name="latitude">45.166168</item>
+	<item name="longitude">5.751671</item>
+</string-array>
+<string-array name="ID1276">
+	<item name="id_station">373</item> 
+	<item name="station">Cite Labeye</item>
+	<item name="latitude">45.182389</item>
+	<item name="longitude">5.759681</item>
+</string-array>
+<string-array name="ID1278">
+	<item name="id_station">374</item> 
+	<item name="station">Coli</item>
+	<item name="latitude">45.180731</item>
+	<item name="longitude">5.765818</item>
+</string-array>
+<string-array name="ID1293">
+	<item name="id_station">375</item> 
+	<item name="station">Edmond Esmonin</item>
+	<item name="latitude">45.159246</item>
+	<item name="longitude">5.72653</item>
+</string-array>
+<string-array name="ID1283">
+	<item name="id_station">376</item> 
+	<item name="station">Etienne Grappe</item>
+	<item name="latitude">45.172091</item>
+	<item name="longitude">5.757557</item>
+</string-array>
+<string-array name="ID1290">
+	<item name="id_station">377</item> 
+	<item name="station">Genéral De Gaulle</item>
+	<item name="latitude">45.161645</item>
+	<item name="longitude">5.744252</item>
+</string-array>
+<string-array name="ID1292">
+	<item name="id_station">378</item> 
+	<item name="station">Grand\'place</item>
+	<item name="latitude">45.159064</item>
+	<item name="longitude">5.732341</item>
+</string-array>
+<string-array name="ID1281">
+	<item name="id_station">379</item> 
+	<item name="station">Henri Wallon</item>
+	<item name="latitude">45.175787</item>
+	<item name="longitude">5.76426</item>
+</string-array>
+<string-array name="ID1288">
+	<item name="id_station">380</item> 
+	<item name="station">La Châtelière</item>
+	<item name="latitude">45.162175</item>
+	<item name="longitude">5.749086</item>
+</string-array>
+<string-array name="ID1287">
+	<item name="id_station">381</item> 
+	<item name="station">Le Marais</item>
+	<item name="latitude">45.164061</item>
+	<item name="longitude">5.75059</item>
+</string-array>
+<string-array name="ID1301">
+	<item name="id_station">382</item> 
+	<item name="station">Le Prisme</item>
+	<item name="latitude">45.166369</item>
+	<item name="longitude">5.690465</item>
+</string-array>
+<string-array name="ID1297">
+	<item name="id_station">383</item> 
+	<item name="station">Le Rondeau</item>
+	<item name="latitude">45.160778</item>
+	<item name="longitude">5.709869</item>
+</string-array>
+<string-array name="ID1289">
+	<item name="id_station">384</item> 
+	<item name="station">Les Ecoles</item>
+	<item name="latitude">45.161392</item>
+	<item name="longitude">5.743117</item>
+</string-array>
+<string-array name="ID1294">
+	<item name="id_station">385</item> 
+	<item name="station">Maison Des Anciens</item>
+	<item name="latitude">45.159597</item>
+	<item name="longitude">5.72331</item>
+</string-array>
+<string-array name="ID1300">
+	<item name="id_station">386</item> 
+	<item name="station">Mas Des Iles</item>
+	<item name="latitude">45.166953</item>
+	<item name="longitude">5.694715</item>
+</string-array>
+<string-array name="ID1275">
+	<item name="id_station">387</item> 
+	<item name="station">Neyrpic - Belledonne</item>
+	<item name="latitude">45.185891</item>
+	<item name="longitude">5.757489</item>
+</string-array>
+<string-array name="ID1282">
+	<item name="id_station">388</item> 
+	<item name="station">Pablo Neruda</item>
+	<item name="latitude">45.173957</item>
+	<item name="longitude">5.760841</item>
+</string-array>
+<string-array name="ID1279">
+	<item name="id_station">389</item> 
+	<item name="station">Pierre Courtade</item>
+	<item name="latitude">45.179536</item>
+	<item name="longitude">5.763775</item>
+</string-array>
+<string-array name="ID1277">
+	<item name="id_station">390</item> 
+	<item name="station">Portail Rouge</item>
+	<item name="latitude">45.181393</item>
+	<item name="longitude">5.7634</item>
+</string-array>
+<string-array name="ID1291">
+	<item name="id_station">391</item> 
+	<item name="station">Raymond Chanas</item>
+	<item name="latitude">45.159546</item>
+	<item name="longitude">5.737982</item>
+</string-array>
+<string-array name="ID1280">
+	<item name="id_station">392</item> 
+	<item name="station">Rocheplane</item>
+	<item name="latitude">45.178276</item>
+	<item name="longitude">5.762326</item>
+</string-array>
+<string-array name="ID1298">
+	<item name="id_station">393</item> 
+	<item name="station">Seyssins Rondeau</item>
+	<item name="latitude">45.161094</item>
+	<item name="longitude">5.696497</item>
+</string-array>
+<string-array name="ID1295">
+	<item name="id_station">394</item> 
+	<item name="station">Verlaine</item>
+	<item name="latitude">45.161743</item>
+	<item name="longitude">5.716129</item>
+</string-array>
+<string-array name="ID1285">
+	<item name="id_station">395</item> 
+	<item name="station">Zella Melhis</item>
+	<item name="latitude">45.167315</item>
+	<item name="longitude">5.753885</item>
+</string-array>
+
+</resources>

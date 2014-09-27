@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string-array name="ID2166">
+	<item name="id_station">37</item>
+	<item name="station">Antoine Polotti</item>
+	<item name="latitude">45.148845</item>
+	<item name="longitude">5.721924</item>
+</string-array>
+<string-array name="ID2172">
+	<item name="id_station">38</item>
+	<item name="station">Bayard</item>
+	<item name="latitude">45.146030</item>
+	<item name="longitude">5.704823</item>
+</string-array>
+<string-array name="ID2143">
+	<item name="id_station">39</item>
+	<item name="station">Bibliothèques Universitaires</item>
+	<item name="latitude">45.191730</item>
+	<item name="longitude">5.770526</item>
+</string-array>
+<string-array name="ID2158">
+	<item name="id_station">1626</item>
+	<item name="station">Centre Socio-culturel</item>
+	<item name="latitude">45.159241</item>
+	<item name="longitude">5.759861</item>
+</string-array>
+<string-array name="ID2159">
+	<item name="id_station">41</item>
+	<item name="station">Champ Fila</item>
+	<item name="latitude">45.156289</item>
+	<item name="longitude">5.754926</item>
+</string-array>
+<string-array name="ID2146">
+	<item name="id_station">42</item>
+	<item name="station">Champ Roman</item>
+	<item name="latitude">45.184066</item>
+	<item name="longitude">5.768166</item>
+</string-array>
+<string-array name="ID2147">
+	<item name="id_station">43</item>
+	<item name="station">Coli</item>
+	<item name="latitude">45.180557</item>
+	<item name="longitude">5.766449</item>
+</string-array>
+<string-array name="ID2173">
+	<item name="id_station">44</item>
+	<item name="station">Colonel Manhès</item>
+	<item name="latitude">45.146528</item>
+	<item name="longitude">5.701625</item>
+</string-array>
+<string-array name="ID2176">
+	<item name="id_station">45</item>
+	<item name="station">Comboire</item>
+	<item name="latitude">45.145862</item>
+	<item name="longitude">5.690854</item>
+</string-array>
+<string-array name="ID2154">
+	<item name="id_station">46</item>
+	<item name="station">Croix Du Pâtre</item>
+	<item name="latitude">45.167880</item>
+	<item name="longitude">5.761986</item>
+</string-array>
+<string-array name="ID2175">
+	<item name="id_station">47</item>
+	<item name="station">Drac</item>
+	<item name="latitude">45.149101</item>
+	<item name="longitude">5.693836</item>
+</string-array>
+<string-array name="ID2164">
+	<item name="id_station">48</item>
+	<item name="station">Ecoles Hospitalières</item>
+	<item name="latitude">45.146484</item>
+	<item name="longitude">5.729499</item>
+</string-array>
+<string-array name="ID2141">
+	<item name="id_station">49</item>
+	<item name="station">Epicéa</item>
+	<item name="latitude">45.195889</item>
+	<item name="longitude">5.774603</item>
+</string-array>
+<string-array name="ID2152">
+	<item name="id_station">50</item>
+	<item name="station">Etienne Grappe</item>
+	<item name="latitude">45.172025</item>
+	<item name="longitude">5.757437</item>
+</string-array>
+<string-array name="ID2168">
+	<item name="id_station">51</item>
+	<item name="station">Fernand Pelloutier</item>
+	<item name="latitude">45.150842</item>
+	<item name="longitude">5.715144</item>
+</string-array>
+<string-array name="ID2162">
+	<item name="id_station">52</item>
+	<item name="station">Francois Quesnay</item>
+	<item name="latitude">45.147981</item>
+	<item name="longitude">5.735099</item>
+</string-array>
+<string-array name="ID2169">
+	<item name="id_station">53</item>
+	<item name="station">Grugliasco</item>
+	<item name="latitude">45.151160</item>
+	<item name="longitude">5.708964</item>
+</string-array>
+<string-array name="ID2163">
+	<item name="id_station">55</item>
+	<item name="station">Hôpital Sud</item>
+	<item name="latitude">45.146999</item>
+	<item name="longitude">5.732653</item>
+</string-array>
+<string-array name="ID2150">
+	<item name="id_station">54</item>
+	<item name="station">Henri Wallon</item>
+	<item name="latitude">45.175747</item>
+	<item name="longitude">5.764003</item>
+</string-array>
+<string-array name="ID2167">
+	<item name="id_station">56</item>
+	<item name="station">La Rampe - Centre-ville</item>
+	<item name="latitude">45.149919</item>
+	<item name="longitude">5.718319</item>
+</string-array>
+<string-array name="ID2157">
+	<item name="id_station">57</item>
+	<item name="station">Le Carina</item>
+	<item name="latitude">45.162646</item>
+	<item name="longitude">5.763187</item>
+</string-array>
+<string-array name="ID2165">
+	<item name="id_station">58</item>
+	<item name="station">Le Château</item>
+	<item name="latitude">45.147680</item>
+	<item name="longitude">5.725572</item>
+</string-array>
+<string-array name="ID2161">
+	<item name="id_station">68</item>
+	<item name="station">Les Ruires - Boétie</item>
+	<item name="latitude">45.149344</item>
+	<item name="longitude">5.741043</item>
+</string-array>
+<string-array name="ID2155">
+	<item name="id_station">59</item>
+	<item name="station">Maisons Blanches</item>
+	<item name="latitude">45.166186</item>
+	<item name="longitude">5.764561</item>
+</string-array>
+<string-array name="ID2174">
+	<item name="id_station">60</item>
+	<item name="station">Musee Géo Charles</item>
+	<item name="latitude">45.149086</item>
+	<item name="longitude">5.701604</item>
+</string-array>
+<string-array name="ID2160">
+	<item name="id_station">61</item>
+	<item name="station">Odyssée</item>
+	<item name="latitude">45.152749</item>
+	<item name="longitude">5.748725</item>
+</string-array>
+<string-array name="ID2151">
+	<item name="id_station">62</item>
+	<item name="station">Pablo Neruda</item>
+	<item name="latitude">45.174053</item>
+	<item name="longitude">5.760999</item>
+</string-array>
+<string-array name="ID2148">
+	<item name="id_station">63</item>
+	<item name="station">Pierre Courtade</item>
+	<item name="latitude">45.179556</item>
+	<item name="longitude">5.763831</item>
+</string-array>
+<string-array name="ID2153">
+	<item name="id_station">64</item>
+	<item name="station">Potié</item>
+	<item name="latitude">45.171118</item>
+	<item name="longitude">5.758295</item>
+</string-array>
+<string-array name="ID2145">
+	<item name="id_station">65</item>
+	<item name="station">Promotion Sociale</item>
+	<item name="latitude">45.187302</item>
+	<item name="longitude">5.769668</item>
+</string-array>
+<string-array name="ID2170">
+	<item name="id_station">66</item>
+	<item name="station">Quinzaine</item>
+	<item name="latitude">45.151706</item>
+	<item name="longitude">5.706797</item>
+</string-array>
+<string-array name="ID2149">
+	<item name="id_station">67</item>
+	<item name="station">Rocheplane</item>
+	<item name="latitude">45.177562</item>
+	<item name="longitude">5.763831</item>
+</string-array>
+<string-array name="ID2156">
+	<item name="id_station">70</item>
+	<item name="station">Saint-martin-d\'hères Village</item>
+	<item name="latitude">45.165034</item>
+	<item name="longitude">5.765462</item>
+</string-array>
+<string-array name="ID2144">
+	<item name="id_station">69</item>
+	<item name="station">Sciences Sociales</item>
+	<item name="latitude">45.190113</item>
+	<item name="longitude">5.769110</item>
+</string-array>
+<string-array name="ID2142">
+	<item name="id_station">71</item>
+	<item name="station">Universités - Biologie</item>
+	<item name="latitude">45.191972</item>
+	<item name="longitude">5.775150</item>
+</string-array>
+<string-array name="ID2171">
+	<item name="id_station">73</item>
+	<item name="station">Vaillant-couturier</item>
+	<item name="latitude">45.148498</item>
+	<item name="longitude">5.705724</item>
+</string-array>
+</resources>

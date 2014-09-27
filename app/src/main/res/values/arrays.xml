@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="ns_menu_items">
+        <item>ns_menu_snippet1</item>
+        <item>ns_menu_snippet2</item>
+        <item>ns_menu_snippet3</item>
+        <item>ns_menu_snippet4</item>       
+    </string-array>
+    
+    <string-array name="ns_menu_items2">
+        <item>ns_menu_snippet5</item>
+        <item>ns_menu_snippet6</item>
+        <item>ns_menu_snippet7</item>
+    </string-array>
+
+    <array name="ns_menu_items_icon">
+        <item>direction</item>
+        <item>fav</item>
+        <item>radar</item>
+        <item>map</item>
+    </array>
+    
+     <array name="ns_menu_items_icon2">
+        <item>trafic</item>
+        <item>news</item>
+        <item>tarif</item>
+    </array>
+
+</resources>

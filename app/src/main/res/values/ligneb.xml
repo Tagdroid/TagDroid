@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="ID29">
+             <item name="id_station">768</item>
+             <item name="station">Plaine Des Sports</item>
+             <item name="latitude">45.187578</item>
+             <item name="longitude">5.784602</item>
+             <item name="correspondance1">img_relais</item>
+        </string-array>
+        
+        <string-array name="ID30">
+             <item name="id_station">759</item>
+             <item name="station">Gières Gare - Universités</item>
+             <item name="latitude">45.185302</item>
+             <item name="longitude">5.785643</item>
+             <item name="correspondance1">img_f1</item>
+			 <item name="correspondance2">img_ter</item>
+			 <item name="correspondance3">img_metro</item>
+			 <item name="correspondance4">img_transisere</item>  
+        </string-array>
+        
+        <string-array name="ID31">
+             <item name="id_station">764</item>
+             <item name="station">Mayencin - Champ Roman</item>
+             <item name="latitude">45.184697</item>
+             <item name="longitude">5.778980</item>
+        </string-array>
+        
+        <string-array name="ID32">
+             <item name="id_station">756</item>
+             <item name="station">Condillac - Universités</item>
+             <item name="latitude">45.189143</item>
+             <item name="longitude">5.774335</item>
+             <item name="correspondance1">img_c</item>
+        </string-array>
+        
+        <string-array name="ID33">
+             <item name="id_station">754</item>
+             <item name="station">Bibliothèques Universitaires</item>
+             <item name="latitude">45.192137</item>
+             <item name="longitude">5.770859</item>
+             <item name="correspondance1">img_c</item>
+			 <item name="correspondance2">img_11</item>
+			 <item name="correspondance3">img_26</item>
+			 <item name="correspondance4">img_agencemetro</item>
+			 <item name="correspondance5">img_transisere</item>  
+        </string-array>
+        
+        <string-array name="ID34">
+             <item name="id_station">757</item>
+		 	 <item name="station">Gabriel Fauré</item>
+             <item name="latitude">45.192273</item>
+             <item name="longitude">5.764432</item>
+             <item name="correspondance1">img_c</item>
+        </string-array>
+        
+         <string-array name="ID35">
+             <item name="id_station">763</item>
+             <item name="station">Les Taillées - Universités</item>
+             <item name="latitude">45.192205</item>
+             <item name="longitude">5.757812</item>
+             <item name="correspondance1">img_d</item>
+        </string-array>
+        
+         <string-array name="ID36">
+             <item name="id_station">760</item>
+             <item name="station">Grand Sablon</item>
+             <item name="latitude">45.199070</item>
+             <item name="longitude">5.749873</item>
+             <item name="correspondance1">img_p0</item>
+			 <item name="correspondance2">img_f0</item>
+			 <item name="correspondance3">img_relais</item>
+			 <item name="correspondance4">img_transisere</item>  
+        </string-array>
+        
+         <string-array name="ID37">
+             <item name="id_station">765</item>
+             <item name="station">Michallon</item>
+             <item name="latitude">45.200295</item>
+             <item name="longitude">5.745453</item>
+             <item name="correspondance1">img_metro</item>
+        </string-array>
+        
+         <string-array name="ID38">
+             <item name="id_station">771</item>
+             <item name="station">La Tronche Hôpital</item>
+             <item name="latitude">45.200612</item>
+             <item name="longitude">5.741161</item>
+             <item name="correspondance1">img_31</item>
+             <item name="correspondance2">img_transisere</item>  
+        </string-array>
+        
+         <string-array name="ID39">
+             <item name="id_station">762</item>
+             <item name="station">Ile Verte</item>
+             <item name="latitude">45.197256</item>
+             <item name="longitude">5.736687</item>
+             <item name="correspondance1">img_31</item>
+        </string-array>
+        
+         <string-array name="ID40">
+             <item name="id_station">766</item>
+             <item name="station">Notre-dame - Musée</item>
+             <item name="latitude">45.193491</item>
+             <item name="longitude">5.731977</item>
+             <item name="correspondance1">img_16</item>
+             <item name="correspondance2">img_transisere</item>  
+        </string-array>
+        
+         <string-array name="ID41">
+             <item name="id_station">770</item>
+             <item name="station">Sainte-claire - Les Halles</item>
+             <item name="latitude">45.191426</item>
+             <item name="longitude">5.730593</item>
+        </string-array>
+        
+         <string-array name="ID42">
+             <item name="id_station">586</item>
+             <item name="station">Hubert Dubedout - Maison Du Tourisme</item>
+             <item name="latitude">45.190194</item>
+             <item name="longitude">5.728308</item>
+             <item name="correspondance1">img_a</item>
+			 <item name="correspondance2">img_agence</item>
+        </string-array>
+        
+        <string-array name="ID43">
+             <item name="id_station">772</item>
+             <item name="station">Victor Hugo</item>
+             <item name="latitude">45.189831</item>
+             <item name="longitude">5.725025</item>
+             <item name="correspondance1">img_a</item>
+             <item name="correspondance2">img_c0</item>
+             <item name="correspondance3">img_13</item>
+             <item name="correspondance4">img_17</item>
+             <item name="correspondance5">img_33</item>
+             <item name="correspondance6">img_34</item>     
+             <item name="correspondance7">img_n1</item>        
+             <item name="correspondance8">img_n3</item>
+             <item name="correspondance9">img_n4</item> 
+             <item name="correspondance10">img_transisere</item>  
+        </string-array>
+        
+        <string-array name="ID44">
+             <item name="id_station">753</item>
+             <item name="station">Alsace-lorraine</item>
+             <item name="latitude">45.189271</item>
+             <item name="longitude">5.720637</item>
+             <item name="correspondance1">img_a</item>
+             <item name="correspondance2">img_1</item>
+             <item name="correspondance2">img_n1</item>
+        </string-array>
+        
+        <string-array name="ID45">
+             <item name="id_station">758</item>
+             <item name="station">Grenoble Gares</item>
+             <item name="latitude">45.190149</item>
+             <item name="longitude">5.715219</item>
+             <item name="correspondance1">img_a</item>
+             <item name="correspondance2">img_34</item>
+             <item name="correspondance3">img_ter</item>
+             <item name="correspondance4">img_agencemetro</item>
+             <item name="correspondance5">img_transisere</item>    
+             <item name="correspondance6">img_agence</item>  
+        </string-array>
+        
+        <string-array name="ID46">
+             <item name="id_station">769</item>
+			 <item name="station">Saint-bruno</item>
+             <item name="latitude">45.188387</item>
+             <item name="longitude">5.713888</item>
+             <item name="correspondance1">img_a</item>
+        </string-array>
+        
+         <string-array name="ID47">
+             <item name="id_station">767</item>
+             <item name="station">Palais De Justice</item>
+             <item name="latitude">45.191184</item>
+             <item name="longitude">5.711635</item>
+             <item name="correspondance1">img_30</item>
+        </string-array>
+        
+         <string-array name="ID48">
+             <item name="id_station">755</item>
+             <item name="station">Cité Internationale</item>
+             <item name="latitude">45.195056</item>
+             <item name="longitude">5.711303</item>
+             <item name="correspondance1">img_30</item>
+             <item name="correspondance2">img_metro</item>
+             <item name="correspondance3">img_transisere</item>  
+        </string-array>          
+</resources>

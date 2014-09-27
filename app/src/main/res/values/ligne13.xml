@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string-array name="ID193">
+	<item name="id_station">152</item> 
+	<item name="station">Alpexpo</item>
+	<item name="latitude">45.154217</item>
+	<item name="longitude">5.733747</item>
+</string-array>
+<string-array name="ID201">
+	<item name="id_station">153</item> 
+	<item name="station">Auguste Delaune</item>
+	<item name="latitude">45.143048</item>
+	<item name="longitude">5.715337</item>
+</string-array>
+<string-array name="ID203">
+	<item name="id_station">154</item> 
+	<item name="station">Auguste Ferrier</item>
+	<item name="latitude">45.144940</item>
+	<item name="longitude">5.709822</item>
+</string-array>
+<string-array name="ID204">
+	<item name="id_station">155</item> 
+	<item name="station">Bayard</item>
+	<item name="latitude">45.145969</item>
+	<item name="longitude">5.704930</item>
+</string-array>
+<string-array name="ID184">
+	<item name="id_station">156</item> 
+	<item name="station">Capuche</item>
+	<item name="latitude">45.176608</item>
+	<item name="longitude">5.724607</item>
+</string-array>
+<string-array name="ID181">
+	<item name="id_station">157</item> 
+	<item name="station">Championnet</item>
+	<item name="latitude">45.185350</item>
+	<item name="longitude">5.722632</item>
+</string-array>
+<string-array name="ID180">
+	<item name="id_station">158</item> 
+	<item name="station">Champollion</item>
+	<item name="latitude">45.186378</item>
+	<item name="longitude">5.725315</item>
+</string-array>
+<string-array name="ID189">
+	<item name="id_station">159</item> 
+	<item name="station">Christophe Turc</item>
+	<item name="latitude">45.161223</item>
+	<item name="longitude">5.724070</item>
+</string-array>
+<string-array name="ID186">
+	<item name="id_station">160</item> 
+	<item name="station">Clos D\'or</item>
+	<item name="latitude">45.170224</item>
+	<item name="longitude">5.723169</item>
+</string-array>
+<string-array name="ID205">
+	<item name="id_station">161</item> 
+	<item name="station">Colonel Manhès</item>
+	<item name="latitude">45.146545</item>
+	<item name="longitude">5.701604</item>
+</string-array>
+<string-array name="ID206">
+	<item name="id_station">162</item> 
+	<item name="station">Danielle Casanova</item>
+	<item name="latitude">45.144834</item>
+	<item name="longitude">5.700788</item>
+</string-array>
+<string-array name="ID179">
+	<item name="id_station">163</item> 
+	<item name="station">Docteur Martin</item>
+	<item name="latitude">45.187594</item>
+    <item name="longitude">5.727010</item>
+</string-array>
+<string-array name="ID196">
+	<item name="id_station">164</item> 
+	<item name="station">Ecoles Hospitalières</item>
+	<item name="latitude">45.146484</item>
+	<item name="longitude">5.729499</item>
+</string-array>
+<string-array name="ID190">
+	<item name="id_station">165</item> 
+	<item name="station">Edmond Esmonin</item>
+	<item name="latitude">45.159225</item>
+	<item name="longitude">5.726516</item>
+</string-array>
+<string-array name="ID185">
+	<item name="id_station">166</item> 
+	<item name="station">Eugène Sue</item>
+	<item name="latitude">45.172932</item>
+	<item name="longitude">5.724607</item>
+</string-array>
+<string-array name="ID183">
+	<item name="id_station">167</item> 
+	<item name="station">Foch - Ferrié</item>
+	<item name="latitude">45.181145</item>
+	<item name="longitude">5.722954</item>
+</string-array>
+<string-array name="ID194">
+	<item name="id_station">168</item> 
+	<item name="station">Francois Quesnay</item>
+	<item name="latitude">45.147981</item>
+	<item name="longitude">5.735099</item>
+</string-array>
+<string-array name="ID191">
+	<item name="id_station">169</item> 
+	<item name="station">Grand\'place</item>
+	<item name="latitude">45.159029</item>
+	<item name="longitude">5.732245</item>
+</string-array>
+<string-array name="ID198">
+	<item name="id_station">170</item> 
+	<item name="station">Guy Mocquet</item>
+	<item name="latitude">45.145364</item>
+	<item name="longitude">5.725529</item>
+</string-array>
+<string-array name="ID195">
+	<item name="id_station">171</item> 
+	<item name="station">Hôpital Sud</item>
+	<item name="latitude">45.146999</item>
+	<item name="longitude">5.732653</item>
+</string-array>
+<string-array name="ID208">
+	<item name="id_station">172</item> 
+	<item name="station">La Luire</item>
+	<item name="latitude">45.141414</item>
+	<item name="longitude">5.699265</item>
+</string-array>
+<string-array name="ID197">
+	<item name="id_station">173</item> 
+	<item name="station">Le Château</item>
+	<item name="latitude">45.147680</item>
+	<item name="longitude">5.725572</item>
+</string-array>
+<string-array name="ID200">
+	<item name="id_station">174</item> 
+	<item name="station">Le Village</item>
+	<item name="latitude">45.141293</item>
+	<item name="longitude">5.720487</item>
+</string-array>
+<string-array name="ID182">
+	<item name="id_station">176</item> 
+	<item name="station">Marceau - Jardin Des Vallons</item>
+	<item name="latitude">45.182976</item>
+	<item name="longitude">5.721774</item>
+</string-array>
+<string-array name="ID199">
+	<item name="id_station">177</item> 
+	<item name="station">Paul Langevin</item>
+	<item name="latitude">45.143503</item>
+	<item name="longitude">5.723126</item>
+</string-array>
+<string-array name="ID192">
+	<item name="id_station">178</item> 
+	<item name="station">Polesud - Alpexpo</item>
+	<item name="latitude">45.157379</item>
+	<item name="longitude">5.733683</item>
+</string-array>
+<string-array name="ID202">
+	<item name="id_station">179</item> 
+	<item name="station">Tessaro - Chorier</item>
+	<item name="latitude">45.143412</item>
+	<item name="longitude">5.714221</item>
+</string-array>
+<string-array name="ID177">
+	<item name="id_station">180</item> 
+	<item name="station">Trois Dauphins</item>
+	<item name="latitude">45.190929</item>
+	<item name="longitude">5.725229</item>
+</string-array>
+<string-array name="ID207">
+	<item name="id_station">183</item> 
+	<item name="station">Vassieux</item>
+	<item name="latitude">45.143079</item>
+	<item name="longitude">5.699973</item>
+</string-array>
+<string-array name="ID178">
+	<item name="id_station">184</item> 
+	<item name="station">Victor Hugo</item>
+	<item name="latitude">45.189464</item>
+	<item name="longitude">5.724993</item>
+</string-array>
+<string-array name="ID187">
+	<item name="id_station">185</item> 
+	<item name="station">Vigny</item>
+	<item name="latitude">45.167441</item>
+	<item name="longitude">5.723319</item>
+</string-array>
+<string-array name="ID188">
+	<item name="id_station">182</item> 
+	<item name="station">Village Olympique</item>
+	<item name="latitude">45.163976</item>
+	<item name="longitude">5.723963</item>
+</string-array>
+
+</resources>

@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+        android:id="@+id/menu_addbus"
+         android:checkable="true"
+        android:showAsAction="ifRoom"
+        android:title="Add bus to list"/>
+    
+     <item
+        android:id="@+id/menu_rate"
+        android:icon="@drawable/menu_rate"
+        android:showAsAction="ifRoom"
+        android:title="@string/rate"/>
+     
+    <item
+        android:id="@+id/menu_about"
+        android:icon="@drawable/menu_about"
+        android:showAsAction="ifRoom"
+        android:title="@string/about"/>
+</menu>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string-array name="ID522">
+	<item name="id_station">186</item>
+	<item name="station">Echirolles Gare</item>
+	<item name="latitude">45.15321</item>
+	<item name="longitude">5.71919</item>
+</string-array>
+<string-array name="ID518">
+	<item name="id_station">187</item>
+	<item name="station">Eugène Thénard</item>
+	<item name="latitude">45.14356</item>
+	<item name="longitude">5.733412</item>
+</string-array>
+<string-array name="ID515">
+	<item name="id_station">189</item>
+	<item name="station">L\'iliade</item>
+	<item name="latitude">45.147143</item>
+	<item name="longitude">5.745398</item>
+</string-array>
+<string-array name="ID513">
+	<item name="id_station">188</item>
+	<item name="station">La Grange Du Château</item>
+	<item name="latitude">45.148383</item>
+	<item name="longitude">5.752438</item>
+</string-array>
+<string-array name="ID516">
+	<item name="id_station">190</item>
+	<item name="station">La Maritelle</item>
+	<item name="latitude">45.144073</item>
+	<item name="longitude">5.740324</item>
+</string-array>
+<string-array name="ID520">
+	<item name="id_station">191</item>
+	<item name="station">Le Château</item>
+	<item name="latitude">45.147051</item>
+	<item name="longitude">5.726136</item>
+</string-array>
+<string-array name="ID514">
+	<item name="id_station">192</item>
+	<item name="station">Les Javaux</item>
+	<item name="latitude">45.149708</item>
+	<item name="longitude">5.749639</item>
+</string-array>
+<string-array name="ID517">
+	<item name="id_station">193</item>
+	<item name="station">République</item>
+	<item name="latitude">45.142831</item>
+	<item name="longitude">5.736107</item>
+</string-array>
+<string-array name="ID519">
+	<item name="id_station">194</item>
+	<item name="station">Stade</item>
+	<item name="latitude">45.143466</item>
+	<item name="longitude">5.729441</item>
+</string-array>
+<string-array name="ID521">
+	<item name="id_station">195</item>
+	<item name="station">Sud Galaxie</item>
+	<item name="latitude">45.149694</item>
+	<item name="longitude">5.724692</item>
+</string-array>
+</resources>

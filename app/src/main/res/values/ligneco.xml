@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+        <string-array name="ID720">           
+             <item name="id_station">1206</item>
+			 <item name="station">Maupertuis</item>
+             <item name="latitude">45.213237</item>
+             <item name="longitude">5.797005</item>
+        </string-array> 
+        
+        <string-array name="ID721">           
+             <item name="id_station">1204</item>
+			 <item name="station">Les Bealières</item>
+             <item name="latitude">45.211544</item>
+             <item name="longitude">5.791125</item>
+        </string-array> 
+        
+        <string-array name="ID722">           
+             <item name="id_station">1205</item> 
+			 <item name="station">Malacher</item>
+             <item name="latitude">45.211272</item>
+             <item name="longitude">5.787306</item>
+        </string-array> 
+        
+        <string-array name="ID723">           
+             <item name="id_station">1200</item>
+             <item name="station">Granier</item>
+             <item name="latitude">45.210244</item>
+             <item name="longitude">5.784130</item>
+        </string-array> 
+        
+        <string-array name="ID724">           
+             <item name="id_station">1207</item>
+             <item name="station">Meylan Mairie</item>
+             <item name="latitude">45.209428</item>
+             <item name="longitude">5.778165</item>
+             <item name="correspondance1">img_16</item>
+        </string-array> 
+        
+        <string-array name="ID725">           
+             <item name="id_station">1209</item>
+             <item name="station">Piscine Des Buclos</item>
+             <item name="latitude">45.208914</item>
+             <item name="longitude">5.775290</item>
+             <item name="correspondance1">img_16</item>
+        </string-array> 
+         
+        <string-array name="ID726">           
+             <item name="id_station">1203</item>
+			 <item name="station">Le Brêt</item>
+             <item name="latitude">45.205981</item>
+             <item name="longitude">5.772028</item>
+        </string-array> 
+        
+    	<string-array name="ID727">           
+             <item name="id_station">1202</item>
+             <item name="station">La Revirée</item>
+             <item name="latitude">45.207342</item>
+             <item name="longitude">5.767694</item>
+             <item name="correspondance1">img_31</item>
+             <item name="correspondance2">img_transisere</item>
+        </string-array> 
+        
+    	<string-array name="ID728">           
+             <item name="id_station">1224</item>
+             <item name="station">Aiguinards - Hexagone</item>
+             <item name="latitude">45.205286</item>
+             <item name="longitude">5.764518</item>
+             <item name="correspondance1">img_31</item>
+             <item name="correspondance2">img_transisere</item>
+        </string-array> 
+        
+    	<string-array name="ID729">           
+             <item name="id_station">1210</item>
+             <item name="station">Plaine Fleurie</item>
+             <item name="latitude">45.202625</item>
+             <item name="longitude">5.761213</item>
+             <item name="correspondance1">img_f0</item>
+             <item name="correspondance2">img_p0</item>
+             <item name="correspondance3">img_transisere</item>
+        </string-array> 
+        
+    	<string-array name="ID730">           
+             <item name="id_station">1208</item>
+			 <item name="station">Carronerie - Ile d\'Amour</item>
+             <item name="latitude">45.200448</item>
+             <item name="longitude">5.758080</item>
+             <item name="correspondance1">img_relais</item>
+        </string-array> 
+        
+    	<string-array name="ID731">           
+             <item name="id_station">1229</item>
+             <item name="station">Sablons</item>
+             <item name="latitude">45.197091</item>
+             <item name="longitude">5.753231</item>
+             <item name="correspondance1">img_transisere</item>
+        </string-array> 
+        
+    	<string-array name="ID732">           
+             <item name="id_station">1201</item>
+             <item name="station">Grenoble Hôtel De Ville</item>
+             <item name="latitude">45.187383</item>
+             <item name="longitude">5.737610</item>
+             <item name="correspondance1">img_c</item>
+             <item name="correspondance2">img_transisere</item>
+        </string-array> 
+        
+    	<string-array name="ID733">           
+             <item name="id_station">1197</item>
+             <item name="station">Chavant</item>
+             <item name="latitude">45.185417</item>
+             <item name="longitude">5.731473</item>
+             <item name="correspondance1">img_a</item>
+             <item name="correspondance2">img_c</item>
+             <item name="correspondance3">img_31</item>
+             <item name="correspondance4">img_34</item>
+             <item name="correspondance5">img_transisere</item>
+        </string-array> 
+        
+    	<string-array name="ID734">           
+             <item name="id_station">1198</item>
+             <item name="station">Docteur Martin</item>
+             <item name="latitude">45.187594</item>
+             <item name="longitude">5.727010</item>
+             <item name="correspondance1">img_13</item>
+             <item name="correspondance2">img_16</item>
+             <item name="correspondance3">img_17</item>
+             <item name="correspondance4">img_31</item>
+             <item name="correspondance5">img_32</item>
+             <item name="correspondance6">img_33</item>
+             <item name="correspondance7">img_34</item>
+             <item name="correspondance8">img_41</item>
+             <item name="correspondance9">img_n4</item>
+             <item name="correspondance10">img_transisere</item>
+        </string-array> 
+        
+    	<string-array name="ID735">           
+             <item name="id_station">1212</item>
+             <item name="station">Victor Hugo</item>
+             <item name="latitude">45.189282</item>
+             <item name="longitude">5.725143</item>
+             <item name="correspondance1">img_a</item>
+             <item name="correspondance2">img_b</item>
+             <item name="correspondance3">img_13</item>
+             <item name="correspondance4">img_17</item>
+             <item name="correspondance5">img_33</item>
+             <item name="correspondance6">img_34</item>
+             <item name="correspondance7">img_n1</item>
+             <item name="correspondance8">img_n3</item>
+             <item name="correspondance9">img_n4</item>
+             <item name="correspondance10">img_transisere</item>
+        </string-array> 
+        
+    	<string-array name="ID736">           
+             <item name="id_station">1211</item>
+             <item name="station">Trois Dauphins</item>
+             <item name="latitude">45.191526</item>
+             <item name="longitude">5.725164</item>
+             <item name="correspondance1">img_13</item>
+             <item name="correspondance2">img_17</item>
+        </string-array> 
+ </resources>

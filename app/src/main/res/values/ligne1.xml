@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string-array name="ID1105">
+	<item name="id_station">957</item> 
+	<item name="station">16 Aout 1944</item>
+	<item name="latitude">45.202831</item>
+	<item name="longitude">5.714908</item>
+</string-array>
+<string-array name="ID1119">
+	<item name="id_station">1</item> 
+	<item name="station">Albert Reynier</item>
+	<item name="latitude">45.164083</item>
+	<item name="longitude">5.710874</item>
+</string-array>
+<string-array name="ID1130">
+	<item name="id_station">2</item> 
+	<item name="station">Allées De Nice</item>
+	<item name="latitude">45.131727</item>
+	<item name="longitude">5.700059</item>
+</string-array>
+<string-array name="ID1115">
+	<item name="id_station">3</item> 
+	<item name="station">Alliés - Anatole France</item>
+	<item name="latitude">45.174824</item>
+	<item name="longitude">5.714393</item>
+</string-array>
+<string-array name="ID1109">
+	<item name="id_station">4</item> 
+	<item name="station">Alsace-lorraine</item>
+	<item name="latitude">45.189495</item>
+	<item name="longitude">5.719500</item>
+</string-array>
+<string-array name="ID1107">
+	<item name="id_station">958</item> 
+	<item name="station">Aristide Briand</item>
+	<item name="latitude">45.194576</item>
+	<item name="longitude">5.719156</item>
+</string-array>
+<string-array name="ID1099">
+	<item name="id_station">1226</item> 
+	<item name="station">Basse Buisseratte</item>
+	<item name="latitude">45.217253</item>
+	<item name="longitude">5.693965</item>
+</string-array>
+<string-array name="ID1125">
+	<item name="id_station">5</item> 
+	<item name="station">Bayard</item>
+	<item name="latitude">45.146076</item>
+	<item name="longitude">5.704994</item>
+</string-array>
+<string-array name="ID1101">
+	<item name="id_station">960</item> 
+	<item name="station">Buisseratte</item>
+	<item name="latitude">45.213414</item>
+	<item name="longitude">5.699415</item>
+</string-array>
+<string-array name="ID1136">
+	<item name="id_station">6</item> 
+	<item name="station">Carrière</item>
+	<item name="latitude">45.112953</item>
+	<item name="longitude">5.689502</item>
+</string-array>
+<string-array name="ID1111">
+	<item name="id_station">7</item> 
+	<item name="station">Chorier - Condorcet</item>
+	<item name="latitude">45.185895</item>
+	<item name="longitude">5.718298</item>
+</string-array>
+<string-array name="ID1129">
+	<item name="id_station">8</item> 
+	<item name="station">Clos Dominique</item>
+	<item name="latitude">45.135754</item>
+	<item name="longitude">5.701432</item>
+</string-array>
+<string-array name="ID1104">
+	<item name="id_station">961</item> 
+	<item name="station">Conrad Kilian</item>
+	<item name="latitude">45.206097</item>
+	<item name="longitude">5.709071</item>
+</string-array>
+<string-array name="ID1085">
+	<item name="id_station">962</item> 
+	<item name="station">Croix De La Rochette</item>
+	<item name="latitude">45.258449</item>
+	<item name="longitude">5.659332</item>
+</string-array>
+<string-array name="ID1127">
+	<item name="id_station">10</item> 
+	<item name="station">Ecole De Musique Jean Wiener</item>
+	<item name="latitude">45.140900</item>
+	<item name="longitude">5.703063</item>
+</string-array>
+<string-array name="ID1126">
+	<item name="id_station">11</item> 
+	<item name="station">Ecureuil</item>
+	<item name="latitude">45.143413</item>
+	<item name="longitude">5.703921</item>
+</string-array>
+<string-array name="ID1108">
+	<item name="id_station">963</item> 
+	<item name="station">Esplanade</item>
+	<item name="latitude">45.193971</item>
+	<item name="longitude">5.718641</item>
+</string-array>
+<string-array name="ID1128">
+	<item name="id_station">12</item> 
+	<item name="station">Flottibulle</item>
+	<item name="latitude">45.138267</item>
+	<item name="longitude">5.702291</item>
+</string-array>
+<string-array name="ID1087">
+	<item name="id_station">964</item> 
+	<item name="station">Francoise Dolto</item>
+	<item name="latitude">45.250255</item>
+	<item name="longitude">5.665169</item>
+</string-array>
+<string-array name="ID1131">
+	<item name="id_station">13</item> 
+	<item name="station">Iles De Mars</item>
+	<item name="latitude">45.130123</item>
+	<item name="longitude">5.699673</item>
+</string-array>
+<string-array name="ID1132">
+	<item name="id_station">14</item> 
+	<item name="station">Irène Joliot Curie</item>
+	<item name="latitude">45.127701</item>
+	<item name="longitude">5.698686</item>
+</string-array>
+<string-array name="ID1110">
+	<item name="id_station">15</item> 
+	<item name="station">Jaurès - Berriat</item>
+	<item name="latitude">45.187873</item>
+	<item name="longitude">5.718969</item>
+</string-array>
+<string-array name="ID1089">
+	<item name="id_station">965</item> 
+	<item name="station">Karben</item>
+	<item name="latitude">45.242913</item>
+	<item name="longitude">5.670490</item>
+</string-array>
+<string-array name="ID1112">
+	<item name="id_station">16</item> 
+	<item name="station">L\'aigle</item>
+	<item name="latitude">45.183929</item>
+	<item name="longitude">5.717483</item>
+</string-array>
+<string-array name="ID1141">
+	<item name="id_station">17</item> 
+	<item name="station">L\'oriel</item>
+	<item name="latitude">45.089447</item>
+	<item name="longitude">5.683579</item>
+</string-array>
+<string-array name="ID1102">
+	<item name="id_station">966</item> 
+	<item name="station">La Balme</item>
+	<item name="latitude">45.210723</item>
+	<item name="longitude">5.702634</item>
+</string-array>
+<string-array name="ID1092">
+	<item name="id_station">967</item> 
+	<item name="station">La Pinéa</item>
+	<item name="latitude">45.235328</item>
+	<item name="longitude">5.6758118</item>
+</string-array>
+<string-array name="ID1096">
+	<item name="id_station">968</item> 
+	<item name="station">Le Muret</item>
+	<item name="latitude">45.226261</item>
+	<item name="longitude">5.686026</item>
+</string-array>
+<string-array name="ID1100">
+	<item name="id_station">969</item> 
+	<item name="station">Le Néron</item>
+	<item name="latitude">45.214804</item>
+	<item name="longitude">5.696282</item>
+</string-array>
+<string-array name="ID1138">
+	<item name="id_station">18</item> 
+	<item name="station">Le Rochefort</item>
+	<item name="latitude">45.102383</item>
+	<item name="longitude">5.685682</item>
+</string-array>
+<string-array name="ID1120">
+	<item name="id_station">19</item> 
+	<item name="station">Le Rondeau</item>
+	<item name="latitude">45.160694</item>
+	<item name="longitude">5.709972</item>
+</string-array>
+<string-array name="ID1091">
+	<item name="id_station">970</item> 
+	<item name="station">Les Bonnais</item>
+	<item name="latitude">45.239680</item>
+	<item name="longitude">5.672979</item>
+</string-array>
+<string-array name="ID1117">
+	<item name="id_station">20</item> 
+	<item name="station">Louise Michel</item>
+	<item name="latitude">45.169227</item>
+	<item name="longitude">5.712762</item>
+</string-array>
+<string-array name="ID1133">
+	<item name="id_station">21</item> 
+	<item name="station">Marcelline</item>
+	<item name="latitude">45.125914</item>
+	<item name="longitude">5.698171</item>
+</string-array>
+<string-array name="ID1095">
+	<item name="id_station">971</item> 
+	<item name="station">Moutonnées</item>
+	<item name="latitude">45.228075</item>
+	<item name="longitude">5.684395</item>
+</string-array>
+<string-array name="ID1114">
+	<item name="id_station">22</item> 
+	<item name="station">Péguy</item>
+	<item name="latitude">45.177849</item>
+	<item name="longitude">5.715551</item>
+</string-array>
+<string-array name="ID1106">
+	<item name="id_station">972</item> 
+	<item name="station">Petite Esplanade</item>
+	<item name="latitude">45.198356</item>
+	<item name="longitude">5.718126</item>
+</string-array>
+<string-array name="ID1094">
+	<item name="id_station">973</item> 
+	<item name="station">Pont De Vence</item>
+	<item name="latitude">45.229646</item>
+	<item name="longitude">5.682893</item>
+</string-array>
+<string-array name="ID1135">
+	<item name="id_station">23</item> 
+	<item name="station">Pont Rouge</item>
+	<item name="latitude">45.118344</item>
+	<item name="longitude">5.692806</item>
+</string-array>
+<string-array name="ID1134">
+	<item name="id_station">25</item> 
+	<item name="station">Pont-de-claix Mairie</item>
+	<item name="latitude">45.123522</item>
+	<item name="longitude">5.697656</item>
+</string-array>
+<string-array name="ID1137">
+	<item name="id_station">24</item> 
+	<item name="station">Pré De L\'orme</item>
+	<item name="latitude">45.108865</item>
+	<item name="longitude">5.688128</item>
+</string-array>
+<string-array name="ID1097">
+	<item name="id_station">974</item> 
+	<item name="station">Prédieu</item>
+	<item name="latitude">45.223299</item>
+	<item name="longitude">5.688558</item>
+</string-array>
+<string-array name="ID1123">
+	<item name="id_station">26</item> 
+	<item name="station">Quinzaine</item>
+	<item name="latitude">45.151706</item>
+	<item name="longitude">5.706797</item>
+</string-array>
+<string-array name="ID1086">
+	<item name="id_station">975</item> 
+	<item name="station">Résidence Mutualiste</item>
+	<item name="latitude">45.253427</item>
+	<item name="longitude">5.662465</item>
+</string-array>
+<string-array name="ID1122">
+	<item name="id_station">28</item> 
+	<item name="station">René Thomas</item>
+	<item name="latitude">45.154248</item>
+	<item name="longitude">5.707612</item>
+</string-array>
+<string-array name="ID1088">
+	<item name="id_station">976</item> 
+	<item name="station">Rif Tronchard</item>
+	<item name="latitude">45.246176</item>
+	<item name="longitude">5.668001</item>
+</string-array>
+<string-array name="ID1090">
+	<item name="id_station">977</item> 
+	<item name="station">Rochepleine</item>
+	<item name="latitude">45.244545</item>
+	<item name="longitude">5.675726</item>
+</string-array>
+<string-array name="ID1140">
+	<item name="id_station">27</item> 
+	<item name="station">Rond-point De L\'europe</item>
+	<item name="latitude">45.092901</item>
+	<item name="longitude">5.683708</item>
+</string-array>
+<string-array name="ID1139">
+	<item name="id_station">29</item> 
+	<item name="station">Saint-ange</item>
+	<item name="latitude">45.097202</item>
+	<item name="longitude">5.683837</item>
+</string-array>
+<string-array name="ID1093">
+	<item name="id_station">979</item> 
+	<item name="station">Saint-egrève Mairie</item>
+	<item name="latitude">45.232880</item>
+	<item name="longitude">5.679030</item>
+</string-array>
+<string-array name="ID1103">
+	<item name="id_station">978</item> 
+	<item name="station">Saint-martin-le-vinoux Mairie</item>
+	<item name="latitude">45.208486</item>
+	<item name="longitude">5.705810</item>
+</string-array>
+<string-array name="ID1118">
+	<item name="id_station">30</item> 
+	<item name="station">Stade Lesdiguières</item>
+	<item name="latitude">45.167351</item>
+	<item name="longitude">5.712204</item>
+</string-array>
+<string-array name="ID1098">
+	<item name="id_station">980</item> 
+	<item name="station">Trois Ponts</item>
+	<item name="latitude">45.220185</item>
+	<item name="longitude">5.691390</item>
+</string-array>
+<string-array name="ID1124">
+	<item name="id_station">32</item> 
+	<item name="station">Vaillant-couturier</item>
+	<item name="latitude">45.148498</item>
+	<item name="longitude">5.705724</item>
+</string-array>
+<string-array name="ID1113">
+	<item name="id_station">33</item> 
+	<item name="station">Vallier - Jaurès</item>
+	<item name="latitude">45.180542</item>
+	<item name="longitude">5.716367</item>
+</string-array>
+<string-array name="ID1142">
+	<item name="id_station">34</item> 
+	<item name="station">Varces République</item>
+	<item name="latitude">45.086326</item>
+	<item name="longitude">5.682893</item>
+</string-array>
+<string-array name="ID1116">
+	<item name="id_station">35</item> 
+	<item name="station">Vaucanson</item>
+	<item name="latitude">45.172555</item>
+	<item name="longitude">5.713792</item>
+</string-array>
+<string-array name="ID1121">
+	<item name="id_station">36</item> 
+	<item name="station">Viscose</item>
+	<item name="latitude">45.157789</item>
+	<item name="longitude">5.708857</item>
+</string-array>
+</resources>

@@ -1,0 +1,8 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >   
+     <item
+        android:id="@+id/menu_rss"
+        android:icon="@drawable/menu_rss"
+        android:showAsAction="ifRoom"
+        android:title="@string/menu_rss"/>
+     
+</menu>

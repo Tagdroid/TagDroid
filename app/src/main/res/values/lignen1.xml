@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string-array name="ID650">
+	<item name="id_station">806</item> 
+	<item name="station">Albert Reynier</item>
+	<item name="latitude">45.164083</item>
+	<item name="longitude">5.710874</item>
+</string-array>
+<string-array name="ID661">
+	<item name="id_station">807</item> 
+	<item name="station">Allées De Nice</item>
+<item name="latitude">45.131727</item>
+	<item name="longitude">5.700059</item>
+</string-array>
+<string-array name="ID646">
+	<item name="id_station">808</item> 
+	<item name="station">Alliés - Anatole France</item>
+	<item name="latitude">45.174824</item>
+	<item name="longitude">5.714393</item>
+</string-array>
+<string-array name="ID640">
+	<item name="id_station">809</item> 
+	<item name="station">Alsace-lorraine</item>
+	<item name="latitude">45.189495</item>
+	<item name="longitude">5.719500</item>
+</string-array>
+<string-array name="ID656">
+	<item name="id_station">810</item> 
+	<item name="station">Bayard</item>
+	<item name="latitude">45.146076</item>
+	<item name="longitude">5.704994</item>
+</string-array>
+<string-array name="ID642">
+	<item name="id_station">811</item> 
+	<item name="station">Chorier - Condorcet</item>
+	<item name="latitude">45.185895</item>
+	<item name="longitude">5.718298</item>
+</string-array>
+<string-array name="ID660">
+	<item name="id_station">812</item> 
+	<item name="station">Clos Dominique</item>
+	<item name="latitude">45.135754</item>
+	<item name="longitude">5.701432</item>
+</string-array>
+<string-array name="ID639">
+	<item name="id_station">813</item> 
+	<item name="station">Docteur Mazet</item>
+	<item name="latitude">45.191278</item>
+	<item name="longitude">5.722890</item>
+</string-array>
+<string-array name="ID658">
+	<item name="id_station">814</item> 
+	<item name="station">Ecole De Musique Jean Wiener</item>
+	<item name="latitude">45.140900</item>
+	<item name="longitude">5.703063</item>
+</string-array>
+<string-array name="ID657">
+	<item name="id_station">815</item> 
+	<item name="station">Ecureuil</item>
+	<item name="latitude">45.143413</item>
+	<item name="longitude">5.703921</item>
+</string-array>
+<string-array name="ID659">
+	<item name="id_station">816</item> 
+	<item name="station">Flottibulle</item>
+	<item name="latitude">45.138267</item>
+	<item name="longitude">5.702291</item>
+</string-array>
+<string-array name="ID662">
+	<item name="id_station">817</item> 
+	<item name="station">Iles De Mars</item>
+	<item name="latitude">45.130123</item>
+	<item name="longitude">5.699673</item>
+</string-array>
+<string-array name="ID663">
+	<item name="id_station">818</item> 
+	<item name="station">Irène Joliot Curie</item>
+	<item name="latitude">45.127701</item>
+	<item name="longitude">5.698686</item>
+</string-array>
+<string-array name="ID641">
+	<item name="id_station">819</item> 
+	<item name="station">Jaurès - Berriat</item>
+	<item name="latitude">45.187873</item>
+	<item name="longitude">5.718969</item>
+</string-array>
+<string-array name="ID643">
+	<item name="id_station">820</item> 
+	<item name="station">L\'aigle</item>
+	<item name="latitude">45.183929</item>
+	<item name="longitude">5.717483</item>
+</string-array>
+<string-array name="ID651">
+	<item name="id_station">821</item> 
+	<item name="station">Le Rondeau</item>
+	<item name="latitude">45.160694</item>
+	<item name="longitude">5.709972</item>
+</string-array>
+<string-array name="ID648">
+	<item name="id_station">822</item> 
+	<item name="station">Louise Michel</item>
+	<item name="latitude">45.169227</item>
+	<item name="longitude">5.712762</item>
+</string-array>
+<string-array name="ID664">
+	<item name="id_station">823</item> 
+	<item name="station">Marcelline</item>
+	<item name="latitude">45.125914</item>
+	<item name="longitude">5.698171</item>
+</string-array>
+<string-array name="ID645">
+	<item name="id_station">824</item> 
+	<item name="station">Péguy</item>
+	<item name="latitude">45.177849</item>
+	<item name="longitude">5.715551</item>
+</string-array>
+<string-array name="ID666">
+	<item name="id_station">825</item> 
+	<item name="station">Pont Rouge</item>
+	<item name="latitude">45.118344</item>
+	<item name="longitude">5.692806</item>
+</string-array>
+<string-array name="ID665">
+	<item name="id_station">826</item> 
+	<item name="station">Pont-de-claix Mairie</item>
+	<item name="latitude">45.123522</item>
+	<item name="longitude">5.697656</item>
+</string-array>
+<string-array name="ID654">
+	<item name="id_station">827</item> 
+	<item name="station">Quinzaine</item>
+	<item name="latitude">45.151706</item>
+	<item name="longitude">5.706797</item>
+</string-array>
+<string-array name="ID653">
+	<item name="id_station">828</item> 
+	<item name="station">René Thomas</item>
+	<item name="latitude">45.154248</item>
+	<item name="longitude">5.707612</item>
+</string-array>
+<string-array name="ID649">
+	<item name="id_station">829</item> 
+	<item name="station">Stade Lesdiguières</item>
+	<item name="latitude">45.167351</item>
+	<item name="longitude">5.712204</item>
+</string-array>
+<string-array name="ID655">
+	<item name="id_station">830</item> 
+	<item name="station">Vaillant-couturier</item>
+	<item name="latitude">45.148498</item>
+	<item name="longitude">5.705724</item>
+</string-array>
+<string-array name="ID644">
+	<item name="id_station">831</item> 
+	<item name="station">Vallier - Jaurès</item>
+	<item name="latitude">45.180542</item>
+	<item name="longitude">5.716367</item>
+</string-array>
+<string-array name="ID647">
+	<item name="id_station">832</item> 
+	<item name="station">Vaucanson</item>
+	<item name="latitude">45.172555</item>
+	<item name="longitude">5.713792</item>
+</string-array>
+<string-array name="ID638">
+	<item name="id_station">833</item> 
+	<item name="station">Victor Hugo</item>
+	<item name="latitude">45.189403</item>
+	<item name="longitude">5.725014</item>
+</string-array>
+<string-array name="ID652">
+	<item name="id_station">834</item> 
+	<item name="station">Viscose</item>
+	<item name="latitude">45.157789</item>
+	<item name="longitude">5.708857</item>
+</string-array>
+
+</resources>

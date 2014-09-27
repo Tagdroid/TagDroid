@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string-array name="ID694">
+	<item name="id_station">835</item> 
+	<item name="station">Bir Hakeim</item>
+	<item name="latitude">45.188768</item>
+	<item name="longitude">5.736322</item>
+</string-array>
+<string-array name="ID698">
+	<item name="id_station">836</item> 
+	<item name="station">Bon Pasteur</item>
+	<item name="latitude">45.179028</item>
+	<item name="longitude">5.751042</item>
+</string-array>
+<string-array name="ID707">
+	<item name="id_station">1628</item> 
+	<item name="station">Centre Socio-culturel</item>
+	<item name="latitude">45.159241</item>
+	<item name="longitude">5.759861</item>
+</string-array>
+<string-array name="ID708">
+	<item name="id_station">838</item> 
+	<item name="station">Champ Fila</item>
+	<item name="latitude">45.156289</item>
+	<item name="longitude">5.754926</item>
+</string-array>
+<string-array name="ID700">
+	<item name="id_station">839</item> 
+	<item name="station">Chanas</item>
+	<item name="latitude">45.174430</item>
+	<item name="longitude">5.754390</item>
+</string-array>
+<string-array name="ID703">
+	<item name="id_station">840</item> 
+	<item name="station">Croix Du Pâtre</item>
+	<item name="latitude">45.167880</item>
+	<item name="longitude">5.761986</item>
+</string-array>
+<string-array name="ID692">
+	<item name="id_station">841</item> 
+	<item name="station">Docteur Martin</item>
+	<item name="latitude">45.187594</item>
+    <item name="longitude">5.727010</item>
+</string-array>
+<string-array name="ID701">
+	<item name="id_station">842</item> 
+	<item name="station">Etienne Grappe</item>
+	<item name="latitude">45.172025</item>
+	<item name="longitude">5.757437</item>
+</string-array>
+<string-array name="ID697">
+	<item name="id_station">843</item> 
+	<item name="station">Grand Châtelet</item>
+	<item name="latitude">45.181871</item>
+	<item name="longitude">5.748596</item>
+</string-array>
+<string-array name="ID699">
+	<item name="id_station">844</item> 
+	<item name="station">Houille Blanche</item>
+	<item name="latitude">45.177727</item>
+	<item name="longitude">5.751729</item>
+</string-array>
+<string-array name="ID696">
+	<item name="id_station">845</item> 
+	<item name="station">Jeanne D\'arc</item>
+	<item name="latitude">45.181766</item>
+	<item name="longitude">5.745292</item>
+</string-array>
+<string-array name="ID711">
+	<item name="id_station">846</item> 
+	<item name="station">Le Bourg</item>
+	<item name="latitude">45.147967</item>
+	<item name="longitude">5.751064</item>
+</string-array>
+<string-array name="ID706">
+	<item name="id_station">847</item> 
+	<item name="station">Le Carina</item>
+	<item name="latitude">45.162646</item>
+	<item name="longitude">5.763187</item>
+</string-array>
+<string-array name="ID712">
+	<item name="id_station">848</item> 
+	<item name="station">Le Verderet</item>
+	<item name="latitude">45.146953</item>
+	<item name="longitude">5.754583</item>
+</string-array>
+<string-array name="ID710">
+	<item name="id_station">849</item> 
+	<item name="station">Les Javaux</item>
+	<item name="latitude">45.149980</item>
+	<item name="longitude">5.750077</item>
+</string-array>
+<string-array name="ID695">
+	<item name="id_station">850</item> 
+	<item name="station">Madeleine</item>
+	<item name="latitude">45.185063</item>
+	<item name="longitude">5.743146</item>
+</string-array>
+<string-array name="ID704">
+	<item name="id_station">851</item> 
+	<item name="station">Maisons Blanches</item>
+	<item name="latitude">45.166186</item>
+	<item name="longitude">5.764561</item>
+</string-array>
+<string-array name="ID709">
+	<item name="id_station">852</item> 
+	<item name="station">Odyssée</item>
+	<item name="latitude">45.152749</item>
+	<item name="longitude">5.748725</item>
+</string-array>
+<string-array name="ID702">
+	<item name="id_station">853</item> 
+	<item name="station">Potié</item>
+	<item name="latitude">45.171118</item>
+	<item name="longitude">5.758295</item>
+</string-array>
+<string-array name="ID705">
+	<item name="id_station">854</item> 
+	<item name="station">Saint-martin-d\'hères Village</item>
+	<item name="latitude">45.165034</item>
+	<item name="longitude">5.765462</item>
+</string-array>
+<string-array name="ID693">
+	<item name="id_station">855</item> 
+	<item name="station">Verdun - Préfecture</item>
+	<item name="latitude">45.188435</item>
+	<item name="longitude">5.731623</item>
+</string-array>
+<string-array name="ID691">
+	<item name="id_station">856</item> 
+	<item name="station">Victor Hugo</item>
+	<item name="latitude">45.189101</item>
+	<item name="longitude">5.725358</item>
+</string-array>
+
+</resources>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    	<string-array name="ID68">
+			 <item name="id_station">614</item>
+			 <item name="station">Les Taillées - Universités</item>
+             <item name="latitude">45.192205</item>
+             <item name="longitude">5.757812</item>
+             <item name="correspondance1">img_b</item>
+        </string-array>
+    
+    	<string-array name="ID69">
+		     <item name="id_station">617</item>
+             <item name="station">Neyrpic - Belledonne</item>
+             <item name="latitude">45.186721</item>
+             <item name="longitude">5.756750</item>
+             <item name="correspondance1">img_c</item>
+             <item name="correspondance2">img_23</item>
+             <item name="correspondance3">img_26</item>
+             <item name="correspondance4">img_41</item>
+             <item name="correspondance5">img_metro</item> 
+             <item name="correspondance6">img_transisere</item>  
+        </string-array>
+    
+        <string-array name="ID70">
+		     <item name="id_station">615</item>
+             <item name="station">Maison Communale</item>
+             <item name="latitude">45.184785</item>
+             <item name="longitude">5.754497</item>
+             <item name="correspondance1">img_21</item>
+        </string-array>
+        
+        <string-array name="ID71">
+             <item name="id_station">609</item>
+             <item name="station">Edouard Vaillant</item>
+             <item name="latitude">45.179446</item>
+             <item name="longitude">5.755184</item>
+             <item name="correspondance1">img_26</item>
+        </string-array>
+        
+        <string-array name="ID72">
+             <item name="id_station">618</item>
+             <item name="station">Parc Jo Blanchon</item>
+             <item name="latitude">45.174954</item>
+             <item name="longitude">5.757265</item>
+        </string-array>
+        
+        <string-array name="ID73">
+             <item name="id_station">610</item>
+             <item name="station">Etienne Grappe</item>
+             <item name="latitude">45.172156</item>
+             <item name="longitude">5.757737</item>
+             <item name="correspondance1">img_11</item>
+             <item name="correspondance2">img_23</item>
+             <item name="correspondance2">img_33</item>
+             <item name="correspondance3">img_metro</item> 
+        </string-array>    
+</resources>

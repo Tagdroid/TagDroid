@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+<string-array name="ID268">
+	<item name="id_station">351</item> 
+	<item name="station">Anguisses</item>
+	<item name="latitude">45.177803</item>
+	<item name="longitude">5.777923</item>
+</string-array>
+<string-array name="ID258">
+	<item name="id_station">352</item> 
+	<item name="station">Bir Hakeim</item>
+	<item name="latitude">45.188796</item>
+	<item name="longitude">5.736552</item>
+</string-array>
+<string-array name="ID273">
+	<item name="id_station">353</item> 
+	<item name="station">Champrondet</item>
+	<item name="latitude">45.185779</item>
+	<item name="longitude">5.802933</item>
+</string-array>
+<string-array name="ID263">
+	<item name="id_station">354</item> 
+	<item name="station">Cite Labeye</item>
+	<item name="latitude">45.1824</item>
+	<item name="longitude">5.759622</item>
+</string-array>
+<string-array name="ID265">
+	<item name="id_station">355</item> 
+	<item name="station">Coli</item>
+	<item name="latitude">45.180722</item>
+	<item name="longitude">5.765877</item>
+</string-array>
+<string-array name="ID260">
+	<item name="id_station">356</item> 
+	<item name="station">Croix Rouge</item>
+	<item name="latitude">45.185581</item>
+	<item name="longitude">5.747865</item>
+</string-array>
+<string-array name="ID270">
+	<item name="id_station">357</item> 
+	<item name="station">Edelweiss</item>
+	<item name="latitude">45.181464</item>
+	<item name="longitude">5.78772</item>
+</string-array>
+<string-array name="ID266">
+	<item name="id_station">358</item> 
+	<item name="station">Elsa Triolet</item>
+	<item name="latitude">45.179565</item>
+	<item name="longitude">5.770123</item>
+</string-array>
+<string-array name="ID259">
+	<item name="id_station">359</item> 
+	<item name="station">Flandrin - Valmy</item>
+	<item name="latitude">45.186566</item>
+	<item name="longitude">5.74426</item>
+</string-array>
+<string-array name="ID267">
+	<item name="id_station">360</item> 
+	<item name="station">Galochère</item>
+	<item name="latitude">45.178735</item>
+	<item name="longitude">5.773182</item>
+</string-array>
+<string-array name="ID261">
+	<item name="id_station">361</item> 
+	<item name="station">Gay</item>
+	<item name="latitude">45.184668</item>
+	<item name="longitude">5.7512</item>
+</string-array>
+<string-array name="ID274">
+	<item name="id_station">362</item> 
+	<item name="station">Le Japin</item>
+	<item name="latitude">45.187385</item>
+	<item name="longitude">5.807103</item>
+</string-array>
+<string-array name="ID262">
+	<item name="id_station">363</item> 
+	<item name="station">Maison Communale</item>
+	<item name="latitude">45.183978</item>
+	<item name="longitude">5.75377</item>
+</string-array>
+<string-array name="ID272">
+	<item name="id_station">364</item> 
+	<item name="station">Pied De Gières</item>
+	<item name="latitude">45.183853</item>
+	<item name="longitude">5.798542</item>
+</string-array>
+<string-array name="ID271">
+	<item name="id_station">365</item> 
+	<item name="station">Place De La République</item>
+	<item name="latitude">45.182094</item>
+	<item name="longitude">5.792686</item>
+</string-array>
+<string-array name="ID264">
+	<item name="id_station">366</item> 
+	<item name="station">Portail Rouge</item>
+	<item name="latitude">45.181371</item>
+	<item name="longitude">5.76347</item>
+</string-array>
+<string-array name="ID269">
+	<item name="id_station">367</item> 
+	<item name="station">Roseraie</item>
+	<item name="latitude">45.178982</item>
+	<item name="longitude">5.781002</item>
+</string-array>
+<string-array name="ID257">
+	<item name="id_station">368</item> 
+	<item name="station">Verdun - Préfecture</item>
+	<item name="latitude">45.188319</item>
+	<item name="longitude">5.731717</item>
+</string-array>
+
+</resources>

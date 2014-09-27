@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+<string-array name="ID475">
+	<item name="id_station">74</item> 
+	<item name="station">Andre Argouges</item>
+	<item name="latitude">45.175453</item>
+	<item name="longitude">5.744419</item>
+</string-array>
+<string-array name="ID462">
+	<item name="id_station">75</item> 
+	<item name="station">Arago</item>
+	<item name="latitude">45.197442</item>
+	<item name="longitude">5.711609</item>
+</string-array>
+<string-array name="ID471">
+	<item name="id_station">76</item> 
+	<item name="station">Auguste Ravier</item>
+	<item name="latitude">45.183895</item>
+	<item name="longitude">5.739294</item>
+</string-array>
+<string-array name="ID481">
+	<item name="id_station">77</item> 
+	<item name="station">Bel Air</item>
+	<item name="latitude">45.161085</item>
+	<item name="longitude">5.755261</item>
+</string-array>
+<string-array name="ID459">
+	<item name="id_station">78</item> 
+	<item name="station">Cea Grenoble</item>
+	<item name="latitude">45.201383</item>
+	<item name="longitude">5.705315</item>
+</string-array>
+<string-array name="ID483">
+	<item name="id_station">79</item> 
+	<item name="station">Centre Socio-culturel</item>
+	<item name="latitude">45.15824</item>
+	<item name="longitude">5.759751</item>
+</string-array>
+<string-array name="ID454">
+	<item name="id_station">80</item> 
+	<item name="station">Chamechaude</item>
+	<item name="latitude">45.206324</item>
+	<item name="longitude">5.683902</item>
+</string-array>
+<string-array name="ID469">
+	<item name="id_station">82</item> 
+	<item name="station">Chavant</item>
+	<item name="latitude">45.184958</item>
+	<item name="longitude">5.732345</item>
+</string-array>
+<string-array name="ID461">
+	<item name="id_station">83</item> 
+	<item name="station">Cité Jean Macé</item>
+	<item name="latitude">45.200226</item>
+	<item name="longitude">5.712278</item>
+</string-array>
+<string-array name="ID472">
+	<item name="id_station">84</item> 
+	<item name="station">Clemenceau</item>
+	<item name="latitude">45.183821</item>
+	<item name="longitude">5.741053</item>
+</string-array>
+<string-array name="ID451">
+	<item name="id_station">85</item> 
+	<item name="station">Complexe Sportif</item>
+	<item name="latitude">45.211377</item>
+	<item name="longitude">5.672606</item>
+</string-array>
+<string-array name="ID468">
+	<item name="id_station">86</item> 
+	<item name="station">Docteur Martin</item>
+	<item name="latitude">45.187571</item>
+	<item name="longitude">5.72704</item>
+</string-array>
+<string-array name="ID466">
+	<item name="id_station">87</item> 
+	<item name="station">Docteur Mazet</item>
+	<item name="latitude">45.191326</item>
+	<item name="longitude">5.722099</item>
+</string-array>
+<string-array name="ID470">
+	<item name="id_station">88</item> 
+	<item name="station">Driant</item>
+	<item name="latitude">45.1823</item>
+	<item name="longitude">5.734163</item>
+</string-array>
+<string-array name="ID458">
+	<item name="id_station">89</item> 
+	<item name="station">Ecole D\'electronique</item>
+	<item name="latitude">45.203441</item>
+	<item name="longitude">5.702708</item>
+</string-array>
+<string-array name="ID473">
+	<item name="id_station">90</item> 
+	<item name="station">Edison</item>
+	<item name="latitude">45.18136</item>
+	<item name="longitude">5.741156</item>
+</string-array>
+<string-array name="ID463">
+	<item name="id_station">91</item> 
+	<item name="station">Emile Gueymard</item>
+	<item name="latitude">45.195057</item>
+	<item name="longitude">5.713575</item>
+</string-array>
+<string-array name="ID465">
+	<item name="id_station">92</item> 
+	<item name="station">Félix Viallet</item>
+	<item name="latitude">45.190717</item>
+	<item name="longitude">5.718055</item>
+</string-array>
+<string-array name="ID452">
+	<item name="id_station">93</item> 
+	<item name="station">Francois Blumet</item>
+	<item name="latitude">45.209792</item>
+	<item name="longitude">5.676861</item>
+</string-array>
+<string-array name="ID464">
+	<item name="id_station">94</item> 
+	<item name="station">Grenoble Gares</item>
+	<item name="latitude">45.191135</item>
+	<item name="longitude">5.71539</item>
+</string-array>
+<string-array name="ID450">
+	<item name="id_station">95</item> 
+	<item name="station">L\'ovalie</item>
+	<item name="latitude">45.209708</item>
+	<item name="longitude">5.66695</item>
+</string-array>
+<string-array name="ID477">
+	<item name="id_station">98</item> 
+	<item name="station">Léon Jouhaux</item>
+	<item name="latitude">45.168167</item>
+	<item name="longitude">5.744135</item>
+</string-array>
+<string-array name="ID449">
+	<item name="id_station">96</item> 
+	<item name="station">Le Gua</item>
+	<item name="latitude">45.209708</item>
+	<item name="longitude">5.664409</item>
+</string-array>
+<string-array name="ID480">
+	<item name="id_station">97</item> 
+	<item name="station">Le Marais</item>
+	<item name="latitude">45.164083</item>
+	<item name="longitude">5.750574</item>
+</string-array>
+<string-array name="ID474">
+	<item name="id_station">99</item> 
+	<item name="station">Les Bains</item>
+	<item name="latitude">45.178557</item>
+	<item name="longitude">5.742557</item>
+</string-array>
+<string-array name="ID453">
+	<item name="id_station">100</item> 
+	<item name="station">Maladière</item>
+	<item name="latitude">45.207672</item>
+	<item name="longitude">5.680399</item>
+</string-array>
+<string-array name="ID455">
+	<item name="id_station">101</item> 
+	<item name="station">Martyrs - Resistance</item>
+	<item name="latitude">45.207745</item>
+	<item name="longitude">5.697218</item>
+</string-array>
+<string-array name="ID476">
+	<item name="id_station">102</item> 
+	<item name="station">Paul Cocat</item>
+	<item name="latitude">45.172333</item>
+	<item name="longitude">5.74561</item>
+</string-array>
+<string-array name="ID479">
+	<item name="id_station">103</item> 
+	<item name="station">Paul Eluard</item>
+	<item name="latitude">45.165083</item>
+	<item name="longitude">5.748998</item>
+</string-array>
+<string-array name="ID478">
+	<item name="id_station">104</item> 
+	<item name="station">Pierre Loti</item>
+	<item name="latitude">45.166658</item>
+	<item name="longitude">5.746474</item>
+</string-array>
+<string-array name="ID457">
+	<item name="id_station">105</item> 
+	<item name="station">Place De La Résistance</item>
+	<item name="latitude">45.205228</item>
+	<item name="longitude">5.700115</item>
+</string-array>
+<string-array name="ID456">
+	<item name="id_station">106</item> 
+	<item name="station">Polygone Scientifique</item>
+	<item name="latitude">45.205085</item>
+	<item name="longitude">5.696501</item>
+</string-array>
+<string-array name="ID484">
+	<item name="id_station">107</item> 
+	<item name="station">Prémol</item>
+	<item name="latitude">45.157529</item>
+	<item name="longitude">5.764048</item>
+</string-array>
+<string-array name="ID482">
+	<item name="id_station">108</item> 
+	<item name="station">Robespierre</item>
+	<item name="latitude">45.159822</item>
+	<item name="longitude">5.757246</item>
+</string-array>
+<string-array name="ID460">
+	<item name="id_station">109</item> 
+	<item name="station">Rue Des Martyrs</item>
+	<item name="latitude">45.200002</item>
+	<item name="longitude">5.707281</item>
+</string-array>
+<string-array name="ID448">
+	<item name="id_station">81</item> 
+	<item name="station">Sassenage Château</item>
+	<item name="latitude">45.21227</item>
+	<item name="longitude">5.661721</item>
+</string-array>
+<string-array name="ID467">
+	<item name="id_station">111</item> 
+	<item name="station">Victor Hugo</item>
+	<item name="latitude">45.189398</item>
+	<item name="longitude">5.72505</item>
+</string-array>
+
+</resources>

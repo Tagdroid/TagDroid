@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string-array name="ID683">
+	<item name="id_station">858</item> 
+	<item name="station">16 Aout 1944</item>
+	<item name="latitude">45.202831</item>
+	<item name="longitude">5.714908</item>
+</string-array>
+<string-array name="ID685">
+	<item name="id_station">859</item> 
+	<item name="station">Aristide Briand</item>
+	<item name="latitude">45.194576</item>
+	<item name="longitude">5.719156</item>
+</string-array>
+<string-array name="ID677">
+	<item name="id_station">1228</item> 
+	<item name="station">Basse Buisseratte</item>
+	<item name="latitude">45.217253</item>
+	<item name="longitude">5.693965</item>
+</string-array>
+<string-array name="ID679">
+	<item name="id_station">861</item> 
+	<item name="station">Buisseratte</item>
+	<item name="latitude">45.213414</item>
+	<item name="longitude">5.699415</item>
+</string-array>
+<string-array name="ID688">
+	<item name="id_station">862</item> 
+	<item name="station">Champollion</item>
+	<item name="latitude">45.186378</item>
+	<item name="longitude">5.725315</item>
+</string-array>
+<string-array name="ID682">
+	<item name="id_station">863</item> 
+	<item name="station">Conrad Kilian</item>
+	<item name="latitude">45.206097</item>
+	<item name="longitude">5.709071</item>
+</string-array>
+<string-array name="ID689">
+	<item name="id_station">864</item> 
+	<item name="station">Docteur Martin</item>
+	<item name="latitude">45.187594</item>
+    <item name="longitude">5.727010</item>
+</string-array>
+<string-array name="ID686">
+	<item name="id_station">866</item> 
+	<item name="station">Esplanade</item>
+	<item name="latitude">45.193971</item>
+	<item name="longitude">5.718641</item>
+</string-array>
+<string-array name="ID687">
+	<item name="id_station">867</item> 
+	<item name="station">Jay - Gambetta</item>
+	<item name="latitude">45.190477</item>
+	<item name="longitude">5.721710</item>
+</string-array>
+<string-array name="ID668">
+	<item name="id_station">868</item> 
+	<item name="station">Karben</item>
+	<item name="latitude">45.242913</item>
+	<item name="longitude">5.670490</item>
+</string-array>
+<string-array name="ID680">
+	<item name="id_station">869</item> 
+	<item name="station">La Balme</item>
+	<item name="latitude">45.210723</item>
+	<item name="longitude">5.702634</item>
+</string-array>
+<string-array name="ID670">
+	<item name="id_station">870</item> 
+	<item name="station">La Pinéa</item>
+	<item name="latitude">45.235328</item>
+	<item name="longitude">5.6758118</item>
+</string-array>
+<string-array name="ID674">
+	<item name="id_station">871</item> 
+	<item name="station">Le Muret</item>
+	<item name="latitude">45.226261</item>
+	<item name="longitude">5.686026</item>
+</string-array>
+<string-array name="ID678">
+	<item name="id_station">872</item> 
+	<item name="station">Le Néron</item>
+	<item name="latitude">45.214804</item>
+	<item name="longitude">5.696282</item>
+</string-array>
+<string-array name="ID669">
+	<item name="id_station">873</item> 
+	<item name="station">Les Bonnais</item>
+	<item name="latitude">45.239680</item>
+	<item name="longitude">5.672979</item>
+</string-array>
+<string-array name="ID673">
+	<item name="id_station">874</item> 
+	<item name="station">Moutonnées</item>
+	<item name="latitude">45.228075</item>
+	<item name="longitude">5.684395</item>
+</string-array>
+<string-array name="ID684">
+	<item name="id_station">875</item> 
+	<item name="station">Petite Esplanade</item>
+	<item name="latitude">45.198356</item>
+	<item name="longitude">5.718126</item>
+</string-array>
+<string-array name="ID672">
+	<item name="id_station">876</item> 
+	<item name="station">Pont De Vence</item>
+	<item name="latitude">45.229646</item>
+	<item name="longitude">5.682893</item>
+</string-array>
+<string-array name="ID675">
+	<item name="id_station">877</item> 
+	<item name="station">Prédieu</item>
+	<item name="latitude">45.223299</item>
+	<item name="longitude">5.688558</item>
+</string-array>
+<string-array name="ID667">
+	<item name="id_station">878</item> 
+	<item name="station">Rochepleine</item>
+	<item name="latitude">45.244545</item>
+	<item name="longitude">5.675726</item>
+</string-array>
+<string-array name="ID671">
+	<item name="id_station">880</item> 
+	<item name="station">Saint-egrève Mairie</item>
+	<item name="latitude">45.232880</item>
+	<item name="longitude">5.679030</item>
+</string-array>
+<string-array name="ID681">
+	<item name="id_station">879</item> 
+	<item name="station">Saint-martin-le-vinoux Mairie</item>
+	<item name="latitude">45.208486</item>
+	<item name="longitude">5.705810</item>
+</string-array>
+<string-array name="ID676">
+	<item name="id_station">881</item> 
+	<item name="station">Trois Ponts</item>
+	<item name="latitude">45.220185</item>
+	<item name="longitude">5.691390</item>
+</string-array>
+<string-array name="ID690">
+	<item name="id_station">882</item> 
+	<item name="station">Victor Hugo</item>
+	<item name="latitude">45.189176</item>
+	<item name="longitude">5.725293</item>
+</string-array>
+
+</resources>

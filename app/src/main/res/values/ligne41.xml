@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string-array name="ID1483">
+	<item name="id_station"></item> 
+	<item name="station">Les Bourelles</item>
+	<item name="latitude">45.198171</item>
+	<item name="longitude">5.819921</item>
+</string-array>
+<string-array name="ID1484">
+	<item name="id_station"></item> 
+	<item name="station">Les Peupliers</item>
+	<item name="latitude">45.201759</item>
+	<item name="longitude">5.823741</item>
+</string-array>
+<string-array name="ID1485">
+	<item name="id_station">326</item> 
+	<item name="station">DOMENE Chenevières</item>
+	<item name="latitude">45.206734</item>
+	<item name="longitude">5.827375</item>
+</string-array>
+<string-array name="ID1486">
+	<item name="id_station">343</item> 
+	<item name="station">Les Vernes</item>
+	<item name="latitude">45.207269</item>
+	<item name="longitude">5.833941</item>
+</string-array>
+<string-array name="ID1487">
+	<item name="id_station">338</item> 
+	<item name="station">Le Prieuré</item>
+	<item name="latitude">45.204741</item>
+	<item name="longitude">5.835939</item>
+</string-array>
+<string-array name="ID1488">
+	<item name="id_station">340</item> 
+	<item name="station">DOMENE Les Arnauds</item>
+	<item name="latitude">45.206699</item>
+	<item name="longitude">5.847927</item>
+</string-array>
+<string-array name="ID1489">
+	<item name="id_station">349</item> 
+	<item name="station">René Cassin</item>
+	<item name="latitude">45.204378</item>
+	<item name="longitude">5.843998</item>
+</string-array>
+<string-array name="ID1490">
+	<item name="id_station">330</item> 
+	<item name="station">Domene Mairie</item>
+	<item name="latitude">45.202371</item>
+	<item name="longitude">5.838102</item>
+</string-array>
+<string-array name="ID1491">
+	<item name="id_station">328</item> 
+	<item name="station">Coubertin</item>
+	<item name="latitude">45.200042</item>
+	<item name="longitude">5.835327</item>
+</string-array>
+<string-array name="ID1492">
+	<item name="id_station">333</item> 
+	<item name="station">L\'oratoire</item>
+	<item name="latitude">45.198099</item>
+	<item name="longitude">5.833851</item>
+</string-array>
+<string-array name="ID1493">
+	<item name="id_station">341</item> 
+	<item name="station">Les Mortes</item>
+	<item name="latitude">45.196365</item>
+	<item name="longitude">5.828997</item>
+</string-array>
+<string-array name="ID1494">
+	<item name="id_station">342</item> 
+	<item name="station">Les Rivets</item>
+	<item name="latitude">45.194858</item>
+	<item name="longitude">5.824735</item>
+</string-array>
+<string-array name="ID1495">
+	<item name="id_station">334</item> 
+	<item name="station">La Briot</item>
+	<item name="latitude">45.19313</item>
+	<item name="longitude">5.819925</item>
+</string-array>
+<string-array name="ID1496">
+	<item name="id_station">336</item> 
+	<item name="station">Le Bourg</item>
+	<item name="latitude">45.191844</item>
+	<item name="longitude">5.81652</item>
+</string-array>
+<string-array name="ID1497">
+	<item name="id_station">335</item> 
+	<item name="station">La Perrière</item>
+	<item name="latitude">45.189327</item>
+	<item name="longitude">5.810809</item>
+</string-array>
+<string-array name="ID1498">
+	<item name="id_station">337</item> 
+	<item name="station">Le Japin</item>
+	<item name="latitude">45.187638</item>
+	<item name="longitude">5.807428</item>
+</string-array>
+<string-array name="ID1499">
+	<item name="id_station">325</item> 
+	<item name="station">Champrondet</item>
+	<item name="latitude">45.185768</item>
+	<item name="longitude">5.802902</item>
+</string-array>
+<string-array name="ID1500">
+	<item name="id_station">346</item> 
+	<item name="station">Pied De Gières</item>
+	<item name="latitude">45.183832</item>
+	<item name="longitude">5.798491</item>
+</string-array>
+<string-array name="ID1501">
+	<item name="id_station">347</item> 
+	<item name="station">Place De La République</item>
+	<item name="latitude">45.182075</item>
+	<item name="longitude">5.792632</item>
+</string-array>
+<string-array name="ID1502">
+	<item name="id_station">331</item> 
+	<item name="station">Edelweiss</item>
+	<item name="latitude">45.181456</item>
+	<item name="longitude">5.787572</item>
+</string-array>
+<string-array name="ID1503">
+	<item name="id_station">339</item> 
+	<item name="station">Le Sonnant</item>
+	<item name="latitude">45.181496</item>
+	<item name="longitude">5.782083</item>
+</string-array>
+<string-array name="ID1504">
+	<item name="id_station">348</item> 
+	<item name="station">Porte Du Grésivaudan</item>
+	<item name="latitude">45.182411</item>
+	<item name="longitude">5.776816</item>
+</string-array>
+<string-array name="ID1505">
+	<item name="id_station">324</item> 
+	<item name="station">Champ Roman</item>
+	<item name="latitude">45.184423</item>
+	<item name="longitude">5.76758</item>
+</string-array>
+<string-array name="ID1506">
+	<item name="id_station">327</item> 
+	<item name="station">Clinique Belledonne</item>
+	<item name="latitude">45.18595</item>
+	<item name="longitude">5.760657</item>
+</string-array>
+<string-array name="ID1507">
+	<item name="id_station">344</item> 
+	<item name="station">Neyrpic - Belledonne</item>
+	<item name="latitude">45.18676</item>
+	<item name="longitude">5.756759</item>
+</string-array>
+<string-array name="ID1508">
+	<item name="id_station">345</item> 
+	<item name="station">Péri - Brossolette</item>
+	<item name="latitude">45.187577</item>
+	<item name="longitude">5.752634</item>
+</string-array>
+<string-array name="ID1509">
+	<item name="id_station">332</item> 
+	<item name="station">Flandrin - Valmy</item>
+	<item name="latitude">45.18703</item>
+	<item name="longitude">5.744516</item>
+</string-array>
+<string-array name="ID1510">
+	<item name="id_station">323</item> 
+	<item name="station">Bir Hakeim</item>
+	<item name="latitude">45.18881</item>
+	<item name="longitude">5.736542</item>
+</string-array>
+<string-array name="ID1511">
+	<item name="id_station">350</item> 
+	<item name="station">Verdun - Préfecture</item>
+	<item name="latitude">45.188417</item>
+	<item name="longitude">5.730992</item>
+</string-array>
+
+</resources>

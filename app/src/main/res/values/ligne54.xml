@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+<string-array name="ID1558">
+	<item name="id_station">944</item> 
+	<item name="station">Cap 38</item>
+	<item name="latitude">45.240045</item>
+	<item name="longitude">5.666372</item>
+</string-array>
+<string-array name="ID1552">
+	<item name="id_station">1594</item> 
+	<item name="station">Cap des H\'</item>
+	<item name="latitude">45.21716</item>
+	<item name="longitude">5.681349</item>
+</string-array>
+<string-array name="ID1568">
+	<item name="id_station">946</item> 
+	<item name="station">Fontaine La Poya</item>
+	<item name="latitude">45.197308</item>
+	<item name="longitude">5.671878</item>
+</string-array>
+<string-array name="ID1557">
+	<item name="id_station">947</item> 
+	<item name="station">Karben</item>
+	<item name="latitude">45.242276</item>
+	<item name="longitude">5.671141</item>
+</string-array>
+<string-array name="ID1562">
+	<item name="id_station">948</item> 
+	<item name="station">La Rollandière</item>
+	<item name="latitude">45.214928</item>
+	<item name="longitude">5.66117</item>
+</string-array>
+<string-array name="ID1556">
+	<item name="id_station">1595</item> 
+	<item name="station">Les Bonnais</item>
+	<item name="latitude">45.240155</item>
+	<item name="longitude">5.672739</item>
+</string-array>
+<string-array name="ID1561">
+	<item name="id_station">949</item> 
+	<item name="station">Les Engenières</item>
+	<item name="latitude">45.219618</item>
+	<item name="longitude">5.660261</item>
+</string-array>
+<string-array name="ID1553">
+	<item name="id_station">1596</item> 
+	<item name="station">Les Glairaux</item>
+	<item name="latitude">45.218529</item>
+	<item name="longitude">5.679844</item>
+</string-array>
+<string-array name="ID1567">
+	<item name="id_station">950</item> 
+	<item name="station">Les Pies</item>
+	<item name="latitude">45.199555</item>
+	<item name="longitude">5.669859</item>
+</string-array>
+<string-array name="ID1564">
+	<item name="id_station">951</item> 
+	<item name="station">Place De La Libération</item>
+	<item name="latitude">45.206778</item>
+	<item name="longitude">5.662768</item>
+</string-array>
+<string-array name="ID1566">
+	<item name="id_station">953</item> 
+	<item name="station">Pré Fleury</item>
+	<item name="latitude">45.201637</item>
+	<item name="longitude">5.667786</item>
+</string-array>
+<string-array name="ID1560">
+	<item name="id_station">952</item> 
+	<item name="station">Praparis Usine</item>
+	<item name="latitude">45.229424</item>
+	<item name="longitude">5.649472</item>
+</string-array>
+<string-array name="ID1555">
+	<item name="id_station">1597</item> 
+	<item name="station">Saint-Egrève Gare</item>
+	<item name="latitude">45.235372</item>
+	<item name="longitude">5.671567</item>
+</string-array>
+<string-array name="ID1559">
+	<item name="id_station">955</item> 
+	<item name="station">San Marino Barrage</item>
+	<item name="latitude">45.236874</item>
+	<item name="longitude">5.660618</item>
+</string-array>
+<string-array name="ID1563">
+	<item name="id_station">945</item> 
+	<item name="station">Sassenage Château</item>
+	<item name="latitude">45.212254</item>
+	<item name="longitude">5.661717</item>
+</string-array>
+<string-array name="ID1565">
+	<item name="id_station">956</item> 
+	<item name="station">Trefforine</item>
+	<item name="latitude">45.204275</item>
+	<item name="longitude">5.665132</item>
+</string-array>
+<string-array name="ID1554">
+	<item name="id_station">1598</item> 
+	<item name="station">Vence Eco Parc</item>
+	<item name="latitude">45.226952</item>
+	<item name="longitude">5.66903</item>
+</string-array>
+
+</resources>
