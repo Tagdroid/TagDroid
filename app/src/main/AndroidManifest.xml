@@ -1,97 +1,124 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tagdroid.tagdroid"
-android:versionCode="12"
-android:versionName="3.0.1"
-android:installLocation="auto" >
+    android:versionCode="12"
+    android:versionName="3.0.1">
 
+    <!-- External storage for caching -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- Internet access and status-->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- Location access -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_GPS" />
+    <uses-permission android:name="android.permission.LOCATION" />
+    <!-- Push Notification Access -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
-<!-- External storage for caching -->
-<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-<!-- Internet access and status-->
-<uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-<!-- Location access -->
-<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-<uses-permission android:name="android.permission.ACCESS_GPS" />
-<uses-permission android:name="android.permission.LOCATION" />
-<!-- Push Notification Access -->
-<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-<uses-permission android:name="android.permission.VIBRATE" />
+    <!-- Maps API needs OpenGL ES 2.0. -->
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
 
-<!-- Maps API needs OpenGL ES 2.0. -->
-<uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
-<uses-feature android:glEsVersion="0x00020000" android:required="true"/>
+    <permission
+        android:name="com.tagdroid.android.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="com.tagdroid.android.permission.MAPS_RECEIVE" />
 
-<permission android:name="com.tagdroid.android.permission.MAPS_RECEIVE" android:protectionLevel="signature" />
-<uses-permission android:name="com.tagdroid.android.permission.MAPS_RECEIVE" />
-
-
-<application android:icon="@drawable/ic_launcher"
-    android:label="@string/app_name"
-    android:theme="@style/Theme.Tagdroidtheme"
-    android:description="@string/about_description" >
-    <meta-data android:name="com.google.android.gms.version"
-        android:value="@integer/google_play_services_version" />
-
-    <!--  KEY DEBUG : AIzaSyBkEPb5wM5O5MOksH2Dph0ecyyBlGmWOTU -->
-    <!--  KEY OFFICIEL : AIzaSyDv3wzyAx55KoZQ_Fr8LkaZz4mB-BR6xRw -->
-
-    <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyBkEPb5wM5O5MOksH2Dph0ecyyBlGmWOTU"/>
-    <uses-library android:name="com.google.android.maps" android:required="true" />
-
-
-
-    <service android:name="com.parse.PushService" />
-    <receiver android:name="com.parse.ParseBroadcastReceiver">
-        <intent-filter>
-            <action android:name="android.intent.action.BOOT_COMPLETED" />
-            <action android:name="android.intent.action.USER_PRESENT" />
-        </intent-filter>
-    </receiver>
-
-    <activity android:name=".HomeActivity" android:configChanges="keyboardHidden|orientation">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
-
-    <activity
-        android:name=".TestActivity"
+    <application
+        android:allowBackup="true"
+        android:description="@string/about_description"
+        android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/Theme.AppCompat" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+        android:theme="@style/Theme.Tagdroidtheme">
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
-    <!--
-    <receiver android:name=".WidgetActivity">
-        <intent-filter>
-            <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            <action android:name="com.tagdroid.android.ACTION_SHOW_NEXT"/>
-            <action android:name="com.tagdroid.android.ACTION_SHOW_PREVIOUS"/>
-            <action android:name="com.tagdroid.android.ACTION_SHOW_CADRE"/>
-            <action android:name="com.tagdroid.android.ACTION_SHOW_HEAD"/>
-        </intent-filter>
-        <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_provider" />
-    </receiver>-->
+        <!--  KEY DEBUG : AIzaSyBkEPb5wM5O5MOksH2Dph0ecyyBlGmWOTU -->
+        <!--  KEY OFFICIEL : AIzaSyDv3wzyAx55KoZQ_Fr8LkaZz4mB-BR6xRw -->
 
-    <!-- Configure activity --><!--
-		<activity android:name=".WidgetConfigure">
-			<intent-filter><action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" /></intent-filter>
-		</activity>
-		<activity android:name=".WidgetDialogActivity" android:noHistory="true"  android:theme="@android:style/Theme.Holo.Light.Dialog" />
-		 -->
-    <activity android:name=".WelcomeActivity" android:screenOrientation="portrait"></activity>
-    <activity android:name=".MainActivity"></activity>
-    <activity android:name=".LoadDBActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Holo.NoActionBar"></activity>
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyBkEPb5wM5O5MOksH2Dph0ecyyBlGmWOTU" />
+        <uses-library
+            android:name="com.google.android.maps"
+            android:required="true" />
+
+        <service android:name="com.parse.PushService" />
+        <receiver android:name="com.parse.ParseBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".HomeActivity"
+            android:configChanges="keyboardHidden|orientation">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".TestActivity"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.AppCompat">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".WelcomeActivity"
+            android:screenOrientation="portrait" >
+
+            <item android:name="android:typeface">monospace</item>
+            </activity>
+        <activity
+            android:name=".MainActivity" />
+
+        <activity
+            android:name=".LoadDBActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.NoActionBar" />
 
 
-    <activity android:name="com.google.android.gms.ads.AdActivity"
-        android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
-</application>
+        <activity
+            android:name="com.google.android.gms.ads.AdActivity"
+          android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
+
+        <!--
+        <receiver android:name=".WidgetActivity">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.tagdroid.android.ACTION_SHOW_NEXT" />
+                <action android:name="com.tagdroid.android.ACTION_SHOW_PREVIOUS" />
+                <action android:name="com.tagdroid.android.ACTION_SHOW_CADRE" />
+                <action android:name="com.tagdroid.android.ACTION_SHOW_HEAD" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_provider" />
+        </receiver>
+
+        --><!-- Configure activity --><!--
+        <activity android:name=".WidgetConfigure">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".WidgetDialogActivity"
+            android:noHistory="true"
+            android:theme="@android:style/Theme.Holo.Light.Dialog" />
+        -->
+    </application>
 </manifest>

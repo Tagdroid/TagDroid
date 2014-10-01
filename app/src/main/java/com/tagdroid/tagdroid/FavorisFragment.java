@@ -33,8 +33,7 @@ public class FavorisFragment extends Fragment {
 	private Bundle mBundle;
 
 	public static FavorisFragment newInstance() {
-		FavorisFragment f = new FavorisFragment();
-		return f;
+        return new FavorisFragment();
 	}
 	
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
@@ -76,7 +75,7 @@ public class FavorisFragment extends Fragment {
 	public void onResume(){
 	    super.onResume();
 	    
-	    this.tracker.set(Fields.SCREEN_NAME, getClass().getSimpleName());
+	    this.tracker.set(Fields.SCREEN_NAME, ((Object) this).getClass().getSimpleName());
 	    this.tracker.send( MapBuilder.createAppView().build() );
 	    
     

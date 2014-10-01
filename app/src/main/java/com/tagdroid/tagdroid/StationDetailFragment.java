@@ -88,7 +88,9 @@ public class StationDetailFragment extends Fragment {
 			
 			try{
 				view = inflater.inflate(R.layout.station_detail, container, false);	
-			}catch (InflateException e){}
+			} catch (InflateException e){
+
+            }
 		
 			
 		view2 = inflater.inflate(R.layout.alert_trafic_dialog, null);	
@@ -286,7 +288,7 @@ public class StationDetailFragment extends Fragment {
 					  BufferedReader reader = null;
 					  try {
 					    reader = new BufferedReader(new InputStreamReader(con.getInputStream()));
-					    String line = "";
+					    String line;
 					    while ((line = reader.readLine()) != null) {
 					      id_jour=line;
 					    }
@@ -331,9 +333,7 @@ public class StationDetailFragment extends Fragment {
 		
 		@Override
 		protected String[] doInBackground(String... params) {
-			String[] elements = new String[3];
-			
-			return elements;	
+            return new String[3];
 		}
 		
 		protected void onPostExecute(String[] result){		
@@ -376,7 +376,8 @@ public class StationDetailFragment extends Fragment {
 					var_1.select("span").remove();			
 					Element var_infotrafic = var_1.getElementsByClass("infoTrafic").first();
 					if (var_infotrafic != null){
-						url_alert="http://tag.bdigital.prod.mobivillage.com/index.php"+var_infotrafic.select("a[href^=?p]").first().attr("href").toString();
+						url_alert="http://tag.bdigital.prod.mobivillage.com/index.php"
+                                + var_infotrafic.select("a[href^=?p]").first().attr("href");
 						alert=true;									
 					}
 					var_1.select("div").remove();

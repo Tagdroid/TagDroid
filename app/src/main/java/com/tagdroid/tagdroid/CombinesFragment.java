@@ -21,8 +21,7 @@ import com.google.analytics.tracking.android.Tracker;
 public class CombinesFragment extends Fragment implements OnItemSelectedListener{
 	private Tracker tracker;
 	public static Fragment newInstance() {
-		CombinesFragment f = new CombinesFragment();
-        return f;
+        return new CombinesFragment();
     }
 	@Override
     public void onCreate(final Bundle savedInstanceState) {
@@ -36,7 +35,7 @@ public class CombinesFragment extends Fragment implements OnItemSelectedListener
 
         super.onResume();
 
-        this.tracker.set(Fields.SCREEN_NAME, getClass().getSimpleName());
+        this.tracker.set(Fields.SCREEN_NAME, ((Object) this).getClass().getSimpleName());
         this.tracker.send( MapBuilder.createAppView().build() );
     }
 	

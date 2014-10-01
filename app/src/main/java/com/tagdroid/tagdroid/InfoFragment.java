@@ -36,8 +36,7 @@ public class InfoFragment extends Fragment {
 	private Tracker tracker;
 	
 	public static InfoFragment newInstance() {
-		InfoFragment f = new InfoFragment();
-		return f;
+        return new InfoFragment();
 	}
 	
 	private Activity mActivity;
@@ -144,29 +143,29 @@ public class InfoFragment extends Fragment {
 		        {
 		          JSONObject jsonObject=new JSONObject(result);
 		          JSONArray jsonArray= jsonObject.getJSONArray("Data");
-		          String Message = jsonObject.getString("Message").toString();
-		          String StatusCode = jsonObject.getString("StatusCode").toString();
+		          String Message = jsonObject.getString("Message");
+		          String StatusCode = jsonObject.getString("StatusCode");
 		          String Direction = "";
 		          String LineId = "";
 		          String ServiceLevel = "";
 		          for(int i=0;i<jsonArray.length();i++){
 		              JSONObject jsonObject1=jsonArray.getJSONObject(i);
-		              String BeginValidityDateString=jsonObject1.getString("BeginValidityDateString").toString();
-		              String Cause=jsonObject1.getString("Cause").toString();
-		              String CreateDateString=jsonObject1.getString("CreateDateString").toString();
-		              String Description=jsonObject1.getString("Description").toString();
-		              String EndValidityDateString=jsonObject1.getString("EndValidityDateString").toString();
-		              String Id=jsonObject1.getString("Id").toString();
-		              String Latitude=jsonObject1.getString("Latitude").toString();
-		              String Longitude=jsonObject1.getString("Longitude").toString();
-		              String Name=jsonObject1.getString("Name").toString();
-		              String Source=jsonObject1.getString("Source").toString();
+		              String BeginValidityDateString= jsonObject1.getString("BeginValidityDateString");
+		              String Cause= jsonObject1.getString("Cause");
+		              String CreateDateString= jsonObject1.getString("CreateDateString");
+		              String Description= jsonObject1.getString("Description");
+		              String EndValidityDateString= jsonObject1.getString("EndValidityDateString");
+		              String Id= jsonObject1.getString("Id");
+		              String Latitude= jsonObject1.getString("Latitude");
+		              String Longitude= jsonObject1.getString("Longitude");
+		              String Name= jsonObject1.getString("Name");
+		              String Source= jsonObject1.getString("Source");
 		              JSONArray jsonArray1= jsonObject1.getJSONArray("DisruptedLines");		          
 		              JSONArray jsonArray2= jsonObject1.getJSONArray("DisruptedStopPoints");	              
 		              JSONObject jsonObject2=jsonObject1.getJSONObject("DisruptionType");
-		              String Code=jsonObject2.getString("Code").toString();
-		              String Id2=jsonObject2.getString("Id").toString();
-		              String Name2=jsonObject2.getString("Name").toString();
+		              String Code= jsonObject2.getString("Code");
+		              String Id2= jsonObject2.getString("Id");
+		              String Name2= jsonObject2.getString("Name");
 		              Log.e("LENGHT",jsonArray1.length()+"");
 		              for(int j=0;j<jsonArray1.length();j++){
 		            	  //JSONObject jsonObject3=jsonArray.getJSONObject(j);

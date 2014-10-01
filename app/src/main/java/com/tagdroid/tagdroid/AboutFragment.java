@@ -24,8 +24,7 @@ public class AboutFragment extends Fragment {
 	private Tracker tracker;
 	
 	public static AboutFragment newInstance() {
-		AboutFragment f = new AboutFragment();
-        return f;
+        return new AboutFragment();
     }
 	
 	public void onCreate(final Bundle savedInstanceState) {
@@ -73,7 +72,7 @@ public class AboutFragment extends Fragment {
 	        public void onClick(View v) {
 	        	Intent intent = new Intent(Intent.ACTION_SEND);
 	        	intent.setType("plain/text");
-	        	intent.putExtra(Intent.EXTRA_EMAIL, new String[] { "tagdroid.grenoble@gmail.com"});;
+	        	intent.putExtra(Intent.EXTRA_EMAIL, new String[] { "tagdroid.grenoble@gmail.com"});
 	        	startActivity(Intent.createChooser(intent, getResources().getString(R.string.mail)));
 	        }
 	    });

@@ -82,7 +82,7 @@ public class LoadDBActivity extends Activity {
 				  BufferedReader reader = null;
 				  try {
 				    reader = new BufferedReader(new InputStreamReader(con.getInputStream()));
-				    String line = "";
+				    String line;
 				    while ((line = reader.readLine()) != null) {
 				      id_jour=line;
 				    }
@@ -113,10 +113,10 @@ public class LoadDBActivity extends Activity {
 		          for(int i=0;i<jsonArray.length();i++)
 		          {
 		              JSONObject jsonObject1=jsonArray.getJSONObject(i);
-		              String Id=jsonObject1.getString("Id").toString();
-		              String LocalityId=jsonObject1.getString("LocalityId").toString();
-		              String Name=jsonObject1.getString("Name").toString();
-		              String PointType=jsonObject1.getString("PointType").toString();
+		              String Id= jsonObject1.getString("Id");
+		              String LocalityId= jsonObject1.getString("LocalityId");
+		              String Name= jsonObject1.getString("Name");
+		              String PointType= jsonObject1.getString("PointType");
 		              database.insertData(Id,LocalityId,Name,PointType);
 		        }
 		          database.close();

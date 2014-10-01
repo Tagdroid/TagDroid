@@ -20,8 +20,7 @@ public class TicketFragment extends Fragment implements OnItemSelectedListener {
 	private Tracker tracker;
 	
 	public static Fragment newInstance() {
-		TicketFragment f = new TicketFragment();
-        return f;
+        return new TicketFragment();
     }
 	
 	@Override

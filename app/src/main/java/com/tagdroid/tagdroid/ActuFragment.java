@@ -52,8 +52,7 @@ public class ActuFragment extends Fragment implements OnItemClickListener{
 	ArrayList<HashMap<String, String>> listItem = new ArrayList<HashMap<String, String>>();
 
 	public static ActuFragment newInstance() {
-		ActuFragment f = new ActuFragment();
-		return f;
+        return new ActuFragment();
 	}
 	
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
@@ -122,7 +121,7 @@ public class ActuFragment extends Fragment implements OnItemClickListener{
 					listItem.add(map);
 				}
 				else if(actual_flux.contains("smtc")){			
-					String[] description2 = new String[2];
+					String[] description2;
 					description2 = rssItem.getDescription().substring(142).split("\" width");
 					map = new HashMap<String, String>();
 					map.put(KEY_TITRE, rssItem.getTitle());

@@ -1,59 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/LinearLayout1"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical" >
-
-    <ScrollView
-        android:id="@+id/scrollView1"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/welcome_pdf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:textColor="@color/bleu_tag"
+            android:textSize="23sp"
+            android:text="@string/welcome_pdf" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical" >
+            android:layout_height="1dp"
+            android:background="@color/bleu_tag"
+            android:orientation="vertical"/>
 
-            <TextView
-                android:id="@+id/welcome_pdf"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/welcome_pdf"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/bleu_tag"
-                android:textSize="23sp" />
+        <TextView
+            android:id="@+id/welcome_text10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="sans-serif-light"
+            android:textSize="14sp"
+            android:text="@string/welcome_texte10" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/bleu_tag"
-                android:orientation="vertical" >
-            </LinearLayout>
+        <ImageView
+            android:id="@+id/arrow_down5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/welcome_pdf" />
+    </LinearLayout>
+</ScrollView>
 
-            <TextView
-                android:id="@+id/welcome_text10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="@string/welcome_texte10"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textSize="14sp" />
-
-            <ImageView
-                android:id="@+id/arrow_down5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/welcome_pdf" />
-
-        </LinearLayout>
-
-    </ScrollView>
-
-</LinearLayout>

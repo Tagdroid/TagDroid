@@ -52,8 +52,7 @@ public class ProxFragment extends Fragment implements LocationListener{
 	private Tracker tracker;
 	
 	public static ProxFragment newInstance() {
-		ProxFragment f = new ProxFragment();
-		return f;
+        return new ProxFragment();
 	}
 	
 
@@ -116,8 +115,7 @@ public class ProxFragment extends Fragment implements LocationListener{
     	Criteria criteria = new Criteria();
     	criteria.setPowerRequirement(Criteria.NO_REQUIREMENT);
     	criteria.setAccuracy(Criteria.NO_REQUIREMENT);
-    	String bestProvider = lm.getBestProvider(criteria, true);
-    	return bestProvider;
+        return lm.getBestProvider(criteria, true);
     }
 	
 	public Location convertGpToLoc(LatLng gp){
@@ -137,9 +135,9 @@ public class ProxFragment extends Fragment implements LocationListener{
 	    
         
         ArrayList<HashMap<String, String>> listItem = new ArrayList<HashMap<String, String>>();
-        HashMap<String, String> map = null;
-        double latitude = 0;
-    	double longitude = 0;
+        HashMap<String, String> map;
+        double latitude;
+    	double longitude;
 		LatLng point;
 		
 		if(getBestProvider()!=null){ 	
@@ -149,8 +147,8 @@ public class ProxFragment extends Fragment implements LocationListener{
 		        	int resID = getResources().getIdentifier("ID"+i, "array",getActivity().getPackageName());      	
 		        	String[] station = res.getStringArray(resID);
 				
-		        	latitude = Double.valueOf(station[2]).doubleValue();
-			        longitude = Double.valueOf(station[3]).doubleValue();
+		        	latitude = Double.valueOf(station[2]);
+			        longitude = Double.valueOf(station[3]);
 					point = new LatLng((int) (latitude*1E6),(int) (longitude*1E6));
 			        
 					
@@ -252,9 +250,9 @@ public class ProxFragment extends Fragment implements LocationListener{
         
 
         protected String doInBackground(Double... params) {
-            double latitude = params[0].doubleValue();
-            double longitude = params[1].doubleValue();         
-        	String addressText="";
+            double latitude = params[0];
+            double longitude = params[1];
+        	String addressText;
     		List<Address> addresses = null;
     		Geocoder geocoder = new Geocoder(mContext);
     		try {

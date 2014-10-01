@@ -1,75 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/LinearLayout1"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical" >
-
-    <ScrollView
-        android:id="@+id/scrollView1"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/welcome_favoris"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/welcome_favoris"
+            android:textColor="@color/bleu_tag"
+            android:textSize="23sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
+            android:layout_height="1dp"
+            android:background="@color/bleu_tag"
+            android:orientation="vertical" />
+
+        <TextView
+            android:id="@+id/welcome_text6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:orientation="vertical" >
+            android:fontFamily="sans-serif-light"
+            android:text="@string/welcome_texte6"
+            android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/welcome_favoris"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/welcome_favoris"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/bleu_tag"
-                android:textSize="23sp" />
+        <ImageView
+            android:id="@+id/arrow_down5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/welcome_favoris1" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/bleu_tag"
-                android:orientation="vertical" >
-            </LinearLayout>
+        <TextView
+            android:id="@+id/welcome_text7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/welcome_texte7"
+            android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/welcome_text6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="@string/welcome_texte6"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textSize="14sp" />
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/welcome_favoris2" />
+    </LinearLayout>
+</ScrollView>
 
-            <ImageView
-                android:id="@+id/arrow_down5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/welcome_favoris1" />
-
-            <TextView
-                android:id="@+id/welcome_text7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="20dp"
-                android:text="@string/welcome_texte7"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textSize="14sp" />
-
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@drawable/welcome_favoris2" />
-
-        </LinearLayout>
-
-    </ScrollView>
-
-</LinearLayout>

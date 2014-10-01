@@ -7,6 +7,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -249,8 +250,8 @@ public class GMapFragment extends Fragment {
   			String icon=ligne.toLowerCase().replace("ligne ", "station_");
   			int resID = getResources().getIdentifier(icon, "drawable", mActivity.getPackageName());
   			
-  	        double latitude = Double.valueOf(station[2]).doubleValue();
-  	        double longitude = Double.valueOf(station[3]).doubleValue();	
+  	        double latitude = Double.valueOf(station[2]);
+  	        double longitude = Double.valueOf(station[3]);
   	        
   	        LatLng point = new LatLng(latitude,longitude);
   	        mMap.addMarker(new MarkerOptions().position(point)
@@ -283,6 +284,7 @@ public class GMapFragment extends Fragment {
     }
     
     class DialogFragmentTRAM extends DialogFragment {
+        @NonNull
         public Dialog onCreateDialog(Bundle savedInstanceState) {
         	
         	
@@ -326,6 +328,7 @@ public class GMapFragment extends Fragment {
     }
     
     class DialogFragmentBUS extends DialogFragment {
+        @NonNull
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             AlertDialog.Builder builder_bus = new AlertDialog.Builder(getActivity());
             builder_bus.setTitle(R.string.buslines);
@@ -367,7 +370,8 @@ public class GMapFragment extends Fragment {
     }
     
     class DialogFragmentOTHER extends DialogFragment {
-        public Dialog onCreateDialog(Bundle savedInstanceState) { 	
+        @NonNull
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
             AlertDialog.Builder builder_others = new AlertDialog.Builder(getActivity());
             builder_others.setTitle(R.string.places);
             builder_others.setMessage(R.string.soon);
@@ -376,6 +380,7 @@ public class GMapFragment extends Fragment {
     }
 
     class DialogFragmentMAP extends DialogFragment {
+        @NonNull
         public Dialog onCreateDialog(Bundle savedInstanceState) {
         	final CharSequence[] items_map = {"Plan","Satellite","Terrain"}; 
         	

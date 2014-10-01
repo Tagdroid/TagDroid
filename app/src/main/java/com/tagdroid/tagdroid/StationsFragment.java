@@ -21,8 +21,7 @@ public class StationsFragment extends Fragment {
 		
 		
 		public static StationsFragment newInstance() {
-			StationsFragment f = new StationsFragment();
-	        return f;
+            return new StationsFragment();
 	    }
 		
 		

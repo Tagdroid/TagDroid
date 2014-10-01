@@ -152,7 +152,7 @@ public class ChangeLog {
         NONE,
         ORDERED,
         UNORDERED,
-    };
+    }
     private Listmode listMode = Listmode.NONE;
     private StringBuffer sb = null;
     private static final String EOCL = "END_OF_CHANGE_LOG";
@@ -163,7 +163,7 @@ public class ChangeLog {
             InputStream ins = context.getResources().openRawResource(R.raw.changelog);
             BufferedReader br = new BufferedReader(new InputStreamReader(ins));
 
-            String line = null;
+            String line;
             boolean advanceToEOVS = false; // if true: ignore further version sections
             while ((line = br.readLine()) != null) {
                 line = line.trim();
@@ -185,32 +185,32 @@ public class ChangeLog {
                         case '%': 
                                 // line contains version title
                                 this.closeList();
-                                sb.append("<div class='title'>"  + line.substring(1).trim() + "</div>\n");
+                                sb.append("<div class='title'>").append(line.substring(1).trim()).append("</div>\n");
                                 break;
                         case '_':
                                 // line contains version title
                         this.closeList();
-                        sb.append("<div class='subtitle'>" + line.substring(1).trim() + "</div>\n");
+                        sb.append("<div class='subtitle'>").append(line.substring(1).trim()).append("</div>\n");
                         break;
                         case '!':
                         // line contains free text
                         this.closeList();
-                        sb.append("<div class='freetext'>" + line.substring(1).trim() + "</div>\n");
+                        sb.append("<div class='freetext'>").append(line.substring(1).trim()).append("</div>\n");
                         break;
                         case '#':
                         // line contains numbered list item
                         this.openList(Listmode.ORDERED);
-                        sb.append("<li>" + line.substring(1).trim() + "</li>\n");
+                        sb.append("<li>").append(line.substring(1).trim()).append("</li>\n");
                         break;
                         case '*':
                         // line contains bullet list item
                         this.openList(Listmode.UNORDERED);
-                        sb.append("<li>" + line.substring(1).trim() + "</li>\n");
+                        sb.append("<li>").append(line.substring(1).trim()).append("</li>\n");
                         break;
                         default:
                         // no special character: just use line as is
                         this.closeList();
-                        sb.append(line + "\n");
+                        sb.append(line).append("\n");
                     }
                 }
             }

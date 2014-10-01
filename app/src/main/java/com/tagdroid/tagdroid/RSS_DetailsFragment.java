@@ -133,7 +133,7 @@ public class RSS_DetailsFragment extends Fragment {
 	@Override
     public void onResume() {
         super.onResume();
-        this.tracker.set(Fields.SCREEN_NAME, getClass().getSimpleName());
+        this.tracker.set(Fields.SCREEN_NAME, ((Object) this).getClass().getSimpleName());
         this.tracker.send( MapBuilder.createAppView().build() );
     }
 	

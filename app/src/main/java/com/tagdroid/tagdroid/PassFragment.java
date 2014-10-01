@@ -1,5 +1,7 @@
 package com.tagdroid.tagdroid;
 
+import android.annotation.TargetApi;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -22,9 +24,7 @@ public class PassFragment extends Fragment implements OnItemSelectedListener {
 	private int x = 0, y = 0;
 	
 	public static Fragment newInstance() {
-		PassFragment f = new PassFragment();
- 
-        return f;
+        return new PassFragment();
     }
 	
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -71,11 +71,12 @@ public class PassFragment extends Fragment implements OnItemSelectedListener {
 
 	        super.onResume();
 
-	        this.tracker.set(Fields.SCREEN_NAME, getClass().getSimpleName());
+	        this.tracker.set(Fields.SCREEN_NAME, ((Object) this).getClass().getSimpleName());
 	        this.tracker.send( MapBuilder.createAppView().build() );
 	    }
 	
-	 public void onItemSelected(AdapterView<?> parent, View view2,int pos, long id) {
+	 @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+     public void onItemSelected(AdapterView<?> parent, View view2,int pos, long id) {
 		 LinearLayout fond_pass = (LinearLayout) getView().findViewById(R.id.fond_pass);
 		 LinearLayout fond_pass2 = (LinearLayout) getView().findViewById(R.id.fond_pass2);
 		 LinearLayout fond_pastel = (LinearLayout) getView().findViewById(R.id.fond_pastel);

@@ -79,7 +79,7 @@ public class MainActivity extends FragmentActivity {
 	    if(prefs2.getAll().size()!=0) 
 	    	if((prefs2.getAll().size())/i != 6){
 	    		prefs2.edit().clear();
-	    		prefs2.edit().commit();
+	    		prefs2.edit().apply();
 	    	}
 
 		tabs = (PagerSlidingTabStrip) findViewById(R.id.tabs);

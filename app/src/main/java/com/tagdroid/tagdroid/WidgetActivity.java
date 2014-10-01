@@ -7,6 +7,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.RemoteViews;
 
@@ -33,10 +34,9 @@ public class WidgetActivity extends AppWidgetProvider{
 
 	 public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
 		 final int N = appWidgetIds.length;
-	        for (int i = 0; i < N; i++) {
-	            int appWidgetId = appWidgetIds[i];
-	            updateAppWidget(context, appWidgetManager, appWidgetId);
-	        }
+         for (int appWidgetId : appWidgetIds) {
+             updateAppWidget(context, appWidgetManager, appWidgetId);
+         }
 	}
 	 
 	 static void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
@@ -78,7 +78,7 @@ public class WidgetActivity extends AppWidgetProvider{
 	 
 	 
 	    @Override
-	    public void onReceive(Context context, Intent intent) {
+	    public void onReceive(@NonNull Context context, @NonNull Intent intent) {
 	        super.onReceive(context, intent);
 	        if (intent.getAction().equals(ACTION_SHOW_NEXT)) Action_Next(context);
 	        else if (intent.getAction().equals(ACTION_SHOW_PREVIOUS)) Action_Previous(context);	 
@@ -127,7 +127,7 @@ public class WidgetActivity extends AppWidgetProvider{
 				try{     		
 					Document doc = Jsoup.connect("http://tag.mobitrans.fr/").userAgent("Mozilla").get();
 	     			
-	     			if(doc.title().toString().contains("Mobitrans")){
+	     			if(doc.title().contains("Mobitrans")){
 	     				Elements div = doc.select("div.corpsC");
 		     			Element ahref = div.select("a[href^=?p]").first();
 		     			id_jour= ahref.attr("href").substring(12, 19);
