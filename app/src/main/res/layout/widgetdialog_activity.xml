@@ -58,6 +58,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:fontFamily="sans-serif-light"
                 android:text=" "
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/gris_fonce" />

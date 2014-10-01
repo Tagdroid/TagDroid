@@ -1,46 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/scrollView1"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:paddingLeft="30dp"
         android:paddingRight="30dp"
-        android:paddingTop="10dp"
-        android:orientation="vertical">
+        android:paddingBottom="10dp">
 
         <TextView
-            android:id="@+id/welcome_pdf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
+            android:text="@string/welcome_pdf"
             android:textColor="@color/bleu_tag"
-            android:textSize="23sp"
-            android:text="@string/welcome_pdf" />
+            android:textSize="23sp" />
 
-        <LinearLayout
+        <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/bleu_tag"
-            android:orientation="vertical"/>
+            android:orientation="vertical" />
 
         <TextView
-            android:id="@+id/welcome_text10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="sans-serif-light"
-            android:textSize="14sp"
-            android:text="@string/welcome_texte10" />
+            android:text="@string/welcome_texte10"
+            android:textSize="14sp" />
 
         <ImageView
             android:id="@+id/arrow_down5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="10dp"
             android:layout_marginTop="20dp"
             android:src="@drawable/welcome_pdf" />
     </LinearLayout>

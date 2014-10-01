@@ -104,8 +104,7 @@
                 android:textColor="@color/gris_fonce"
                 android:textSize="18sp" />
 
-            <ImageButton
-                android:id="@+id/logo_mail"
+            <ImageButton android:id="@+id/mailQuentin"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_alignParentRight="true"
@@ -138,7 +137,7 @@
             android:orientation="vertical" />
 
         <RelativeLayout
-            android:id="@+id/CollaborateurLayout"
+            android:id="@+id/Collaborateur1Layout"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/CollaborateurLigne"
@@ -156,7 +155,7 @@
                 android:textSize="18sp" />
 
             <ImageButton
-                android:id="@+id/collaborateur_mail"
+                android:id="@+id/mailAlexandre"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_alignParentRight="true"
@@ -164,11 +163,38 @@
                 android:visibility="invisible" />
         </RelativeLayout>
 
+        <RelativeLayout
+            android:id="@+id/Collaborateur2Layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Collaborateur1Layout"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:fontFamily="sans-serif-light"
+                android:text="Félix PIÉDALLU"
+                android:textColor="@color/gris_fonce"
+                android:textSize="18sp" />
+
+            <ImageButton
+                android:id="@+id/mailFélix"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/btn_mail"
+                android:visibility="visible" />
+        </RelativeLayout>
+
         <TextView
             android:id="@+id/DescriptionTitre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/CollaborateurLayout"
+            android:layout_below="@+id/Collaborateur2Layout"
             android:layout_marginTop="20dp"
             android:fontFamily="sans-serif-light"
             android:text="@string/description"

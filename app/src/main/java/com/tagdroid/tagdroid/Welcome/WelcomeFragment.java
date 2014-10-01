@@ -3,11 +3,14 @@ package com.tagdroid.tagdroid.Welcome;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.tagdroid.tagdroid.R;
+
+import java.lang.reflect.Field;
 
 public class WelcomeFragment extends Fragment {
     public static interface OnButtonClicked {
@@ -29,15 +32,18 @@ public class WelcomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Bundle args = getArguments();
         int position = args.getInt("position");
-        View view = inflater.inflate(
-                getResources().getIdentifier("welcome_" + (position + 1), "layout", WelcomeActivity.PACKAGE_NAME),
-                container, false);
-        if (position == 5)
-            view.findViewById(R.id.btn_go_welcome).setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    onButtonClicked.onFinalButtonClicked();
-                }
-            });
-        return view;
+        try {
+            int ViewId = R.layout.class.getField("welcome_" + (position + 1)).getInt(null);
+            View view = inflater.inflate(ViewId, container, false);
+            if (position == 5)
+                view.findViewById(R.id.btn_go_welcome).setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View v) { onButtonClicked.onFinalButtonClicked(); }
+                });
+            return view;
+        }
+        catch (Exception e) {
+            Log.e("MyTag", "Failure to get drawable id.", e);
+            return null;
+        }
     }
 }

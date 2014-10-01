@@ -113,8 +113,6 @@ public class FavorisFragment extends Fragment {
 	    
 	    if(ListViewFavoris.getCount()==0){
 	    	TextView text_fav = (TextView) view.findViewById(R.id.text_fav);
-	    	Typeface light = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Light.ttf");	
-	    	text_fav.setTypeface(light);
 	    	text_fav.setText(getResources().getString(R.string.nofavs));
 	    	ImageView img_fav = (ImageView) view.findViewById(R.id.img_fav);
 	    	img_fav.setBackgroundResource(R.drawable.favoris2);

@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/scrollView1"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="10dp"
         android:paddingLeft="30dp"
-        android:paddingRight="30dp"
-        android:paddingTop="10dp"
-        android:orientation="vertical">
+        android:paddingRight="30dp">
 
         <TextView
-            android:id="@+id/welcome_favoris"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
@@ -21,14 +19,12 @@
             android:textColor="@color/bleu_tag"
             android:textSize="23sp" />
 
-        <LinearLayout
+        <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/bleu_tag"
-            android:orientation="vertical" />
+            android:background="@color/bleu_tag" />
 
         <TextView
-            android:id="@+id/welcome_text6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -37,7 +33,6 @@
             android:textSize="14sp" />
 
         <ImageView
-            android:id="@+id/arrow_down5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -45,17 +40,15 @@
             android:src="@drawable/welcome_favoris1" />
 
         <TextView
-            android:id="@+id/welcome_text7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_marginTop="20dp"
             android:fontFamily="sans-serif-light"
             android:text="@string/welcome_texte7"
             android:textSize="14sp" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

@@ -72,7 +72,7 @@ public class StationDetailFragment extends Fragment {
 	private String url_alert=null;	
 	private GoogleMap mMap;
 	private LatLng place;
-	TextView tv1,tv2,tv3,tv4,tv5,tv6,tv7,tv8,tv9,tv10,tv11,tv12,tv13,tv14,tv15, text_horaires, no_horaires;
+	TextView tv1,tv2,tv3,tv4,tv5,tv6,tv7,tv8,tv9,tv10,tv11,tv12,tv13,tv14,tv15;
 	private LinearLayout load_layout, data_layout, no_horaires_layout; 
 	
 	private LinearLayout case1, case1_suivant, case2, case2_suivant, case3, case3_suivant, case4, case4_suivant, case5,case5_suivant;
@@ -109,11 +109,9 @@ public class StationDetailFragment extends Fragment {
 		MainActivity.mTitle = ligne1;
 		getActivity().getActionBar().setTitle(MainActivity.mTitle);
 			
-		Typeface light = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Light.ttf");	
-		Typeface medium = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Medium.ttf");	
+		Typeface medium = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Medium.ttf");
 		Typeface black = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Black.ttf");	
-		Typeface condensed = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Condensed.ttf");	
-	 
+
 		
 		LinearLayout travaux = (LinearLayout) view.findViewById(R.id.travaux);
 		travaux.setVisibility(View.GONE);
@@ -164,48 +162,19 @@ public class StationDetailFragment extends Fragment {
 		tv13=(TextView)view.findViewById(R.id.vers5);
 		tv14=(TextView)view.findViewById(R.id.tps51);
 		tv15=(TextView)view.findViewById(R.id.tps52);
-		
-		text_horaires=(TextView)view.findViewById(R.id.text_horaires);	
-		no_horaires=(TextView)view.findViewById(R.id.no_horaires);			
-		TextView prochain1=(TextView)view.findViewById(R.id.prochain1);
-		TextView suivant1=(TextView)view.findViewById(R.id.suivant1);
-		TextView prochain2=(TextView)view.findViewById(R.id.prochain2);
-		TextView suivant2=(TextView)view.findViewById(R.id.suivant2);
-		TextView prochain3=(TextView)view.findViewById(R.id.prochain3);
-		TextView suivant3=(TextView)view.findViewById(R.id.suivant3);
-		TextView prochain4=(TextView)view.findViewById(R.id.prochain4);
-		TextView suivant4=(TextView)view.findViewById(R.id.suivant4);
-		TextView prochain5=(TextView)view.findViewById(R.id.prochain5);
-		TextView suivant5=(TextView)view.findViewById(R.id.suivant5);
+
 		
 
-		tv1.setTypeface(light);
 		tv2.setTypeface(black);
 		tv3.setTypeface(medium);
-		tv4.setTypeface(light);
 		tv5.setTypeface(black);
 		tv6.setTypeface(medium);
-		tv7.setTypeface(light);
 		tv8.setTypeface(black);
 		tv9.setTypeface(medium);
-		tv10.setTypeface(light);
 		tv11.setTypeface(black);
 		tv12.setTypeface(medium);
-		tv13.setTypeface(light);
 		tv14.setTypeface(black);
 		tv15.setTypeface(medium);
-		text_horaires.setTypeface(light);
-		no_horaires.setTypeface(light);
-		prochain1.setTypeface(condensed);
-		suivant1.setTypeface(condensed);
-		prochain2.setTypeface(condensed);
-		suivant2.setTypeface(condensed);
-		prochain3.setTypeface(condensed);
-		suivant3.setTypeface(condensed);
-		prochain4.setTypeface(condensed);
-		suivant4.setTypeface(condensed);
-		prochain5.setTypeface(condensed);
-		suivant5.setTypeface(condensed);
 		
 	
 		int image_ligne = this.getResources().getIdentifier(ligne1.toLowerCase().replace(" ", "")+"_default", "drawable",  mActivity.getPackageName());

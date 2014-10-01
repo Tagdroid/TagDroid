@@ -101,7 +101,7 @@
 	
 	<!-- About -->
 	<string name="auteur">AUTHOR</string>
-	<string name="collaborateur">COLLABORATOR</string>
+	<string name="collaborateur">COLLABORATORS</string>
 	<string name="contact">CONTACT</string>	
 	<string name="description">DESCRIPTION</string>
 	<string name="informations">INFORMATION</string>		
@@ -132,4 +132,5 @@
 	<string name="welcome_texte12">Discover too sections \"Traffic Report\", \"News\" and \"Transport Ticket\" permit you to be better informed about TAG network.</string>
 	<string name="welcome_texte13">Do not hesitate to evaluate this application on Google Play Store. In some ways, you are contributing to its development.</string>
 	<string name="welcome_texte14">Ok, you know everything\'s. You can press green button !</string>
+    <string name="allons_y">Allons-y !</string>
 </resources>

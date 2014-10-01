@@ -65,8 +65,6 @@ public class WidgetDialogActivity extends Activity {
     
     if(ListViewFavoris.getCount()==0){
     	TextView text_fav = (TextView) findViewById(R.id.text_fav);
-    	Typeface light = Typeface.createFromAsset(getAssets(), "fonts/Roboto-Light.ttf");	
-    	text_fav.setTypeface(light);
     	text_fav.setText(getResources().getString(R.string.nofavs));
     	ImageView img_fav = (ImageView) findViewById(R.id.img_fav);
     	img_fav.setBackgroundResource(R.drawable.favoris2);

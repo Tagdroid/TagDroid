@@ -193,8 +193,6 @@ public class ProxFragment extends Fragment implements LocationListener{
         // Aucune Localisation	
 		if(ListViewProx.getCount()==0){
 	    	TextView text_prox = (TextView) view.findViewById(R.id.text_fav);
-	    	Typeface light = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Light.ttf");	
-	    	text_prox.setTypeface(light);
 	    	text_prox.setText(getResources().getString(R.string.noproxs));
 	    	ImageView img_fav = (ImageView) view.findViewById(R.id.img_fav);
 	    	img_fav.setBackgroundResource(R.drawable.location);

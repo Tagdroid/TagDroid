@@ -33,7 +33,7 @@
 	<string name="pass">Les Pass\'</string>
 	<string name="combines">Les Combinés</string>	
 	<string name="rate">Evaluer</string>
-	<string name="about">A propos</string>	
+	<string name="about">À propos</string>
 	<string name="reseau">RESEAU</string>
 	<string name="divers">DIVERS</string>
 	
@@ -101,7 +101,7 @@
 	
 	<!-- About -->
 	<string name="auteur">AUTEUR</string>
-	<string name="collaborateur">COLLABORATEUR</string>
+	<string name="collaborateur">COLLABORATEURS</string>
 	<string name="contact">CONTACT</string>	
 	<string name="description">DESCRIPTION</string>
 	<string name="informations">INFORMATIONS</string>		
@@ -123,8 +123,8 @@
 	<string name="welcome_texte3">Les données sont issues du service Mobitrans géré par la TAG.</string>
 	<string name="welcome_texte4">En cas de problème, n\'hesitez pas à envoyer un mail.</string>
 	<string name="welcome_texte5">L\'application est dotée d\'un menu glissant présent sur le côté gauche de l\'interface. Glissez le doigt vers la droite pour le faire apparaître, ou cliquez sur le bouton menu en haut à gauche.</string>
-	<string name="welcome_texte6">Ajoutez vos stations favorites ...</string>
-	<string name="welcome_texte7">et retrouvez-les rapidement dans cette section.</string>
+	<string name="welcome_texte6">Ajoutez vos stations favorites…</string>
+	<string name="welcome_texte7">et retrouvez-les rapidement dans cette section !</string>
 	<string name="welcome_texte8">Observez les stations les plus proches de votre position.</string>
 	<string name="welcome_texte9">Parcourez le plan de Grenoble et selectionnez directement la station à consulter.</string>
 	<string name="welcome_texte10">Vous pouvez également télécharger le plan pdf d\'une ligne. Ce plan reste enregistrer dans le cache, ce qui lui permet d\'être accessible hors-ligne.</string>
@@ -132,4 +132,5 @@
 	<string name="welcome_texte12">Découvrez également les sections \"Info-Trafic\", \"Actualités\" et \"Titres de transports\" qui vous permettront d\'être mieux informé sur le réseau TAG.</string>
 	<string name="welcome_texte13">N\'hesitez pas à évaluer l\'application. D\'une certaine manière, en donnant votre avis, vous contribuez à son développement.</string>
 	<string name="welcome_texte14">Voila, vous savez tout. Cliquez sur le bouton vert !</string>
+    <string name="allons_y">Allons-y !</string>
 </resources>

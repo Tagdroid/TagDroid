@@ -30,9 +30,6 @@ import java.util.Map;
 
 
 public class MainActivity extends FragmentActivity {
-
-	
-	
 	private DrawerLayout mDrawerLayout;
 	static ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
@@ -120,7 +117,7 @@ public class MainActivity extends FragmentActivity {
 		
 		@Override
 		public int getItemPosition(Object object){
-		    return PagerAdapter.POSITION_NONE;
+		    return POSITION_NONE;
 		}
 
 		@Override

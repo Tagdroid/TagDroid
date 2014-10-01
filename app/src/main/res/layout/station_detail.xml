@@ -319,6 +319,7 @@
                             android:layout_gravity="center"
                             android:drawableLeft="@drawable/ic_android_cry"
                             android:drawablePadding="5dp"
+                            android:fontFamily="sans-serif-light"
                             android:text="@string/nohoraire" />
 
                     </LinearLayout>
@@ -336,6 +337,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
+                            android:fontFamily="sans-serif-light"
                             android:text="@string/loading" />
 
                         <ProgressBar
@@ -394,6 +396,7 @@
                                         android:layout_marginLeft="3dp"
                                         android:ellipsize="end"
                                         android:lines="1"
+                                        android:fontFamily="sans-serif-light"
                                         android:text="..."
                                         android:textColor="@color/gris_fonce"
                                         android:textSize="12dp"
@@ -430,6 +433,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="@string/prochain"
+                                            android:fontFamily="sans-serif-condensed"
                                             android:textColor="@color/gris_normal"
                                             android:textSize="10sp"
                                             android:textStyle="bold" />
@@ -469,6 +473,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="@string/suivant"
+                                            android:fontFamily="sans-serif-condensed"
                                             android:textColor="@color/gris_normal"
                                             android:textSize="10sp"
                                             android:textStyle="bold" />
@@ -509,6 +514,7 @@
                                         android:layout_marginRight="3dp"
                                         android:ellipsize="end"
                                         android:lines="1"
+                                        android:fontFamily="sans-serif-light"
                                         android:text="..."
                                         android:textColor="@color/gris_fonce"
                                         android:textSize="12dp"
@@ -555,6 +561,7 @@
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="right"
                                             android:text="@string/prochain"
+                                            android:fontFamily="sans-serif-condensed"
                                             android:textColor="@color/gris_normal"
                                             android:textSize="10sp"
                                             android:textStyle="bold" />
@@ -597,6 +604,7 @@
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="right"
                                             android:text="@string/suivant"
+                                            android:fontFamily="sans-serif-condensed"
                                             android:textColor="@color/gris_normal"
                                             android:textSize="10sp"
                                             android:textStyle="bold" />
@@ -653,6 +661,7 @@
                                         android:layout_marginLeft="3dp"
                                         android:ellipsize="end"
                                         android:lines="1"
+                                        android:fontFamily="sans-serif-light"
                                         android:text="..."
                                         android:textColor="@color/gris_fonce"
                                         android:textSize="12dp"
@@ -689,6 +698,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="@string/prochain"
+                                            android:fontFamily="sans-serif-condensed"
                                             android:textColor="@color/gris_normal"
                                             android:textSize="10sp"
                                             android:textStyle="bold" />
@@ -728,6 +738,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="@string/suivant"
+                                            android:fontFamily="sans-serif-condensed"
                                             android:textColor="@color/gris_normal"
                                             android:textSize="10sp"
                                             android:textStyle="bold" />
@@ -768,6 +779,7 @@
                                         android:layout_marginRight="3dp"
                                         android:ellipsize="end"
                                         android:lines="1"
+                                        android:fontFamily="sans-serif-light"
                                         android:text="..."
                                         android:textColor="@color/gris_fonce"
                                         android:textSize="12dp"
@@ -814,6 +826,7 @@
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="right"
                                             android:text="@string/prochain"
+                                            android:fontFamily="sans-serif-condensed"
                                             android:textColor="@color/gris_normal"
                                             android:textSize="10sp"
                                             android:textStyle="bold" />
@@ -856,6 +869,7 @@
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="right"
                                             android:text="@string/suivant"
+                                            android:fontFamily="sans-serif-condensed"
                                             android:textColor="@color/gris_normal"
                                             android:textSize="10sp"
                                             android:textStyle="bold" />
@@ -912,6 +926,7 @@
                                         android:layout_marginLeft="3dp"
                                         android:ellipsize="end"
                                         android:lines="1"
+                                        android:fontFamily="sans-serif-light"
                                         android:text="..."
                                         android:textColor="@color/gris_fonce"
                                         android:textSize="12dp"
@@ -948,6 +963,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="@string/prochain"
+                                            android:fontFamily="sans-serif-condensed"
                                             android:textColor="@color/gris_normal"
                                             android:textSize="10sp"
                                             android:textStyle="bold" />
@@ -987,6 +1003,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="@string/suivant"
+                                            android:fontFamily="sans-serif-condensed"
                                             android:textColor="@color/gris_normal"
                                             android:textSize="10sp"
                                             android:textStyle="bold" />
