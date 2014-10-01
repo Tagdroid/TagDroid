@@ -8,8 +8,9 @@ import android.widget.Toast;
 
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.tagdroid.tagdroid.Welcome.WelcomeActivity;
 
-public class HomeActivity extends Activity {
+public class LaunchActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
@@ -30,10 +31,10 @@ public class HomeActivity extends Activity {
 		    	  public void onAdLoaded() {displayInterstitial();}
 		    	  public void onAdFailedToLoad(int errorcode) {}
 		    });*/
-            startActivity(new Intent(HomeActivity.this, WelcomeActivity.class));
+            startActivity(new Intent(LaunchActivity.this, WelcomeActivity.class));
 		}
         else
-            startActivity(new Intent(HomeActivity.this, LoadDBActivity.class));
+            startActivity(new Intent(LaunchActivity.this, LoadDBActivity.class));
 	}
 
     private InterstitialAd interstitialAd;
