@@ -7,11 +7,9 @@
 
     <com.viewpagerindicator.LinePageIndicator
         android:id="@+id/indicator"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
-        android:padding="5dip" />
+        android:padding="25dp" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/pager"

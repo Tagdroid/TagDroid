@@ -44,7 +44,7 @@ public class ChangeLog {
         // save new version number to preferences
         SharedPreferences.Editor editor = sp.edit();
         editor.putString(VERSION_KEY, this.thisVersion);
-        editor.commit();
+        editor.apply();
     }
     
     /**
@@ -53,7 +53,6 @@ public class ChangeLog {
      *          returned by <code>getThisVersion()</code> the second time
      *          this version of the app is launched (more precisely: the
      *          second time ChangeLog is instantiated).
-     * @see AndroidManifest.xml#android:versionName
      */
     public String getLastVersion() {
         return  this.lastVersion;
@@ -61,7 +60,6 @@ public class ChangeLog {
     
     /**
      * @return  The version name of this app as described in the manifest.
-     * @see AndroidManifest.xml#android:versionName
      */
     public String getThisVersion() {
         return  this.thisVersion;

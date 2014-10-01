@@ -1,294 +1,223 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView1"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/fond"
-    android:orientation="vertical" >
+    android:layout_height="fill_parent"
+    android:background="@color/fond">
 
-    <ScrollView
-        android:id="@+id/scrollView1"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <ImageView
+            android:id="@+id/Logo"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="start"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/logo" />
+
+        <ImageView
+            android:id="@+id/TitleLogo"
+            android:layout_width="116dp"
+            android:layout_height="26dp"
+            android:layout_gravity="start"
+            android:layout_toRightOf="@+id/Logo"
+            android:src="@drawable/tag_gris" />
+
+        <TextView
+            android:id="@+id/AppNonOfficielle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/TitleLogo"
+            android:layout_toRightOf="@+id/Logo"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/about_desc"
+            android:textColor="@color/gris_fonce" />
+
+        <TextView
+            android:id="@+id/Compatibilité"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/AppNonOfficielle"
+            android:layout_toRightOf="@+id/Logo"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/about_desc2"
+            android:textColor="@color/gris_fonce" />
+
+        <Button
+            android:id="@+id/showlog"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Compatibilité"
+            android:layout_toRightOf="@+id/Logo"
+            android:fontFamily="sans-serif-light"
+            android:text="Show Log"
+            android:textColor="@color/gris_fonce"
+            android:textStyle="bold"
+            android:typeface="normal" />
 
-            <LinearLayout
-                android:id="@+id/about_cplt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:orientation="vertical" >
+        <TextView
+            android:id="@+id/AuteurTitre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/showlog"
+            android:layout_marginTop="20dp"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/auteur"
+            android:textColor="@color/gris_fonce"
+            android:textStyle="bold" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginTop="10dp" >
+        <View
+            android:id="@+id/AuteurLigne"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_below="@+id/AuteurTitre"
+            android:background="@color/gris_normal" />
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="right"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="30dp"
-                        android:orientation="horizontal" >
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_below="@+id/AuteurLigne"
+            android:background="@color/blanc"
+            android:orientation="vertical" />
 
-                        <ImageView
-                            android:id="@+id/imageView3"
-                            android:layout_width="80dp"
-                            android:layout_height="match_parent"
-                            android:src="@drawable/logo" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="left"
-                        android:orientation="vertical" >
-
-                        <ImageView
-                            android:id="@+id/logo_ligne"
-                            android:layout_width="116dp"
-                            android:layout_height="26dp"
-                            android:layout_gravity="left"
-                            android:src="@drawable/tag_gris" />
-
-                        <TextView
-                            android:id="@+id/textView5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:text="@string/about_desc"
-                            android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:textColor="@color/gris_fonce" />
-
-                        <TextView
-                            android:id="@+id/textView4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:text="@string/about_desc2"
-                            android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:textColor="@color/gris_fonce" />
-
-                        <Button
-                            android:id="@+id/showlog"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Show Log"
-                            android:textColor="@color/gris_fonce"
-                            android:textStyle="bold"
-                            android:typeface="normal" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:orientation="vertical" >
-
-                    <TextView
-                        android:id="@+id/tps41"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/auteur"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:textColor="@color/gris_fonce"
-                        android:textStyle="bold" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="1px"
-                        android:layout_marginRight="5dp"
-                        android:background="@color/gris_normal"
-                        android:orientation="vertical" >
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginRight="5dp"
-                        android:background="@color/blanc"
-                        android:orientation="vertical" >
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical" >
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginBottom="10dp"
-                            android:orientation="horizontal" >
-
-                            <TextView
-                                android:id="@+id/quentin"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginLeft="10dp"
-                                android:text="Quentin DESBOIS"
-                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                android:textColor="@color/gris_fonce"
-                                android:textSize="18sp" />
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:orientation="vertical" >
-                            </LinearLayout>
-
-                            <ImageButton
-                                android:id="@+id/logo_mail"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:layout_gravity="center"
-                                android:layout_marginRight="10dp"
-                                android:background="@drawable/btn_mail" />
-                        </LinearLayout>
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:orientation="vertical" >
-
-                    <TextView
-                        android:id="@+id/TextView01"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/collaborateur"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:textColor="@color/gris_fonce"
-                        android:textStyle="bold" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="1px"
-                        android:layout_marginRight="5dp"
-                        android:background="@color/gris_normal"
-                        android:orientation="vertical" >
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginRight="5dp"
-                        android:background="@color/blanc"
-                        android:orientation="vertical" >
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical" >
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginBottom="10dp"
-                            android:layout_marginTop="10dp"
-                            android:orientation="horizontal" >
-
-                            <TextView
-                                android:id="@+id/alexandre"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginBottom="5dp"
-                                android:layout_marginLeft="10dp"
-                                android:text="Alexandre LOUVRIER"
-                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                android:textColor="@color/gris_fonce"
-                                android:textSize="18sp" />
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:orientation="vertical" >
-                            </LinearLayout>
-                        </LinearLayout>
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:orientation="vertical" >
-
-                    <TextView
-                        android:id="@+id/correspondances"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/description"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:textColor="@color/gris_fonce"
-                        android:textStyle="bold" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="1px"
-                        android:background="@color/gris_normal"
-                        android:orientation="vertical" >
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/blanc"
-                        android:orientation="vertical" >
-                    </LinearLayout>
-
-                    <TextView
-                        android:id="@+id/description_about"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:text="@string/about_description" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical" >
-            </LinearLayout>
+        <RelativeLayout
+            android:id="@+id/AuteurLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/AuteurLigne"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/footer"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:text="@string/footer"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/gris_normal"
-                android:textSize="10dp"
-                android:textStyle="italic" />
-        </LinearLayout>
+                android:layout_centerVertical="true"
+                android:fontFamily="sans-serif-light"
+                android:text="Quentin DESBOIS"
+                android:textColor="@color/gris_fonce"
+                android:textSize="18sp" />
 
-    </ScrollView>
+            <ImageButton
+                android:id="@+id/logo_mail"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/btn_mail" />
+        </RelativeLayout>
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/CollaborateurTitre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/AuteurLayout"
+            android:layout_marginTop="20dp"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/collaborateur"
+            android:textColor="@color/gris_fonce"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/CollaborateurLigne"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_below="@+id/CollaborateurTitre"
+            android:background="@color/gris_normal" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_below="@+id/CollaborateurLigne"
+            android:background="@color/blanc"
+            android:orientation="vertical" />
+
+        <RelativeLayout
+            android:id="@+id/CollaborateurLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/CollaborateurLigne"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:fontFamily="sans-serif-light"
+                android:text="Alexandre LOUVRIER"
+                android:textColor="@color/gris_fonce"
+                android:textSize="18sp" />
+
+            <ImageButton
+                android:id="@+id/collaborateur_mail"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/btn_mail"
+                android:visibility="invisible" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/DescriptionTitre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/CollaborateurLayout"
+            android:layout_marginTop="20dp"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/description"
+            android:textColor="@color/gris_fonce"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/DescriptionLigne"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_below="@+id/DescriptionTitre"
+            android:background="@color/gris_normal" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_below="@+id/DescriptionLigne"
+            android:background="@color/blanc"
+            android:orientation="vertical" />
+
+        <RelativeLayout
+            android:id="@+id/DescriptionLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/DescriptionLigne"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:fontFamily="sans-serif-light"
+                android:text="@string/about_description"
+                android:textColor="@color/gris_fonce" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/DroitsImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/DescriptionLayout"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="fill_vertical"
+            android:text="@string/footer"
+            android:textColor="@color/gris_normal"
+            android:textSize="10dp"
+            android:textStyle="italic" />
+    </RelativeLayout>
+</ScrollView>
+

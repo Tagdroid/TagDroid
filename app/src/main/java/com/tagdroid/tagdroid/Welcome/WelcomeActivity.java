@@ -9,12 +9,10 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.tagdroid.tagdroid.LoadDBActivity;
 import com.tagdroid.tagdroid.R;
@@ -24,7 +22,6 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
     public static final String PREFS_NAME_2 = "Welcome";
     public static String PACKAGE_NAME;
     ViewPager mPager;
-    private InterstitialAd interstitialAd;
 
     //TODO download database meanwhile…
 
@@ -38,18 +35,8 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
                     Toast.LENGTH_LONG).show();
 
         // We check if it's the first app launch…
-        if (getSharedPreferences(WelcomeActivity.PREFS_NAME_2, 0).getBoolean("AppAlreadyLaunched", false))
+        if (false && getSharedPreferences(WelcomeActivity.PREFS_NAME_2, 0).getBoolean("AppAlreadyLaunched", false))
             startActivity(new Intent(this, LoadDBActivity.class));
-             /*interstitialAd = new InterstitialAd(this);
-            interstitialAd.setAdUnitId("ca-app-pub-7205304382231139/5017304000");
-		    AdRequest adRequest = new AdRequest.Builder()
-		    							//.addTestDevice("9D3B7660BC88DFE747A91F1ECC3782CC") // Nexus 4 Test Phone
-		    							.build();
-		    interstitialAd.loadAd(adRequest);
-		    interstitialAd.setAdListener(new AdListener() {
-		    	  public void onAdLoaded() {displayInterstitial();}
-		    	  public void onAdFailedToLoad(int errorcode) {}
-		    });*/
 
         PACKAGE_NAME = getApplicationContext().getPackageName();
         setContentView(R.layout.welcome);
@@ -73,12 +60,6 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
         mPager.setAdapter(welcomePager);
 
         indicator.setViewPager(mPager);
-    }
-
-    public void displayInterstitial() {
-        Log.d("Home", "displayInterstitial");
-        if (interstitialAd.isLoaded())
-            interstitialAd.show();
     }
 
     @Override
