@@ -58,8 +58,7 @@
         </receiver>
 
         <activity
-            android:name=".LaunchActivity"
-            android:configChanges="keyboardHidden|orientation">
+            android:name=".Welcome.WelcomeActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -74,8 +73,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Welcome.WelcomeActivity" />
         <activity
             android:name=".MainActivity" />
         <activity

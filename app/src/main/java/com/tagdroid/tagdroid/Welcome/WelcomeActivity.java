@@ -4,30 +4,55 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.*;
+import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.tagdroid.tagdroid.LoadDBActivity;
 import com.tagdroid.tagdroid.R;
 import com.viewpagerindicator.LinePageIndicator;
 
-public class WelcomeActivity extends FragmentActivity implements WelcomeFragment.OnButtonClicked{
+public class WelcomeActivity extends FragmentActivity implements WelcomeFragment.OnButtonClicked {
     public static final String PREFS_NAME_2 = "Welcome";
     public static String PACKAGE_NAME;
-    LinePageIndicator indicator;
     ViewPager mPager;
-    WelcomeAdapter welcomePager;
+    private InterstitialAd interstitialAd;
 
     //TODO download database meanwhile…
 
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // We check for Google Play Services… CyanogenMod without GApps for example
+        if (GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext()) != 0)
+            Toast.makeText(this, "Google Play Service non détecté. Dysfonctionnement de l'application possible.",
+                    Toast.LENGTH_LONG).show();
+
+        // We check if it's the first app launch…
+        if (getSharedPreferences(WelcomeActivity.PREFS_NAME_2, 0).getBoolean("AppAlreadyLaunched", false))
+            startActivity(new Intent(this, LoadDBActivity.class));
+             /*interstitialAd = new InterstitialAd(this);
+            interstitialAd.setAdUnitId("ca-app-pub-7205304382231139/5017304000");
+		    AdRequest adRequest = new AdRequest.Builder()
+		    							//.addTestDevice("9D3B7660BC88DFE747A91F1ECC3782CC") // Nexus 4 Test Phone
+		    							.build();
+		    interstitialAd.loadAd(adRequest);
+		    interstitialAd.setAdListener(new AdListener() {
+		    	  public void onAdLoaded() {displayInterstitial();}
+		    	  public void onAdFailedToLoad(int errorcode) {}
+		    });*/
+
         PACKAGE_NAME = getApplicationContext().getPackageName();
         setContentView(R.layout.welcome);
-
 
         if (Build.VERSION.SDK_INT >= 14) {
             getActionBar().setIcon(R.drawable.tag);
@@ -35,9 +60,9 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
         } else
             getActionBar().setTitle(R.string.welcome_bienvenue);
 
-        indicator = (LinePageIndicator) findViewById(R.id.indicator);
+        LinePageIndicator indicator = (LinePageIndicator) findViewById(R.id.indicator);
+        WelcomeAdapter welcomePager = new WelcomeAdapter(getSupportFragmentManager());
         mPager = (ViewPager) findViewById(R.id.pager);
-        welcomePager = new WelcomeAdapter(getSupportFragmentManager());
 
         float density = getResources().getDisplayMetrics().density;
         indicator.setSelectedColor(0xff00b4f8);
@@ -50,25 +75,11 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
         indicator.setViewPager(mPager);
     }
 
-    public class WelcomeAdapter extends FragmentStatePagerAdapter {
-        public WelcomeAdapter(FragmentManager fm) {
-            super(fm);
-        }
-        @Override
-        public WelcomeFragment getItem(int position) {
-            Log.d("Adapter", "newInstance " + position);
-            WelcomeFragment fragment =  new WelcomeFragment();
-            Bundle args = new Bundle();
-            args.putInt("position", position);
-            fragment.setArguments(args);
-            return fragment;
-        }
-        @Override
-        public int getCount() {
-            return 6;
-        }
+    public void displayInterstitial() {
+        Log.d("Home", "displayInterstitial");
+        if (interstitialAd.isLoaded())
+            interstitialAd.show();
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -88,22 +99,41 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
     @Override
     public void onFinalButtonClicked() {
         SharedPreferences.Editor editor = getSharedPreferences(PREFS_NAME_2, 0).edit();
-        editor.putBoolean("firstAppLaunch", false);
+        editor.putBoolean("AppAlreadyLaunched", true);
         editor.apply();
         Intent intent = new Intent(WelcomeActivity.this, LoadDBActivity.class);
         startActivity(intent);
     }
 
-
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt("pageItem", mPager.getCurrentItem());
-
     }
 
     @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
+    }
+
+
+    public class WelcomeAdapter extends FragmentStatePagerAdapter {
+        public WelcomeAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public int getCount() {
+            return 6;
+        }
+
+        @Override
+        public WelcomeFragment getItem(int position) {
+            WelcomeFragment fragment = new WelcomeFragment();
+            Bundle args = new Bundle();
+            args.putInt("position", position);
+            fragment.setArguments(args);
+            return fragment;
+        }
     }
 }
