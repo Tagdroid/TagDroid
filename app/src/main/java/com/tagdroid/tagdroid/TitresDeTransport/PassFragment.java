@@ -1,4 +1,4 @@
-package com.tagdroid.tagdroid;
+package com.tagdroid.tagdroid.TitresDeTransport;
 
 import android.annotation.TargetApi;
 import android.os.Build;
@@ -18,6 +18,7 @@ import com.google.analytics.tracking.android.EasyTracker;
 import com.google.analytics.tracking.android.Fields;
 import com.google.analytics.tracking.android.MapBuilder;
 import com.google.analytics.tracking.android.Tracker;
+import com.tagdroid.tagdroid.R;
 
 public class PassFragment extends Fragment implements OnItemSelectedListener {
 	private Tracker tracker;

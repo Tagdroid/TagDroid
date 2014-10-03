@@ -1,4 +1,4 @@
-package com.tagdroid.tagdroid;
+package com.tagdroid.tagdroid.Widget;
 
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
@@ -10,6 +10,9 @@ import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.RemoteViews;
+
+import com.tagdroid.tagdroid.MainActivity;
+import com.tagdroid.tagdroid.R;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -40,7 +43,7 @@ public class WidgetActivity extends AppWidgetProvider{
 	}
 	 
 	 static void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
-		 RemoteViews remoteViews = new RemoteViews(context.getPackageName(),R.layout.widget);
+		 RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.widget);
 		 ComponentName widget = new ComponentName(context, WidgetActivity.class);
 		 AppWidgetManager.getInstance(context).updateAppWidget(widget, remoteViews);
 	     
@@ -109,7 +112,7 @@ public class WidgetActivity extends AppWidgetProvider{
 	    }
 	    
 	    protected void Action_Head(Context context) {
-	        context.startActivity(new Intent(context, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));	    	
+	        context.startActivity(new Intent(context, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 	    }
 	    
 	    private class Calcul_ID_Jour extends AsyncTask<Void, Void, String>{			

@@ -1,4 +1,4 @@
-package com.tagdroid.tagdroid;
+package com.tagdroid.tagdroid.Widget;
 
 import android.app.Activity;
 import android.appwidget.AppWidgetManager;

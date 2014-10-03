@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,6 +26,9 @@ import com.parse.Parse;
 import com.parse.ParseAnalytics;
 import com.parse.ParseInstallation;
 import com.parse.PushService;
+import com.tagdroid.tagdroid.TitresDeTransport.CombinesFragment;
+import com.tagdroid.tagdroid.TitresDeTransport.PassFragment;
+import com.tagdroid.tagdroid.TitresDeTransport.TicketFragment;
 
 import java.util.Map;
 
@@ -33,14 +37,14 @@ public class MainActivity extends FragmentActivity {
 	private DrawerLayout mDrawerLayout;
 	static ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
-	static String mTitle="Stations";
+	public static String mTitle="Stations";
 	private String[] menuItems;
 	private NsMenuAdapter mAdapter;
 	static boolean favoris_check, addbus_check;
 	
 	
 	public static final String PREFS_NAME = "stations_favoris";
-	protected static SharedPreferences prefs2;
+	public static SharedPreferences prefs2;
 	
 	static String titre1, id_station1, ligne2, latitude1, longitude1;
 	static String flux, title, description, link, intent;
@@ -55,7 +59,8 @@ public class MainActivity extends FragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {		
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+        Log.d("MainActivity", "Just starting");
+        setContentView(R.layout.activity_main);
 		
 	    ChangeLog cl = new ChangeLog(this);
 	 	if (cl.firstRun()) cl.getLogDialog().show();
@@ -91,9 +96,6 @@ public class MainActivity extends FragmentActivity {
 		}
 	
 		_initMenu();	
-		
-	
-		
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerToggle = new CustomActionBarDrawerToggle(this, mDrawerLayout);
 		mDrawerLayout.setDrawerListener(mDrawerToggle);

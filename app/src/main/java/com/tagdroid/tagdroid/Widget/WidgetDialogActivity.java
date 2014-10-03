@@ -1,10 +1,9 @@
-package com.tagdroid.tagdroid;
+package com.tagdroid.tagdroid.Widget;
 
 import android.app.Activity;
 import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
 import android.content.Context;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -15,6 +14,9 @@ import android.widget.ListView;
 import android.widget.RemoteViews;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+
+import com.tagdroid.tagdroid.MainActivity;
+import com.tagdroid.tagdroid.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,7 +36,7 @@ public class WidgetDialogActivity extends Activity {
     ListViewFavoris = (ListView) findViewById(R.id.listViewfavoris2);
 	ArrayList<HashMap<String, String>> listItem = new ArrayList<HashMap<String, String>>();	    
 	
-	MainActivity.prefs2 = getSharedPreferences(MainActivity.PREFS_NAME, Context.MODE_PRIVATE);	
+	MainActivity.prefs2 = getSharedPreferences(MainActivity.PREFS_NAME, Context.MODE_PRIVATE);
 	Map<String, ?> items = MainActivity.prefs2.getAll();
 	
 	for(String titre : items.keySet()){

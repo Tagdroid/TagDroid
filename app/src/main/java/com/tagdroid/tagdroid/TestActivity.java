@@ -1,6 +1,5 @@
 package com.tagdroid.tagdroid;
 
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -13,8 +12,8 @@ import com.tagdroid.tagapi.HttpApiTask;
 import com.tagdroid.tagapi.JSonApi.Transport.PhysicalStop;
 import com.tagdroid.tagapi.ProgressionInterface;
 import com.tagdroid.tagapi.ReadJSonTask;
-import com.tagdroid.tagapi.SQLApi.MySQLiteHelper;
-import com.tagdroid.tagapi.SQLApi.PhysicalStopDAO;
+import com.tagdroid.tagapi.SQLApi.Transport.MySQLiteHelper;
+import com.tagdroid.tagapi.SQLApi.Transport.PhysicalStopDAO;
 
 
 public class TestActivity extends ActionBarActivity implements View.OnClickListener, ProgressionInterface {
@@ -48,10 +47,9 @@ public class TestActivity extends ActionBarActivity implements View.OnClickListe
     }
 
     private void getNameFromId(Integer id) {
-        MySQLiteHelper dbHelper = new MySQLiteHelper(this, null);
-        SQLiteDatabase bdd = new MySQLiteHelper(this, null).getWritableDatabase();
+        MySQLiteHelper dbHelper = new MySQLiteHelper("TagDatabase.db", this, null);
 
-        PhysicalStopDAO physicalStopDAO = new PhysicalStopDAO(bdd, false, false, -1, -1);
+        PhysicalStopDAO physicalStopDAO = new PhysicalStopDAO(dbHelper, false, false, -1, -1);
         PhysicalStop testStop = physicalStopDAO.select(id);
         if (testStop != null) {
             String nom = testStop.getName();

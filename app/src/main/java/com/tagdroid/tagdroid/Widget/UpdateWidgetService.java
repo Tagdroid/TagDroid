@@ -1,4 +1,4 @@
-package com.tagdroid.tagdroid;
+package com.tagdroid.tagdroid.Widget;
 
 import android.app.PendingIntent;
 import android.app.Service;
@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
 import android.widget.RemoteViews;
+
+import com.tagdroid.tagdroid.R;
 
 import java.util.Random;
 
@@ -30,7 +32,7 @@ public class UpdateWidgetService extends Service {
 
     for (int widgetId : allWidgetIds) {
       int number = (new Random().nextInt(100));
-      RemoteViews remoteViews = new RemoteViews(this.getApplicationContext().getPackageName(),R.layout.widget);
+      RemoteViews remoteViews = new RemoteViews(this.getApplicationContext().getPackageName(), R.layout.widget);
       remoteViews.setTextViewText(R.id.widget_vers, "Random: " + String.valueOf(number));
       Intent clickIntent = new Intent(this.getApplicationContext(),WidgetActivity.class);
       clickIntent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);

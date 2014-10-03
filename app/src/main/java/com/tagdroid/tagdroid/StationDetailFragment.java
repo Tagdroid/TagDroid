@@ -30,6 +30,9 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.tagdroid.tagapi.JSonApi.Favori;
+import com.tagdroid.tagapi.SQLApi.FavorisDAO;
+import com.tagdroid.tagapi.SQLApi.Transport.MySQLiteHelper;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -109,10 +112,7 @@ public class StationDetailFragment extends Fragment {
 		MainActivity.mTitle = ligne1;
 		getActivity().getActionBar().setTitle(MainActivity.mTitle);
 			
-		Typeface medium = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Medium.ttf");
-		Typeface black = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Black.ttf");	
 
-		
 		LinearLayout travaux = (LinearLayout) view.findViewById(R.id.travaux);
 		travaux.setVisibility(View.GONE);
 		
@@ -163,19 +163,6 @@ public class StationDetailFragment extends Fragment {
 		tv14=(TextView)view.findViewById(R.id.tps51);
 		tv15=(TextView)view.findViewById(R.id.tps52);
 
-		
-
-		tv2.setTypeface(black);
-		tv3.setTypeface(medium);
-		tv5.setTypeface(black);
-		tv6.setTypeface(medium);
-		tv8.setTypeface(black);
-		tv9.setTypeface(medium);
-		tv11.setTypeface(black);
-		tv12.setTypeface(medium);
-		tv14.setTypeface(black);
-		tv15.setTypeface(medium);
-		
 	
 		int image_ligne = this.getResources().getIdentifier(ligne1.toLowerCase().replace(" ", "")+"_default", "drawable",  mActivity.getPackageName());
         ((ImageView) view.findViewById(R.id.logo_ligne)).setImageResource(image_ligne);
@@ -505,6 +492,10 @@ public class StationDetailFragment extends Fragment {
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+        MySQLiteHelper dbHelper = new MySQLiteHelper("Favoris.db", getActivity(), null);
+        FavorisDAO favorisDAO = new FavorisDAO(dbHelper, false, false, -1, -1);
+
+
 			SharedPreferences.Editor prefsEditor = MainActivity.prefs2.edit(); 
 	        switch (item.getItemId()) {	 
 	        	case R.id.menu_refresh:
@@ -515,24 +506,31 @@ public class StationDetailFragment extends Fragment {
 	    					item.setChecked(false);
 	    					item.setIcon(R.drawable.menu_favoris);
 	    					Toast.makeText(getActivity(), R.string.delfavoris, Toast.LENGTH_SHORT).show();
+                            favorisDAO.delete(Integer.valueOf(id_station.split("=")[1]));
+                            /*
 	    					prefsEditor.remove(titre+"&"+ligne1);
 	    			    	prefsEditor.remove(titre+"&"+ligne1+"_cb");
 	    			    	prefsEditor.remove(titre+"&"+ligne1+"_id_station");
 	    			    	prefsEditor.remove(titre+"&"+ligne1+"_ligne"); 
 	    			    	prefsEditor.remove(titre+"&"+ligne1+"_latitude");
-	    			    	prefsEditor.remove(titre+"&"+ligne1+"_longitude");
+	    			    	prefsEditor.remove(titre+"&"+ligne1+"_longitude");*/
 	    			    	MainActivity.favoris_check=false;
+
 	    				}
 	    				else{	    		
 	    					item.setChecked(true);
 	    					item.setIcon(R.drawable.menu_favoris_checked);
 	    					Toast.makeText(getActivity(), R.string.addfavoris, Toast.LENGTH_SHORT).show();
-	    					prefsEditor.putBoolean(titre+"&"+ligne1+"_cb", true);
+                            favorisDAO.add(new Favori(
+                                    Integer.valueOf(id_station.split("=")[1]), titre, ligne1,
+                                    Double.valueOf(getArguments().getString("latitude")),
+                                    Double.valueOf(getArguments().getString("longitude")) ));
+	    				/*	prefsEditor.putBoolean(titre+"&"+ligne1+"_cb", true);
 	    					prefsEditor.putString(titre+"&"+ligne1, titre);
 	    					prefsEditor.putString(titre+"&"+ligne1+"_id_station", id_station);
 	    					prefsEditor.putString(titre+"&"+ligne1+"_ligne", ligne1);
 	    					prefsEditor.putString(titre+"&"+ligne1+"_latitude", getArguments().getString("latitude"));
-	    					prefsEditor.putString(titre+"&"+ligne1+"_longitude", getArguments().getString("longitude"));
+	    					prefsEditor.putString(titre+"&"+ligne1+"_longitude", getArguments().getString("longitude"));*/
 	    					MainActivity.favoris_check=true;
 	    				}
 	    				prefsEditor.commit();	

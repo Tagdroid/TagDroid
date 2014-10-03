@@ -35,31 +35,33 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
                     Toast.LENGTH_LONG).show();
 
         // We check if it's the first app launch…
-        if (false && getSharedPreferences(WelcomeActivity.PREFS_NAME_2, 0).getBoolean("AppAlreadyLaunched", false))
+        if (getSharedPreferences(WelcomeActivity.PREFS_NAME_2, 0).getBoolean("AppAlreadyLaunched", false)) {
             startActivity(new Intent(this, LoadDBActivity.class));
+            finish();
+        } else {
+            PACKAGE_NAME = getApplicationContext().getPackageName();
+            setContentView(R.layout.welcome);
 
-        PACKAGE_NAME = getApplicationContext().getPackageName();
-        setContentView(R.layout.welcome);
+            if (Build.VERSION.SDK_INT >= 14) {
+                getActionBar().setIcon(R.drawable.tag);
+                getActionBar().setTitle("");
+            } else
+                getActionBar().setTitle(R.string.welcome_bienvenue);
 
-        if (Build.VERSION.SDK_INT >= 14) {
-            getActionBar().setIcon(R.drawable.tag);
-            getActionBar().setTitle("");
-        } else
-            getActionBar().setTitle(R.string.welcome_bienvenue);
+            LinePageIndicator indicator = (LinePageIndicator) findViewById(R.id.indicator);
+            WelcomeAdapter welcomePager = new WelcomeAdapter(getSupportFragmentManager());
+            mPager = (ViewPager) findViewById(R.id.pager);
 
-        LinePageIndicator indicator = (LinePageIndicator) findViewById(R.id.indicator);
-        WelcomeAdapter welcomePager = new WelcomeAdapter(getSupportFragmentManager());
-        mPager = (ViewPager) findViewById(R.id.pager);
+            float density = getResources().getDisplayMetrics().density;
+            indicator.setSelectedColor(0xff00b4f8);
+            indicator.setUnselectedColor(0x44888888);
+            indicator.setStrokeWidth(5 * density);
+            indicator.setLineWidth(40 * density);
 
-        float density = getResources().getDisplayMetrics().density;
-        indicator.setSelectedColor(0xff00b4f8);
-        indicator.setUnselectedColor(0x44888888);
-        indicator.setStrokeWidth(5 * density);
-        indicator.setLineWidth(40 * density);
+            mPager.setAdapter(welcomePager);
 
-        mPager.setAdapter(welcomePager);
-
-        indicator.setViewPager(mPager);
+            indicator.setViewPager(mPager);
+        }
     }
 
     @Override

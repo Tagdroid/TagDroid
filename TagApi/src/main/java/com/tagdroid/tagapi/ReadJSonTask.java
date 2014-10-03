@@ -13,10 +13,10 @@ import org.json.JSONObject;
 import com.tagdroid.tagapi.JSonApi.Transport.Locality;
 import com.tagdroid.tagapi.JSonApi.Transport.LogicalStop;
 import com.tagdroid.tagapi.JSonApi.Transport.PhysicalStop;
-import com.tagdroid.tagapi.SQLApi.MySQLiteHelper;
-import com.tagdroid.tagapi.SQLApi.LocalityDAO;
-import com.tagdroid.tagapi.SQLApi.LogicalStopDAO;
-import com.tagdroid.tagapi.SQLApi.PhysicalStopDAO;
+import com.tagdroid.tagapi.SQLApi.Transport.MySQLiteHelper;
+import com.tagdroid.tagapi.SQLApi.Transport.LocalityDAO;
+import com.tagdroid.tagapi.SQLApi.Transport.LogicalStopDAO;
+import com.tagdroid.tagapi.SQLApi.Transport.PhysicalStopDAO;
 
 /*
     Je lis chaque Token du stream en l'interprétant comme il se doit.
@@ -78,11 +78,11 @@ public class ReadJSonTask extends AsyncTask<Void, Integer, Void> {
 
 
     private void readDataNow(JSONArray jsonData) {
-        MySQLiteHelper dbHelper = new MySQLiteHelper(context, null);
+        MySQLiteHelper dbHelper = new MySQLiteHelper("TagDatabase.db",context, null);
         SQLiteDatabase bdd = dbHelper.getWritableDatabase();
         bdd.beginTransaction();
 
-        PhysicalStopDAO physicalStopDAO = new PhysicalStopDAO(bdd, dbHelper.isCreating,
+        PhysicalStopDAO physicalStopDAO = new PhysicalStopDAO(dbHelper, dbHelper.isCreating,
                 dbHelper.isUpgrading, dbHelper.oldVersion, dbHelper.newVersion);
         LogicalStopDAO logicalStopDAO = new LogicalStopDAO(bdd, dbHelper.isCreating,
                 dbHelper.isUpgrading, dbHelper.oldVersion, dbHelper.newVersion);
