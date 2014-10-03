@@ -1,4 +1,4 @@
-package com.tagdroid.tagapi.SQLApi;
+package com.tagdroid.tagapi.SQLApi.Transport;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -6,7 +6,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final int VERSION_BDD = 4;
-    public static final String databaseName = "TagDatabase.db";
 
     public boolean isUpgrading = false,
             isCreating = false;
@@ -14,7 +13,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             newVersion = -1;
 
 
-    public MySQLiteHelper(Context context, SQLiteDatabase.CursorFactory factory) {
+    public MySQLiteHelper(String databaseName, Context context, SQLiteDatabase.CursorFactory factory) {
         super(context, databaseName, factory, VERSION_BDD);
     }
 

@@ -1,4 +1,4 @@
-package com.tagdroid.tagapi.SQLApi;
+package com.tagdroid.tagapi.SQLApi.Transport;
 
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -35,9 +35,9 @@ public class PhysicalStopDAO {
 
     private SQLiteDatabase bdd;
 
-    public PhysicalStopDAO(SQLiteDatabase bdd, boolean isCreating,
+    public PhysicalStopDAO(MySQLiteHelper dbHelper, boolean isCreating,
                            boolean isUpdating, int oldVersion, int newVersion) {
-        this.bdd = bdd;
+        this.bdd = dbHelper.getWritableDatabase();
         if (isCreating){
             // On créé la table
             Log.d("SQLiteHelper", "Base is being created");

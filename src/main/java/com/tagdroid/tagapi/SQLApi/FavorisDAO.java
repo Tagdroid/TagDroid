@@ -1,0 +1,123 @@
+package com.tagdroid.tagapi.SQLApi;
+
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
+
+import com.tagdroid.tagapi.JSonApi.Favori;
+import com.tagdroid.tagapi.SQLApi.Transport.MySQLiteHelper;
+
+
+public class FavorisDAO {
+    public static final String TABLE_NAME = "Favoris",
+            ID = "Id",
+            NAME = "Name",
+            LINE = "Line",
+            LATITUDE = "Latitude",
+            LONGITUDE = "Longitude",
+            FAVORI = "Favori";
+
+    public static final String TABLE_CREATE = "CREATE TABLE " + TABLE_NAME + " (" +
+            ID + " INTEGER PRIMARY KEY, " +
+            NAME + " STRING, " +
+            LINE + " STRING, " +
+            LATITUDE + " INTEGER, " +
+            LONGITUDE + " INTEGER, " +
+            FAVORI + " BOOLEAN)";
+    public static final String TABLE_DROP = "DROP TABLE IF EXISTS " + TABLE_NAME;
+
+    private SQLiteDatabase bdd;
+
+    public FavorisDAO(MySQLiteHelper dbHelper, boolean isCreating,
+                      boolean isUpdating, int oldVersion, int newVersion) {
+        this.bdd = dbHelper.getWritableDatabase();
+        // bdd.execSQL(TABLE_CREATE);
+        if (isCreating){
+            // On créé la table
+            Log.d("SQLiteHelper", "Base is being created");
+            bdd.execSQL(TABLE_CREATE);
+        }
+        else if (isUpdating) {
+            Log.d("SQLiteHelper", "Base is being updated");
+            bdd.execSQL(TABLE_DROP);
+            bdd.execSQL(TABLE_CREATE);
+        }
+    }
+
+    public long add(Favori favori) {
+        if (existsFavoriOfId(favori.Id))
+            return 0;
+        else {
+            ContentValues values = new ContentValues();
+            values.put(ID, favori.Id);
+            values.put(NAME, favori.Name);
+            values.put(LINE, favori.Ligne);
+            values.put(LATITUDE, favori.Latitude);
+            values.put(LONGITUDE, favori.Longitude);
+            return bdd.insert(TABLE_NAME, null, values);
+
+        }
+    }
+
+    public long modify(Favori favori) {
+        ContentValues values = new ContentValues();
+        values.put(ID, favori.Id);
+        values.put(NAME, favori.Name);
+        values.put(LINE, favori.Ligne);
+        values.put(LATITUDE, favori.Latitude);
+        values.put(LONGITUDE, favori.Longitude);
+        return bdd.update(TABLE_NAME, values, ID + " = " + favori.Id, null);
+    }
+
+    public int delete(long id) {
+        return bdd.delete(TABLE_NAME, ID + " = " + id, null);
+    }
+
+    public Favori select(long Id) {
+        Cursor c = bdd.query(TABLE_NAME, new String[]{
+                ID,
+                NAME,
+                LINE,
+                LATITUDE,
+                LONGITUDE}, ID + " = \"" + Id + "\"", null, null, null, null);
+        c.moveToFirst();
+        Favori favori = new Favori(c.getInt(0),
+                c.getString(1),
+                c.getString(2),
+                c.getDouble(2),
+                c.getDouble(3));
+        c.close();
+        return favori;
+    }
+
+    public Favori[] list() {
+        Cursor c = bdd.query(TABLE_NAME, new String[]{ID, NAME, LINE, LATITUDE, LONGITUDE},
+                null, null, null, null, null);
+        int nombreFavoris = c.getCount();
+
+        Favori[] favoris = new Favori[nombreFavoris];
+
+        c.moveToFirst();
+        for(int i=0; i<nombreFavoris; i++)
+            favoris[i]=new Favori(c.getInt(0),
+                c.getString(1),
+                c.getString(2),
+                c.getDouble(2),
+                c.getDouble(3));
+        return favoris;
+    }
+
+    public Boolean existsFavoriOfId(Long id){
+        Cursor c = bdd.query(TABLE_NAME, new String[]{ID, NAME, LINE, LATITUDE, LONGITUDE},
+                ID + " = \"" + id +"\"", null, null, null, null);
+        c.moveToFirst();
+        if(c.getCount()>0){
+            c.close();
+            return true;
+        } else {
+            c.close();
+            return false;
+        }
+    }
+}
