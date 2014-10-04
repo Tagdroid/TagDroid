@@ -72,15 +72,13 @@ public class FavorisFragment extends Fragment {
         this.tracker.send(MapBuilder.createAppView().build());
         ListView listViewFavoris = (ListView) view.findViewById(R.id.listViewfavoris2);
 
-        final Favori[] favoris = getFavoris();
+        final FavorisHelper favorisHelper = new FavorisHelper(getActivity());
 
-        ArrayList<HashMap<String, String>> favorisList = createFavorisArray(favoris);
-
-        if (favorisList.isEmpty())
+        if (favorisHelper.getFavorisAdaptedArray().isEmpty())
             view.findViewById(R.id.noFavsLayout).setVisibility(View.VISIBLE);
         else {
             SimpleAdapter mSchedule = new SimpleAdapter(getActivity(),
-                    favorisList,
+                    favorisHelper.getFavorisAdaptedArray(),
                     R.layout.affichageitemgps,
                     new String[]{"nom", null, "ligne", "couleur"},
                     new int[]{R.id.titre, R.id.distance, R.id.station, R.id.fond_color});
@@ -88,7 +86,7 @@ public class FavorisFragment extends Fragment {
             listViewFavoris.setAdapter(mSchedule);
             listViewFavoris.setOnItemClickListener(new OnItemClickListener() {
                 public void onItemClick(AdapterView<?> a, View v, int position, long id) {
-                    Favori selectedFavori = favoris[position];
+                    Favori selectedFavori = favorisHelper.getFavoris()[position];
                     MainActivity.titre1 = selectedFavori.Name;
                     MainActivity.id_station1 = selectedFavori.Id.toString() + "_id_station";
                     MainActivity.ligne2 = selectedFavori.Ligne + "_ligne";
@@ -99,32 +97,5 @@ public class FavorisFragment extends Fragment {
                 }
             });
         }
-    }
-
-    Favori[] getFavoris() {
-        MySQLiteHelper dbHelper = new MySQLiteHelper("Favoris.db", getActivity(), null);
-        FavorisDAO favorisDAO = new FavorisDAO(dbHelper, false, false, -1, -1);
-        Favori[] favoris = favorisDAO.list();
-        dbHelper.close();
-        return favoris;
-    }
-
-    ArrayList<HashMap<String, String>> createFavorisArray(Favori[] favoris) {
-        ArrayList<HashMap<String, String>> listItem = new ArrayList<HashMap<String, String>>();
-        for (Favori i : favoris) {
-            HashMap<String, String> temp = new HashMap<String, String>();
-            temp.put("nom", i.Name);
-            temp.put("ligne", i.Ligne);
-            temp.put("id", i.Id.toString());
-            try {
-                temp.put("couleur", String.valueOf(
-                        R.color.class.getField(i.Ligne.toLowerCase().replaceAll(" ", "")).getInt(null)));
-            } catch (Exception e) {
-                e.printStackTrace();
-                temp.put("couleur", String.valueOf(R.color.lignea));
-            }
-            listItem.add(temp);
-        }
-        return listItem;
     }
 }

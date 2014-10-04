@@ -1,4 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="background_tab_pressed">#6633B5E5</color>
+    <color name="pressed_tagdroidtheme">#CC038BC4</color>
+    <color name="fond">#efefef</color>
+    <color name="gris">#dddddd</color>
+    <color name="noir">#000000</color>
+    <color name="gris_normal">#aaaaaa</color>
+    <color name="gris_fonce">#3a3e40</color>
+    <color name="blanc">#ffffff</color>
+    
+    <color name="map_pressed">#550099ff</color>
+    <color name="map_default">#00ffffff</color>
+    
+    <color name="vanille">#e29e24</color>
+    <color name="grenadine">#d2294d</color>
+    <color name="cafe">#902f24</color>
+    <color name="menthe">#68a62e</color>
+       
+    <color name="bleu_tag">#00b4f8</color> 
+    <color name="bleu_tag_fonce">#038bc4</color> 
+    <color name="bleu_tag_clair">#90dcfc</color> 
+     <color name="bleu_tag_clair2">#46c9fb</color> 
+    
+    <color name="lignea">#0174f4</color>
+    <color name="ligneb">#63d530</color>
+    <color name="lignec">#cf30d5</color>
+    <color name="ligned">#ff8c04</color>
+    <color name="lignee">#9FC536</color>
+    <color name="ligneco">#ffeb00</color>
+    <color name="lignen1">#014c94</color>
+    <color name="lignen3">#014c94</color>
+    <color name="lignen4">#014c94</color>   
+    <color name="lignecea">#f88696</color>
+    <color name="ligne1">#ed70a8</color>
+    <color name="ligne11">#fff265</color>
+    <color name="ligne13">#be272f</color>
+    <color name="ligne16">#76b3e2</color>
+    <color name="ligne17">#009d3a</color>
+    <color name="ligne21">#b6d698</color>
+    <color name="ligne23">#fecc00</color>
+    <color name="ligne26">#f2e613</color>
+    <color name="ligne30">#66c2bf</color>
+    <color name="ligne31">#a2318a</color>
+    <color name="ligne32">#bcce00</color>
+    <color name="ligne33">#f49a47</color>
+    <color name="ligne34">#e6b3d4</color>
+    <color name="ligne41">#65c1be</color>
+    <color name="ligne43">#cee7db</color>
+    <color name="ligne51">#bcce00</color>
+    <color name="ligne54">#c3b5db</color>
+    <color name="ligne55">#74b1e0</color>
+    <color name="ligne56">#f49b00</color>
+    <color name="ligne58">#74b1e0</color>
 </resources>

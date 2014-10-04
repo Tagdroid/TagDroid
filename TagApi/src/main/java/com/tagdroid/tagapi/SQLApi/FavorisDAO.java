@@ -108,6 +108,11 @@ public class FavorisDAO {
         return favoris;
     }
 
+    public int getFavorisNumber() {
+        return bdd.query(TABLE_NAME, new String[]{ID, NAME, LINE, LATITUDE, LONGITUDE},
+                null, null, null, null, null).getCount();
+    }
+
     public Boolean existsFavoriOfId(Long id){
         Cursor c = bdd.query(TABLE_NAME, new String[]{ID, NAME, LINE, LATITUDE, LONGITUDE},
                 ID + " = \"" + id +"\"", null, null, null, null);

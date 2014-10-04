@@ -6,7 +6,6 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.webkit.WebView;
 
 import java.io.BufferedReader;
@@ -15,107 +14,73 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class ChangeLog {
-    
-    private final Context context;
-    private String lastVersion, thisVersion;
+    static final String EOCL = "END_OF_CHANGE_LOG";
+    static final String TAG = "ChangeLog";
+    private static final String VERSIONNAME_KEY = "PREFS_VERSIONNAME_KEY";
+    final Context context;
+    String oldVersionName, nowVersionName;
+    Listmode listMode = Listmode.NONE;
+    StringBuffer sb = null;
 
-    private static final String VERSION_KEY = "PREFS_VERSION_KEY";
-    
     public ChangeLog(Context context) {
         this(context, PreferenceManager.getDefaultSharedPreferences(context));
     }
-        
-    public ChangeLog(Context context, SharedPreferences sp) {
+
+    public ChangeLog(Context context, SharedPreferences preferences) {
         this.context = context;
-
-        // get version numbers
-        this.lastVersion = sp.getString(VERSION_KEY, "");
-        Log.d(TAG, "lastVersion: " + lastVersion);
+        this.oldVersionName = preferences.getString(VERSIONNAME_KEY, "");
         try {
-                        this.thisVersion = context.getPackageManager().getPackageInfo(
-                                        context.getPackageName(), 0).versionName;
-                } catch (NameNotFoundException e) {
-                        this.thisVersion = "?";
-                        Log.e(TAG, "could not get version name from manifest!");
-                        e.printStackTrace();
-                }
-        Log.d(TAG, "appVersion: " + this.thisVersion);
-        
+            nowVersionName = context.getPackageManager().getPackageInfo(context.getPackageName(), 0)
+                    .versionName;
+        } catch (NameNotFoundException e) {
+            e.printStackTrace();
+        }
         // save new version number to preferences
-        SharedPreferences.Editor editor = sp.edit();
-        editor.putString(VERSION_KEY, this.thisVersion);
-        editor.apply();
-    }
-    
-    /**
-     * @return  The version name of the last installation of this app (as
-     *          described in the former manifest). This will be the same as
-     *          returned by <code>getThisVersion()</code> the second time
-     *          this version of the app is launched (more precisely: the
-     *          second time ChangeLog is instantiated).
-     */
-    public String getLastVersion() {
-        return  this.lastVersion;
-    }
-    
-    /**
-     * @return  The version name of this app as described in the manifest.
-     */
-    public String getThisVersion() {
-        return  this.thisVersion;
+        preferences.edit().putString(VERSIONNAME_KEY, this.nowVersionName).apply();
     }
 
-    /**
-     * @return  <code>true</code> if this version of your app is started the
-     *          first time
-     */
-    public boolean firstRun() {
-        return  ! this.lastVersion.equals(this.thisVersion);
+    public boolean isAppNewerVersion() {
+        return (!nowVersionName.equals(oldVersionName));
     }
 
-    /**
-     * @return  <code>true</code> if your app is started the first time ever.
-     *          Also <code>true</code> if your app was deinstalled and 
-     *          installed again.
-     */
     public boolean firstRunEver() {
-        return  "".equals(this.lastVersion);
+        return (oldVersionName.equals(""));
     }
 
     /**
-     * @return  an AlertDialog displaying the changes since the previous
-     *          installed version of your app (what's new).
+     * @return an AlertDialog displaying the changes since the previous
+     * installed version of your app (what's new).
      */
     public AlertDialog getLogDialog() {
-        return  this.getDialog(false);
+        return this.getDialog(false);
     }
 
     /**
-     * @return  an AlertDialog with a full change log displayed
+     * @return an AlertDialog with a full change log displayed
      */
     public AlertDialog getFullLogDialog() {
-        return  this.getDialog(true);
+        return this.getDialog(true);
     }
-    
+
     private AlertDialog getDialog(boolean full) {
         WebView wv = new WebView(this.context);
-        wv.setBackgroundColor(0); 
+        wv.setBackgroundColor(0);
         wv.loadDataWithBaseURL(null, this.getLog(full), "text/html", "UTF-8", null);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this.context);
-        builder.setTitle(context.getResources().getString(full 
-                            ? R.string.changelog_full_title
-                            : R.string.changelog_title))
+        builder.setTitle(context.getResources().getString(full
+                ? R.string.changelog_full_title
+                : R.string.changelog_title))
                 .setView(wv)
                 .setCancelable(false)
                 .setPositiveButton(
                         context.getResources().getString(
                                 R.string.changelog_ok_button),
                         new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
 
         if (!full) {
             builder.setNegativeButton(R.string.changelog_show_full,
@@ -123,37 +88,27 @@ public class ChangeLog {
                         public void onClick(DialogInterface dialog, int id) {
                             dialog.cancel();
                             getFullLogDialog().show();
-                    }
-            });
+                        }
+                    });
         }
 
-        return  builder.create();   
+        return builder.create();
     }
-    
+
     /**
-     * @return  HTML displaying the changes since the previous
-     *          installed version of your app (what's new)
+     * @return HTML displaying the changes since the previous
+     * installed version of your app (what's new)
      */
     public String getLog() {
-        return  this.getLog(false);
+        return this.getLog(false);
     }
 
     /**
-     * @return  HTML which displays full change log
+     * @return HTML which displays full change log
      */
     public String getFullLog() {
-        return  this.getLog(true);
+        return this.getLog(true);
     }
-
-    /** modes for HTML-Lists (bullet, numbered) */
-    private enum Listmode {
-        NONE,
-        ORDERED,
-        UNORDERED,
-    }
-    private Listmode listMode = Listmode.NONE;
-    private StringBuffer sb = null;
-    private static final String EOCL = "END_OF_CHANGE_LOG";
 
     private String getLog(boolean full) {
         sb = new StringBuffer();
@@ -171,44 +126,44 @@ public class ChangeLog {
                     this.closeList();
                     String version = line.substring(1).trim();
                     // stop output?
-                    if (! full) {
-                        if (this.lastVersion.equals(version)) {
+                    if (!full) {
+                        if (this.oldVersionName.equals(version)) {
                             advanceToEOVS = true;
                         } else if (version.equals(EOCL)) {
                             advanceToEOVS = false;
                         }
-                     }
-                } else if (! advanceToEOVS) {
-                        switch (marker) {
-                        case '%': 
-                                // line contains version title
-                                this.closeList();
-                                sb.append("<div class='title'>").append(line.substring(1).trim()).append("</div>\n");
-                                break;
+                    }
+                } else if (!advanceToEOVS) {
+                    switch (marker) {
+                        case '%':
+                            // line contains version title
+                            this.closeList();
+                            sb.append("<div class='title'>").append(line.substring(1).trim()).append("</div>\n");
+                            break;
                         case '_':
-                                // line contains version title
-                        this.closeList();
-                        sb.append("<div class='subtitle'>").append(line.substring(1).trim()).append("</div>\n");
-                        break;
+                            // line contains version title
+                            this.closeList();
+                            sb.append("<div class='subtitle'>").append(line.substring(1).trim()).append("</div>\n");
+                            break;
                         case '!':
-                        // line contains free text
-                        this.closeList();
-                        sb.append("<div class='freetext'>").append(line.substring(1).trim()).append("</div>\n");
-                        break;
+                            // line contains free text
+                            this.closeList();
+                            sb.append("<div class='freetext'>").append(line.substring(1).trim()).append("</div>\n");
+                            break;
                         case '#':
-                        // line contains numbered list item
-                        this.openList(Listmode.ORDERED);
-                        sb.append("<li>").append(line.substring(1).trim()).append("</li>\n");
-                        break;
+                            // line contains numbered list item
+                            this.openList(Listmode.ORDERED);
+                            sb.append("<li>").append(line.substring(1).trim()).append("</li>\n");
+                            break;
                         case '*':
-                        // line contains bullet list item
-                        this.openList(Listmode.UNORDERED);
-                        sb.append("<li>").append(line.substring(1).trim()).append("</li>\n");
-                        break;
+                            // line contains bullet list item
+                            this.openList(Listmode.UNORDERED);
+                            sb.append("<li>").append(line.substring(1).trim()).append("</li>\n");
+                            break;
                         default:
-                        // no special character: just use line as is
-                        this.closeList();
-                        sb.append(line).append("\n");
+                            // no special character: just use line as is
+                            this.closeList();
+                            sb.append(line).append("\n");
                     }
                 }
             }
@@ -218,9 +173,9 @@ public class ChangeLog {
             e.printStackTrace();
         }
 
-        return  sb.toString();
+        return sb.toString();
     }
-    
+
     private void openList(Listmode listMode) {
         if (this.listMode != listMode) {
             closeList();
@@ -232,6 +187,7 @@ public class ChangeLog {
             this.listMode = listMode;
         }
     }
+
     private void closeList() {
         if (this.listMode == Listmode.ORDERED) {
             sb.append("</ol></div>\n");
@@ -241,13 +197,10 @@ public class ChangeLog {
         this.listMode = Listmode.NONE;
     }
 
-    private static final String TAG = "ChangeLog";
 
-    /**
-     * manually set the last version name - for testing purposes only
-     * @param lastVersion
-     */
-    void setLastVersion(String lastVersion) {
-        this.lastVersion = lastVersion;
+    private enum Listmode {
+        NONE,
+        ORDERED,
+        UNORDERED,
     }
 }
