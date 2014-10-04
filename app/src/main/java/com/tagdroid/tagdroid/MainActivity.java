@@ -48,13 +48,9 @@ public class MainActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("MainActivity", "Just starting");
         setContentView(R.layout.activity_main);
 
-        ChangeLog changeLog = new ChangeLog(this);
-        if (changeLog.isAppNewerVersion())
-            changeLog.getLogDialog().show();
-
+        (new ChangeLog()).init(this, false);
 
         Parse.initialize(this, "CdJdR3cRkKAcnHHWcxRXzseLYUPBJdkP0bUzVLFW", "zNLrxOANbZZJi1Brh5P7vyjUkZrpsptFJWKwckcl");
 

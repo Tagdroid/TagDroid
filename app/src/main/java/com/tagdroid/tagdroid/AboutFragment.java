@@ -20,7 +20,6 @@ import com.google.analytics.tracking.android.Tracker;
 
 public class AboutFragment extends Fragment implements View.OnClickListener {
     private Tracker tracker;
-    private ChangeLog cl;
 
     public static AboutFragment newInstance() {
         return new AboutFragment();
@@ -52,8 +51,6 @@ public class AboutFragment extends Fragment implements View.OnClickListener {
         MainActivity.mTitle = getResources().getString(R.string.about);
         getActivity().getActionBar().setTitle(getResources().getString(R.string.about));
 
-        cl = new ChangeLog(getActivity());
-
         view.findViewById(R.id.mailQuentin).setOnClickListener(this);
         view.findViewById(R.id.mailFélix).setOnClickListener(this);
         view.findViewById(R.id.mailAlexandre).setOnClickListener(this);
@@ -72,7 +69,8 @@ public class AboutFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.showlog) {
-            cl.getFullLogDialog().show();
+            (new ChangeLog()).start(false);
+//            cl.getFullLogDialog().show();
             return;
         }
 
