@@ -3,11 +3,9 @@ package com.tagdroid.tagapi.SQLApi;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import com.tagdroid.tagapi.JSonApi.Favori;
 import com.tagdroid.tagapi.SQLApi.Transport.MySQLiteHelper;
-
 
 public class FavorisDAO {
     public static final String TABLE_NAME = "Favoris",
@@ -18,7 +16,7 @@ public class FavorisDAO {
             LONGITUDE = "Longitude",
             FAVORI = "Favori";
 
-    public static final String TABLE_CREATE = "CREATE TABLE " + TABLE_NAME + " (" +
+    public static final String TABLE_CREATE = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (" +
             ID + " INTEGER PRIMARY KEY, " +
             NAME + " STRING, " +
             LINE + " STRING, " +
@@ -32,14 +30,12 @@ public class FavorisDAO {
     public FavorisDAO(MySQLiteHelper dbHelper, boolean isCreating,
                       boolean isUpdating, int oldVersion, int newVersion) {
         this.bdd = dbHelper.getWritableDatabase();
-        // bdd.execSQL(TABLE_CREATE);
+        bdd.execSQL(TABLE_CREATE);
         if (isCreating){
             // On créé la table
-            Log.d("SQLiteHelper", "Base is being created");
             bdd.execSQL(TABLE_CREATE);
         }
         else if (isUpdating) {
-            Log.d("SQLiteHelper", "Base is being updated");
             bdd.execSQL(TABLE_DROP);
             bdd.execSQL(TABLE_CREATE);
         }
