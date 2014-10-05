@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fond_affichage"
+    android:layout_width="fill_parent"
+    android:background="@color/fond"
+    android:layout_height="50dp">
+    <ImageView
+        android:id="@+id/fond_color"
+        android:layout_width="15dp"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="@color/lignec"
+        android:src="@drawable/shadow_right"
+        android:scaleType="fitXY"/>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center_vertical"
+        android:layout_toEndOf="@id/fond_color"
+        android:layout_toRightOf="@id/fond_color"
+        android:layout_toLeftOf="@+id/distance"
+        android:layout_toStartOf="@+id/distance"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:orientation="vertical">
+        <TextView android:id="@+id/titre"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:lines="1"
+            android:textColor="@color/gris_fonce"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+        <TextView android:id="@+id/station"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/gris_normal"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <TextView android:id="@+id/distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/arrow"
+        android:layout_toStartOf="@+id/arrow"
+        android:layout_centerVertical="true"
+        android:textColor="@color/gris_fonce"
+        android:textSize="12sp" />
+    <ImageView android:id="@+id/arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="10dp"
+        android:src="@drawable/arrow_right" />
+</RelativeLayout>

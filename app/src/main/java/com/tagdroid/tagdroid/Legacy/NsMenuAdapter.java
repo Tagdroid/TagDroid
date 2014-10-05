@@ -46,9 +46,9 @@ public class NsMenuAdapter extends ArrayAdapter<NsMenuItemModel> {
         View view = convertView;
 
         if (view == null) {
-            int layout = R.layout.drawer_item;
+            int layout = R.layout.listitem_drawer_item;
             if (item.isHeader)
-                layout = R.layout.drawer_header;
+                layout = R.layout.listitem_drawer_header;
 
             view = LayoutInflater.from(getContext()).inflate(layout, null);
 

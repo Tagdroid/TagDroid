@@ -9,7 +9,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.tagdroid.tagdroid.Legacy.ActualitésFragment;
 import com.tagdroid.tagdroid.R;
 
 import java.util.ArrayList;
@@ -64,11 +63,11 @@ public class LazyAdapter extends BaseAdapter {
         }
         else
                 holder=(ViewHolder)vi.getTag();
-        holder.titre.setText(actu.get(ActualitésFragment.KEY_TITRE));
-        holder.description.setText(actu.get(ActualitésFragment.KEY_DESCRIPTION));
-		holder.image.setTag(actu.get(ActualitésFragment.KEY_IMAGE));
+        holder.titre.setText(actu.get("titre"));
+        holder.description.setText(actu.get("description"));
+		holder.image.setTag(actu.get("image"));
 
-        imageLoader.DisplayImage(actu.get(ActualitésFragment.KEY_IMAGE), holder.image);
+        imageLoader.DisplayImage(actu.get("image"), holder.image);
 
         return vi;
     }

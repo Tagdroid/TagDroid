@@ -21,7 +21,7 @@ import android.widget.ListView;
 import com.tagdroid.tagdroid.Drawer.CustomAdapter;
 import com.tagdroid.tagdroid.Pages.*;
 
-public class NewMainActivity extends Activity {
+public class MainActivity extends Activity {
     private static DrawerLayout drawer;
     private static ListView drawerList;
     private static ActionBarDrawerToggle drawerToggle;

@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.tagdroid.tagdroid.Legacy.LoadDBActivity;
-import com.tagdroid.tagdroid.NewMainActivity;
+import com.tagdroid.tagdroid.MainActivity;
 import com.tagdroid.tagdroid.R;
 import com.viewpagerindicator.LinePageIndicator;
 
@@ -37,11 +37,11 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
 
         // We check if it's the first app launch…
         if (getSharedPreferences(WelcomeActivity.PREFS_NAME_2, 0).getBoolean("AppAlreadyLaunched", false)) {
-            startActivity(new Intent(this, NewMainActivity.class));
+            startActivity(new Intent(this, MainActivity.class));
             finish();
         } else {
             PACKAGE_NAME = getApplicationContext().getPackageName();
-            setContentView(R.layout.welcome);
+            setContentView(R.layout.activity_welcome);
 
             if (Build.VERSION.SDK_INT >= 14) {
                 getActionBar().setIcon(R.drawable.tag);

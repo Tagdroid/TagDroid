@@ -10,8 +10,6 @@ import android.view.ViewGroup;
 
 import com.tagdroid.tagdroid.R;
 
-import java.lang.reflect.Field;
-
 public class WelcomeFragment extends Fragment {
     public static interface OnButtonClicked {
         public void onFinalButtonClicked();

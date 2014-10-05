@@ -46,11 +46,11 @@ public class CustomAdapter extends ArrayAdapter<CustomMenuItem> {
             CustomMenuItem item = getItem(position);
             ViewHolder holder = new ViewHolder();
             if (item.isHeader) {
-                view = LayoutInflater.from(getContext()).inflate(R.layout.drawer_header, parent, false);
+                view = LayoutInflater.from(getContext()).inflate(R.layout.listitem_drawer_header, parent, false);
                 holder.principalText = (TextView) view.findViewById(R.id.menurow_title);
                 holder.principalText.setText(item.title);
             } else {
-                view = LayoutInflater.from(getContext()).inflate(R.layout.drawer_item, parent, false);
+                view = LayoutInflater.from(getContext()).inflate(R.layout.listitem_drawer_item, parent, false);
                 holder.principalText = (TextView) view.findViewById(R.id.menurow_title);
                 holder.principalText.setText(item.title);
 

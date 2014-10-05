@@ -110,7 +110,7 @@ public class ActualitésFragment extends Page implements AdapterView.OnItemClick
                             map.put("titre", rssItem.getTitle());
                             String[] RSSStrings = rssItem.getDescription().split("> ");
                             map.put("description", RSSStrings[1]);
-                            map.put("", "http://www.tag.fr" + RSSStrings[0]
+                            map.put("image", "http://www.tag.fr" + RSSStrings[0]
                                             .split("src=\"")[1]
                                             .split("\"")[0]
                                             .replace("IMF_VIGNETTEALAUNE", "IMF_LARGE")
@@ -131,7 +131,7 @@ public class ActualitésFragment extends Page implements AdapterView.OnItemClick
                                             .replace("<span style=\"font-size:12px;\">", "").replace("</span>", "")
                                             .replace("</p>", "")
                             );
-                            map.put("", rssItem.getDescription()
+                            map.put("image", rssItem.getDescription()
                                             .split("img src=\"")[1]
                                             .split("\"")[0]
                             );

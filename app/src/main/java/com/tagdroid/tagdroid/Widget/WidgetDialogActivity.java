@@ -37,7 +37,7 @@ public class WidgetDialogActivity extends Activity {
         } else {
             SimpleAdapter mSchedule = new SimpleAdapter(this,
                     favorisHelper.getFavorisAdaptedArray(),
-                    R.layout.affichageitemgps,
+                    R.layout.listitem_station,
                     new String[]{"nom", null, "ligne", "couleur"},
                     new int[]{R.id.titre, R.id.distance, R.id.station, R.id.fond_color});
 

@@ -24,7 +24,6 @@ import com.tagdroid.tagdroid.R;
 public class FavorisFragment extends Fragment {
     private static View view;
     private Tracker tracker;
-    private Bundle mBundle;
 
     public static FavorisFragment newInstance() {
         return new FavorisFragment();
@@ -38,7 +37,7 @@ public class FavorisFragment extends Fragment {
         }
 
         try {
-            view = inflater.inflate(R.layout.favorislist, container, false);
+            view = inflater.inflate(R.layout.fragment_favoris, container, false);
         } catch (InflateException ignored) {
         }
 
@@ -50,7 +49,6 @@ public class FavorisFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mBundle = savedInstanceState;
         setRetainInstance(true);
         setHasOptionsMenu(true);
         this.tracker = EasyTracker.getInstance(this.getActivity());
@@ -67,7 +65,7 @@ public class FavorisFragment extends Fragment {
         super.onResume();
         this.tracker.set(Fields.SCREEN_NAME, ((Object) this).getClass().getSimpleName());
         this.tracker.send(MapBuilder.createAppView().build());
-        ListView listViewFavoris = (ListView) view.findViewById(R.id.listViewfavoris2);
+        ListView listViewFavoris = (ListView) view.findViewById(R.id.listFavoris);
 
         final FavorisHelper favorisHelper = new FavorisHelper(getActivity());
 
@@ -76,7 +74,7 @@ public class FavorisFragment extends Fragment {
         else {
             SimpleAdapter mSchedule = new SimpleAdapter(getActivity(),
                     favorisHelper.getFavorisAdaptedArray(),
-                    R.layout.affichageitemgps,
+                    R.layout.listitem_station,
                     new String[]{"nom", null, "ligne", "couleur"},
                     new int[]{R.id.titre, R.id.distance, R.id.station, R.id.fond_color});
 

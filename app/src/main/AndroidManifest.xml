@@ -76,7 +76,7 @@
         <activity
             android:name=".Legacy.MainActivity" />
         <activity
-            android:name=".NewMainActivity" />
+            android:name=".MainActivity" />
         <activity
             android:name=".Legacy.LoadDBActivity"
             android:theme="@android:style/Theme.Holo.NoActionBar" />
