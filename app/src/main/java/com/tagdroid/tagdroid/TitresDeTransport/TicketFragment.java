@@ -15,7 +15,7 @@ import com.google.analytics.tracking.android.EasyTracker;
 import com.google.analytics.tracking.android.Fields;
 import com.google.analytics.tracking.android.MapBuilder;
 import com.google.analytics.tracking.android.Tracker;
-import com.tagdroid.tagdroid.MainActivity;
+import com.tagdroid.tagdroid.Legacy.MainActivity;
 import com.tagdroid.tagdroid.R;
 
 public class TicketFragment extends Fragment implements OnItemSelectedListener {

@@ -4,15 +4,4 @@
         android:icon="@drawable/pdf_menu"
         android:showAsAction="ifRoom"
         android:title="@string/menu_pdf"/>
-     <item
-        android:id="@+id/menu_rate"
-        android:icon="@drawable/menu_rate"
-        android:showAsAction="ifRoom"
-        android:title="@string/rate"/>
-     
-    <item
-        android:id="@+id/menu_about"
-        android:icon="@drawable/menu_about"
-        android:showAsAction="ifRoom"
-        android:title="@string/about"/>
 </menu>

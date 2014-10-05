@@ -1,30 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string-array name="ns_menu_items">
-        <item>ns_menu_snippet1</item>
-        <item>ns_menu_snippet2</item>
-        <item>ns_menu_snippet3</item>
-        <item>ns_menu_snippet4</item>       
-    </string-array>
-    
-    <string-array name="ns_menu_items2">
-        <item>ns_menu_snippet5</item>
-        <item>ns_menu_snippet6</item>
-        <item>ns_menu_snippet7</item>
-    </string-array>
-
-    <array name="ns_menu_items_icon">
-        <item>direction</item>
-        <item>fav</item>
-        <item>radar</item>
-        <item>map</item>
+    <array name="drawer_reseau_items_titles">
+        <item>@string/drawer_item_stations</item>
+        <item>@string/drawer_item_favoris</item>
+        <item>@string/drawer_item_proximite</item>
+        <item>@string/drawer_item_plan</item>
+    </array>
+    <array name="drawer_reseau_items_icons">
+        <item>@drawable/direction</item>
+        <item>@drawable/fav</item>
+        <item>@drawable/radar</item>
+        <item>@drawable/map</item>
     </array>
     
-     <array name="ns_menu_items_icon2">
-        <item>trafic</item>
-        <item>news</item>
-        <item>tarif</item>
+    <array name="drawer_infos_items_titles">
+        <item>@string/drawer_item_trafic</item>
+        <item>@string/drawer_item_actualites</item>
+        <item>@string/drawer_item_tickets</item>
+    </array>
+
+    
+     <array name="drawer_infos_items_icons">
+        <item>@drawable/trafic</item>
+        <item>@drawable/news</item>
+        <item>@drawable/tarif</item>
     </array>
 
 </resources>

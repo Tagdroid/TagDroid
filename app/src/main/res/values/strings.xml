@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">TAGdroid</string> 
+    <string name="app_name">TAGDroid</string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="menu_pdf">Plan PDF</string>
     
-    <string name="ns_menu_main_header">Réseau</string>
+    <string name="ns_menu_reseau_header">Réseau</string>
     <string name="ns_menu_main_header2">Informations</string>
     
-    <string name="ns_menu_snippet1">Stations</string>
-    <string name="ns_menu_snippet2">Favoris</string>
-    <string name="ns_menu_snippet3">Proximité</string>
-    <string name="ns_menu_snippet4">Plan</string>
+    <string name="drawer_item_stations">Stations</string>
+    <string name="drawer_item_favoris">Favoris</string>
+    <string name="drawer_item_proximite">Proximité</string>
+    <string name="drawer_item_plan">Plan</string>
     
-    <string name="ns_menu_snippet5">Trafic Info</string>
-    <string name="ns_menu_snippet6">Actualités</string>
-    <string name="ns_menu_snippet7">Titres de transports</string>
+    <string name="drawer_item_trafic">Trafic Info</string>
+    <string name="drawer_item_actualites">Actualités</string>
+    <string name="drawer_item_tickets">Titres de transports</string>
 
 	<!-- WIDGET -->
 	<string name="choose_fav">Choisissez votre station favorite :</string>
@@ -133,4 +133,5 @@
 	<string name="welcome_texte13">N\'hesitez pas à évaluer l\'application. D\'une certaine manière, en donnant votre avis, vous contribuez à son développement.</string>
 	<string name="welcome_texte14">Voila, vous savez tout. Cliquez sur le bouton vert !</string>
     <string name="allons_y">Allons-y !</string>
+    <string name="lignes">Lignes</string>
 </resources>

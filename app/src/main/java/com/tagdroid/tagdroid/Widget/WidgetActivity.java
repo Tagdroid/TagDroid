@@ -11,7 +11,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.RemoteViews;
 
-import com.tagdroid.tagdroid.MainActivity;
+import com.tagdroid.tagdroid.Legacy.MainActivity;
 import com.tagdroid.tagdroid.R;
 
 import org.jsoup.Jsoup;

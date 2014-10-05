@@ -1,11 +1,11 @@
-package com.tagdroid.tagdroid;
+package com.tagdroid.tagdroid.Legacy;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.text.Html;
 import android.util.Log;
 import android.view.InflateException;
@@ -27,11 +27,13 @@ import com.google.analytics.tracking.android.MapBuilder;
 import com.google.analytics.tracking.android.Tracker;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.tagdroid.tagapi.JSonApi.Favori;
 import com.tagdroid.tagapi.SQLApi.FavorisDAO;
 import com.tagdroid.tagapi.SQLApi.Transport.MySQLiteHelper;
+import com.tagdroid.tagdroid.Favoris.FavorisHelper;
+import com.tagdroid.tagdroid.R;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -181,7 +183,13 @@ public class StationDetailFragment extends Fragment {
 
         //Gestion des favoris
         Log.d("id_station", id_station);
-        prefName = FavorisHelper.isFavori(getActivity(), Integer.valueOf(id_station.split("_")[0]));
+        String[] tmp = id_station.split("=");
+        int station;
+        if (tmp.length == 2)
+            station = Integer.valueOf(tmp[1]);
+        else
+            station = Integer.valueOf(id_station.split("_")[0]);
+        prefName = FavorisHelper.isFavori(getActivity(), station);
         return view;
     }
 
@@ -197,7 +205,13 @@ public class StationDetailFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        prefName = FavorisHelper.isFavori(getActivity(), Integer.valueOf(id_station.split("_")[0]));
+        String[] tmp = id_station.split("=");
+        int station;
+        if (tmp.length == 2)
+            station = Integer.valueOf(tmp[1]);
+        else
+            station = Integer.valueOf(id_station.split("_")[0]);
+        prefName = FavorisHelper.isFavori(getActivity(), station);
         this.tracker.set(Fields.SCREEN_NAME, ((Object) this).getClass().getSimpleName());
         this.tracker.send(MapBuilder.createAppView().build());
     }
@@ -205,7 +219,7 @@ public class StationDetailFragment extends Fragment {
 
     @SuppressLint("NewApi")
     private void setUpMapIfNeeded() {
-        SupportMapFragment fm = (SupportMapFragment) getFragmentManager().findFragmentById(R.id.map2);
+        MapFragment fm = (MapFragment) getFragmentManager().findFragmentById(R.id.map2);
         mMap = fm.getMap();
         if (mMap != null) {
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(place.latitude + 0.001, place.longitude), 15));
@@ -245,24 +259,36 @@ public class StationDetailFragment extends Fragment {
                     item.setChecked(false);
                     item.setIcon(R.drawable.menu_favoris);
                     Toast.makeText(getActivity(), R.string.delfavoris, Toast.LENGTH_SHORT).show();
-                    favorisDAO.delete(Integer.valueOf(id_station.split("=")[1]));
+                    String[] tmp = id_station.split("=");
+                    int station;
+                    if (tmp.length == 2)
+                        station = Integer.valueOf(tmp[1]);
+                    else
+                        station = Integer.valueOf(id_station.split("_")[0]);
+                    favorisDAO.delete(station);
                     MainActivity.favoris_check = false;
 
                 } else {
                     item.setChecked(true);
                     item.setIcon(R.drawable.menu_favoris_checked);
                     Toast.makeText(getActivity(), R.string.addfavoris, Toast.LENGTH_SHORT).show();
+                    String[] tmp = id_station.split("=");
+                    int station;
+                    if (tmp.length == 2)
+                        station = Integer.valueOf(tmp[1]);
+                    else
+                        station = Integer.valueOf(id_station.split("_")[0]);
                     favorisDAO.add(new Favori(
-                            Integer.valueOf(id_station.split("=")[1]), titre, ligne1,
+                            station, titre, ligne1,
                             Double.valueOf(getArguments().getString("latitude")),
                             Double.valueOf(getArguments().getString("longitude"))));
                     MainActivity.favoris_check = true;
                 }
 
                 NsMenuAdapter mAdapter = new NsMenuAdapter(getActivity());
-                mAdapter.addHeader(R.string.ns_menu_main_header);
-                String[] menuItems = getResources().getStringArray(R.array.ns_menu_items);
-                String[] menuItemsIcon = getResources().getStringArray(R.array.ns_menu_items_icon);
+                mAdapter.addHeader(R.string.ns_menu_reseau_header);
+                String[] menuItems = getResources().getStringArray(R.array.drawer_reseau_items_titles);
+                String[] menuItemsIcon = getResources().getStringArray(R.array.drawer_reseau_items_icons);
 
                 int res = 0;
                 for (String item3 : menuItems) {
@@ -278,8 +304,8 @@ public class StationDetailFragment extends Fragment {
 
                 mAdapter.addHeader(R.string.ns_menu_main_header2);
 
-                menuItems = getResources().getStringArray(R.array.ns_menu_items2);
-                String[] menuItemsIcon2 = getResources().getStringArray(R.array.ns_menu_items_icon2);
+                menuItems = getResources().getStringArray(R.array.drawer_infos_items_titles);
+                String[] menuItemsIcon2 = getResources().getStringArray(R.array.drawer_infos_items_icons);
 
                 int res2 = 0;
                 for (String item4 : menuItems) {
@@ -317,7 +343,6 @@ public class StationDetailFragment extends Fragment {
     }
 
     private class Calcul_ID_Jour extends AsyncTask<Void, Void, String> {
-
         protected void onPreExecute() {
             super.onPreExecute();
         }

@@ -1,4 +1,4 @@
-package com.tagdroid.tagdroid;
+package com.tagdroid.tagdroid.Legacy;
 
 import android.app.Activity;
 import android.content.Context;
@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.tagdroid.tagdroid.R;
 import com.tagdroid.tagdroid.SQLite.ReseauTAG;
 
 import org.json.JSONArray;

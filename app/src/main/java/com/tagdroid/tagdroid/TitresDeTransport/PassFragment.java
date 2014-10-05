@@ -33,7 +33,7 @@ public class PassFragment extends Fragment implements OnItemSelectedListener {
 		View view = inflater.inflate(R.layout.pass, container, false);
 				
 		String[] items = new String[] {"Tout public", "Jeune (4 à 18 ans)",
-									"Etudiant (19 � 25 ans)", "Plus de 65 ans",
+									"Etudiant (19 à 25 ans)", "Plus de 65 ans",
 									"Plus de 75 ans", "Invalide (à plus de 80%)","PDE"};
 		
 		String[] items2 = new String[] {"Aucun", "QF 395 € ou moins",

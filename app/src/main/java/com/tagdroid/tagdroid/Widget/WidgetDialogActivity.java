@@ -15,7 +15,7 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.tagdroid.tagapi.JSonApi.Favori;
-import com.tagdroid.tagdroid.FavorisHelper;
+import com.tagdroid.tagdroid.Favoris.FavorisHelper;
 import com.tagdroid.tagdroid.R;
 
 public class WidgetDialogActivity extends Activity {

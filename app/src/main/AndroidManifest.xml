@@ -74,9 +74,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity" />
+            android:name=".Legacy.MainActivity" />
         <activity
-            android:name=".LoadDBActivity"
+            android:name=".NewMainActivity" />
+        <activity
+            android:name=".Legacy.LoadDBActivity"
             android:theme="@android:style/Theme.Holo.NoActionBar" />
         <activity
             android:name="com.google.android.gms.ads.AdActivity"

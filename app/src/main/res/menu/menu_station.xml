@@ -10,17 +10,5 @@
         android:actionViewClass="com.manuelpeinado.refreshactionitem.RefreshActionItem"
         android:icon="@drawable/ic_menu_refresh"
         android:showAsAction="ifRoom"
-        android:title="Refresh"/>   
-    
-     <item
-        android:id="@+id/menu_rate"
-        android:icon="@drawable/menu_rate"
-        android:showAsAction="ifRoom"
-        android:title="@string/rate"/>
-     
-    <item
-        android:id="@+id/menu_about"
-        android:icon="@drawable/menu_about"
-        android:showAsAction="ifRoom"
-        android:title="@string/about"/>
+        android:title="Refresh"/>
 </menu>

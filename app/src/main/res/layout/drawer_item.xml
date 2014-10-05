@@ -47,6 +47,7 @@
             android:textAppearance="?android:attr/textAppearanceListItemSmall"
             android:textColor="#FFFFFF"
             android:textSize="12sp"
+            android:visibility="gone"
             android:textStyle="bold" />
     </RelativeLayout>
 

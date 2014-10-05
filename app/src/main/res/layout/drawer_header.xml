@@ -20,12 +20,12 @@
         android:textSize="13sp"
         android:textStyle="bold" />
 
-    <ImageView
+    <View
         android:id="@+id/menu_divider"
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_below="@+id/menurow_title"
         android:layout_marginBottom="5dp"
-        android:src="@color/blanc" />
+        android:background="@color/blanc" />
 
 </RelativeLayout>

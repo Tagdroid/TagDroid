@@ -1,4 +1,4 @@
-package com.tagdroid.tagdroid;
+package com.tagdroid.tagdroid.Favoris;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -18,11 +18,8 @@ import com.google.analytics.tracking.android.Fields;
 import com.google.analytics.tracking.android.MapBuilder;
 import com.google.analytics.tracking.android.Tracker;
 import com.tagdroid.tagapi.JSonApi.Favori;
-import com.tagdroid.tagapi.SQLApi.FavorisDAO;
-import com.tagdroid.tagapi.SQLApi.Transport.MySQLiteHelper;
-
-import java.util.ArrayList;
-import java.util.HashMap;
+import com.tagdroid.tagdroid.Legacy.MainActivity;
+import com.tagdroid.tagdroid.R;
 
 public class FavorisFragment extends Fragment {
     private static View view;

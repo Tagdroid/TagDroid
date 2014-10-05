@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>	
-    <string name="app_name">TAGdroid</string> 
+    <string name="app_name">TAGDroid</string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="menu_pdf">PDF Map</string>
     
-    <string name="ns_menu_main_header">Network</string>
+    <string name="ns_menu_reseau_header">Network</string>
     <string name="ns_menu_main_header2">Information</string>
     
-    <string name="ns_menu_snippet1">Stations</string>
-    <string name="ns_menu_snippet2">Bookmarks</string>
-    <string name="ns_menu_snippet3">Proximity</string>
-    <string name="ns_menu_snippet4">Map</string>
+    <string name="drawer_item_stations">Stations</string>
+    <string name="drawer_item_favoris">Bookmarks</string>
+    <string name="drawer_item_proximite">Proximity</string>
+    <string name="drawer_item_plan">Map</string>
     
-    <string name="ns_menu_snippet5">Traffic Report</string>
-    <string name="ns_menu_snippet6">News</string>
-    <string name="ns_menu_snippet7">Transport Ticket</string>
+    <string name="drawer_item_trafic">Traffic Report</string>
+    <string name="drawer_item_actualites">News</string>
+    <string name="drawer_item_tickets">Transport Ticket</string>
 
 	<!-- WIDGET -->
 	<string name="choose_fav">Choose your favorite station:</string>

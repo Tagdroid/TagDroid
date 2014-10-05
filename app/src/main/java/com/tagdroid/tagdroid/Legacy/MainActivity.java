@@ -1,55 +1,34 @@
-package com.tagdroid.tagdroid;
+package com.tagdroid.tagdroid.Legacy;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
-import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.astuetz.pagerslidingtabstrip.PagerSlidingTabStrip;
-import com.google.analytics.tracking.android.EasyTracker;
-import com.parse.Parse;
-import com.parse.ParseAnalytics;
-import com.parse.ParseInstallation;
-import com.parse.PushService;
-import com.tagdroid.tagdroid.TitresDeTransport.CombinesFragment;
-import com.tagdroid.tagdroid.TitresDeTransport.PassFragment;
-import com.tagdroid.tagdroid.TitresDeTransport.TicketFragment;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity {
     public static String mTitle = "Stations";
-    static ListView mDrawerList;
-    static boolean favoris_check, addbus_check;
-    static String titre1, id_station1, ligne2, latitude1, longitude1;
-    static String flux, title, description, link, intent;
-    static double latitude, longitude;
-    static MyPagerAdapter adapter;
-    static String[] TITLES = {"STATIONS"};
+    public static ListView mDrawerList;
+    public static boolean favoris_check;
+    public static boolean addbus_check;
+    public static String titre1, id_station1, ligne2, latitude1, longitude1;
+    public static String flux, title, description, link, intent;
+    public static double latitude, longitude;
+    public static com.astuetz.viewpager.extensions.sample.MainActivity.MyPagerAdapter adapter;
+    public static String[] TITLES = {"STATIONS"};
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private String[] menuItems;
     private NsMenuAdapter mAdapter;
     private PagerSlidingTabStrip tabs;
     private ViewPager pager;
-
+ /*extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        initUI();
         (new ChangeLog()).init(this, false);
 
         Parse.initialize(this, "CdJdR3cRkKAcnHHWcxRXzseLYUPBJdkP0bUzVLFW", "zNLrxOANbZZJi1Brh5P7vyjUkZrpsptFJWKwckcl");
@@ -57,10 +36,13 @@ public class MainActivity extends FragmentActivity {
         PushService.setDefaultPushCallback(this, MainActivity.class);
         ParseInstallation.getCurrentInstallation().saveInBackground();
         ParseAnalytics.trackAppOpened(getIntent());
+    }
 
+    private void initUI() {
         tabs = (PagerSlidingTabStrip) findViewById(R.id.tabs);
         pager = (ViewPager) findViewById(R.id.pager);
         adapter = new MyPagerAdapter(getSupportFragmentManager());
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         TabChange();
 
@@ -69,18 +51,17 @@ public class MainActivity extends FragmentActivity {
             getActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        _initMenu();
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        initMenu();
         mDrawerToggle = new CustomActionBarDrawerToggle(this, mDrawerLayout);
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         mDrawerList.setItemChecked(0, true);
     }
 
-    private void _initMenu() {
+    private void initMenu() {
         mAdapter = new NsMenuAdapter(this);
-        mAdapter.addHeader(R.string.ns_menu_main_header);
-        menuItems = getResources().getStringArray(R.array.ns_menu_items);
-        String[] menuItemsIcon = getResources().getStringArray(R.array.ns_menu_items_icon);
+        mAdapter.addHeader(R.string.ns_menu_reseau_header);
+        menuItems = getResources().getStringArray(R.array.drawer_reseau_items_titles);
+        String[] menuItemsIcon = getResources().getStringArray(R.array.drawer_reseau_items_icons);
 
         int res = 0;
         for (String item : menuItems) {
@@ -98,8 +79,8 @@ public class MainActivity extends FragmentActivity {
 
         mAdapter.addHeader(R.string.ns_menu_main_header2);
 
-        menuItems = getResources().getStringArray(R.array.ns_menu_items2);
-        String[] menuItemsIcon2 = getResources().getStringArray(R.array.ns_menu_items_icon2);
+        menuItems = getResources().getStringArray(R.array.drawer_infos_items_titles);
+        String[] menuItemsIcon2 = getResources().getStringArray(R.array.drawer_infos_items_icons);
 
         int res2 = 0;
         for (String item : menuItems) {
@@ -201,21 +182,26 @@ public class MainActivity extends FragmentActivity {
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if ((keyCode == KeyEvent.KEYCODE_BACK) && !(TITLES[0].equals("STATIONS"))) {
-            if (TITLES[0].equals("STATIONDETAIL") && StationsFragment.ligne != null) {
-                if (StationsFragment.ligne.equals("map")) TITLES = new String[]{"MAP"};
-                else TITLES = new String[]{"LIGNE"};
-            } else TITLES = new String[]{"STATIONS"};
+            if (TITLES[0].equals("STATIONDETAIL") && StationsFragment.ligne != null)
+                if (StationsFragment.ligne.equals("map"))
+                    TITLES = new String[]{"MAP"};
+                else
+                    TITLES = new String[]{"LIGNE"};
+            else
+                TITLES = new String[]{"STATIONS"};
             TabChange();
             mDrawerList.setAdapter(mAdapter);
-            _initMenu();
+            initMenu();
             return false;
         }
         return super.onKeyDown(keyCode, event);
     }
 
     private void TabChange() {
-        if (TITLES.length == 1) tabs.setVisibility(View.GONE);
-        else tabs.setVisibility(View.VISIBLE);
+        if (TITLES.length == 1)
+            tabs.setVisibility(View.GONE);
+        else
+            tabs.setVisibility(View.VISIBLE);
 
         adapter.notifyDataSetChanged();
         pager.setAdapter(adapter);
@@ -243,7 +229,7 @@ public class MainActivity extends FragmentActivity {
         }
 
         @Override
-        public Fragment getItem(int position) {
+        public android.support.v4.app.Fragment getItem(int position) {
             if (TITLES[0].equals("STATIONS")) return StationsFragment.newInstance();
             else if (TITLES[0].equals("LIGNE"))
                 return LigneFragment.newInstance(StationsFragment.ligne, StationsFragment.id_debut, StationsFragment.id_fin);
@@ -252,7 +238,7 @@ public class MainActivity extends FragmentActivity {
             else if (TITLES[0].equals("FAVORIS")) return FavorisFragment.newInstance();
             else if (TITLES[0].equals("PROXIMITE")) return ProxFragment.newInstance();
             else if (TITLES[0].equals("MAP")) return GMapFragment.newInstance(latitude, longitude);
-            else if (TITLES[0].equals("ACTU")) return ActuFragment.newInstance();
+            else if (TITLES[0].equals("ACTU")) return ActualitésFragment.newInstance();
             else if (TITLES[0].equals("INFO")) return InfoFragment.newInstance();
             else if (TITLES[0].equals("RSS_DetailsFragment"))
                 return RSS_DetailsFragment.newInstance(flux, title, description, link, intent);
@@ -265,15 +251,12 @@ public class MainActivity extends FragmentActivity {
             else if (TITLES[0].equals("ABOUT")) return AboutFragment.newInstance();
             else return StationsFragment.newInstance();
         }
-
-
     }
 
     private class CustomActionBarDrawerToggle extends ActionBarDrawerToggle {
 
         public CustomActionBarDrawerToggle(Activity mActivity, DrawerLayout mDrawerLayout) {
-            super(mActivity,
-                    mDrawerLayout,
+            super(mActivity, mDrawerLayout,
                     R.drawable.ic_drawer,
                     R.string.drawer_open,
                     R.string.drawer_close);
@@ -322,12 +305,12 @@ public class MainActivity extends FragmentActivity {
                     break;
             }
             TabChange();
-            _initMenu();
+            initMenu();
             mDrawerList.setItemChecked(position, true);
             mDrawerList.setAdapter(mAdapter);
             mDrawerLayout.closeDrawer(mDrawerList);
         }
     }
 
-
+*/
 }

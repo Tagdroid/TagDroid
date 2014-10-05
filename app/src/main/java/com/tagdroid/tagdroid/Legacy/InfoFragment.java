@@ -1,4 +1,4 @@
-package com.tagdroid.tagdroid;
+package com.tagdroid.tagdroid.Legacy;
 
 import android.app.Activity;
 import android.content.Context;
@@ -19,6 +19,7 @@ import com.google.analytics.tracking.android.EasyTracker;
 import com.google.analytics.tracking.android.Fields;
 import com.google.analytics.tracking.android.MapBuilder;
 import com.google.analytics.tracking.android.Tracker;
+import com.tagdroid.tagdroid.R;
 import com.tagdroid.tagdroid.SQLite.AlertTAG;
 
 import org.json.JSONArray;
@@ -54,7 +55,7 @@ public class InfoFragment extends Fragment {
 		}
 		
 	    try {
-	    	view = inflater.inflate(R.layout.info, container, false);	
+	    	view = inflater.inflate(R.layout.info, container, false);
 	    }catch (InflateException e) {}
 		    
 

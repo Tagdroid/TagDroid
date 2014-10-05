@@ -1,8 +1,7 @@
-package com.tagdroid.tagdroid;
+package com.tagdroid.tagdroid.Legacy;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Typeface;
 import android.location.Address;
 import android.location.Criteria;
 import android.location.Geocoder;
@@ -33,6 +32,7 @@ import com.google.analytics.tracking.android.Fields;
 import com.google.analytics.tracking.android.MapBuilder;
 import com.google.analytics.tracking.android.Tracker;
 import com.google.android.gms.maps.model.LatLng;
+import com.tagdroid.tagdroid.R;
 
 
 import java.io.IOException;
@@ -62,7 +62,7 @@ public class ProxFragment extends Fragment implements LocationListener{
 		    if (parent != null) parent.removeView(view);
 		}
 		    try {
-		    	view = inflater.inflate(R.layout.proxlist, container, false);	
+		    	view = inflater.inflate(R.layout.proxlist, container, false);
 		    } catch (InflateException e) {
 		    }
 		    
@@ -309,6 +309,5 @@ public class ProxFragment extends Fragment implements LocationListener{
     			return super.onOptionsItemSelected(item);
     	}
     }
-    
 }
 

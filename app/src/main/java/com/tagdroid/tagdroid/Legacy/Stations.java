@@ -1,4 +1,6 @@
-package com.tagdroid.tagdroid;
+package com.tagdroid.tagdroid.Legacy;
+
+import com.tagdroid.tagdroid.R;
 
 public class Stations{
 		

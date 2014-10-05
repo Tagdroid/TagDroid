@@ -1,4 +1,4 @@
-package com.tagdroid.tagdroid;
+package com.tagdroid.tagdroid.Legacy;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -24,6 +24,7 @@ import com.google.analytics.tracking.android.EasyTracker;
 import com.google.analytics.tracking.android.Fields;
 import com.google.analytics.tracking.android.MapBuilder;
 import com.google.analytics.tracking.android.Tracker;
+import com.tagdroid.tagdroid.R;
 
 import java.io.BufferedInputStream;
 import java.io.File;

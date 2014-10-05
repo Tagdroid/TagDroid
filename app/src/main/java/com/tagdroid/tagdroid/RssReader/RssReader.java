@@ -28,25 +28,21 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
 public class RssReader {
-	
-	public static RssFeed read(URL url) throws SAXException, IOException {
-		
-		try {
-			
-			SAXParserFactory factory = SAXParserFactory.newInstance();
-			SAXParser parser = factory.newSAXParser();
-			XMLReader reader = parser.getXMLReader();
-			RssHandler handler = new RssHandler();
-			InputSource input = new InputSource(url.openStream());
-			
-			reader.setContentHandler(handler);
-			reader.parse(input);
-			
-			return handler.getResult();
-			
-		} catch (ParserConfigurationException e) {
-			throw new SAXException();
-		}
-		
-	}
+    public static RssFeed read(URL url) throws SAXException, IOException {
+        try {
+            SAXParserFactory factory = SAXParserFactory.newInstance();
+            SAXParser parser = factory.newSAXParser();
+            XMLReader reader = parser.getXMLReader();
+            RssHandler handler = new RssHandler();
+            InputSource input = new InputSource(url.openStream());
+
+            reader.setContentHandler(handler);
+            reader.parse(input);
+
+            return handler.getResult();
+
+        } catch (ParserConfigurationException e) {
+            throw new SAXException();
+        }
+    }
 }

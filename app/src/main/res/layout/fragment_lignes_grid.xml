@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/fond"
+    android:orientation="vertical"
+    android:padding ="10dp" >
+    <TextView android:text="@string/tram"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/gris_fonce" />
+    <View android:background="@color/gris_normal"
+        android:layout_width="fill_parent"
+        android:layout_height="1px" />
+    <View android:background="@color/blanc"
+        android:layout_width="fill_parent"
+        android:layout_height="1px" />
+    <GridView android:id="@+id/tramGrid"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:numColumns="5"
+        android:horizontalSpacing="10dp"
+        android:stretchMode="columnWidth" />
+
+    <TextView android:text="@string/bus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/gris_fonce" />
+    <View android:background="@color/gris_normal"
+        android:layout_width="fill_parent"
+        android:layout_height="1px" />
+    <View android:background="@color/blanc"
+        android:layout_width="fill_parent"
+        android:layout_height="1px" />
+    <GridView android:id="@+id/busGrid"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:numColumns="5"
+        android:horizontalSpacing="10dp"
+        android:stretchMode="columnWidth" />
+</LinearLayout>

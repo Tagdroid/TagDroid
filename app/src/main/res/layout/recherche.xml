@@ -1,28 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/LinearLayout1"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity" >
+    tools:context=".MainActivity">
 
     <ScrollView
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:background="@drawable/fond" >
+        android:background="@drawable/fond">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:id="@+id/linearLayout3"
@@ -31,7 +30,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="10dp"
-                    android:orientation="vertical" >
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/myadress"
@@ -44,21 +43,19 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="fill_parent"
                             android:layout_height="1px"
                             android:background="@color/gris_normal"
-                            android:orientation="vertical" >
-                        </LinearLayout>
+                            android:orientation="vertical"></LinearLayout>
 
                         <LinearLayout
                             android:layout_width="fill_parent"
                             android:layout_height="1px"
                             android:background="@color/blanc"
-                            android:orientation="vertical" >
-                        </LinearLayout>
+                            android:orientation="vertical"></LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
 
@@ -70,7 +67,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="10dp"
-                    android:orientation="horizontal" >
+                    android:orientation="horizontal">
 
                     <LinearLayout
                         android:id="@+id/linearLayout2"
@@ -78,7 +75,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <ImageButton
                             android:id="@+id/lignea"
@@ -93,7 +90,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <ImageButton
                             android:id="@+id/ligneb"
@@ -108,7 +105,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <ImageButton
                             android:id="@+id/lignec"
@@ -123,7 +120,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <ImageButton
                             android:id="@+id/ligned"
@@ -138,7 +135,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <ImageButton
                             android:id="@+id/lignee"
@@ -153,7 +150,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:id="@+id/LinearLayout12"
@@ -161,7 +158,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:orientation="vertical" >
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/vers3"
@@ -174,21 +171,19 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="fill_parent"
                             android:layout_height="1px"
                             android:background="@color/gris_normal"
-                            android:orientation="vertical" >
-                        </LinearLayout>
+                            android:orientation="vertical"></LinearLayout>
 
                         <LinearLayout
                             android:layout_width="fill_parent"
                             android:layout_height="1px"
                             android:background="@color/blanc"
-                            android:orientation="vertical" >
-                        </LinearLayout>
+                            android:orientation="vertical"></LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
 
@@ -200,7 +195,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="15dp"
-                    android:orientation="horizontal" >
+                    android:orientation="horizontal">
 
                     <LinearLayout
                         android:id="@+id/third_tab"
@@ -208,7 +203,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <ImageButton
                             android:id="@+id/ligneco"
@@ -223,7 +218,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <ImageButton
                             android:id="@+id/lignen1"
@@ -238,7 +233,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <ImageButton
                             android:id="@+id/lignen3"
@@ -253,7 +248,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <ImageButton
                             android:id="@+id/lignen4"
@@ -267,7 +262,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <ImageButton
                             android:id="@+id/ligne1"
@@ -285,14 +280,14 @@
                     android:layout_marginBottom="10dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:orientation="horizontal" >
+                    android:orientation="horizontal">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <ImageButton
                             android:id="@+id/ligne11"
@@ -307,7 +302,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <ImageButton
                             android:id="@+id/ligne13"
@@ -321,7 +316,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <ImageButton
                             android:id="@+id/ligne16"
@@ -335,7 +330,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <ImageButton
                             android:id="@+id/ligne21"
@@ -350,7 +345,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <ImageButton
                             android:id="@+id/ligne23"
@@ -368,13 +363,13 @@
                     android:layout_marginBottom="10dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:orientation="horizontal" >
+                    android:orientation="horizontal">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <ImageButton
                             android:id="@+id/ligne26"
@@ -388,7 +383,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <ImageButton
                             android:id="@+id/ligne30"
@@ -402,7 +397,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <ImageButton
                             android:id="@+id/ligne31"
@@ -417,7 +412,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <ImageButton
                             android:id="@+id/ligne32"
@@ -431,7 +426,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <ImageButton
                             android:id="@+id/ligne33"
@@ -449,13 +444,13 @@
                     android:layout_marginBottom="10dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:orientation="horizontal" >
+                    android:orientation="horizontal">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <ImageButton
                             android:id="@+id/ligne34"
@@ -469,7 +464,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <ImageButton
                             android:id="@+id/ligne41"
@@ -484,7 +479,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <ImageButton
                             android:id="@+id/ligne43"
@@ -498,7 +493,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <ImageButton
                             android:id="@+id/ligne51"
@@ -512,7 +507,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <ImageButton
                             android:id="@+id/ligne54"
@@ -530,13 +525,13 @@
                     android:layout_marginBottom="10dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:orientation="horizontal" >
+                    android:orientation="horizontal">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <ImageButton
                             android:id="@+id/ligne55"
@@ -551,7 +546,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <ImageButton
                             android:id="@+id/ligne56"
@@ -566,7 +561,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <ImageButton
                             android:id="@+id/ligne58"
@@ -582,7 +577,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical"
-                        android:visibility="invisible" >
+                        android:visibility="invisible">
 
                         <ImageButton
                             android:id="@+id/ImageButton01"
@@ -597,7 +592,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical"
-                        android:visibility="invisible" >
+                        android:visibility="invisible">
 
                         <ImageButton
                             android:id="@+id/ImageButton02"
