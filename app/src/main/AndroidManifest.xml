@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tagdroid.tagdroid"
-    android:versionCode="12"
-    android:versionName="3.0.1">
+    android:versionCode="13"
+    android:versionName="4.0.0">
 
     <!-- External storage for caching -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -73,8 +73,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Legacy.MainActivity" />
+       <!-- <activity
+            android:name=".Legacy.MainActivity" />-->
         <activity
             android:name=".MainActivity" />
         <activity
