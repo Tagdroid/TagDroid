@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tagdroid.tagdroid"
-    android:versionCode="12"
-    android:versionName="3.0.1">
+    android:versionCode="13"
+    android:versionName="4.0.0">
 
     <!-- External storage for caching -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -39,12 +39,12 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <!--  KEY DEBUG : AIzaSyBkEPb5wM5O5MOksH2Dph0ecyyBlGmWOTU -->
-        <!--  KEY OFFICIEL : AIzaSyDv3wzyAx55KoZQ_Fr8LkaZz4mB-BR6xRw -->
-
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyBkEPb5wM5O5MOksH2Dph0ecyyBlGmWOTU" />
+        <!--  KEY DEBUG : AIzaSyBkEPb5wM5O5MOksH2Dph0ecyyBlGmWOTU -->
+        <!--  KEY OFFICIEL : AIzaSyDv3wzyAx55KoZQ_Fr8LkaZz4mB-BR6xRw -->
+
         <uses-library
             android:name="com.google.android.maps"
             android:required="true" />
@@ -73,8 +73,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Legacy.MainActivity" />
+       <!-- <activity
+            android:name=".Legacy.MainActivity" />-->
         <activity
             android:name=".MainActivity" />
         <activity
