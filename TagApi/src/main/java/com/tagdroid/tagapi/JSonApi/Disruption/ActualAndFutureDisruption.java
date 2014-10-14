@@ -4,79 +4,74 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ActualAndFutureDisruption {
+    private String BeginValidityDateString;
+    private String Cause;
+    private String Description;
+    private DisruptedLine[] disruptedLines;
+    private DisruptedStopPoint[] disruptedStopPoints;
+    private DisruptionType disruptionType;
+    private String EndValidityDateString;
     private long Id;
-    private String Name,
-            Source,
-            Description,
-            Cause,
-            BeginValidityDateString,
-            EndValidityDateString;
     private Integer Latitude,
             Longitude;
-
-    private DisruptionType type;
-    private DisruptedLines lines;
-    private DisruptedStopPoints stoppoints;
+    private String Name;
+    private String Source;
 
     public ActualAndFutureDisruption(JSONObject jsonAAFDisruption) throws JSONException {
-        this.Id = jsonAAFDisruption.getLong("Id");
-        this.Name = jsonAAFDisruption.getString("Name");
-        this.Source = jsonAAFDisruption.getString("Source");
-        this.Description = jsonAAFDisruption.getString("Description");
-        this.Cause = jsonAAFDisruption.getString("Cause");
         this.BeginValidityDateString = jsonAAFDisruption.getString("BeginValidityDateString");
+        this.Cause = jsonAAFDisruption.getString("Cause");
+        this.Description = jsonAAFDisruption.getString("Description");
+
+        this.disruptedLines = DisruptedLine
+                .DisruptedLineArray(jsonAAFDisruption.getJSONArray("DisruptedLines"));
+        this.disruptedStopPoints = DisruptedStopPoint
+                .DisruptedStopPointArray(jsonAAFDisruption.getJSONArray("DisruptedStopPoints"));
+        this.disruptionType =
+                new DisruptionType(jsonAAFDisruption.getJSONObject("DisruptionType"));
+
         this.EndValidityDateString = jsonAAFDisruption.getString("EndValidityDateString");
+        this.Id = jsonAAFDisruption.getLong("Id");
         this.Latitude = jsonAAFDisruption.getInt("Latitude");
         this.Longitude = jsonAAFDisruption.getInt("Longitude");
-
-
-        this.type = new DisruptionType(jsonAAFDisruption.getJSONObject("DisruptionType"));
-        this.lines = new DisruptedLines(jsonAAFDisruption.getJSONObject("DisruptedLines"));
-        this.stoppoints = new DisruptedStopPoints(jsonAAFDisruption.getJSONObject("DisruptedStopPoints"));
-
+        this.Name = jsonAAFDisruption.getString("Name");
+        this.Source = jsonAAFDisruption.getString("Source");
     }
 
-    public ActualAndFutureDisruption(long Id,
-                                     String Name,
-                                     String Source,
+    public ActualAndFutureDisruption(String BeginValidityDateString,
                                      String Description,
                                      String Cause,
-                                     String BeginValidityDateString,
                                      String EndValidityDateString,
+                                     long Id,
                                      Integer Latitude,
-                                     Integer Longitude) {
+                                     Integer Longitude,
+                                     String Name,
+                                     String Source) {
 
-        this.Id = Id;
-        this.Name = Name;
-        this.Source = Source;
-        this.Description = Description;
-        this.Cause = Cause;
         this.BeginValidityDateString = BeginValidityDateString;
+        this.Cause = Cause;
+        this.Description = Description;
         this.EndValidityDateString = EndValidityDateString;
+        this.Id = Id;
         this.Latitude = Latitude;
         this.Longitude = Longitude;
+        this.Name = Name;
+        this.Source = Source;
     }
 
-    public long getId() {
-        return Id;
-    }
-    public String getName() {
-        return Name;
-    }
-    public String getSource() {
-        return Source;
-    }
-    public String getDescription() {
-        return Description;
+    public String getBeginValidityDateString() {
+        return BeginValidityDateString;
     }
     public String getCause() {
         return Cause;
     }
-    public String getBeginValidityDateString() {
-        return BeginValidityDateString;
+    public String getDescription() {
+        return Description;
     }
     public String getEndValidityDateString() {
         return EndValidityDateString;
+    }
+    public long getId() {
+        return Id;
     }
     public Integer getLatitude() {
         return Latitude;
@@ -84,12 +79,20 @@ public class ActualAndFutureDisruption {
     public Integer getLongitude() {
         return Longitude;
     }
-
-    public DisruptionType getDisruptionType() { return type; }
-    public DisruptedLines getDisruptedLines() {
-        return lines;
+    public String getName() {
+        return Name;
     }
-    public DisruptedStopPoints getDisruptedStopPoints() {
-        return stoppoints;
+    public String getSource() {
+        return Source;
+    }
+
+    public DisruptionType getDisruptionType() {
+        return disruptionType;
+    }
+    public DisruptedLine[] getDisruptedLines() {
+        return disruptedLines;
+    }
+    public DisruptedStopPoint[] getDisruptedStopPoints() {
+        return disruptedStopPoints;
     }
 }
