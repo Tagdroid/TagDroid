@@ -31,7 +31,7 @@ public class WelcomeFragment extends Fragment {
         Bundle args = getArguments();
         int position = args.getInt("position");
         try {
-            int ViewId = R.layout.class.getField("welcome_" + (position + 1)).getInt(null);
+            int ViewId = R.layout.class.getField("fragment_welcome_" + (position + 1)).getInt(null);
             View view = inflater.inflate(ViewId, container, false);
             if (position == 5)
                 view.findViewById(R.id.btn_go_welcome).setOnClickListener(new View.OnClickListener() {

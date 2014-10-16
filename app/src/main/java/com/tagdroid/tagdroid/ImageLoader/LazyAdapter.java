@@ -56,9 +56,9 @@ public class LazyAdapter extends BaseAdapter {
         if(convertView==null){
                 vi = inflater.inflate(R.layout.item_actu, null);
                 holder=new ViewHolder();
-                holder.titre=(TextView)vi.findViewById(R.id.titreactu);
-                holder.description=(TextView)vi.findViewById(R.id.descriptionactu);
-                holder.image=(ImageView)vi.findViewById(R.id.ivactu);
+                holder.titre=(TextView)vi.findViewById(R.id.titre);
+                holder.description=(TextView)vi.findViewById(R.id.description);
+                holder.image=(ImageView)vi.findViewById(R.id.image);
                 vi.setTag(holder);
         }
         else
