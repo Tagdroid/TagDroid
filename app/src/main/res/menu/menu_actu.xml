@@ -1,5 +1,10 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >   
-     <item
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+        android:id="@+id/rss_reload"
+        android:icon="@drawable/ic_menu_refresh"
+        android:showAsAction="ifRoom"
+        android:title="Refresh"/>
+    <item
         android:id="@+id/menu_rss"
         android:icon="@drawable/menu_rss"
         android:showAsAction="ifRoom"
