@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/fond"
+    android:padding ="10dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="10dp">
+
+            <View android:background="@color/gris_normal"
+                android:layout_width="fill_parent"
+                android:layout_height="1px" />
+
+            <View android:background="@color/blanc"
+                android:layout_width="fill_parent"
+                android:layout_height="1px" />
+        </LinearLayout>
+
+        <TextView android:text="@string/tram"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gris_fonce" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp">
+
+            <View android:background="@color/gris_normal"
+                android:layout_width="fill_parent"
+                android:layout_height="1px" />
+
+            <View android:background="@color/blanc"
+                android:layout_width="fill_parent"
+                android:layout_height="1px" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <GridView android:id="@+id/tramGrid"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:numColumns="5"
+        android:horizontalSpacing="10dp"
+        android:stretchMode="columnWidth" />
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center_horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A"
+            android:id="@+id/button"
+            android:textColor="#ffffffff"
+            android:background="@drawable/button_shape_style" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A"
+            android:id="@+id/button2"
+            android:background="@drawable/button_shape_style"
+            android:textColor="#ffffffff" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A"
+            android:id="@+id/button3"
+            android:background="@drawable/button_shape_style"
+            android:textColor="#ffffffff" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A"
+            android:id="@+id/button4"
+            android:background="@drawable/button_shape_style"
+            android:textColor="#ffffffff" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A"
+            android:id="@+id/button5"
+            android:background="@drawable/button_shape_style"
+            android:textColor="#ffffffff" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="10dp">
+
+            <View android:background="@color/gris_normal"
+                android:layout_width="fill_parent"
+                android:layout_height="1px" />
+
+            <View android:background="@color/blanc"
+                android:layout_width="fill_parent"
+                android:layout_height="1px" />
+        </LinearLayout>
+
+        <TextView android:text="@string/bus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gris_fonce" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp">
+
+            <View android:background="@color/gris_normal"
+                android:layout_width="fill_parent"
+                android:layout_height="1px" />
+
+            <View android:background="@color/blanc"
+                android:layout_width="fill_parent"
+                android:layout_height="1px" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <GridView android:id="@+id/ChronoGrid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:numColumns="5"
+        android:horizontalSpacing="10dp"
+        android:stretchMode="columnWidth" />
+    <GridView android:id="@+id/ProximoGrid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:numColumns="5"
+        android:horizontalSpacing="10dp"
+        android:stretchMode="columnWidth" />
+    <GridView android:id="@+id/FlexoGrid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:numColumns="5"
+        android:horizontalSpacing="10dp"
+        android:stretchMode="columnWidth" />
+</LinearLayout>

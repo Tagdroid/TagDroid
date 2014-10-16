@@ -238,7 +238,7 @@ public class MainActivity {
             else if (TITLES[0].equals("FAVORIS")) return FavorisFragment.newInstance();
             else if (TITLES[0].equals("PROXIMITE")) return ProxFragment.newInstance();
             else if (TITLES[0].equals("MAP")) return GMapFragment.newInstance(latitude, longitude);
-            else if (TITLES[0].equals("ACTU")) return ActualitésFragment.newInstance();
+            else if (TITLES[0].equals("ACTU")) return ActualitesFragment.newInstance();
             else if (TITLES[0].equals("INFO")) return InfoFragment.newInstance();
             else if (TITLES[0].equals("RSS_DetailsFragment"))
                 return RSS_DetailsFragment.newInstance(flux, title, description, link, intent);
