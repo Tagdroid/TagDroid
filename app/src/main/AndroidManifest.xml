@@ -49,6 +49,7 @@
             android:name="com.google.android.maps"
             android:required="true" />
 
+
         <service android:name="com.parse.PushService" />
         <receiver android:name="com.parse.ParseBroadcastReceiver">
             <intent-filter>

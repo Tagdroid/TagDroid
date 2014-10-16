@@ -1,8 +1,8 @@
 package com.tagdroid.tagdroid.Pages;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -34,39 +34,39 @@ public class LignesFragment_Beta extends Page {
         View view = inflater.inflate(R.layout.fragment_lignes_grid_beta, container, false);
         GridView tramGridView = (GridView) view.findViewById(R.id.tramGrid);
         Ligne[] lignesTram = new Ligne[5];
-        lignesTram[0] = new Ligne(R.color.lignea, "Ligne A", 0);
-        lignesTram[1] = new Ligne(R.color.ligneb, "Ligne B", 0);
-        lignesTram[2] = new Ligne(R.color.lignec, "Ligne C", 0);
-        lignesTram[3] = new Ligne(R.color.ligned, "Ligne D", 0);
-        lignesTram[4] = new Ligne(R.color.lignee, "Ligne E", 0);
+        lignesTram[0] = new Ligne(R.color.lignea, "A", 0);
+        lignesTram[1] = new Ligne(R.color.ligneb, "B", 0);
+        lignesTram[2] = new Ligne(R.color.lignec, "C", 0);
+        lignesTram[3] = new Ligne(R.color.ligned, "D", 0);
+        lignesTram[4] = new Ligne(R.color.lignee, "E", 0);
         GridView ChronoGridView = (GridView) view.findViewById(R.id.ChronoGrid);
         Ligne[] lignesChrono = new Ligne[7];
-        lignesChrono[0] = new Ligne(R.color.lignec1, "Ligne C1", 0);
-        lignesChrono[1] = new Ligne(R.color.lignec2, "Ligne C2", 0);
-        lignesChrono[2] = new Ligne(R.color.lignec3, "Ligne C3", 0);
-        lignesChrono[3] = new Ligne(R.color.lignec4, "Ligne C4", 0);
-        lignesChrono[4] = new Ligne(R.color.lignec5, "Ligne C5", 0);
-        lignesChrono[5] = new Ligne(R.color.lignec6, "Ligne C6", 0);
-        lignesChrono[6] = new Ligne(R.color.lignee, "Ligne Ebus", 0);
+        lignesChrono[0] = new Ligne(R.color.lignec1, "C1", 0);
+        lignesChrono[1] = new Ligne(R.color.lignec2, "C2", 0);
+        lignesChrono[2] = new Ligne(R.color.lignec3, "C3", 0);
+        lignesChrono[3] = new Ligne(R.color.lignec4, "C4", 0);
+        lignesChrono[4] = new Ligne(R.color.lignec5, "C5", 0);
+        lignesChrono[5] = new Ligne(R.color.lignec6, "C6", 0);
+        lignesChrono[6] = new Ligne(R.color.lignee, "Ebus", 0);
         GridView ProximoGridView = (GridView) view.findViewById(R.id.ProximoGrid);
         Ligne[] lignesProximo = new Ligne[12];
-        lignesProximo[0] = new Ligne(R.color.ligne11, "Ligne 11", 0);
-        lignesProximo[1] = new Ligne(R.color.ligne12, "Ligne 12", 0);
-        lignesProximo[2] = new Ligne(R.color.ligne13, "Ligne 13", 0);
-        lignesProximo[3] = new Ligne(R.color.ligne14, "Ligne 14", 0);
-        lignesProximo[4] = new Ligne(R.color.ligne15, "Ligne 15", 0);
-        lignesProximo[5] = new Ligne(R.color.ligne16, "Ligne 16", 0);
-        lignesProximo[6] = new Ligne(R.color.ligne17, "Ligne 17", 0);
-        lignesProximo[7] = new Ligne(R.color.ligne18, "Ligne 18", 0);
-        lignesProximo[8] = new Ligne(R.color.ligne19, "Ligne 19", 0);
-        lignesProximo[9] = new Ligne(R.color.ligne20, "Ligne 20", 0);
-        lignesProximo[10] = new Ligne(R.color.ligne21, "Ligne 21", 0);
-        lignesProximo[11] = new Ligne(R.color.ligne22, "Ligne 22", 0);
+        lignesProximo[0] = new Ligne(R.color.ligne11, "11", 0);
+        lignesProximo[1] = new Ligne(R.color.ligne12, "12", 0);
+        lignesProximo[2] = new Ligne(R.color.ligne13, "13", 0);
+        lignesProximo[3] = new Ligne(R.color.ligne14, "14", 0);
+        lignesProximo[4] = new Ligne(R.color.ligne15, "15", 0);
+        lignesProximo[5] = new Ligne(R.color.ligne16, "16", 0);
+        lignesProximo[6] = new Ligne(R.color.ligne17, "17", 0);
+        lignesProximo[7] = new Ligne(R.color.ligne18, "18", 0);
+        lignesProximo[8] = new Ligne(R.color.ligne19, "19", 0);
+        lignesProximo[9] = new Ligne(R.color.ligne20, "20", 0);
+        lignesProximo[10] = new Ligne(R.color.ligne21, "21", 0);
+        lignesProximo[11] = new Ligne(R.color.ligne22, "22", 0);
         GridView FlexoGridView = (GridView) view.findViewById(R.id.FlexoGrid);
         Ligne[] lignesFlexo = new Ligne[3];
-        lignesFlexo[0] = new Ligne(R.color.ligne40, "Ligne 40", 0);
-        lignesFlexo[1] = new Ligne(R.color.ligne41, "Ligne 41", 0);
-        lignesFlexo[2] = new Ligne(R.color.ligne42, "Ligne 42", 0);
+        lignesFlexo[0] = new Ligne(R.color.ligne40, "40", 0);
+        lignesFlexo[1] = new Ligne(R.color.ligne41, "41", 0);
+        lignesFlexo[2] = new Ligne(R.color.ligne42, "42", 0);
 
 
 
@@ -124,22 +124,28 @@ public class LignesFragment_Beta extends Page {
             if (oldView == null) {
                 view = new Button(context);
                 view.setLayoutParams(new GridView.LayoutParams(113, 113));
-
                 view.setBackgroundResource(R.drawable.button_shape_style); //On applique le style
-                view.setText(lignes[position].name); // puis le texte
+                //Le texte sera de couleur noir ou blanc selon la luminosité de la couleur de fond.
+                view.setText(lignes[position].name);
+                view.setTextColor(BlackorWhite(getResources().getColor(lignes[position].color)));
 
-                //On vient chercher le background du style appliqué sur le shape (A TESTER)
-                LayerDrawable bgDrawable = (LayerDrawable)view.getBackground();
-                final GradientDrawable shape = (GradientDrawable) bgDrawable.findDrawableByLayerId(R.id.shape2);
-                final GradientDrawable shape2 = (GradientDrawable) bgDrawable.findDrawableByLayerId(R.id.shape4);
-                shape.setColor(lignes[position].color);
-                shape2.setColor(lignes[position].color);
-                
-                //view.setBackgroundColor(lignes[position].color);
+                view.setClickable(true);
+                //On vient chercher le background du style appliqué sur le shape
+                GradientDrawable shape =(GradientDrawable)view.getBackground();
+                shape.setColor(getResources().getColor(lignes[position].color));
             } else
                 view = (Button) oldView;
             return view;
         }
+    }
+
+    private static int BlackorWhite(int color) {
+        double brightness = (int)Math.sqrt(Color.red(color)*Color.red(color)*.241 +
+                                       Color.green(color)*Color.green(color)*.691 +
+                                       Color.blue(color)*Color.blue(color)*.068);
+
+        if (brightness<=160) return Color.WHITE;
+        else return Color.BLACK;
     }
 
     private class Ligne {

@@ -29,6 +29,7 @@ public class TestActivity extends ActionBarActivity implements View.OnClickListe
     private void setUI() {
         findViewById(R.id.id).setEnabled(false);
         findViewById(R.id.button).setOnClickListener(this);
+        findViewById(R.id.button).setEnabled(false);
     }
 
     @Override
@@ -106,6 +107,7 @@ public class TestActivity extends ActionBarActivity implements View.OnClickListe
     @Override
     public void onJSonParsingComplete() {
         findViewById(R.id.id).setEnabled(true);
+        findViewById(R.id.button).setEnabled(true);
         Log.d("JSonParsing", "Finished !");
     }
 }
