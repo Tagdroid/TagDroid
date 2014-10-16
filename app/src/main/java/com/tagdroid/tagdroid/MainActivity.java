@@ -115,7 +115,7 @@ public class MainActivity extends Activity {
                 activePage = new LignesFragment();
                 break;
             case 7:
-                activePage = new ActualitésFragment();
+                activePage = new ActualitesFragment();
                 break;
             case 8:
                 activePage = new LignesFragment();

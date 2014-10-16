@@ -27,7 +27,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ActualitésFragment extends Page {
+public class ActualitesFragment extends Page {
     private static ArrayList<HashMap<String, String>> listItem;
     public final String[] RSSURLS = {
             "http://www.tag.fr/rss_evenement.php",
