@@ -16,13 +16,8 @@ import android.widget.Toast;
 import com.tagdroid.tagdroid.ImageLoader.LazyAdapter;
 import com.tagdroid.tagdroid.Page;
 import com.tagdroid.tagdroid.R;
-import com.tagdroid.tagdroid.RssReader.RssFeed;
-import com.tagdroid.tagdroid.RssReader.RssItem;
-import com.tagdroid.tagdroid.RssReader.RssReader;
+import com.tagdroid.tagdroid.RssReader.*;
 
-import org.xml.sax.SAXException;
-
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,9 +25,9 @@ import java.util.HashMap;
 public class ActualitesFragment extends Page {
     private static ArrayList<HashMap<String, String>> listItem;
     public final String[] RSSURLS = {
-            "http://www.tag.fr/rss_evenement.php",
-            "http://www.smtc-grenoble.org/actualites-rss"};
-    ListView RSSView;
+            "http://www.tag.fr/rss_evenement.php", "http://www.smtc-grenoble.org/actualites-rss"};
+    private ListView RSSView;
+    private int RSSChannel;
 
     @Override
     public String getTitle() {
@@ -44,6 +39,15 @@ public class ActualitesFragment extends Page {
         return R.menu.menu_actu;
     }
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_actualites, container, false);
+        RSSView = (ListView) view.findViewById(R.id.rss_view);
+        RSSChannel = getRSSChannel();
+        new displayRSSTask(false).execute();
+        return view;
+    }
+
     private int getRSSChannel() {
         return getActivity().getSharedPreferences("RSS", 0).getInt("RSSChannel", 1);
     }
@@ -52,39 +56,38 @@ public class ActualitesFragment extends Page {
         getActivity().getSharedPreferences("RSS", 0).edit().putInt("RSSChannel", RSSChannel).apply();
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_actualites, container, false);
-        RSSView = (ListView) view.findViewById(R.id.rss_view);
-        int RSSChannel = getActivity().getSharedPreferences("RSS", 0).getInt("RSSChannel", 1);
-        new displayRSSTask(RSSChannel, false).execute();
-        return view;
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        new AlertDialog.Builder(getActivity())
-                .setTitle(R.string.fluxchoice)
-                .setSingleChoiceItems(new CharSequence[]{"TAG", "SMTC"}, getRSSChannel(),
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int RSSChannel) {
-                                setRSSChannel(RSSChannel);
-                                dialog.cancel();
-                                new displayRSSTask(RSSChannel, true).execute();
-                            }
-                        }).create().show();
+        switch (item.getItemId()) {
+            case R.id.rss_reload:
+                new displayRSSTask(true).execute();
+                break;
+            case R.id.menu_rss:
+                new AlertDialog.Builder(getActivity())
+                        .setTitle(R.string.fluxchoice)
+                        .setSingleChoiceItems(new CharSequence[]{"TAG", "SMTC"}, getRSSChannel(),
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int NewRSSChannel) {
+                                        dialog.cancel();
+                                        if (NewRSSChannel != RSSChannel) {
+                                            setRSSChannel(RSSChannel);
+                                            new displayRSSTask(true).execute();
+                                        }
+                                    }
+                                }).create().show();
+                break;
+        }
         return true;
     }
 
     public class displayRSSTask extends AsyncTask<Void, Void, Integer> {
         private ProgressDialog progression;
-        private int RSSChannel;
         private boolean needToReload;
         private ArrayList<HashMap<String, String>> rssItemsList;
         private String stateMessage;
 
-        displayRSSTask(int RSSFeeder, boolean forceReload) {
-            this.RSSChannel = RSSFeeder;
+        displayRSSTask(boolean forceReload) {
             this.needToReload = (forceReload || listItem == null);
         }
 
@@ -141,21 +144,21 @@ public class ActualitesFragment extends Page {
                             rssItemsList.add(map);
                         }
                 }
-            } catch (IOException e) {
-                stateMessage = e.getLocalizedMessage();
-                return -1;
-            } catch (SAXException e) {
+                return 1;
+            } catch (Exception e) {
+                stateMessage += e.getLocalizedMessage();
                 e.printStackTrace();
+                return -1;
             }
-            return 0;
         }
 
         protected void onPostExecute(Integer resultState) {
-            if (needToReload)
+            if (needToReload) {
                 progression.dismiss();
+                listItem = rssItemsList;
+            }
 
             if (resultState > 0) {
-                listItem = rssItemsList;
                 LazyAdapter adapter = new LazyAdapter(getActivity(), listItem);
 
                 RSSView.setDivider(null);
@@ -163,6 +166,7 @@ public class ActualitesFragment extends Page {
                 RSSView.setOnItemClickListener(new ListView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Toast.makeText(getActivity(), "sélectionné : " + position, Toast.LENGTH_SHORT).show();
 
                         //  selectItem(position, actualPosition > 0);
                     }
