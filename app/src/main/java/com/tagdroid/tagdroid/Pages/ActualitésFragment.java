@@ -20,19 +20,25 @@ import com.tagdroid.tagdroid.RssReader.RssFeed;
 import com.tagdroid.tagdroid.RssReader.RssItem;
 import com.tagdroid.tagdroid.RssReader.RssReader;
 
+import org.xml.sax.SAXException;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ActualitésFragment extends Page implements AdapterView.OnItemClickListener {
+public class ActualitésFragment extends Page {
+    private static ArrayList<HashMap<String, String>> listItem;
     public final String[] RSSURLS = {
             "http://www.tag.fr/rss_evenement.php",
             "http://www.smtc-grenoble.org/actualites-rss"};
     ListView RSSView;
+
     @Override
     public String getTitle() {
         return getString(R.string.news);
     }
+
     @Override
     public Integer getMenuId() {
         return R.menu.menu_actu;
@@ -41,6 +47,7 @@ public class ActualitésFragment extends Page implements AdapterView.OnItemClick
     private int getRSSChannel() {
         return getActivity().getSharedPreferences("RSS", 0).getInt("RSSChannel", 1);
     }
+
     private void setRSSChannel(int RSSChannel) {
         getActivity().getSharedPreferences("RSS", 0).edit().putInt("RSSChannel", RSSChannel).apply();
     }
@@ -50,7 +57,7 @@ public class ActualitésFragment extends Page implements AdapterView.OnItemClick
         View view = inflater.inflate(R.layout.fragment_actualites, container, false);
         RSSView = (ListView) view.findViewById(R.id.rss_view);
         int RSSChannel = getActivity().getSharedPreferences("RSS", 0).getInt("RSSChannel", 1);
-        new downloadRSSTask(RSSChannel).execute();
+        new displayRSSTask(RSSChannel, false).execute();
         return view;
     }
 
@@ -63,49 +70,45 @@ public class ActualitésFragment extends Page implements AdapterView.OnItemClick
                             public void onClick(DialogInterface dialog, int RSSChannel) {
                                 setRSSChannel(RSSChannel);
                                 dialog.cancel();
-                                new downloadRSSTask(RSSChannel).execute();
+                                new displayRSSTask(RSSChannel, true).execute();
                             }
                         }).create().show();
         return true;
     }
 
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-    }
+    public class displayRSSTask extends AsyncTask<Void, Void, Integer> {
+        private ProgressDialog progression;
+        private int RSSChannel;
+        private boolean needToReload;
+        private ArrayList<HashMap<String, String>> rssItemsList;
+        private String stateMessage;
 
-    private void displayRSS(ArrayList<HashMap<String, String>> RSSList) {
-        LazyAdapter adapter = new LazyAdapter(getActivity(), RSSList);
-
-        RSSView.setDivider(null);
-        RSSView.setAdapter(adapter);
-        RSSView.setOnItemClickListener(this);
-        RSSView.setSelection(0);
-    }
-
-    public class downloadRSSTask extends AsyncTask<String, Void, ArrayList<HashMap<String, String>>> {
-        int RSSChannel;
-        ProgressDialog progression;
-
-        downloadRSSTask(int RSSFeeder) {
+        displayRSSTask(int RSSFeeder, boolean forceReload) {
             this.RSSChannel = RSSFeeder;
+            this.needToReload = (forceReload || listItem == null);
         }
 
         protected void onPreExecute() {
             super.onPreExecute();
-            progression = ProgressDialog.show(getActivity(), "",
-                    getResources().getString(R.string.loading), true);
+            if (needToReload)
+                progression = ProgressDialog.show(getActivity(), "",
+                        getResources().getString(R.string.loading), true);
         }
 
         @Override
-        protected ArrayList<HashMap<String, String>> doInBackground(String... params) {
+        protected Integer doInBackground(Void... params) {
+            if (!needToReload)
+                return 1;
+
             try {
-                RssFeed RSSFeed = RssReader.read(new URL(RSSURLS[RSSChannel]));
-                ArrayList<HashMap<String, String>> listItem = new ArrayList<HashMap<String, String>>();
+                rssItemsList = new ArrayList<HashMap<String, String>>();
+                RssFeed rssFeed = RssReader.read(new URL(RSSURLS[RSSChannel]));
+
                 HashMap<String, String> map;
 
                 switch (RSSChannel) {
                     case 0:
-                        for (RssItem rssItem : RSSFeed.getRssItems()) {
+                        for (RssItem rssItem : rssFeed.getRssItems()) {
                             map = new HashMap<String, String>();
                             map.put("titre", rssItem.getTitle());
                             String[] RSSStrings = rssItem.getDescription().split("> ");
@@ -115,11 +118,11 @@ public class ActualitésFragment extends Page implements AdapterView.OnItemClick
                                             .split("\"")[0]
                                             .replace("IMF_VIGNETTEALAUNE", "IMF_LARGE")
                             );
-                            listItem.add(map);
+                            rssItemsList.add(map);
                         }
                         break;
                     case 1:
-                        for (RssItem rssItem : RSSFeed.getRssItems()) {
+                        for (RssItem rssItem : rssFeed.getRssItems()) {
                             map = new HashMap<String, String>();
                             map.put("titre", rssItem.getTitle());
                             map.put("description", rssItem.getDescription()
@@ -135,22 +138,40 @@ public class ActualitésFragment extends Page implements AdapterView.OnItemClick
                                             .split("img src=\"")[1]
                                             .split("\"")[0]
                             );
-                            listItem.add(map);
+                            rssItemsList.add(map);
                         }
                 }
-                return listItem;
-            } catch (Exception e) {
+            } catch (IOException e) {
+                stateMessage = e.getLocalizedMessage();
+                return -1;
+            } catch (SAXException e) {
                 e.printStackTrace();
-                return null;
             }
+            return 0;
         }
 
-        protected void onPostExecute(ArrayList<HashMap<String, String>> result) {
-            progression.dismiss();
-            if (result == null)
-                Toast.makeText(getActivity(), "Erreur de récupération", Toast.LENGTH_LONG).show();
-            else
-                displayRSS(result);
+        protected void onPostExecute(Integer resultState) {
+            if (needToReload)
+                progression.dismiss();
+
+            if (resultState > 0) {
+                listItem = rssItemsList;
+                LazyAdapter adapter = new LazyAdapter(getActivity(), listItem);
+
+                RSSView.setDivider(null);
+                RSSView.setAdapter(adapter);
+                RSSView.setOnItemClickListener(new ListView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                        //  selectItem(position, actualPosition > 0);
+                    }
+                });
+                RSSView.setSelection(0);
+            } else {
+                Toast.makeText(getActivity(), "Erreur de récupération :\n" + stateMessage,
+                        Toast.LENGTH_LONG).show();
+            }
         }
     }
 }

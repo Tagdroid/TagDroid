@@ -14,7 +14,6 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.tagdroid.tagdroid.Legacy.LoadDBActivity;
 import com.tagdroid.tagdroid.MainActivity;
 import com.tagdroid.tagdroid.R;
 import com.viewpagerindicator.LinePageIndicator;
@@ -85,7 +84,7 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
         SharedPreferences.Editor editor = getSharedPreferences(PREFS_NAME_2, 0).edit();
         editor.putBoolean("AppAlreadyLaunched", true);
         editor.apply();
-        Intent intent = new Intent(WelcomeActivity.this, LoadDBActivity.class);
+        Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
         startActivity(intent);
     }
 
