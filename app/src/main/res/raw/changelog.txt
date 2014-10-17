@@ -23,9 +23,16 @@
     
   </head>
   <body>
-<!--$ 3.1.0
-	* Possibilité d'ajouter les bus dans les stations à proximité.-->
-  
+
+$ 4.0
+% Version 4.0
+_ 23 Décembre 2014
+_ Félix Piédallu participe désormais au développement de l'application
+  * Refonte totale de l'application
+  * Thème Flat design proche des recommandations Material Design de Google
+  * Gestion des arrêts, lignes, alertes info-trafic par base de données.
+
+
 $ 3.0.1
   % Version 3.0.1
   _ 23 Décembre 2013

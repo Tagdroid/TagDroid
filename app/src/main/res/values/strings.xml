@@ -102,6 +102,7 @@
 	<!-- About -->
 	<string name="auteur">AUTEUR</string>
 	<string name="collaborateur">COLLABORATEURS</string>
+    <string name="remerciement">REMERCIEMENTS</string>
 	<string name="contact">CONTACT</string>	
 	<string name="description">DESCRIPTION</string>
 	<string name="informations">INFORMATIONS</string>		

@@ -69,6 +69,7 @@ public class LignesFragment_Beta extends Page {
         lignesFlexo[2] = new Ligne(R.color.ligne42, "42", 0);
 
 
+        /* L'event OnItemClick ne fonctionne pas ! Des idées ???? */
 
         tramGridView.setAdapter(new LigneAdapter(getActivity(), lignesTram));
         tramGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -127,11 +128,13 @@ public class LignesFragment_Beta extends Page {
                 view.setBackgroundResource(R.drawable.button_shape_style); //On applique le style
                 //Le texte sera de couleur noir ou blanc selon la luminosité de la couleur de fond.
                 view.setText(lignes[position].name);
-                if(lignes[position].name.length()>3) view.setTextSize(12);
+                if(lignes[position].name.length()>3) view.setTextSize(14);
                 view.setTextColor(BlackorWhite(getResources().getColor(lignes[position].color)));
 
                 view.setClickable(true);
                 //On vient chercher le background du style appliqué sur le shape
+
+
                 GradientDrawable shape =(GradientDrawable)view.getBackground();
                 shape.setColor(getResources().getColor(lignes[position].color));
             } else
