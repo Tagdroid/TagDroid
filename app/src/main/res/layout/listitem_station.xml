@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/fond_affichage"
     android:layout_width="fill_parent"
-    android:background="@color/fond"
     android:layout_height="50dp">
     <ImageView
         android:id="@+id/fond_color"

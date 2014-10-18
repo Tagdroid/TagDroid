@@ -1,13 +1,39 @@
 package com.tagdroid.tagdroid.Legacy;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.astuetz.pagerslidingtabstrip.PagerSlidingTabStrip;
+import com.google.analytics.tracking.android.EasyTracker;
+import com.parse.Parse;
+import com.parse.ParseAnalytics;
+import com.parse.ParseInstallation;
+import com.parse.PushService;
+import com.tagdroid.tagdroid.ChangeLog;
+import com.tagdroid.tagdroid.Favoris.FavorisFragment;
+import com.tagdroid.tagdroid.Pages.AboutFragment;
+import com.tagdroid.tagdroid.Pages.ActualitesFragment;
+import com.tagdroid.tagdroid.R;
+import com.tagdroid.tagdroid.TitresDeTransport.CombinesFragment;
+import com.tagdroid.tagdroid.TitresDeTransport.PassFragment;
+import com.tagdroid.tagdroid.TitresDeTransport.TicketFragment;
 
-public class MainActivity {
+public class MainActivity extends FragmentActivity {
     public static String mTitle = "Stations";
     public static ListView mDrawerList;
     public static boolean favoris_check;
@@ -15,15 +41,14 @@ public class MainActivity {
     public static String titre1, id_station1, ligne2, latitude1, longitude1;
     public static String flux, title, description, link, intent;
     public static double latitude, longitude;
-    public static com.astuetz.viewpager.extensions.sample.MainActivity.MyPagerAdapter adapter;
     public static String[] TITLES = {"STATIONS"};
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private String[] menuItems;
     private NsMenuAdapter mAdapter;
-    private PagerSlidingTabStrip tabs;
     private ViewPager pager;
- /*extends FragmentActivity {
+   // private PagerSlidingTabStrip tabs;
+    public static MyPagerAdapter adapter;/*
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -313,4 +338,76 @@ public class MainActivity {
     }
 
 */
+    public class MyPagerAdapter extends FragmentStatePagerAdapter {
+        public MyPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return TITLES[position];
+        }
+
+        @Override
+        public int getCount() {
+            return TITLES.length;
+        }
+
+        @Override
+        public int getItemPosition(Object object) {
+            return POSITION_NONE;
+        }
+
+        @Override
+        public android.support.v4.app.Fragment getItem(int position) {
+            if (TITLES[0].equals("STATIONS")) return StationsFragment.newInstance();
+            else if (TITLES[0].equals("LIGNE"))
+                return LigneFragment.newInstance(StationsFragment.ligne, StationsFragment.id_debut, StationsFragment.id_fin);
+            else if (TITLES[0].equals("STATIONDETAIL"))
+                return null;
+            else if (TITLES[0].equals("FAVORIS")) return FavorisFragment.newInstance();
+            else if (TITLES[0].equals("PROXIMITE")) return ProxFragment.newInstance();
+            else if (TITLES[0].equals("MAP")) return GMapFragment.newInstance(latitude, longitude);
+            else if (TITLES[0].equals("ACTU"))
+                return null; //ActualitesFragment.newInstance();
+            else if (TITLES[0].equals("INFO")) return InfoFragment.newInstance();
+            else if (TITLES[0].equals("RSS_DetailsFragment"))
+                return null;//RSS_DetailsFragment.newInstance(flux, title, description, link, intent);
+            else if (TITLES[0].equals("TICKETS") && position == 0)
+                return TicketFragment.newInstance();
+            else if (TITLES[0].equals("TICKETS") && position == 1)
+                return PassFragment.newInstance();
+            else if (TITLES[0].equals("TICKETS") && position == 2)
+                return CombinesFragment.newInstance();
+            else if (TITLES[0].equals("ABOUT"))
+                return null; //AboutFragment.newInstance();
+            else return StationsFragment.newInstance();
+        }
+    }
+
+    public class MyPagerAdapter2 extends FragmentPagerAdapter {
+
+        private final String[] TITLES = { "Categories", "Home", "Top Paid", "Top Free", "Top Grossing", "Top New Paid",
+                "Top New Free", "Trending" };
+
+        public MyPagerAdapter2(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return TITLES[position];
+        }
+
+        @Override
+        public int getCount() {
+            return TITLES.length;
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return null; //SuperAwesomeCardFragment.newInstance(position);
+        }
+
+    }
 }

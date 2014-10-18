@@ -1,9 +1,9 @@
 package com.tagdroid.tagdroid.Welcome;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -19,7 +19,6 @@ import com.tagdroid.tagdroid.R;
 import com.viewpagerindicator.LinePageIndicator;
 
 public class WelcomeActivity extends FragmentActivity implements WelcomeFragment.OnButtonClicked {
-    public static final String PREFS_NAME_2 = "Welcome";
     public static String PACKAGE_NAME;
     ViewPager mPager;
 
@@ -35,7 +34,7 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
                     Toast.LENGTH_LONG).show();
 
         // We check if it's the first app launch…
-        if (getSharedPreferences(WelcomeActivity.PREFS_NAME_2, 0).getBoolean("AppAlreadyLaunched", false)) {
+        if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean("AppAlreadyLaunched", false)) {
             startActivity(new Intent(this, MainActivity.class));
             finish();
         } else {
@@ -81,9 +80,9 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
 
     @Override
     public void onFinalButtonClicked() {
-        SharedPreferences.Editor editor = getSharedPreferences(PREFS_NAME_2, 0).edit();
-        editor.putBoolean("AppAlreadyLaunched", true);
-        editor.apply();
+        PreferenceManager.getDefaultSharedPreferences(this).edit()
+                .putBoolean("AppAlreadyLaunched", true)
+                .apply();
         Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
         startActivity(intent);
     }
