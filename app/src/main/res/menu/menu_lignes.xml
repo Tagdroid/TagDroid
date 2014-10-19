@@ -1,14 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+        android:id="@+id/search"
+        android:title="Search"
+        android:showAsAction="collapseActionView|ifRoom"
+        android:icon="@drawable/ic_search"
+        android:actionViewClass="android.widget.SearchView"/>/>
 
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- Search, should appear as action button -->
-    <item android:id="@+id/action_search"
-        android:icon="@android:drawable/ic_menu_search"
-        android:title="Recherche"
-        android:showAsAction="ifRoom" />
-    <!-- Settings, should always be in the overflow -->
-    <item android:id="@+id/action_settings"
-        android:icon="@android:drawable/ic_menu_preferences"
-        android:title="Settings"
-        android:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/more"
+        android:icon="@drawable/ic_more"
+        android:orderInCategory="11111"
+        android:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/settings"
+                android:showAsAction="ifRoom"
+                android:title="Settings"
+                android:icon="@drawable/ic_settings"/>
+
+
+            <item
+                android:id="@+id/about"
+                android:showAsAction="ifRoom"
+                android:title="@string/about"
+                android:icon="@drawable/ic_about"/>
+
+
+            <item
+                android:id="@+id/rate"
+                android:showAsAction="ifRoom"
+                android:title="Evaluez !"
+                android:icon="@drawable/ic_rate"/>
+
+
+        </menu>
+    </item>
 </menu>
+
+

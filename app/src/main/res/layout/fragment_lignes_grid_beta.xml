@@ -16,144 +16,65 @@
             android:layout_height="fill_parent"
             android:padding="10dp">
 
-            <LinearLayout
-                                android:layout_width="fill_parent"
-                                android:layout_height="wrap_content">
-
-                                <LinearLayout
-                                    android:orientation="vertical"
-                                    android:layout_width="20dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_vertical"
-                                    android:layout_marginRight="10dp">
-
-                                    <View android:background="@color/gris_normal"
-                                        android:layout_width="fill_parent"
-                                        android:layout_height="1px" />
-
-                                    <View android:background="@color/blanc"
-                                        android:layout_width="fill_parent"
-                                        android:layout_height="1px" />
-                                </LinearLayout>
-
-                                <TextView android:text="@string/tram"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textColor="@color/gris_fonce" />
-
-                                <LinearLayout
-                                    android:orientation="vertical"
-                                    android:layout_width="fill_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_vertical"
-                                    android:layout_marginLeft="10dp">
-
-                                    <View android:background="@color/gris_normal"
-                                        android:layout_width="fill_parent"
-                                        android:layout_height="1px" />
-
-                                    <View android:background="@color/blanc"
-                                        android:layout_width="fill_parent"
-                                        android:layout_height="1px" />
-                                </LinearLayout>
-
-                            </LinearLayout>
+            <TextView android:text="@string/tram"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gris_fonce"
+                android:id="@+id/tramways"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp" />
 
             <com.tagdroid.tagdroid.ExpandableGridView android:id="@+id/tramGrid"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:paddingTop="10dp"
-                                android:paddingBottom="10dp"
-                                android:horizontalSpacing="8dp"
-                                android:stretchMode="columnWidth"
-                                android:layout_gravity="center_horizontal"
-                                android:clickable="false"
-                                android:numColumns="5"
-                                android:verticalSpacing="8dp"
-                                android:paddingLeft="10dp" />
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:horizontalSpacing="8dp"
+                android:stretchMode="columnWidth"
+                android:layout_gravity="center_horizontal"
+                android:clickable="false"
+                android:numColumns="5"
+                android:verticalSpacing="8dp"
+                android:padding="10dp" />
 
-            <LinearLayout
-                                android:layout_width="fill_parent"
-                                android:layout_height="wrap_content">
-
-                                <LinearLayout
-                                    android:orientation="vertical"
-                                    android:layout_width="20dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_vertical"
-                                    android:layout_marginRight="10dp">
-
-                                    <View android:background="@color/gris_normal"
-                                        android:layout_width="fill_parent"
-                                        android:layout_height="1px" />
-
-                                    <View android:background="@color/blanc"
-                                        android:layout_width="fill_parent"
-                                        android:layout_height="1px" />
-                                </LinearLayout>
-
-                                <TextView android:text="@string/bus"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textColor="@color/gris_fonce"
-                                    android:layout_gravity="center_vertical" />
-
-                                <LinearLayout
-                                    android:orientation="vertical"
-                                    android:layout_width="fill_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_vertical"
-                                    android:layout_marginLeft="10dp">
-
-                                    <View android:background="@color/gris_normal"
-                                        android:layout_width="fill_parent"
-                                        android:layout_height="1px" />
-
-                                    <View android:background="@color/blanc"
-                                        android:layout_width="fill_parent"
-                                        android:layout_height="1px" />
-                                </LinearLayout>
-
-                            </LinearLayout>
+            <TextView android:text="@string/bus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gris_fonce"
+                android:layout_gravity="center_vertical"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp" />
 
             <com.tagdroid.tagdroid.ExpandableGridView android:id="@+id/ChronoGrid"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:paddingTop="10dp"
-                                android:paddingBottom="10dp"
-                                android:numColumns="5"
+                android:numColumns="5"
                         android:stretchMode="columnWidth"
                         android:horizontalSpacing="8dp"
                         android:verticalSpacing="8dp"
                         android:background="@drawable/chrono_style"
-                        android:paddingLeft="10dp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginTop="5dp" />
+                android:layout_marginBottom="5dp"
+                        android:layout_marginTop="5dp"
+                android:padding="10dp" />
 
             <com.tagdroid.tagdroid.ExpandableGridView android:id="@+id/ProximoGrid"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:paddingTop="10dp"
-                                android:paddingBottom="10dp"
-                                android:numColumns="5"
+                android:numColumns="5"
                                 android:horizontalSpacing="8dp"
                                 android:stretchMode="columnWidth"
-                        android:paddingLeft="10dp"
-                        android:layout_marginBottom="5dp"
+                android:layout_marginBottom="5dp"
                         android:background="@drawable/proximo_style"
-                        android:verticalSpacing="8dp" />
+                        android:verticalSpacing="8dp"
+                android:padding="10dp" />
 
             <com.tagdroid.tagdroid.ExpandableGridView android:id="@+id/FlexoGrid"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:paddingTop="10dp"
-                                android:paddingBottom="10dp"
-                                android:numColumns="5"
+                android:numColumns="5"
                                 android:horizontalSpacing="8dp"
                                 android:stretchMode="columnWidth"
-                        android:paddingLeft="10dp"
-                        android:background="@drawable/flexo_style"
-                        android:verticalSpacing="8dp" />
+                android:background="@drawable/flexo_style"
+                        android:verticalSpacing="8dp"
+                android:padding="10dp" />
         </LinearLayout>
     </ScrollView>
 

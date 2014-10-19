@@ -19,7 +19,10 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.tagdroid.tagdroid.Drawer.CustomAdapter;
-import com.tagdroid.tagdroid.Pages.*;
+import com.tagdroid.tagdroid.Pages.AboutFragment;
+import com.tagdroid.tagdroid.Pages.ActualitesFragment;
+import com.tagdroid.tagdroid.Pages.LignesFragment;
+import com.tagdroid.tagdroid.Pages.LignesFragment_Beta;
 
 public class MainActivity extends Activity {
     private static DrawerLayout drawer;
@@ -162,6 +165,8 @@ public class MainActivity extends Activity {
         }
     }
 
+
+
     // Recreate the ActionBar : Title and menu (called on invalidate or onCreate)
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
@@ -171,6 +176,16 @@ public class MainActivity extends Activity {
         } else {
             actionBar.setTitle(getFragmentTitle());
             getMenuInflater().inflate(getFragmentMenu(), menu);
+
+
+            // Associate searchable configuration with the SearchView
+           /* if(activePage.getTitle().equals("Lignes")) {
+                SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+                SearchView searchView = (SearchView) menu.findItem(R.id.search).getActionView();
+                searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+            }*/
+
+
         }
         return super.onPrepareOptionsMenu(menu);
     }

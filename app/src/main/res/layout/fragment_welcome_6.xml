@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:fbutton="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -28,13 +28,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
 
             <TextView
                 android:id="@+id/welcome_text12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:fontFamily="sans-serif-light"
                 android:text="@string/welcome_texte12"
                 android:textSize="15sp" />
@@ -59,18 +60,20 @@
         </LinearLayout>
     </ScrollView>
 
-    <View
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
-
-
-    <ImageButton
-        android:id="@+id/btn_go_welcome"
+    <info.hoang8f.widget.FButton
+        android:id="@+id/welcome_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/btn_go_welcome" />
+        android:text="@string/letsgo"
+        android:textColor="@color/blanc"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        fbutton:buttonColor="#2ecc71"
+        fbutton:shadowColor="#27ae60"
+        fbutton:shadowEnabled="true"
+        fbutton:shadowHeight="6dp"
+        fbutton:cornerRadius="10dp"
+        android:paddingBottom="16dp"
+        android:paddingTop="10dp" />
+
 </LinearLayout>

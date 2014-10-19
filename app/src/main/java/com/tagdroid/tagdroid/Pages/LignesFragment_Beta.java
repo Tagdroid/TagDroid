@@ -2,20 +2,21 @@ package com.tagdroid.tagdroid.Pages;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.Toast;
 
 import com.tagdroid.tagdroid.Page;
 import com.tagdroid.tagdroid.R;
+
+import info.hoang8f.widget.FButton;
 
 public class LignesFragment_Beta extends Page {
     public LignesFragment_Beta() {
@@ -28,6 +29,28 @@ public class LignesFragment_Beta extends Page {
     public Integer getMenuId() {
         return R.menu.menu_lignes;
     }
+
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Take appropriate action for each action item click
+        switch (item.getItemId()) {
+            case R.id.search:
+                Log.d("Test menu item","SEARCH");
+                return true;
+            case R.id.settings:
+                Log.d("Test menu item","SETTINGS");
+                return true;
+            case R.id.about:
+                Log.d("Test menu item","ABOUT");
+                return true;
+            case R.id.rate:
+                Log.d("Test menu item","RATE");
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -119,28 +142,45 @@ public class LignesFragment_Beta extends Page {
             return 0;
         }
 
+
         // create a new ImageView for each item referenced by the Adapter
         public View getView(int position, View oldView, ViewGroup parent) {
-            Button view;
+            FButton view;
             if (oldView == null) {
-                view = new Button(context);
-                view.setLayoutParams(new GridView.LayoutParams(113, 113));
-                view.setBackgroundResource(R.drawable.button_shape_style); //On applique le style
+                view = new FButton(context);
+                //view.setLayoutParams(new GridView.LayoutParams(113, 113));
+                //view.setBackgroundResource(R.drawable.button_shape_style); //On applique le style
                 //Le texte sera de couleur noir ou blanc selon la luminosité de la couleur de fond.
                 view.setText(lignes[position].name);
-                if(lignes[position].name.length()>3) view.setTextSize(14);
+                if(lignes[position].name.length()>3) view.setTextSize(16);
+                else view.setTextSize(30);
                 view.setTextColor(BlackorWhite(getResources().getColor(lignes[position].color)));
 
-                view.setClickable(true);
+                view.setButtonColor(getResources().getColor(lignes[position].color));
+                Log.d("Lignes.color", lignes[position].color + "");
+                Log.d("GET RES GET COLOR Lignes.color",getResources().getColor(lignes[position].color)+"");
+
+                view.setShadowColor(getResources().getColor(lignes[position].color) / 2);
+                view.setShadowEnabled(true);
+                view.setShadowHeight(10);
+                view.setCornerRadius(10);
+
+
+                //view.setClickable(true);
                 //On vient chercher le background du style appliqué sur le shape
 
 
-                GradientDrawable shape =(GradientDrawable)view.getBackground();
-                shape.setColor(getResources().getColor(lignes[position].color));
+                /*GradientDrawable shape =(GradientDrawable)view.getBackground();
+                shape.setColor(getResources().getColor(lignes[position].color));*/
             } else
-                view = (Button) oldView;
+                view = (FButton) oldView;
             return view;
         }
+    }
+
+    /* 2 fonctions d'operation sur les couleurs */
+    private static int Darker(int color) {
+        return Color.rgb((int)(Color.red(color)*.7), (int)(Color.blue(color)*.7), (int)(Color.green(color)*.7));
     }
 
     private static int BlackorWhite(int color) {

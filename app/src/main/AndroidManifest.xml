@@ -45,6 +45,9 @@
         <!--  KEY DEBUG : AIzaSyBkEPb5wM5O5MOksH2Dph0ecyyBlGmWOTU -->
         <!--  KEY OFFICIEL : AIzaSyDv3wzyAx55KoZQ_Fr8LkaZz4mB-BR6xRw -->
 
+        <meta-data android:name="android.app.searchable"
+            android:resource="@xml/searchable" />
+
         <uses-library
             android:name="com.google.android.maps"
             android:required="true" />
