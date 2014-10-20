@@ -1,0 +1,7 @@
+<resources>
+   <!-- <style name="AppTheme" parent="android:Theme.Material.Light">
+        <item name="android:colorPrimary">@color/bleu_tag</item>
+        <item name="android:colorPrimaryDark">@color/bleu_tag_fonce</item>
+        <item name="android:colorAccent">@color/bleu_tag_clair</item>
+    </style>-->
+</resources>

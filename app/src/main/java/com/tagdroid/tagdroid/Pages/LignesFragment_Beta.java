@@ -2,6 +2,7 @@ package com.tagdroid.tagdroid.Pages;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tagdroid.tagdroid.Page;
@@ -56,6 +58,16 @@ public class LignesFragment_Beta extends Page {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_lignes_grid_beta, container, false);
         GridView tramGridView = (GridView) view.findViewById(R.id.tramGrid);
+        Typeface tf2 = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Black.ttf");
+        TextView tramways = (TextView) view.findViewById(R.id.tramways);
+        TextView chrono = (TextView) view.findViewById(R.id.chrono);
+        TextView proximo = (TextView) view.findViewById(R.id.proximo);
+        TextView flexo = (TextView) view.findViewById(R.id.flexo);
+        tramways.setTypeface(tf2);
+        chrono.setTypeface(tf2);
+        proximo.setTypeface(tf2);
+        flexo.setTypeface(tf2);
+
         Ligne[] lignesTram = new Ligne[5];
         lignesTram[0] = new Ligne(R.color.lignea, "A", 0);
         lignesTram[1] = new Ligne(R.color.ligneb, "B", 0);
@@ -92,6 +104,8 @@ public class LignesFragment_Beta extends Page {
         lignesFlexo[2] = new Ligne(R.color.ligne42, "42", 0);
 
 
+
+
         /* L'event OnItemClick ne fonctionne pas ! Des idées ???? */
 
         tramGridView.setAdapter(new LigneAdapter(getActivity(), lignesTram));
@@ -122,6 +136,7 @@ public class LignesFragment_Beta extends Page {
                 Toast.makeText(getActivity(), "" + position, Toast.LENGTH_SHORT).show();
             }
         });
+
         return view;
     }
 
@@ -142,45 +157,31 @@ public class LignesFragment_Beta extends Page {
             return 0;
         }
 
+        Typeface tf = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Thin.ttf");
 
         // create a new ImageView for each item referenced by the Adapter
         public View getView(int position, View oldView, ViewGroup parent) {
             FButton view;
             if (oldView == null) {
                 view = new FButton(context);
-                //view.setLayoutParams(new GridView.LayoutParams(113, 113));
-                //view.setBackgroundResource(R.drawable.button_shape_style); //On applique le style
-                //Le texte sera de couleur noir ou blanc selon la luminosité de la couleur de fond.
+                view.setLayoutParams(new GridView.LayoutParams(113, 113));
+
                 view.setText(lignes[position].name);
+                view.setTypeface(tf);
                 if(lignes[position].name.length()>3) view.setTextSize(16);
                 else view.setTextSize(30);
                 view.setTextColor(BlackorWhite(getResources().getColor(lignes[position].color)));
 
-                view.setButtonColor(getResources().getColor(lignes[position].color));
-                Log.d("Lignes.color", lignes[position].color + "");
-                Log.d("GET RES GET COLOR Lignes.color",getResources().getColor(lignes[position].color)+"");
 
-                view.setShadowColor(getResources().getColor(lignes[position].color) / 2);
+                view.setButtonColor(getResources().getColor(lignes[position].color));
                 view.setShadowEnabled(true);
                 view.setShadowHeight(10);
                 view.setCornerRadius(10);
-
-
-                //view.setClickable(true);
-                //On vient chercher le background du style appliqué sur le shape
-
-
-                /*GradientDrawable shape =(GradientDrawable)view.getBackground();
-                shape.setColor(getResources().getColor(lignes[position].color));*/
+                view.setClickable(true);
             } else
                 view = (FButton) oldView;
             return view;
         }
-    }
-
-    /* 2 fonctions d'operation sur les couleurs */
-    private static int Darker(int color) {
-        return Color.rgb((int)(Color.red(color)*.7), (int)(Color.blue(color)*.7), (int)(Color.green(color)*.7));
     }
 
     private static int BlackorWhite(int color) {

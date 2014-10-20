@@ -30,6 +30,8 @@
     <color name="lignee">#5c358c</color>
 
     <!-- Chrono -->
+    <color name="chrono">#fdf1b4</color>
+    <color name="chrono_shadow">#c7bd8c</color>
     <color name="lignec1">#ffed00</color>
     <color name="lignec2">#fed33c</color>
     <color name="lignec3">#f49712</color>
@@ -38,6 +40,8 @@
     <color name="lignec6">#ffeb00</color>
 
     <!-- Proximo -->
+    <color name="proximo">#92eede</color>
+    <color name="proximo_shadow">#82c7bb</color>
     <color name="ligne11">#94c11f</color>
     <color name="ligne12">#009a3e</color>
     <color name="ligne13">#1db6b7</color>
@@ -52,6 +56,8 @@
     <color name="ligne22">#35bad9</color>
 
     <!-- Flexo -->
+    <color name="flexo">#ffd9e0</color>
+    <color name="flexo_shadow">#d7afb6</color>
     <color name="ligne40">#ea516c</color>
     <color name="ligne41">#e975ab</color>
     <color name="ligne42">#8164a9</color>
