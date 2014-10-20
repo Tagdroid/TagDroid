@@ -58,15 +58,15 @@ public class LignesFragment_Beta extends Page {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_lignes_grid_beta, container, false);
         GridView tramGridView = (GridView) view.findViewById(R.id.tramGrid);
-        Typeface tf2 = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Black.ttf");
+        //Typeface tf2 = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Black.ttf");
         TextView tramways = (TextView) view.findViewById(R.id.tramways);
         TextView chrono = (TextView) view.findViewById(R.id.chrono);
         TextView proximo = (TextView) view.findViewById(R.id.proximo);
         TextView flexo = (TextView) view.findViewById(R.id.flexo);
-        tramways.setTypeface(tf2);
-        chrono.setTypeface(tf2);
-        proximo.setTypeface(tf2);
-        flexo.setTypeface(tf2);
+        //tramways.setTypeface(tf2);
+        //chrono.setTypeface(tf2);
+        //proximo.setTypeface(tf2);
+        //flexo.setTypeface(tf2);
 
         Ligne[] lignesTram = new Ligne[5];
         lignesTram[0] = new Ligne(R.color.lignea, "A", 0);
@@ -157,7 +157,7 @@ public class LignesFragment_Beta extends Page {
             return 0;
         }
 
-        Typeface tf = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Thin.ttf");
+//        Typeface tf = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Thin.ttf");
 
         // create a new ImageView for each item referenced by the Adapter
         public View getView(int position, View oldView, ViewGroup parent) {
@@ -167,7 +167,7 @@ public class LignesFragment_Beta extends Page {
                 view.setLayoutParams(new GridView.LayoutParams(113, 113));
 
                 view.setText(lignes[position].name);
-                view.setTypeface(tf);
+            //    view.setTypeface(tf);
                 if(lignes[position].name.length()>3) view.setTextSize(16);
                 else view.setTextSize(30);
                 view.setTextColor(BlackorWhite(getResources().getColor(lignes[position].color)));

@@ -1,6 +1,7 @@
 package com.tagdroid.tagdroid.Pages;
 
 import android.app.AlertDialog;
+import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
@@ -82,7 +83,7 @@ public class ActualitesFragment extends Page {
         return true;
     }
 
-    public class displayRSSTask extends AsyncTask<Void, Void, Integer> {
+    public class displayRSSTask extends AsyncTask<Void, Void, Integer> implements AdapterView.OnItemClickListener {
         private ProgressDialog progression;
         private boolean needToReload;
         private ArrayList<HashMap<String, String>> rssItemsList;
@@ -115,6 +116,7 @@ public class ActualitesFragment extends Page {
                         for (RssItem rssItem : rssFeed.getRssItems()) {
                             map = new HashMap<String, String>();
                             map.put("titre", rssItem.getTitle());
+                            map.put("url", rssItem.getLink());
                             String[] RSSStrings = rssItem.getDescription().split("> ");
                             map.put("description", RSSStrings[1]);
                             map.put("image", "http://www.tag.fr" + RSSStrings[0]
@@ -129,6 +131,7 @@ public class ActualitesFragment extends Page {
                         for (RssItem rssItem : rssFeed.getRssItems()) {
                             map = new HashMap<String, String>();
                             map.put("titre", rssItem.getTitle());
+                            map.put("url", rssItem.getLink());
                             map.put("description", rssItem.getDescription()
                                             .split("<span[^>]*>")[1]
                                             .split("</span")[0]
@@ -164,19 +167,32 @@ public class ActualitesFragment extends Page {
 
                 RSSView.setDivider(null);
                 RSSView.setAdapter(adapter);
-                RSSView.setOnItemClickListener(new ListView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Toast.makeText(getActivity(), "sélectionné : " + position, Toast.LENGTH_SHORT).show();
-
-                        //  selectItem(position, actualPosition > 0);
-                    }
-                });
+                RSSView.setOnItemClickListener(this);
                 RSSView.setSelection(0);
             } else {
                 Toast.makeText(getActivity(), "Erreur de récupération :\n" + stateMessage,
                         Toast.LENGTH_LONG).show();
             }
+        }
+
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            HashMap<String, String> selectedItem = listItem.get(position);
+            FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+
+            ActualitesDetailsFragment actualitesDetailsFragment = ActualitesDetailsFragment.newInstance(RSSChannel,
+                    selectedItem.get("titre"),
+                    selectedItem.get("description"),
+                    selectedItem.get("url"),
+                    selectedItem.get("image"));
+
+
+            fragmentTransaction.replace(R.id.pager,actualitesDetailsFragment);
+            changeFragmentInterface.onChangeFragment(actualitesDetailsFragment);
+
+            fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            fragmentTransaction.addToBackStack("activePage");
+            fragmentTransaction.commit();
         }
     }
 }
