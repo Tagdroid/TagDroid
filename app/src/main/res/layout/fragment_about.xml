@@ -85,14 +85,14 @@
             android:background="@color/blanc"
             android:orientation="vertical" />
 
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/AuteurLayout"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/AuteurLigne"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -101,21 +101,46 @@
                 android:fontFamily="sans-serif-light"
                 android:text="Quentin DESBOIS"
                 android:textColor="@color/gris_fonce"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:id="@+id/textView"
+                android:layout_gravity="center_vertical" />
 
-            <ImageButton android:id="@+id/mailQuentin"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_alignParentRight="true"
-                android:background="@drawable/btn_mail" />
-        </RelativeLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"></LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:gravity="right">
+
+                <ImageButton android:id="@+id/ViadeoQuentin"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/about_btn_viadeo"
+                    android:layout_gravity="top"
+                    android:padding="8dp" />
+
+                <ImageButton android:id="@+id/mailQuentin"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/about_btn_mail"
+                    android:layout_gravity="right" />
+
+            </LinearLayout>
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/CollaborateurTitre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/AuteurLayout"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="sans-serif-light"
             android:text="@string/collaborateur"
             android:textColor="@color/gris_fonce"
@@ -135,14 +160,14 @@
             android:background="@color/blanc"
             android:orientation="vertical" />
 
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/Collaborateur1Layout"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/CollaborateurLigne"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -151,23 +176,37 @@
                 android:fontFamily="sans-serif-light"
                 android:text="Félix PIÉDALLU"
                 android:textColor="@color/gris_fonce"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:layout_gravity="center_vertical" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"></LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:gravity="right">
 
             <ImageButton
                 android:id="@+id/mailFélix"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_alignParentRight="true"
-                android:background="@drawable/btn_mail"
+                android:background="@drawable/about_btn_mail"
                 android:visibility="visible" />
-        </RelativeLayout>
-
+        </LinearLayout>
+        </LinearLayout>
         <TextView
             android:id="@+id/RemerciementTitre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/Collaborateur1Layout"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="sans-serif-light"
             android:text="@string/remerciement"
             android:textColor="@color/gris_fonce"
@@ -188,14 +227,14 @@
             android:orientation="vertical" />
 
 
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/Remerciement1Layout"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/RemerciementLigne"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -204,23 +243,37 @@
                 android:fontFamily="sans-serif-light"
                 android:text="Alexandre LOUVRIER"
                 android:textColor="@color/gris_fonce"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:layout_gravity="center_vertical" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"></LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:gravity="right">
 
             <ImageButton
                 android:id="@+id/mailAlexandre"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_alignParentRight="true"
-                android:background="@drawable/btn_mail"
+                android:background="@drawable/about_btn_mail"
                 android:visibility="invisible" />
-        </RelativeLayout>
-
+        </LinearLayout>
+        </LinearLayout>
         <TextView
             android:id="@+id/DescriptionTitre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/Remerciement1Layout"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="sans-serif-light"
             android:text="@string/description"
             android:textColor="@color/gris_fonce"
@@ -255,7 +308,8 @@
                 android:layout_centerVertical="true"
                 android:fontFamily="sans-serif-light"
                 android:text="@string/about_description"
-                android:textColor="@color/gris_fonce" />
+                android:textColor="@color/gris_fonce"
+                android:layout_marginTop="10dp" />
         </RelativeLayout>
 
         <TextView

@@ -22,6 +22,6 @@
         android:layout_height="2dp"
         android:layout_marginLeft="5dp"
         android:layout_marginStart="5dp"
-        android:background="@color/noir"
+        android:background="@color/blanc"
         android:layout_alignParentBottom="true"/>
 </RelativeLayout>
