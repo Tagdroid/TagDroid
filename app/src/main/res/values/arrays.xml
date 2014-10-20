@@ -16,7 +16,7 @@
     <array name="drawer_infos_items_titles">
         <item>@string/drawer_item_trafic</item>
         <item>@string/drawer_item_actualites</item>
-        <item>@string/drawer_item_tickets</item>
+        <item>@string/drawer_item_tarifs</item>
     </array>
 
     
