@@ -71,6 +71,7 @@ public class ActualitesFragment extends Page {
                                     public void onClick(DialogInterface dialog, int NewRSSChannel) {
                                         dialog.cancel();
                                         if (NewRSSChannel != RSSChannel) {
+                                            RSSChannel = NewRSSChannel;
                                             setRSSChannel(RSSChannel);
                                             new displayRSSTask(true).execute();
                                         }

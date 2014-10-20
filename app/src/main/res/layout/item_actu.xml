@@ -37,14 +37,8 @@
         </RelativeLayout>
     <View
         android:layout_width="match_parent"
-        android:layout_height="1px"
+        android:layout_height="2px"
         android:background="@color/gris_normal"
-        android:orientation="vertical">
-    </View>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/blanc"
         android:orientation="vertical">
     </View>
 </LinearLayout>
