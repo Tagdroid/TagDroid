@@ -24,7 +24,7 @@ import com.tagdroid.tagdroid.Pages.ActualitesFragment;
 import com.tagdroid.tagdroid.Pages.LignesFragment;
 import com.tagdroid.tagdroid.Pages.LignesFragment_Beta;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements ChangeFragmentInterface{
     private static DrawerLayout drawer;
     private static ListView drawerList;
     private static ActionBarDrawerToggle drawerToggle;
@@ -97,6 +97,7 @@ public class MainActivity extends Activity {
         drawerToggle.syncState();
     }
 
+
     private void selectItem(int position, boolean isApplicationProgression) {
         switch (position) {
             case 0: // Infos Fragment
@@ -126,9 +127,6 @@ public class MainActivity extends Activity {
             default:
                 return;
         }
-        Bundle args = new Bundle();
-        activePage.setArguments(args);
-
         // update selected item and title, then close the drawer
         drawerList.setItemChecked(position, true);
         drawer.closeDrawer(drawerList);
@@ -194,6 +192,11 @@ public class MainActivity extends Activity {
     }
     String getFragmentTitle() {
         return activePage.getTitle();
+    }
+
+    @Override
+    public void onChangeFragment(Page actualPage) {
+        activePage = actualPage;
     }
 
     // Manages the Drawer changes

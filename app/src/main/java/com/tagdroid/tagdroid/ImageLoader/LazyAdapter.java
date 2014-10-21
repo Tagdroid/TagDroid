@@ -54,7 +54,7 @@ public class LazyAdapter extends BaseAdapter {
         actu = data.get(position);
         
         if(convertView==null){
-                vi = inflater.inflate(R.layout.item_actu, null);
+                vi = inflater.inflate(R.layout.fragment_actualites_item, null);
                 holder=new ViewHolder();
                 holder.titre=(TextView)vi.findViewById(R.id.titre);
                 holder.description=(TextView)vi.findViewById(R.id.description);
