@@ -1,8 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ListView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/rss_view"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentStart="true"
-    android:layout_alignParentTop="true"/>
+    android:orientation="horizontal">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_margin="20dp">
+
+            <LinearLayout
+            android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/cardui_tramways"
+                android:layout_marginBottom="10dp">
+
+                <TextView android:text="TAG"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/gris_fonce"
+                    android:id="@+id/TAG"
+                    android:layout_margin="5dp"
+                    android:textSize="20sp"
+                    android:layout_gravity="center_horizontal" />
+
+                <View
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/blanc">
+                </View>
+
+                <ListView
+                    android:id="@+id/rss_view_tag"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:footerDividersEnabled="false"
+                    android:headerDividersEnabled="false" />
+            </LinearLayout>
+        </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/cardui_tramways"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp">
+
+                    <TextView android:text="SMTC"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/gris_fonce"
+                        android:id="@+id/SMTC"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="5dp"
+                        android:layout_margin="5dp"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="20sp" />
+
+                    <View
+                        android:orientation="vertical"
+                        android:layout_width="fill_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/blanc">
+                    </View>
+
+                    <ListView
+                        android:id="@+id/rss_view_smtc"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:footerDividersEnabled="false"
+                        android:headerDividersEnabled="false"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

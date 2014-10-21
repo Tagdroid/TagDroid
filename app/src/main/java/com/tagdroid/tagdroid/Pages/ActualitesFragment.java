@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,12 +13,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tagdroid.tagdroid.ImageLoader.LazyAdapter;
 import com.tagdroid.tagdroid.Page;
 import com.tagdroid.tagdroid.R;
-import com.tagdroid.tagdroid.RssReader.*;
+import com.tagdroid.tagdroid.RssReader.RssFeed;
+import com.tagdroid.tagdroid.RssReader.RssItem;
+import com.tagdroid.tagdroid.RssReader.RssReader;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -43,14 +47,21 @@ public class ActualitesFragment extends Page {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_actualites, container, false);
-        RSSView = (ListView) view.findViewById(R.id.rss_view);
+
+        Typeface tf = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Black.ttf");
+        TextView TAG = (TextView) view.findViewById(R.id.TAG);
+        TextView SMTC = (TextView) view.findViewById(R.id.SMTC);
+        TAG.setTypeface(tf);
+        SMTC.setTypeface(tf);
+
+        RSSView = (ListView) view.findViewById(R.id.rss_view_tag);
         RSSChannel = getRSSChannel();
         new displayRSSTask(false).execute();
         return view;
     }
 
     private int getRSSChannel() {
-        return getActivity().getSharedPreferences("RSS", 0).getInt("RSSChannel", 1);
+        return getActivity().getSharedPreferences("RSS", 0).getInt("RSSChannel", 0);
     }
 
     private void setRSSChannel(int RSSChannel) {
