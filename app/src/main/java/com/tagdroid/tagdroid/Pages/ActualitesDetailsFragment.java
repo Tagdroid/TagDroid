@@ -1,7 +1,5 @@
 package com.tagdroid.tagdroid.Pages;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -14,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,7 +21,7 @@ import com.tagdroid.tagdroid.R;
 
 import java.io.InputStream;
 
-public class ActualitesDetailsFragment extends Page implements View.OnClickListener {
+public class ActualitesDetailsFragment extends Page { //implements View.OnClickListener {
     private Integer RSSChannel;
     private String title;
     private String description;
@@ -36,6 +35,15 @@ public class ActualitesDetailsFragment extends Page implements View.OnClickListe
     @Override
     public Integer getMenuId() {
         return R.menu.menu_actu_details;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_actu_share:
+                break;
+        }
+        return true;
     }
 
     public static ActualitesDetailsFragment newInstance(Integer RSSChannel, String title, String description,
@@ -60,6 +68,13 @@ public class ActualitesDetailsFragment extends Page implements View.OnClickListe
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_actualites_details, container, false);
+        Button plus =(Button) view.findViewById(R.id.bouton_plus);
+        plus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url_more)));
+            }
+        });
 
         switch (RSSChannel) {
             case 0:
@@ -80,16 +95,18 @@ public class ActualitesDetailsFragment extends Page implements View.OnClickListe
         return view;
     }
 
-    @Override
-    public void onClick(View view) {
+
+    // Je sais pas pourquoi mais ça marchait pas :p
+    /*public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.more:
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url_more)));
+            case R.id.bouton_plus:
+                //startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url_more)));
+                Log.d("Bouton plus","PRESSED");
                 break;
             default:
                 break;
         }
-    }
+    }*/
 
 
     private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
@@ -116,13 +133,5 @@ public class ActualitesDetailsFragment extends Page implements View.OnClickListe
         }
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_actu_share:
 
-                break;
-        }
-        return true;
-    }
 }

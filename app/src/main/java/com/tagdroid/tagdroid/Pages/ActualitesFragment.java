@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tagdroid.tagdroid.ImageLoader.LazyAdapter;
@@ -48,15 +46,11 @@ public class ActualitesFragment extends Page {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_actualites, container, false);
 
-        Typeface tf = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Black.ttf");
-        TextView TAG = (TextView) view.findViewById(R.id.TAG);
-        TextView SMTC = (TextView) view.findViewById(R.id.SMTC);
-        TAG.setTypeface(tf);
-        SMTC.setTypeface(tf);
+        RSSView = (ListView) view.findViewById(R.id.rss_view);
 
-        RSSView = (ListView) view.findViewById(R.id.rss_view_tag);
         RSSChannel = getRSSChannel();
         new displayRSSTask(false).execute();
+
         return view;
     }
 
@@ -119,9 +113,7 @@ public class ActualitesFragment extends Page {
             try {
                 rssItemsList = new ArrayList<HashMap<String, String>>();
                 RssFeed rssFeed = RssReader.read(new URL(RSSURLS[RSSChannel]));
-
                 HashMap<String, String> map;
-
                 switch (RSSChannel) {
                     case 0:
                         for (RssItem rssItem : rssFeed.getRssItems()) {
@@ -158,6 +150,7 @@ public class ActualitesFragment extends Page {
                             );
                             rssItemsList.add(map);
                         }
+                        break;
                 }
                 return 1;
             } catch (Exception e) {
@@ -175,11 +168,12 @@ public class ActualitesFragment extends Page {
 
             if (resultState > 0) {
                 LazyAdapter adapter = new LazyAdapter(getActivity(), listItem);
-
                 RSSView.setDivider(null);
                 RSSView.setAdapter(adapter);
                 RSSView.setOnItemClickListener(this);
                 RSSView.setSelection(0);
+
+
             } else {
                 Toast.makeText(getActivity(), "Erreur de récupération :\n" + stateMessage,
                         Toast.LENGTH_LONG).show();
