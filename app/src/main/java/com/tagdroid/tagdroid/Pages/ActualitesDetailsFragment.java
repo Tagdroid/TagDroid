@@ -1,7 +1,5 @@
 package com.tagdroid.tagdroid.Pages;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -16,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.tagdroid.tagdroid.Page;
 import com.tagdroid.tagdroid.R;
@@ -63,9 +62,13 @@ public class ActualitesDetailsFragment extends Page implements View.OnClickListe
 
         switch (RSSChannel) {
             case 0:
-                url_more = url_more.replace("www.", "m.")
-                        .replace("/TPL_EVENEMENT/", "/TPL_EVENEMENTMOBILE/")
-                        .replace("3-en-detail.htm","226-actualites.htm");
+                if (url_more.contains("TPL_EVENEMENT")) {
+                    url_more = url_more.replace("www.", "m.")
+                            .replace("/TPL_EVENEMENT/", "/TPL_EVENEMENTMOBILE/")
+                            .replace("3-en-detail.htm", "226-actualites.htm");
+                } else {
+                    url_more = url_more.replace("tag.fr/", "tag.fr/DISABLE_REDIRECT_MOBILE/1/");
+                }
                 break;
             case 1:
                 break;
@@ -77,13 +80,14 @@ public class ActualitesDetailsFragment extends Page implements View.OnClickListe
                 .execute(url_photo);
         ((TextView) view.findViewById(R.id.description))
                 .setText(Html.fromHtml(description));
+        view.findViewById(R.id.button_more).setOnClickListener(this);
         return view;
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.more:
+            case R.id.button_more:
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url_more)));
                 break;
             default:
@@ -120,7 +124,6 @@ public class ActualitesDetailsFragment extends Page implements View.OnClickListe
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_actu_share:
-
                 break;
         }
         return true;
