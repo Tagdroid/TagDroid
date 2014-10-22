@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -34,7 +35,7 @@ import rosenpin.androidL.dialog.AndroidLDialog;
 public class WelcomeActivity extends FragmentActivity implements WelcomeFragment.OnButtonClicked, ProgressionInterface {
     public static String PACKAGE_NAME;
     ViewPager mPager;
-    boolean db_OK;
+    boolean db_OK,skip=false;
 
     //TODO download database meanwhile… WORK IN PROGRESS !!!!
 
@@ -43,20 +44,26 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
         super.onCreate(savedInstanceState);
 
         // We check for Google Play Services… CyanogenMod without GApps for example
-        if (GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext()) != 0)
+        if (GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext()) != 0){
             Toast.makeText(this, "Google Play Service non détecté. Dysfonctionnement de l'application possible.",
                     Toast.LENGTH_LONG).show();
+            Log.d("Welcome Status","Google Play Service undetected");
+        }
 
         // We check if it's the first app launch and DB exists
         if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean("AppAlreadyLaunched", false)
                 && doesDatabaseExist(this,"TagDatabase.db")) {
+            Log.d("Welcome Status","App already launch and database exists");
             startActivity(new Intent(this, MainActivity.class));
             finish();
+        }
         // We check if we are able to download DB else App Exit.
-        }else if(!(isNetworkAvailable())){
+        else if(!(isNetworkAvailable())){
+            Log.d("Welcome Status","App never launch and Internet connection problem");
             AndroidLDialog dialog = new AndroidLDialog.Builder(this)
                     .Title("Pas de connexion Internet")
-                    .Message("L'application n'est pas en mesure de télécharger la base de données nécessaire au bon fonctionnement de l'application.\n\nTAGdroid va se fermer.\n\nActivez votre connexion Internet par WIFI ou données mobiles (4G, 3G, Edge) et relancez l'application.")
+                    .Message("L'application n'est pas en mesure de télécharger la base de données nécessaire au bon fonctionnement de l'application." +
+                            "\n\nTAGdroid va se fermer.\n\nActivez votre connexion Internet par WIFI ou données mobiles (4G, 3G, Edge) et relancez l'application.")
                     .setPositiveButton("OK" , new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -75,10 +82,13 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
                 }
             });
             alert.show();*/
-        }else {
+        }
+        else {
+            Log.d("Welcome Status","App never launch, Start of Downloading database");
             db_OK=false;
+
             HttpApiTask httpApiTask = new HttpApiTask(this,"transport/v2/GetPhysicalStops/json?key=TAGDEV");
-            //httpApiTask.setProgressBar((ProgressBar) findViewById(R.id.dlProgress));
+            httpApiTask.setProgressBar((ProgressBar) findViewById(R.id.loadJSON_bar)); //TODO Ca ne marche pas !? Any idea ?
             httpApiTask.execute();
 
             PACKAGE_NAME = getApplicationContext().getPackageName();
@@ -114,6 +124,7 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.menu_skip) {
             onFinalButtonClicked();
+            skip=true;
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -121,6 +132,9 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
 
     @Override
     public void onFinalButtonClicked() {
+        skip=true;
+        Log.d("db_OK",db_OK+"");
+        Log.d("DB exist",doesDatabaseExist(this,"TagDatabase.db")+"");
         PreferenceManager.getDefaultSharedPreferences(this).edit()
                 .putBoolean("AppAlreadyLaunched", true)
                 .apply();
@@ -128,7 +142,7 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
             Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
             startActivity(intent);
         }else{
-            //TODO Ouvrir le fragment qui termine la DL de la BDD
+           findViewById(R.id.fragment_layout).setVisibility(View.INVISIBLE);
         }
 
 
@@ -168,7 +182,7 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
 
     private void readJSon(String jsonQueryResult) {
         ReadJSonTask readJSonTask = new ReadJSonTask(jsonQueryResult, this, this);
-        //readJSonTask.setProgressBar((ProgressBar)findViewById(R.id.sqlProgress));
+        readJSonTask.setProgressBar((ProgressBar)findViewById(R.id.parseJSON_bar));
         readJSonTask.execute();
     }
 
@@ -203,6 +217,10 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
     public void onJSonParsingComplete() {
         db_OK = true;
         Log.d("JSonParsing", "Finished !");
+        if(skip){
+            Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
+            startActivity(intent);
+        }
     }
 
     // Check if connect to network
