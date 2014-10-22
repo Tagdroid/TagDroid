@@ -76,6 +76,8 @@ public class HttpApiTask extends AsyncTask<Void, Integer, Void> {
 
     @Override
     protected void onPostExecute(Void result) {
+        if (progressBar != null)
+            progressBar.setProgress(100);
         progressionInterface.onDownloadComplete(responseString);
     }
 }
