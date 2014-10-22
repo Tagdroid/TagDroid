@@ -1,7 +1,6 @@
 package com.tagdroid.tagdroid.Welcome;
 
 import android.content.Context;
-import android.content.ContextWrapper;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -28,8 +27,6 @@ import com.tagdroid.tagdroid.MainActivity;
 import com.tagdroid.tagdroid.R;
 import com.viewpagerindicator.LinePageIndicator;
 
-import java.io.File;
-
 import rosenpin.androidL.dialog.AndroidLDialog;
 
 public class WelcomeActivity extends FragmentActivity implements WelcomeFragment.OnButtonClicked, ProgressionInterface {
@@ -39,11 +36,6 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
             skip = false;
 
     //TODO download database meanwhile… WORK IN PROGRESS !!!!
-
-    private static boolean doesDatabaseExist(ContextWrapper context, String dbName) {
-        File dbFile = context.getDatabasePath(dbName);
-        return dbFile.exists();
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -56,7 +48,7 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
             Log.d("Welcome Status", "Google Play Service undetected");
         }
 
-        // db_OK = doesDatabaseExist(this, "TagDatabase.db");
+        db_OK = this.getDatabasePath("TagDatabase.db").exists();
 
         // We check if it's the first app launch…
         if (!PreferenceManager.getDefaultSharedPreferences(this).getBoolean("AppAlreadyLaunched", false)) {
@@ -104,7 +96,7 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
         startDownloadTask();
     }
 
-    public boolean startDownloadTask() {
+    public void startDownloadTask() {
         // We check if we are able to download DB
         ConnectivityManager connectivityManager
                 = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -114,36 +106,25 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
             Log.d("Welcome Status", "Internet connection problem");
             new AndroidLDialog.Builder(this)
                     .Title("Pas de connexion Internet")
-                    .Message("L'application n'est pas en mesure de télécharger la base de données nécessaire au bon fonctionnement de l'application." +
-                            "\n\nTAGdroid va se fermer.\n\nActivez votre connexion Internet par WIFI ou données mobiles (4G, 3G, Edge) et relancez l'application.")
+                    .Message("L'application n'est pas en mesure de télécharger la base de données "
+                            + "nécessaire au bon fonctionnement de l'application.\n\n"
+                            + "TAGdroid va se fermer.\n\nActivez votre connexion Internet "
+                            + "par WIFI ou données mobiles (4G, 3G, Edge) et relancez l'application.")
                     .setPositiveButton("OK", new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             finish();
                         }
-                    })
-                    .show();
-            /*AlertDialog.Builder alert = new AlertDialog.Builder(this);
-            alert.setCancelable(false);
-            alert.setTitle("Pas de connexion Internet");
-            alert.setIcon(getResources().getDrawable(R.drawable.ic_report));
-            alert.setMessage("L'application n'est pas en mesure de télécharger la base de données nécessaire au bon fonctionnement de l'application.\n\nTAGdroid va se fermer.\n\nActivez votre connexion Internet par WIFI ou données mobiles (4G, 3G, Edge) et relancez l'application.");
-            alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int whichButton) {
-                    finish();
-                }
-            });
-            alert.show();*/
-            return false;
+                    }).show();
         } else {
             HttpApiTask httpApiTask = new HttpApiTask(this, "transport/v2/GetPhysicalStops/json?key=TAGDEV");
             Log.d("Welcome Status", "Start of Downloading database");
-            httpApiTask.setProgressBar((ProgressBar) findViewById(R.id.loadJSON_bar)); //TODO Ca ne marche pas !? Any idea ?
+            httpApiTask.setProgressBar((ProgressBar) findViewById(R.id.loadJSON_bar));
             httpApiTask.execute();
             db_downloading = true;
-            return true;
         }
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_welcome, menu);
