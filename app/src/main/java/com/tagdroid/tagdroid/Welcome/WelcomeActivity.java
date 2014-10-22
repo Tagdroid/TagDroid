@@ -51,12 +51,13 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
         db_OK = this.getDatabasePath("TagDatabase.db").exists();
 
         // We check if it's the first app launch…
-        if (!PreferenceManager.getDefaultSharedPreferences(this).getBoolean("AppAlreadyLaunched", false)) {
+        if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean("AppAlreadyLaunched", false)) {
             Log.d("Welcome Status", "App already launched");
             // …and if DB exists
             if (db_OK) {
                 Log.d("Welcome Status", "Database already exists");
                 startActivity(new Intent(this, MainActivity.class));
+                finish();
             } else {
                 setContentView(R.layout.activity_welcome);
                 startWaitingScreen();
@@ -147,9 +148,10 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
                 .putBoolean("AppAlreadyLaunched", true)
                 .apply();
 
-        if (db_OK)
+        if (db_OK) {
             startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
-        else
+            finish();
+        } else
             startWaitingScreen();
     }
 
@@ -206,8 +208,10 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
     public void onJSonParsingComplete() {
         db_OK = true;
         Log.d("JSonParsing", "Finished !");
-        if (skip)
+        if (skip) {
             startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
+            finish();
+        }
     }
 
     public class WelcomeAdapter extends FragmentStatePagerAdapter {

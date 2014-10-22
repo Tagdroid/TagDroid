@@ -1,4 +1,4 @@
-package com.tagdroid.tagdroid;
+package com.tagdroid.tagdroid.Legacy;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -14,6 +14,7 @@ import com.tagdroid.tagapi.ProgressionInterface;
 import com.tagdroid.tagapi.ReadJSonTask;
 import com.tagdroid.tagapi.SQLApi.Transport.MySQLiteHelper;
 import com.tagdroid.tagapi.SQLApi.Transport.PhysicalStopDAO;
+import com.tagdroid.tagdroid.R;
 
 
 public class TestActivity extends ActionBarActivity implements View.OnClickListener, ProgressionInterface {
