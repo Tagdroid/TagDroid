@@ -35,8 +35,6 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
             db_OK,
             skip = false;
 
-    //TODO download database meanwhile… WORK IN PROGRESS !!!!
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -118,7 +116,7 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
                         }
                     }).show();
         } else {
-            HttpApiTask httpApiTask = new HttpApiTask(this, "transport/v2/GetPhysicalStops/json?key=TAGDEV");
+            HttpApiTask httpApiTask = new HttpApiTask(this, "/transport/v2/GetPhysicalStops");
             Log.d("Welcome Status", "Start of Downloading database");
             httpApiTask.setProgressBar((ProgressBar) findViewById(R.id.loadJSON_bar));
             httpApiTask.execute();

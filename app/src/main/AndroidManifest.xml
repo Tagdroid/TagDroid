@@ -48,9 +48,9 @@
         <meta-data android:name="android.app.searchable"
             android:resource="@xml/searchable" />
 
-        <uses-library
+        <!--<uses-library
             android:name="com.google.android.maps"
-            android:required="true" />
+            android:required="true" />-->
 
 
         <service android:name="com.parse.PushService" />

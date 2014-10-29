@@ -6,17 +6,18 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ProgressBar;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
+import com.tagdroid.tagapi.JSonApi.Transport.Line;
 import com.tagdroid.tagapi.JSonApi.Transport.Locality;
 import com.tagdroid.tagapi.JSonApi.Transport.LogicalStop;
 import com.tagdroid.tagapi.JSonApi.Transport.PhysicalStop;
-import com.tagdroid.tagapi.SQLApi.Transport.MySQLiteHelper;
 import com.tagdroid.tagapi.SQLApi.Transport.LocalityDAO;
 import com.tagdroid.tagapi.SQLApi.Transport.LogicalStopDAO;
+import com.tagdroid.tagapi.SQLApi.Transport.MySQLiteHelper;
 import com.tagdroid.tagapi.SQLApi.Transport.PhysicalStopDAO;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /*
     Je lis chaque Token du stream en l'interprétant comme il se doit.
@@ -92,6 +93,7 @@ public class ReadJSonTask extends AsyncTask<Void, Integer, Void> {
         PhysicalStop physicalStop;
         LogicalStop logicalStop;
         Locality locality;
+        Line line;
 
         Integer length = jsonData.length();
         for (int i = 0; i < length; i++)

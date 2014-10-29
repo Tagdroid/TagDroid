@@ -2,7 +2,6 @@ package com.tagdroid.tagdroid.Pages;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -138,6 +137,10 @@ public class LignesFragment_Beta extends Page {
         });
 
         return view;
+    }
+    private String[] getLignesfromDB() {
+
+        return null;
     }
 
     public class LigneAdapter extends BaseAdapter {
