@@ -61,7 +61,7 @@ public class PhysicalStopDAO {
         values.put(LOGICALSTOPID, m.getLogicalStopId());
         values.put(LOCALITYID, m.getLocalityId());
         values.put(OPERATORID, m.getOperatorId());
-        values.put(ACCESSIBILITY, -1);
+        values.put(ACCESSIBILITY, m.getAccessibility());
         return values;
     }
 

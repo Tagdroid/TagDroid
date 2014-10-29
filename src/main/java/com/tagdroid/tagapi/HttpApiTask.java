@@ -22,7 +22,7 @@ public class HttpApiTask extends AsyncTask<Void, Integer, Void> {
 
     public HttpApiTask(ProgressionInterface progressionInterface, String apiPath) {
         this.progressionInterface = progressionInterface;
-        RequestFullUrl = "http://transinfoservice.ws.cityway.fr/TAG/api/" + apiPath;
+        RequestFullUrl = "http://transinfoservice.ws.cityway.fr/TAG/api" + apiPath + "/json?key=TAGDEV";
     }
     public void setProgressBar(ProgressBar progressBar) {
         this.progressBar = progressBar;
