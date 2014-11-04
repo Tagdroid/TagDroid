@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/TagApi/TagApi.iml" filepath="$PROJECT_DIR$/TagApi/TagApi.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/dialogL/dialogL.iml" filepath="$PROJECT_DIR$/dialogL/dialogL.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tagdroid-complet.iml" filepath="$PROJECT_DIR$/tagdroid-complet.iml" />
       <module fileurl="file://$PROJECT_DIR$/viewpagerindicator/viewpagerindicator.iml" filepath="$PROJECT_DIR$/viewpagerindicator/viewpagerindicator.iml" />
     </modules>
   </component>
