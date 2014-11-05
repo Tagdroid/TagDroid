@@ -73,19 +73,26 @@
             android:id="@+id/fragment_layout"
             android:focusable="false">
 
-            <com.viewpagerindicator.LinePageIndicator
-                android:id="@+id/indicator"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="20dp"
-                android:background="@color/blanc" />
-
-            <android.support.v4.view.ViewPager
-                android:id="@+id/pager"
+            <FrameLayout
                 android:layout_width="fill_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/blanc" />
+                android:layout_height="fill_parent">
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/pager"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/blanc" />
+
+                <com.viewpagerindicator.CirclePageIndicator
+                    android:id="@+id/indicator"
+                    android:padding="10dip"
+                    android:layout_height="wrap_content"
+                    android:layout_width="fill_parent"
+                    android:layout_gravity="left|bottom"
+                    android:layout_marginBottom="20dp" />
+            </FrameLayout>
+
         </LinearLayout>
 
     </FrameLayout>

@@ -25,12 +25,14 @@ import com.tagdroid.tagapi.ProgressionInterface;
 import com.tagdroid.tagapi.ReadJSonTask;
 import com.tagdroid.tagdroid.MainActivity;
 import com.tagdroid.tagdroid.R;
-import com.viewpagerindicator.LinePageIndicator;
+import com.viewpagerindicator.CirclePageIndicator;
+import com.viewpagerindicator.PageIndicator;
 
 import rosenpin.androidL.dialog.AndroidLDialog;
 
 public class WelcomeActivity extends FragmentActivity implements WelcomeFragment.OnButtonClicked, ProgressionInterface {
     ViewPager mPager;
+    PageIndicator mIndicator;
     boolean db_downloading = false,
             db_OK,
             skip = false;
@@ -81,17 +83,20 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
         } else
             getActionBar().setTitle(R.string.welcome_bienvenue);
 
-        LinePageIndicator indicator = (LinePageIndicator) findViewById(R.id.indicator);
-        WelcomeAdapter welcomePager = new WelcomeAdapter(getSupportFragmentManager());
-        mPager = (ViewPager) findViewById(R.id.pager);
-
-        float density = getResources().getDisplayMetrics().density;
-        indicator.setSelectedColor(0xff00b4f8);
-        indicator.setUnselectedColor(0x44888888);
-        indicator.setStrokeWidth(5 * density);
-        indicator.setLineWidth(40 * density);
-        mPager.setAdapter(welcomePager);
+        WelcomeAdapter mAdapter = new WelcomeAdapter(getSupportFragmentManager());
+        mPager = (ViewPager)findViewById(R.id.pager);
+        mPager.setAdapter(mAdapter);
+        CirclePageIndicator indicator = (CirclePageIndicator)findViewById(R.id.indicator);
+        mIndicator = indicator;
         indicator.setViewPager(mPager);
+
+        final float density = getResources().getDisplayMetrics().density;
+        indicator.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+        indicator.setRadius(4 * density);
+        indicator.setPageColor(0x22000000);
+        indicator.setFillColor(0xCC000000);
+        indicator.setStrokeWidth(0);
+
         startDownloadTask();
     }
 
