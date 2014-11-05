@@ -118,8 +118,8 @@ public class GMapFragment extends Fragment {
         StationsFragment.ligne="map";
         for(int i=0; i<5;i++) selected_tram[i]=true;
         
-        MainActivity.mTitle = mActivity.getResources().getString(R.string.map);
-        mActivity.getActionBar().setTitle(MainActivity.mTitle);
+        MainActivityOLD.mTitle = mActivity.getResources().getString(R.string.map);
+        mActivity.getActionBar().setTitle(MainActivityOLD.mTitle);
         checkPlayServices(); 
         return inflatedView;
     }
@@ -173,14 +173,14 @@ public class GMapFragment extends Fragment {
         mMap.setOnInfoWindowClickListener(new OnInfoWindowClickListener(){
 			public void onInfoWindowClick(Marker marker) {
 				String snippet[] = marker.getSnippet().split("\n");
-				MainActivity.titre1 = marker.getTitle();
-	    		if(!(snippet[0].equals("Ligne E"))) MainActivity.id_station1 = "id="+snippet[1];
-	    		else MainActivity.id_station1 = "id=0";
-	    		MainActivity.ligne2 = snippet[0];
-	    		MainActivity.latitude1= latlong.latitude+"";
-	    		MainActivity.longitude1= latlong.longitude+"";	    			
-				MainActivity.TITLES = new String[] { "STATIONDETAIL" };	
-		        startActivity(new Intent(mActivity, MainActivity.class));
+				MainActivityOLD.titre1 = marker.getTitle();
+	    		if(!(snippet[0].equals("Ligne E"))) MainActivityOLD.id_station1 = "id="+snippet[1];
+	    		else MainActivityOLD.id_station1 = "id=0";
+	    		MainActivityOLD.ligne2 = snippet[0];
+	    		MainActivityOLD.latitude1= latlong.latitude+"";
+	    		MainActivityOLD.longitude1= latlong.longitude+"";
+				MainActivityOLD.TITLES = new String[] { "STATIONDETAIL" };
+		        startActivity(new Intent(mActivity, MainActivityOLD.class));
 		        mActivity.finish();
 			}  		
         }); 

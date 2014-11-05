@@ -3,12 +3,10 @@
     android:id="@+id/ns_menu_row"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:layout_marginBottom="10dp" >
-
+    android:orientation="vertical" >
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <ImageView
@@ -20,16 +18,31 @@
             android:layout_marginRight="25dp"
             android:layout_gravity="center_vertical" />
 
-
         <TextView
             android:id="@+id/menurow_title"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:minHeight="?android:attr/listPreferredItemHeightSmall"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/gris_fonce"/>
 
+        <TextView
+            android:id="@+id/menurow_counter"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rectangle"
+            android:gravity="center"
+            android:minHeight="?android:attr/listPreferredItemHeightSmall"
+            android:padding="6dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/gris_fonce"
+            android:textSize="12sp"
+            android:visibility="gone"
+            android:textStyle="bold" />
     </LinearLayout>
 
 </LinearLayout>

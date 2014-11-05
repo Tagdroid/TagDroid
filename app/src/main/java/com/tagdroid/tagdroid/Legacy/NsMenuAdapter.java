@@ -46,22 +46,22 @@ public class NsMenuAdapter extends ArrayAdapter<NsMenuItemModel> {
         View view = convertView;
 
         if (view == null) {
-            int layout = R.layout.listitem_drawer_item;
+            int layout = R.layout.listitem_drawer_item_icon;
             if (item.isHeader)
                 layout = R.layout.listitem_drawer_header;
 
             view = LayoutInflater.from(getContext()).inflate(layout, null);
 
 
-            if (MainActivity.TITLES[0].equals("STATIONS") && position == 1
-                    || MainActivity.TITLES[0].equals("LIGNES") && position == 1
-                    || MainActivity.TITLES[0].equals("STATIONDETAIL") && position == 1
-                    || MainActivity.TITLES[0].equals("FAVORIS") && position == 2
-                    || MainActivity.TITLES[0].equals("PROXIMITE") && position == 3
-                    || MainActivity.TITLES[0].equals("MAP") && position == 4
-                    || MainActivity.TITLES[0].equals("INFO") && position == 6
-                    || MainActivity.TITLES[0].equals("ACTU") && position == 7
-                    || MainActivity.TITLES[0].equals("TICKETS") && position == 8)
+            if (MainActivityOLD.TITLES[0].equals("STATIONS") && position == 1
+                    || MainActivityOLD.TITLES[0].equals("LIGNES") && position == 1
+                    || MainActivityOLD.TITLES[0].equals("STATIONDETAIL") && position == 1
+                    || MainActivityOLD.TITLES[0].equals("FAVORIS") && position == 2
+                    || MainActivityOLD.TITLES[0].equals("PROXIMITE") && position == 3
+                    || MainActivityOLD.TITLES[0].equals("MAP") && position == 4
+                    || MainActivityOLD.TITLES[0].equals("INFO") && position == 6
+                    || MainActivityOLD.TITLES[0].equals("ACTU") && position == 7
+                    || MainActivityOLD.TITLES[0].equals("TICKETS") && position == 8)
                 view.setBackgroundColor(view.getResources().getColor(R.color.bleu_tag_clair2));
 
             TextView text1 = (TextView) view.findViewById(R.id.menurow_title);

@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.tagdroid.tagdroid.Legacy.MainActivity;
+import com.tagdroid.tagdroid.MainActivity;
 import com.tagdroid.tagdroid.R;
 
 public class CustomAdapter extends ArrayAdapter<CustomMenuItem> {
@@ -18,11 +18,15 @@ public class CustomAdapter extends ArrayAdapter<CustomMenuItem> {
     }
 
     public void newSection(String title) {
-        add(new CustomMenuItem(title, -1, true));
+        add(new CustomMenuItem(title, -1, false, true));
     }
 
-    public void newSubItem(String title, int iconId) {
-        add(new CustomMenuItem(title, iconId, false));
+    public void newSubItemIcon(String title, int iconId) {
+        add(new CustomMenuItem(title, iconId, true, false));
+    }
+
+    public void newSubItem(String title) {
+        add(new CustomMenuItem(title,false, false));
     }
 
 
@@ -48,8 +52,8 @@ public class CustomAdapter extends ArrayAdapter<CustomMenuItem> {
             ViewHolder holder = new ViewHolder();
             if (item.isHeader) {
                 view = LayoutInflater.from(getContext()).inflate(R.layout.listitem_drawer_header, parent, false);
-            } else {
-                view = LayoutInflater.from(getContext()).inflate(R.layout.listitem_drawer_item, parent, false);
+            } else if(item.isIcon){
+                view = LayoutInflater.from(getContext()).inflate(R.layout.listitem_drawer_item_icon, parent, false);
                 holder.principalText = (TextView) view.findViewById(R.id.menurow_title);
                 holder.principalText.setText(item.title);
 
@@ -65,29 +69,40 @@ public class CustomAdapter extends ArrayAdapter<CustomMenuItem> {
                     holder.counterText.setText("" + item.counter);
                 } else
                     holder.counterText.setVisibility(View.GONE);
+            } else {
+                view = LayoutInflater.from(getContext()).inflate(R.layout.listitem_drawer_item, parent, false);
+                holder.principalText = (TextView) view.findViewById(R.id.menurow_title);
+                holder.principalText.setText(item.title);
            }
             view.setTag(holder);
         }
         // TODO Automatic detection, no flags
-        if (MainActivity.TITLES[0].equals("STATIONS") && position == 0
-                || MainActivity.TITLES[0].equals("LIGNES") && position == 0
-                || MainActivity.TITLES[0].equals("STATIONDETAIL") && position == 0
-                || MainActivity.TITLES[0].equals("FAVORIS") && position == 1
-                || MainActivity.TITLES[0].equals("PROXIMITE") && position == 2
-                || MainActivity.TITLES[0].equals("MAP") && position == 3
-                || MainActivity.TITLES[0].equals("INFO") && position == 5
-                || MainActivity.TITLES[0].equals("ACTU") && position == 6
-                || MainActivity.TITLES[0].equals("TARIFS") && position == 7){
+        // Faut encore améliorer ça, les onglets restent activés
+        if (MainActivity.actualPosition == position){
+                /*MainActivityOLD.TITLES[0].equals("STATIONS") && position == 0
+                || MainActivityOLD.TITLES[0].equals("LIGNES") && position == 0
+                || MainActivityOLD.TITLES[0].equals("STATIONDETAIL") && position == 0
+                || MainActivityOLD.TITLES[0].equals("FAVORIS") && position == 1
+                || MainActivityOLD.TITLES[0].equals("PROXIMITE") && position == 2
+                || MainActivityOLD.TITLES[0].equals("MAP") && position == 3
+                || MainActivityOLD.TITLES[0].equals("INFO") && position == 4
+                || MainActivityOLD.TITLES[0].equals("ACTU") && position == 5
+                || MainActivityOLD.TITLES[0].equals("TARIFS") && position == 6
+                || MainActivityOLD.TITLES[0].equals("SETTINGS") && position == 8
+                || MainActivityOLD.TITLES[0].equals("ABOUT") && position == 9
+                || MainActivityOLD.TITLES[0].equals("RATE") && position == 10){*/
             view.setBackgroundColor(view.getResources().getColor(R.color.gris));
             TextView principalText = (TextView) view.findViewById(R.id.menurow_title);
-            ImageView principalIcon = (ImageView) view.findViewById(R.id.menurow_icon);
-
             principalText.setTypeface(null, Typeface.BOLD);
             principalText.setTextColor(getContext().getResources().getColor(R.color.bleu_tag));
-            String path[] = getContext().getResources().getResourceName(getItem(position).iconRes).split("/");
-            principalIcon.setImageResource(getContext().getResources().getIdentifier(path[1]+"_selected", "drawable", getContext().getPackageName()));
 
+            if(getItem(position).isIcon){
+                ImageView principalIcon = (ImageView) view.findViewById(R.id.menurow_icon);
+                String path[] = getContext().getResources().getResourceName(getItem(position).iconRes).split("/");
+                principalIcon.setImageResource(getContext().getResources().getIdentifier(path[1]+"_selected", "drawable", getContext().getPackageName()));
+            }
         }
+
 
         return view;
     }

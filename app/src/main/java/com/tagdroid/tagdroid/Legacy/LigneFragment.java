@@ -83,11 +83,11 @@ public class LigneFragment extends Fragment {
 	    }
         
         final String ligne = this.getArguments().getString("ligne");
-        MainActivity.mTitle = ligne;
+        MainActivityOLD.mTitle = ligne;
         id_debut = this.getArguments().getInt("id_debut", 0);
         id_fin = this.getArguments().getInt("id_fin", 1);
         
-        getActivity().getActionBar().setTitle(MainActivity.mTitle);
+        getActivity().getActionBar().setTitle(MainActivityOLD.mTitle);
   
         ListViewLigne = (ListView) view.findViewById(R.id.listviewligne);      
         ArrayList<HashMap<String, String>> listItem = new ArrayList<HashMap<String, String>>();
@@ -146,13 +146,13 @@ public class LigneFragment extends Fragment {
         	@SuppressWarnings("unchecked")
          	public void onItemClick(AdapterView<?> a, View v, int position, long id) {          		
 				HashMap<String, String> map = (HashMap<String, String>) ListViewLigne.getItemAtPosition(position);
-        		MainActivity.titre1 = map.get("titre");
-        		MainActivity.id_station1 =  map.get("id_station");
-        		MainActivity.ligne2 = ligne;
-        		MainActivity.latitude1=map.get("latitude");
-        		MainActivity.longitude1=map.get("longitude");     		    			
-    			MainActivity.TITLES = new String[] { "STATIONDETAIL" };
-    			MainActivity.adapter.notifyDataSetChanged();  			
+        		MainActivityOLD.titre1 = map.get("titre");
+        		MainActivityOLD.id_station1 =  map.get("id_station");
+        		MainActivityOLD.ligne2 = ligne;
+        		MainActivityOLD.latitude1=map.get("latitude");
+        		MainActivityOLD.longitude1=map.get("longitude");
+    			MainActivityOLD.TITLES = new String[] { "STATIONDETAIL" };
+    			MainActivityOLD.adapter.notifyDataSetChanged();
              }
          });
         return view;

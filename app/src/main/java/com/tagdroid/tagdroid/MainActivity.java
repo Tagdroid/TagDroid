@@ -22,7 +22,7 @@ import com.tagdroid.tagdroid.Drawer.CustomAdapter;
 import com.tagdroid.tagdroid.Pages.AboutFragment;
 import com.tagdroid.tagdroid.Pages.ActualitesFragment;
 import com.tagdroid.tagdroid.Pages.LignesFragment;
-import com.tagdroid.tagdroid.Pages.LignesFragment_Beta;
+import com.tagdroid.tagdroid.Pages.TraficInfosFragment;
 
 public class MainActivity extends Activity implements ChangeFragmentInterface{
     private static DrawerLayout drawer;
@@ -66,21 +66,21 @@ public class MainActivity extends Activity implements ChangeFragmentInterface{
     private void initDrawer() {
         CustomAdapter drawerAdapter = new CustomAdapter(this, 0);
         Resources res = getResources();
-        //drawerAdapter.newSection(getString(R.string.ns_menu_reseau_header));
-        TypedArray titlesArray = res.obtainTypedArray(R.array.drawer_reseau_items_titles);
-        TypedArray iconesArray = res.obtainTypedArray(R.array.drawer_reseau_items_icons);
 
+        //Onglets principaux avec icones
+        TypedArray titlesArray = res.obtainTypedArray(R.array.drawer_items_titles);
+        TypedArray iconesArray = res.obtainTypedArray(R.array.drawer_items_icons);
         for (int i = 0; i < titlesArray.length(); i++)
-            drawerAdapter.newSubItem(titlesArray.getString(i),
-                    iconesArray.getResourceId(i, 0));
+            drawerAdapter.newSubItemIcon(titlesArray.getString(i),iconesArray.getResourceId(i, 0));
 
-        drawerAdapter.newSection(getString(R.string.ns_menu_main_header2));
-        titlesArray = res.obtainTypedArray(R.array.drawer_infos_items_titles);
-        iconesArray = res.obtainTypedArray(R.array.drawer_infos_items_icons);
+        // Divider
+        drawerAdapter.newSection("");
 
+        //Onglets secondaires sans icones
+        titlesArray = res.obtainTypedArray(R.array.drawer_items_plus_titles);
         for (int i = 0; i < titlesArray.length(); i++)
-            drawerAdapter.newSubItem(titlesArray.getString(i),
-                    iconesArray.getResourceId(i, 0));
+            drawerAdapter.newSubItem(titlesArray.getString(i));
+
 
         drawerList.setAdapter(drawerAdapter);
 
@@ -100,29 +100,38 @@ public class MainActivity extends Activity implements ChangeFragmentInterface{
 
     private void selectItem(int position, boolean isApplicationProgression) {
         switch (position) {
-            case 0: // Infos Fragment
-                activePage = new LignesFragment_Beta();
+            case 0:
+                activePage = new LignesFragment();
                 break;
             case 1:
-                activePage = new AboutFragment();
+                //activePage = new FavorisFragment();
                 break;
             case 2:
-                activePage = new LignesFragment();
+                //activePage = new ProximiteFragment();
                 break;
             case 3:
-                activePage = new LignesFragment();
+               // activePage = new GMapFragment();
                 break;
             case 4:
-                activePage = new LignesFragment();
+                activePage = new TraficInfosFragment();
                 break;
-            case 6:
-                activePage = new LignesFragment();
-                break;
-            case 7:
+            case 5:
                 activePage = new ActualitesFragment();
                 break;
+            case 6:
+                //activePage = new TarifsFragment();
+                break;
+            case 7:
+                //divider
+                break;
             case 8:
-                activePage = new LignesFragment();
+                //activePage = new SettingsFragment();
+                break;
+            case 9:
+                activePage = new AboutFragment();
+                break;
+            case 10:
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.tagdroid.android")));
                 break;
             default:
                 return;
@@ -139,28 +148,16 @@ public class MainActivity extends Activity implements ChangeFragmentInterface{
             Log.d("main","add to backstack " + actualPosition + " " + position);
         }
         actualPosition = position;
+        Log.d("Actual Position Fragment", actualPosition+"");
         transaction.commit();
     }
 
     // Manages the ActionBar touches. TODO manage the fragment menu touches…
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // The action bar home/up action should open or close the drawer.
-        // ActionBarDrawerToggle will take care of this.
         if (drawerToggle.onOptionsItemSelected(item))
             return true;
-
-        switch (item.getItemId()) {
-            case R.id.menu_rate:
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.tagdroid.android")));
-                drawer.closeDrawer(drawerList);
-                return true;
-            case R.id.menu_about:
-                selectItem(0, actualPosition > 0);
-                return true;
-            default:
-                return activePage.onOptionsItemSelected(item);
-        }
+        return activePage.onOptionsItemSelected(item);
     }
 
 
@@ -170,7 +167,6 @@ public class MainActivity extends Activity implements ChangeFragmentInterface{
     public boolean onPrepareOptionsMenu(Menu menu) {
         if (drawer.isDrawerOpen(drawerList)) {
             actionBar.setTitle(R.string.app_name);
-            getMenuInflater().inflate(R.menu.menu_drawer, menu);
         } else {
             actionBar.setTitle(getFragmentTitle());
             getMenuInflater().inflate(getFragmentMenu(), menu);

@@ -15,7 +15,7 @@ import com.google.analytics.tracking.android.EasyTracker;
 import com.google.analytics.tracking.android.Fields;
 import com.google.analytics.tracking.android.MapBuilder;
 import com.google.analytics.tracking.android.Tracker;
-import com.tagdroid.tagdroid.Legacy.MainActivity;
+import com.tagdroid.tagdroid.Legacy.MainActivityOLD;
 import com.tagdroid.tagdroid.R;
 
 public class TicketFragment extends Fragment implements OnItemSelectedListener {
@@ -28,8 +28,8 @@ public class TicketFragment extends Fragment implements OnItemSelectedListener {
 	@Override
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MainActivity.mTitle = getActivity().getResources().getString(R.string.tarif);
-		getActivity().getActionBar().setTitle(MainActivity.mTitle);    
+        MainActivityOLD.mTitle = getActivity().getResources().getString(R.string.tarif);
+		getActivity().getActionBar().setTitle(MainActivityOLD.mTitle);
         this.tracker = EasyTracker.getInstance(this.getActivity());
     }
 

@@ -9,24 +9,16 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/menurow_icon"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:src="@drawable/ic_launcher"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="25dp"
-            android:layout_gravity="center_vertical" />
-
         <TextView
             android:id="@+id/menurow_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/menurow_icon"
+            android:layout_marginLeft="15dp"
             android:gravity="center_vertical"
             android:minHeight="?android:attr/listPreferredItemHeightSmall"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/gris_fonce"/>
+            android:textColor="@color/gris_fonce"
+            android:text="Blablabla" />
 
         <TextView
             android:id="@+id/menurow_counter"

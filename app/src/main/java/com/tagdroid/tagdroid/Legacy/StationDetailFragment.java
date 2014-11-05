@@ -106,8 +106,8 @@ public class StationDetailFragment extends Fragment {
 
         alert_button = (Button) view.findViewById(R.id.alert_button);
 
-        MainActivity.mTitle = ligne1;
-        getActivity().getActionBar().setTitle(MainActivity.mTitle);
+        MainActivityOLD.mTitle = ligne1;
+        getActivity().getActionBar().setTitle(MainActivityOLD.mTitle);
 
 
         LinearLayout travaux = (LinearLayout) view.findViewById(R.id.travaux);
@@ -134,10 +134,10 @@ public class StationDetailFragment extends Fragment {
         LinearLayout map_click_layout = (LinearLayout) view.findViewById(R.id.map_click_layout);
         map_click_layout.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                MainActivity.latitude = place.latitude;
-                MainActivity.longitude = place.longitude;
-                MainActivity.TITLES = new String[]{"MAP"};
-                MainActivity.adapter.notifyDataSetChanged();
+                MainActivityOLD.latitude = place.latitude;
+                MainActivityOLD.longitude = place.longitude;
+                MainActivityOLD.TITLES = new String[]{"MAP"};
+                MainActivityOLD.adapter.notifyDataSetChanged();
             }
         });
 
@@ -266,7 +266,7 @@ public class StationDetailFragment extends Fragment {
                     else
                         station = Integer.valueOf(id_station.split("_")[0]);
                     favorisDAO.delete(station);
-                    MainActivity.favoris_check = false;
+                    MainActivityOLD.favoris_check = false;
 
                 } else {
                     item.setChecked(true);
@@ -282,13 +282,13 @@ public class StationDetailFragment extends Fragment {
                             station, titre, ligne1,
                             Double.valueOf(getArguments().getString("latitude")),
                             Double.valueOf(getArguments().getString("longitude"))));
-                    MainActivity.favoris_check = true;
+                    MainActivityOLD.favoris_check = true;
                 }
 
-                NsMenuAdapter mAdapter = new NsMenuAdapter(getActivity());
+               /* NsMenuAdapter mAdapter = new NsMenuAdapter(getActivity());
                 mAdapter.addHeader(R.string.ns_menu_reseau_header);
-                String[] menuItems = getResources().getStringArray(R.array.drawer_reseau_items_titles);
-                String[] menuItemsIcon = getResources().getStringArray(R.array.drawer_reseau_items_icons);
+                String[] menuItems = getResources().getStringArray(R.array.drawer_items_titles);
+                String[] menuItemsIcon = getResources().getStringArray(R.array.drawer_items_icons);
 
                 int res = 0;
                 for (String item3 : menuItems) {
@@ -316,7 +316,7 @@ public class StationDetailFragment extends Fragment {
                     mAdapter.addItem(new NsMenuItemModel(id_title, id_icon));
                     res2++;
                 }
-                MainActivity.mDrawerList.setAdapter(mAdapter);
+                MainActivity.mDrawerList.setAdapter(mAdapter);*/
 
                 return true;
             default:

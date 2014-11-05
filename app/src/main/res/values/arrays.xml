@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <array name="drawer_reseau_items_titles">
-        <item>@string/drawer_item_stations</item>
-        <item>@string/drawer_item_favoris</item>
-        <item>@string/drawer_item_proximite</item>
-        <item>@string/drawer_item_plan</item>
+    <array name="drawer_items_titles">
+        <item>@string/stations</item>
+        <item>@string/favoris</item>
+        <item>@string/proximite</item>
+        <item>@string/map</item>
+        <item>@string/trafic</item>
+        <item>@string/news</item>
+        <item>@string/tarif</item>
     </array>
-    <array name="drawer_reseau_items_icons">
+    <array name="drawer_items_icons">
         <item>@drawable/direction</item>
         <item>@drawable/fav</item>
         <item>@drawable/radar</item>
         <item>@drawable/map</item>
-    </array>
-    
-    <array name="drawer_infos_items_titles">
-        <item>@string/drawer_item_trafic</item>
-        <item>@string/drawer_item_actualites</item>
-        <item>@string/drawer_item_tarifs</item>
-    </array>
-
-    
-     <array name="drawer_infos_items_icons">
         <item>@drawable/trafic</item>
         <item>@drawable/news</item>
         <item>@drawable/tarif</item>
     </array>
+
+    <array name="drawer_items_plus_titles">
+        <item>@string/settings</item>
+        <item>@string/about</item>
+        <item>@string/rate</item>
+    </array>
+
 
 </resources>

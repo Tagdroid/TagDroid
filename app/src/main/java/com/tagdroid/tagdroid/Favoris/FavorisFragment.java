@@ -18,7 +18,7 @@ import com.google.analytics.tracking.android.Fields;
 import com.google.analytics.tracking.android.MapBuilder;
 import com.google.analytics.tracking.android.Tracker;
 import com.tagdroid.tagapi.JSonApi.Favori;
-import com.tagdroid.tagdroid.Legacy.MainActivity;
+import com.tagdroid.tagdroid.Legacy.MainActivityOLD;
 import com.tagdroid.tagdroid.R;
 
 public class FavorisFragment extends Fragment {
@@ -41,8 +41,8 @@ public class FavorisFragment extends Fragment {
         } catch (InflateException ignored) {
         }
 
-        MainActivity.mTitle = getActivity().getResources().getString(R.string.favoris);
-        getActivity().getActionBar().setTitle(MainActivity.mTitle);
+        MainActivityOLD.mTitle = getActivity().getResources().getString(R.string.favoris);
+        getActivity().getActionBar().setTitle(MainActivityOLD.mTitle);
         return view;
     }
 
@@ -82,13 +82,13 @@ public class FavorisFragment extends Fragment {
             listViewFavoris.setOnItemClickListener(new OnItemClickListener() {
                 public void onItemClick(AdapterView<?> a, View v, int position, long id) {
                     Favori selectedFavori = favorisHelper.getFavoris()[position];
-                    MainActivity.titre1 = selectedFavori.Name;
-                    MainActivity.id_station1 = selectedFavori.Id.toString() + "_id_station";
-                    MainActivity.ligne2 = selectedFavori.Ligne + "_ligne";
-                    MainActivity.latitude1 = selectedFavori.Latitude.toString();
-                    MainActivity.longitude1 = selectedFavori.Longitude.toString();
-                    MainActivity.TITLES = new String[]{"STATIONDETAIL"};
-                    MainActivity.adapter.notifyDataSetChanged();
+                    MainActivityOLD.titre1 = selectedFavori.Name;
+                    MainActivityOLD.id_station1 = selectedFavori.Id.toString() + "_id_station";
+                    MainActivityOLD.ligne2 = selectedFavori.Ligne + "_ligne";
+                    MainActivityOLD.latitude1 = selectedFavori.Latitude.toString();
+                    MainActivityOLD.longitude1 = selectedFavori.Longitude.toString();
+                    MainActivityOLD.TITLES = new String[]{"STATIONDETAIL"};
+                    MainActivityOLD.adapter.notifyDataSetChanged();
                 }
             });
         }

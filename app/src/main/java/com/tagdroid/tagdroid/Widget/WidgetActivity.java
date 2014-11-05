@@ -11,7 +11,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.RemoteViews;
 
-import com.tagdroid.tagdroid.Legacy.MainActivity;
+import com.tagdroid.tagdroid.Legacy.MainActivityOLD;
 import com.tagdroid.tagdroid.R;
 
 import org.jsoup.Jsoup;
@@ -112,7 +112,7 @@ public class WidgetActivity extends AppWidgetProvider{
 	    }
 	    
 	    protected void Action_Head(Context context) {
-	        context.startActivity(new Intent(context, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+	        context.startActivity(new Intent(context, MainActivityOLD.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 	    }
 	    
 	    private class Calcul_ID_Jour extends AsyncTask<Void, Void, String>{			

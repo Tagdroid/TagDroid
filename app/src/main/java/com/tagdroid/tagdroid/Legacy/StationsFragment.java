@@ -29,8 +29,8 @@ public class StationsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.recherche, container, false);
 
-        MainActivity.mTitle = getActivity().getResources().getString(R.string.stations);
-        getActivity().getActionBar().setTitle(MainActivity.mTitle);
+        MainActivityOLD.mTitle = getActivity().getResources().getString(R.string.stations);
+        getActivity().getActionBar().setTitle(MainActivityOLD.mTitle);
 
 
         final ImageButton lignea = (ImageButton) view.findViewById(R.id.lignea);
@@ -39,8 +39,8 @@ public class StationsFragment extends Fragment {
                 ligne = "Ligne A";
                 id_debut = 0;
                 id_fin = 28;
-                MainActivity.TITLES = new String[]{"LIGNE"};
-                MainActivity.adapter.notifyDataSetChanged();
+                MainActivityOLD.TITLES = new String[]{"LIGNE"};
+                MainActivityOLD.adapter.notifyDataSetChanged();
             }
         });
 
@@ -50,8 +50,8 @@ public class StationsFragment extends Fragment {
                 ligne = "Ligne B";
                 id_debut = 29;
                 id_fin = 48;
-                MainActivity.TITLES = new String[]{"LIGNE"};
-                MainActivity.adapter.notifyDataSetChanged();
+                MainActivityOLD.TITLES = new String[]{"LIGNE"};
+                MainActivityOLD.adapter.notifyDataSetChanged();
             }
         });
 
@@ -61,8 +61,8 @@ public class StationsFragment extends Fragment {
                 ligne = "Ligne C";
                 id_debut = 49;
                 id_fin = 67;
-                MainActivity.TITLES = new String[]{"LIGNE"};
-                MainActivity.adapter.notifyDataSetChanged();
+                MainActivityOLD.TITLES = new String[]{"LIGNE"};
+                MainActivityOLD.adapter.notifyDataSetChanged();
             }
         });
 
@@ -72,8 +72,8 @@ public class StationsFragment extends Fragment {
                 ligne = "Ligne D";
                 id_debut = 68;
                 id_fin = 73;
-                MainActivity.TITLES = new String[]{"LIGNE"};
-                MainActivity.adapter.notifyDataSetChanged();
+                MainActivityOLD.TITLES = new String[]{"LIGNE"};
+                MainActivityOLD.adapter.notifyDataSetChanged();
             }
         });
 
@@ -83,8 +83,8 @@ public class StationsFragment extends Fragment {
                 ligne = "Ligne E";
                 id_debut = 4000;
                 id_fin = 4017;
-                MainActivity.TITLES = new String[]{"LIGNE"};
-                MainActivity.adapter.notifyDataSetChanged();
+                MainActivityOLD.TITLES = new String[]{"LIGNE"};
+                MainActivityOLD.adapter.notifyDataSetChanged();
             }
         });
 
@@ -94,8 +94,8 @@ public class StationsFragment extends Fragment {
                 ligne = "Ligne CO";
                 id_debut = 720;
                 id_fin = 736;
-                MainActivity.TITLES = new String[]{"LIGNE"};
-                MainActivity.adapter.notifyDataSetChanged();
+                MainActivityOLD.TITLES = new String[]{"LIGNE"};
+                MainActivityOLD.adapter.notifyDataSetChanged();
             }
         });
 
@@ -105,8 +105,8 @@ public class StationsFragment extends Fragment {
                 ligne = "Ligne N1";
                 id_debut = 638;
                 id_fin = 666;
-                MainActivity.TITLES = new String[]{"LIGNE"};
-                MainActivity.adapter.notifyDataSetChanged();
+                MainActivityOLD.TITLES = new String[]{"LIGNE"};
+                MainActivityOLD.adapter.notifyDataSetChanged();
             }
         });
 
@@ -116,8 +116,8 @@ public class StationsFragment extends Fragment {
                 ligne = "Ligne N3";
                 id_debut = 667;
                 id_fin = 690;
-                MainActivity.TITLES = new String[]{"LIGNE"};
-                MainActivity.adapter.notifyDataSetChanged();
+                MainActivityOLD.TITLES = new String[]{"LIGNE"};
+                MainActivityOLD.adapter.notifyDataSetChanged();
             }
         });
 
@@ -127,8 +127,8 @@ public class StationsFragment extends Fragment {
                 ligne = "Ligne N4";
                 id_debut = 691;
                 id_fin = 712;
-                MainActivity.TITLES = new String[]{"LIGNE"};
-                MainActivity.adapter.notifyDataSetChanged();
+                MainActivityOLD.TITLES = new String[]{"LIGNE"};
+                MainActivityOLD.adapter.notifyDataSetChanged();
             }
         });
 
@@ -138,8 +138,8 @@ public class StationsFragment extends Fragment {
                 ligne = "Ligne 1";
                 id_debut = 1085;
                 id_fin = 1142;
-                MainActivity.TITLES = new String[]{"LIGNE"};
-                MainActivity.adapter.notifyDataSetChanged();
+                MainActivityOLD.TITLES = new String[]{"LIGNE"};
+                MainActivityOLD.adapter.notifyDataSetChanged();
             }
         });
 
@@ -149,8 +149,8 @@ public class StationsFragment extends Fragment {
                 ligne = "Ligne 11";
                 id_debut = 2142;
                 id_fin = 2176;
-                MainActivity.TITLES = new String[]{"LIGNE"};
-                MainActivity.adapter.notifyDataSetChanged();
+                MainActivityOLD.TITLES = new String[]{"LIGNE"};
+                MainActivityOLD.adapter.notifyDataSetChanged();
             }
         });
 
@@ -160,8 +160,8 @@ public class StationsFragment extends Fragment {
                 ligne = "Ligne 13";
                 id_debut = 177;
                 id_fin = 208;
-                MainActivity.TITLES = new String[]{"LIGNE"};
-                MainActivity.adapter.notifyDataSetChanged();
+                MainActivityOLD.TITLES = new String[]{"LIGNE"};
+                MainActivityOLD.adapter.notifyDataSetChanged();
             }
         });
 
@@ -171,8 +171,8 @@ public class StationsFragment extends Fragment {
                 ligne = "Ligne 16";
                 id_debut = 211;
                 id_fin = 256;
-                MainActivity.TITLES = new String[]{"LIGNE"};
-                MainActivity.adapter.notifyDataSetChanged();
+                MainActivityOLD.TITLES = new String[]{"LIGNE"};
+                MainActivityOLD.adapter.notifyDataSetChanged();
             }
         });
 
@@ -182,8 +182,8 @@ public class StationsFragment extends Fragment {
                 ligne = "Ligne 21";
                 id_debut = 257;
                 id_fin = 274;
-                MainActivity.TITLES = new String[]{"LIGNE"};
-                MainActivity.adapter.notifyDataSetChanged();
+                MainActivityOLD.TITLES = new String[]{"LIGNE"};
+                MainActivityOLD.adapter.notifyDataSetChanged();
             }
         });
 
@@ -193,8 +193,8 @@ public class StationsFragment extends Fragment {
                 ligne = "Ligne 23";
                 id_debut = 1275;
                 id_fin = 1301;
-                MainActivity.TITLES = new String[]{"LIGNE"};
-                MainActivity.adapter.notifyDataSetChanged();
+                MainActivityOLD.TITLES = new String[]{"LIGNE"};
+                MainActivityOLD.adapter.notifyDataSetChanged();
             }
         });
 
@@ -204,8 +204,8 @@ public class StationsFragment extends Fragment {
                 ligne = "Ligne 26";
                 id_debut = 301;
                 id_fin = 340;
-                MainActivity.TITLES = new String[]{"LIGNE"};
-                MainActivity.adapter.notifyDataSetChanged();
+                MainActivityOLD.TITLES = new String[]{"LIGNE"};
+                MainActivityOLD.adapter.notifyDataSetChanged();
             }
         });
 
@@ -215,8 +215,8 @@ public class StationsFragment extends Fragment {
                 ligne = "Ligne 30";
                 id_debut = 3341;
                 id_fin = 3366;
-                MainActivity.TITLES = new String[]{"LIGNE"};
-                MainActivity.adapter.notifyDataSetChanged();
+                MainActivityOLD.TITLES = new String[]{"LIGNE"};
+                MainActivityOLD.adapter.notifyDataSetChanged();
             }
         });
 
@@ -226,8 +226,8 @@ public class StationsFragment extends Fragment {
                 ligne = "Ligne 31";
                 id_debut = 367;
                 id_fin = 401;
-                MainActivity.TITLES = new String[]{"LIGNE"};
-                MainActivity.adapter.notifyDataSetChanged();
+                MainActivityOLD.TITLES = new String[]{"LIGNE"};
+                MainActivityOLD.adapter.notifyDataSetChanged();
             }
         });
 
@@ -237,8 +237,8 @@ public class StationsFragment extends Fragment {
                 ligne = "Ligne 32";
                 id_debut = 402;
                 id_fin = 430;
-                MainActivity.TITLES = new String[]{"LIGNE"};
-                MainActivity.adapter.notifyDataSetChanged();
+                MainActivityOLD.TITLES = new String[]{"LIGNE"};
+                MainActivityOLD.adapter.notifyDataSetChanged();
             }
         });
 
@@ -248,8 +248,8 @@ public class StationsFragment extends Fragment {
                 ligne = "Ligne 33";
                 id_debut = 431;
                 id_fin = 446;
-                MainActivity.TITLES = new String[]{"LIGNE"};
-                MainActivity.adapter.notifyDataSetChanged();
+                MainActivityOLD.TITLES = new String[]{"LIGNE"};
+                MainActivityOLD.adapter.notifyDataSetChanged();
             }
         });
 
@@ -259,8 +259,8 @@ public class StationsFragment extends Fragment {
                 ligne = "Ligne 34";
                 id_debut = 448;
                 id_fin = 484;
-                MainActivity.TITLES = new String[]{"LIGNE"};
-                MainActivity.adapter.notifyDataSetChanged();
+                MainActivityOLD.TITLES = new String[]{"LIGNE"};
+                MainActivityOLD.adapter.notifyDataSetChanged();
             }
         });
 
@@ -270,8 +270,8 @@ public class StationsFragment extends Fragment {
                 ligne = "Ligne 41";
                 id_debut = 1483;
                 id_fin = 1511;
-                MainActivity.TITLES = new String[]{"LIGNE"};
-                MainActivity.adapter.notifyDataSetChanged();
+                MainActivityOLD.TITLES = new String[]{"LIGNE"};
+                MainActivityOLD.adapter.notifyDataSetChanged();
             }
         });
 
@@ -281,8 +281,8 @@ public class StationsFragment extends Fragment {
                 ligne = "Ligne 43";
                 id_debut = 513;
                 id_fin = 522;
-                MainActivity.TITLES = new String[]{"LIGNE"};
-                MainActivity.adapter.notifyDataSetChanged();
+                MainActivityOLD.TITLES = new String[]{"LIGNE"};
+                MainActivityOLD.adapter.notifyDataSetChanged();
             }
         });
 
@@ -292,8 +292,8 @@ public class StationsFragment extends Fragment {
                 ligne = "Ligne 51";
                 id_debut = 523;
                 id_fin = 551;
-                MainActivity.TITLES = new String[]{"LIGNE"};
-                MainActivity.adapter.notifyDataSetChanged();
+                MainActivityOLD.TITLES = new String[]{"LIGNE"};
+                MainActivityOLD.adapter.notifyDataSetChanged();
             }
         });
 
@@ -303,8 +303,8 @@ public class StationsFragment extends Fragment {
                 ligne = "Ligne 54";
                 id_debut = 1552;
                 id_fin = 1568;
-                MainActivity.TITLES = new String[]{"LIGNE"};
-                MainActivity.adapter.notifyDataSetChanged();
+                MainActivityOLD.TITLES = new String[]{"LIGNE"};
+                MainActivityOLD.adapter.notifyDataSetChanged();
             }
         });
 
@@ -314,8 +314,8 @@ public class StationsFragment extends Fragment {
                 ligne = "Ligne 55";
                 id_debut = 564;
                 id_fin = 584;
-                MainActivity.TITLES = new String[]{"LIGNE"};
-                MainActivity.adapter.notifyDataSetChanged();
+                MainActivityOLD.TITLES = new String[]{"LIGNE"};
+                MainActivityOLD.adapter.notifyDataSetChanged();
             }
         });
 
@@ -325,8 +325,8 @@ public class StationsFragment extends Fragment {
                 ligne = "Ligne 56";
                 id_debut = 588;
                 id_fin = 613;
-                MainActivity.TITLES = new String[]{"LIGNE"};
-                MainActivity.adapter.notifyDataSetChanged();
+                MainActivityOLD.TITLES = new String[]{"LIGNE"};
+                MainActivityOLD.adapter.notifyDataSetChanged();
             }
         });
 
@@ -336,8 +336,8 @@ public class StationsFragment extends Fragment {
                 ligne = "Ligne 58";
                 id_debut = 614;
                 id_fin = 637;
-                MainActivity.TITLES = new String[]{"LIGNE"};
-                MainActivity.adapter.notifyDataSetChanged();
+                MainActivityOLD.TITLES = new String[]{"LIGNE"};
+                MainActivityOLD.adapter.notifyDataSetChanged();
             }
         });
 

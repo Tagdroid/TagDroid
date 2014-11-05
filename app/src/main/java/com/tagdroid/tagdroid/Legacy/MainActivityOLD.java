@@ -33,7 +33,7 @@ import com.tagdroid.tagdroid.TitresDeTransport.CombinesFragment;
 import com.tagdroid.tagdroid.TitresDeTransport.PassFragment;
 import com.tagdroid.tagdroid.TitresDeTransport.TicketFragment;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivityOLD extends FragmentActivity {
     public static String mTitle = "Stations";
     public static ListView mDrawerList;
     public static boolean favoris_check;

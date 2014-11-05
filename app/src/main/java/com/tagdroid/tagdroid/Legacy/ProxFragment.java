@@ -70,8 +70,8 @@ public class ProxFragment extends Fragment implements LocationListener{
 		    ListViewProx = (ListView) view.findViewById(R.id.listViewfavoris2);	
 			getLastLocation();
 			
-			MainActivity.mTitle = getActivity().getResources().getString(R.string.proximite);
-			getActivity().getActionBar().setTitle(MainActivity.mTitle);
+			MainActivityOLD.mTitle = getActivity().getResources().getString(R.string.proximite);
+			getActivity().getActionBar().setTitle(MainActivityOLD.mTitle);
 			
 		return view;
 	}
@@ -204,13 +204,13 @@ public class ProxFragment extends Fragment implements LocationListener{
 		@SuppressWarnings("unchecked")
      	public void onItemClick(AdapterView<?> a, View v, int position, long id) {      		
 			HashMap<String, String> map = (HashMap<String, String>) ListViewProx.getItemAtPosition(position);
-			MainActivity.titre1 = map.get("titre");
-    		MainActivity.id_station1 =  map.get("id_station");
-    		MainActivity.ligne2 = map.get("ligne1");
-    		MainActivity.latitude1=map.get("latitude");
-    		MainActivity.longitude1=map.get("longitude");     		    			
-			MainActivity.TITLES = new String[] { "STATIONDETAIL" };
-			MainActivity.adapter.notifyDataSetChanged();  			
+			MainActivityOLD.titre1 = map.get("titre");
+    		MainActivityOLD.id_station1 =  map.get("id_station");
+    		MainActivityOLD.ligne2 = map.get("ligne1");
+    		MainActivityOLD.latitude1=map.get("latitude");
+    		MainActivityOLD.longitude1=map.get("longitude");
+			MainActivityOLD.TITLES = new String[] { "STATIONDETAIL" };
+			MainActivityOLD.adapter.notifyDataSetChanged();
          }
      });
 	}
@@ -295,13 +295,13 @@ public class ProxFragment extends Fragment implements LocationListener{
 					item.setChecked(false);
 					item.setIcon(R.drawable.menu_addbus);
 					Toast.makeText(getActivity(), "Bus retiré de la liste", Toast.LENGTH_SHORT).show();
-			    	MainActivity.addbus_check=false;
+			    	MainActivityOLD.addbus_check=false;
 				}
 				else{	    		
 					item.setChecked(true);
 					item.setIcon(R.drawable.menu_addbus_checked);					
 					Toast.makeText(getActivity(), "Bus ajouté à la liste", Toast.LENGTH_SHORT).show();
-					MainActivity.addbus_check=true;
+					MainActivityOLD.addbus_check=true;
 				}
 	        	return true;
 

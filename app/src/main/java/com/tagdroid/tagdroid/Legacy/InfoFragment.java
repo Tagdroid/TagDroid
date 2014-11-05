@@ -59,8 +59,8 @@ public class InfoFragment extends Fragment {
 	    }catch (InflateException e) {}
 		    
 
-		MainActivity.mTitle = getActivity().getResources().getString(R.string.trafic);
-		getActivity().getActionBar().setTitle(MainActivity.mTitle);
+		MainActivityOLD.mTitle = getActivity().getResources().getString(R.string.trafic);
+		getActivity().getActionBar().setTitle(MainActivityOLD.mTitle);
 		
 
 		database=new AlertTAG(mActivity);

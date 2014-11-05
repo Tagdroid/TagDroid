@@ -5,37 +5,7 @@
         android:title="Search"
         android:showAsAction="collapseActionView|ifRoom"
         android:icon="@drawable/ic_search"
-        android:actionViewClass="android.widget.SearchView"/>/>
-
-    <item
-        android:id="@+id/more"
-        android:icon="@drawable/ic_more"
-        android:orderInCategory="11111"
-        android:showAsAction="always">
-        <menu>
-            <item
-                android:id="@+id/settings"
-                android:showAsAction="ifRoom"
-                android:title="Settings"
-                android:icon="@drawable/ic_settings"/>
-
-
-            <item
-                android:id="@+id/about"
-                android:showAsAction="ifRoom"
-                android:title="@string/about"
-                android:icon="@drawable/ic_about"/>
-
-
-            <item
-                android:id="@+id/rate"
-                android:showAsAction="ifRoom"
-                android:title="Evaluez !"
-                android:icon="@drawable/ic_rate"/>
-
-
-        </menu>
-    </item>
+        android:actionViewClass="android.widget.SearchView"/>
 </menu>
 
 

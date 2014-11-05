@@ -43,7 +43,7 @@ public class LoadDBActivity extends Activity {
 		//Verifie si database existe et si elle est remplie	
 		if (doesDatabaseExist(this,"ReseauTAG.db")){
 			Log.e("test","DB OK - Taille : "+ DatabaseSize(this,"ReseauTAG.db"));
-			Intent intent = new Intent(LoadDBActivity.this, MainActivity.class);
+			Intent intent = new Intent(LoadDBActivity.this, MainActivityOLD.class);
 			startActivity(intent);
 			finish();
 		}else{
@@ -129,7 +129,7 @@ public class LoadDBActivity extends Activity {
 			
 			arrayList=database.fetchData();
 			 
-			Intent intent = new Intent(LoadDBActivity.this, MainActivity.class);
+			Intent intent = new Intent(LoadDBActivity.this, MainActivityOLD.class);
 			startActivity(intent);
 			finish();
 		}

@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">TAGdroid</string>
+
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
+
     <string name="menu_pdf">Plan PDF</string>
-    <string name="ns_menu_main_header2">Information</string>
-    <string name="drawer_item_stations">Stations</string>
-    <string name="drawer_item_favoris">Favoris</string>
-    <string name="drawer_item_proximite">Proximité</string>
-    <string name="drawer_item_plan">Plan</string>
-    <string name="drawer_item_trafic">Trafic Info</string>
-    <string name="drawer_item_actualites">Actualités</string>
-    <string name="drawer_item_tarifs">Tarifs</string>
 
     <!-- WIDGET -->
     <string name="choose_fav">Choisissez votre station favorite :</string>
@@ -28,8 +21,9 @@
     <string name="ticket">Les Tickets</string>
     <string name="pass">Les Pass\'</string>
     <string name="combines">Les Combinés</string>
-    <string name="rate">Evaluer</string>
+    <string name="rate">Noter l\'application</string>
     <string name="about">À propos</string>
+    <string name="settings">Paramètres</string>
     <string name="reseau">RESEAU</string>
     <string name="divers">DIVERS</string>
     <string name="menu_tram">Tramways</string>
@@ -129,7 +123,7 @@
     <string name="welcome_texte14">Voila, vous savez tout. Cliquez sur le bouton vert !</string>
     <string name="allons_y">Allons-y !</string>
     <string name="letsgo">C\'est parti !</string>
-    <string name="lignes">Lignes</string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
