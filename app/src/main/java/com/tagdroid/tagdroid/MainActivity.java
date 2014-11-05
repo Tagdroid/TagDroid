@@ -38,7 +38,7 @@ public class MainActivity extends Activity implements ChangeFragmentInterface{
         setContentView(R.layout.activity_main);
         initUI();
         if (savedInstanceState == null) {
-            selectItem(1, false);
+            selectItem(0, false);
         }
         (new ChangeLog()).init(this, false);
         /*
@@ -66,7 +66,7 @@ public class MainActivity extends Activity implements ChangeFragmentInterface{
     private void initDrawer() {
         CustomAdapter drawerAdapter = new CustomAdapter(this, 0);
         Resources res = getResources();
-        drawerAdapter.newSection(getString(R.string.ns_menu_reseau_header));
+        //drawerAdapter.newSection(getString(R.string.ns_menu_reseau_header));
         TypedArray titlesArray = res.obtainTypedArray(R.array.drawer_reseau_items_titles);
         TypedArray iconesArray = res.obtainTypedArray(R.array.drawer_reseau_items_icons);
 
@@ -101,10 +101,10 @@ public class MainActivity extends Activity implements ChangeFragmentInterface{
     private void selectItem(int position, boolean isApplicationProgression) {
         switch (position) {
             case 0: // Infos Fragment
-                activePage = new AboutFragment();
+                activePage = new LignesFragment_Beta();
                 break;
             case 1:
-                activePage = new LignesFragment_Beta();
+                activePage = new AboutFragment();
                 break;
             case 2:
                 activePage = new LignesFragment();

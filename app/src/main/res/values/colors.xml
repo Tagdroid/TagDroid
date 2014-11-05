@@ -3,7 +3,8 @@
     <color name="background_tab_pressed">#6633B5E5</color>
     <color name="pressed_tagdroidtheme">#CC038BC4</color>
     <color name="fond">#efefef</color>
-    <color name="gris">#dddddd</color>
+    <color name="gris">#eeeeee</color>
+    <color name="gris_clair">#dddddd</color>
     <color name="noir">#000000</color>
     <color name="gris_normal">#aaaaaa</color>
     <color name="gris_fonce">#3a3e40</color>

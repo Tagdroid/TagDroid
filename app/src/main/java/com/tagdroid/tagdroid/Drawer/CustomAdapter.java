@@ -1,6 +1,7 @@
 package com.tagdroid.tagdroid.Drawer;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,18 +48,16 @@ public class CustomAdapter extends ArrayAdapter<CustomMenuItem> {
             ViewHolder holder = new ViewHolder();
             if (item.isHeader) {
                 view = LayoutInflater.from(getContext()).inflate(R.layout.listitem_drawer_header, parent, false);
-                holder.principalText = (TextView) view.findViewById(R.id.menurow_title);
-                holder.principalText.setText(item.title);
             } else {
                 view = LayoutInflater.from(getContext()).inflate(R.layout.listitem_drawer_item, parent, false);
                 holder.principalText = (TextView) view.findViewById(R.id.menurow_title);
                 holder.principalText.setText(item.title);
 
-                holder.principatIcon = (ImageView) view.findViewById(R.id.menurow_icon);
+                holder.principalIcon = (ImageView) view.findViewById(R.id.menurow_icon);
                 if (item.iconRes > 0)
-                    holder.principatIcon.setImageResource(item.iconRes);
+                    holder.principalIcon.setImageResource(item.iconRes);
                 else
-                    holder.principatIcon.setVisibility(View.GONE);
+                    holder.principalIcon.setVisibility(View.GONE);
 
                 holder.counterText = (TextView) view.findViewById(R.id.menurow_counter);
                 if (item.counter > 0) {
@@ -66,26 +65,36 @@ public class CustomAdapter extends ArrayAdapter<CustomMenuItem> {
                     holder.counterText.setText("" + item.counter);
                 } else
                     holder.counterText.setVisibility(View.GONE);
-            }
+           }
             view.setTag(holder);
         }
         // TODO Automatic detection, no flags
-        if (MainActivity.TITLES[0].equals("STATIONS") && position == 1
-                || MainActivity.TITLES[0].equals("LIGNES") && position == 1
-                || MainActivity.TITLES[0].equals("STATIONDETAIL") && position == 1
-                || MainActivity.TITLES[0].equals("FAVORIS") && position == 2
-                || MainActivity.TITLES[0].equals("PROXIMITE") && position == 3
-                || MainActivity.TITLES[0].equals("MAP") && position == 4
-                || MainActivity.TITLES[0].equals("INFO") && position == 6
-                || MainActivity.TITLES[0].equals("ACTU") && position == 7
-                || MainActivity.TITLES[0].equals("TICKETS") && position == 8)
-            view.setBackgroundColor(view.getResources().getColor(R.color.bleu_tag_clair2));
+        if (MainActivity.TITLES[0].equals("STATIONS") && position == 0
+                || MainActivity.TITLES[0].equals("LIGNES") && position == 0
+                || MainActivity.TITLES[0].equals("STATIONDETAIL") && position == 0
+                || MainActivity.TITLES[0].equals("FAVORIS") && position == 1
+                || MainActivity.TITLES[0].equals("PROXIMITE") && position == 2
+                || MainActivity.TITLES[0].equals("MAP") && position == 3
+                || MainActivity.TITLES[0].equals("INFO") && position == 5
+                || MainActivity.TITLES[0].equals("ACTU") && position == 6
+                || MainActivity.TITLES[0].equals("TARIFS") && position == 7){
+            view.setBackgroundColor(view.getResources().getColor(R.color.gris));
+            TextView principalText = (TextView) view.findViewById(R.id.menurow_title);
+            ImageView principalIcon = (ImageView) view.findViewById(R.id.menurow_icon);
+
+            principalText.setTypeface(null, Typeface.BOLD);
+            principalText.setTextColor(getContext().getResources().getColor(R.color.bleu_tag));
+            String path[] = getContext().getResources().getResourceName(getItem(position).iconRes).split("/");
+            principalIcon.setImageResource(getContext().getResources().getIdentifier(path[1]+"_selected", "drawable", getContext().getPackageName()));
+
+        }
+
         return view;
     }
 
     static class ViewHolder {
         public TextView principalText;
-        public ImageView principatIcon;
+        public ImageView principalIcon;
         public TextView counterText;
     }
 }
