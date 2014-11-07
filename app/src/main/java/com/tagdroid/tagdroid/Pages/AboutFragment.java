@@ -29,6 +29,7 @@ public class AboutFragment extends Page implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_about, container, false);
         view.findViewById(R.id.showlog).setOnClickListener(this);
+        view.findViewById(R.id.websiteQuentin).setOnClickListener(this);
         view.findViewById(R.id.mailQuentin).setOnClickListener(this);
         view.findViewById(R.id.mailFélix).setOnClickListener(this);
         view.findViewById(R.id.mailAlexandre).setOnClickListener(this);
@@ -50,6 +51,9 @@ public class AboutFragment extends Page implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.showlog:
                 (new ChangeLog()).start(false);
+                break;
+            case R.id.websiteQuentin:
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.quentindesbois.fr")));
                 break;
             case R.id.mailQuentin:
                 intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"tagdroid.grenoble@gmail.com"});

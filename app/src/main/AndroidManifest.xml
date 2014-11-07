@@ -61,8 +61,9 @@
             </intent-filter>
         </receiver>
         <activity
+            android:label="@string/app_name"
             android:name=".Welcome.WelcomeActivity"
-            android:noHistory="true" >
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

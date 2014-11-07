@@ -101,28 +101,20 @@
     <string name="mail">Envoyer un mail avec :</string>
 
     <!-- Welcome -->
-    <string name="menu_skip">Passer</string>
     <string name="welcome_bienvenue">Bienvenue</string>
-    <string name="welcome_navigation">Navigation</string>
-    <string name="welcome_favoris">Favoris</string>
-    <string name="welcome_proximite">Proximité &amp; Plan</string>
-    <string name="welcome_pdf">Plan PDF &amp; Widget</string>
-    <string name="welcome_texte1">Merci d\'avoir installé TAGdroid, l\'application non-officielle des transports en commun grenoblois.</string>
-    <string name="welcome_texte2">TAGdroid est une application gratuite sans aucune affiliation avec la SemiTAG, TAG et SMTC.</string>
-    <string name="welcome_texte3">Les données sont issues du service Mobitrans géré par la TAG.</string>
-    <string name="welcome_texte4">En cas de problème, n\'hesitez pas à envoyer un mail.</string>
-    <string name="welcome_texte5">L\'application est dotée d\'un menu glissant présent sur le côté gauche de l\'interface. Glissez le doigt vers la droite pour le faire apparaître, ou cliquez sur le bouton menu en haut à gauche.</string>
-    <string name="welcome_texte6">Ajoutez vos stations favorites…</string>
-    <string name="welcome_texte7">et retrouvez-les rapidement dans cette section !</string>
-    <string name="welcome_texte8">Observez les stations les plus proches de votre position.</string>
-    <string name="welcome_texte9">Parcourez le plan de Grenoble et selectionnez directement la station à consulter.</string>
-    <string name="welcome_texte10">Vous pouvez également télécharger le plan pdf d\'une ligne. Ce plan reste enregistrer dans le cache, ce qui lui permet d\'être accessible hors-ligne.</string>
-    <string name="welcome_texte11">Affichez désormais vos stations favorites directement sur le bureau de votre smartphone grâce au nouveau widget.</string>
-    <string name="welcome_texte12">Découvrez également les sections \"Info-Trafic\", \"Actualités\" et \"Titres de transports\" qui vous permettront d\'être mieux informé sur le réseau TAG.</string>
-    <string name="welcome_texte13">N\'hesitez pas à évaluer l\'application. D\'une certaine manière, en donnant votre avis, vous contribuez à son développement.</string>
-    <string name="welcome_texte14">Voila, vous savez tout. Cliquez sur le bouton vert !</string>
+    <string name="welcome_horaires">Prochain passage dans ...</string>
+    <string name="welcome_plan">Découvrez les stations les plus proches</string>
+    <string name="welcome_trafic">Alertes trafic et actualités: restez informé !</string>
+    <string name="welcome_tarifs">Des tarifs pour tous</string>
+    <string name="welcome_ok">En avant !</string>
+
+    <string name="welcome_texte1">Merci d\'avoir installé TAGdroid, l\'application non-officielle des transports en commun de Grenoble.\n\nDécouvrez les différentes fonctionnalitées de l\'application sur les pages suivantes.</string>
+    <string name="welcome_texte2">La fonction principale permet de connaître en temps-réel le temps d\'attente des 2 prochains tramways ou bus et les horaires théoriques des suivants.\n\nAjoutez également vos stations préférées dans les favoris</string>
+    <string name="welcome_texte3">Grâce à votre géolocatisation et à la carte interactive, vous pouvez désormais vous diriger vers la station la plus proche.\n\nTéléchargez également le plan en pdf de la ligne que vous souhaitez.</string>
+    <string name="welcome_texte4">Une manifestation ou une tempête de neige causent des ralentissements du trafic sur votre ligne? Soyez le premier informé !\n\nDécouvrez aussi les dernières nouvelles publiées de la TAG et la SMTC</string>
+    <string name="welcome_texte5">Jeune, moins jeune, étudiant ou encore salarié ? Des tarifs selon votre profil vous sont proposés par la TAG.\n\nConsultez la section "Tarifs" pour connaître les prix des titres de transport, abonnements et combinés.</string>
+    <string name="welcome_texte6">TAGdroid est une application gratuite sans aucune affiliation avec la SemiTAG, TAG et SMTC.\n\nEn cas de problème, n\'hesitez pas à envoyer un email.</string>
     <string name="allons_y">Allons-y !</string>
-    <string name="letsgo">C\'est parti !</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

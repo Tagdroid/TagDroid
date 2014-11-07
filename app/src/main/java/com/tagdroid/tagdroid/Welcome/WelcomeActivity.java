@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
@@ -13,9 +12,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -40,6 +38,9 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
+        getActionBar().hide();
 
         // We check for Google Play Services… CyanogenMod without GApps for example
         if (GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext()) != 0) {
@@ -77,11 +78,10 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
     public void startWelcomeScreen() {
         setContentView(R.layout.activity_welcome);
 
-        if (Build.VERSION.SDK_INT >= 14) {
+        /*if (Build.VERSION.SDK_INT >= 14) {
             getActionBar().setIcon(R.drawable.tag);
             getActionBar().setTitle("");
-        } else
-            getActionBar().setTitle(R.string.welcome_bienvenue);
+        } else getActionBar().setTitle(R.string.welcome_bienvenue);*/
 
         WelcomeAdapter mAdapter = new WelcomeAdapter(getSupportFragmentManager());
         mPager = (ViewPager)findViewById(R.id.pager);
@@ -129,7 +129,7 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
         }
     }
 
-    @Override
+    /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_welcome, menu);
         return true;
@@ -142,7 +142,7 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
     @Override
     public void onFinalButtonClicked() {

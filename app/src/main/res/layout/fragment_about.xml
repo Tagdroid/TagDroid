@@ -118,10 +118,10 @@
                 android:layout_gravity="right"
                 android:gravity="right">
 
-                <ImageButton android:id="@+id/ViadeoQuentin"
+                <ImageButton android:id="@+id/websiteQuentin"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:background="@drawable/about_btn_viadeo"
+                    android:background="@drawable/about_btn_website"
                     android:layout_gravity="top"
                     android:padding="8dp" />
 
