@@ -24,17 +24,15 @@ import org.json.JSONObject;
     Pas spécifique aux PhysicalStop, mais à toute l'API.
  */
 
-public class ReadJSonTask extends AsyncTask<Void, Integer, Void> {
-    private final Context context;
-    private String jsonStr;
+public abstract class ReadJSonTask extends AsyncTask<Void, Integer, Void> {
+    private String jsonString;
     private ProgressionInterface progressionInterface;
     private ProgressBar progressBar;
 
-    public ReadJSonTask(String jsonString, ProgressionInterface progressionInterface, Context context) {
+    public ReadJSonTask(String jsonString, ProgressionInterface progressionInterface) {
         super();
-        this.context = context;
         this.progressionInterface = progressionInterface;
-        this.jsonStr = jsonString;
+        this.jsonString = jsonString;
     }
     public void setProgressBar(ProgressBar progressBar) {
         this.progressBar = progressBar;
@@ -48,74 +46,37 @@ public class ReadJSonTask extends AsyncTask<Void, Integer, Void> {
 
     @Override
     protected Void doInBackground(Void... arg0) {
-        if (jsonStr != null) {
-            // Log.d("parsage", jsonStr);
-            try {
-                JSONObject jsonObj = new JSONObject(jsonStr);
-                String message = jsonObj.getString("Message");
-                Integer statusCode = jsonObj.getInt("StatusCode");
-                Log.d("parsage", "message : " + message + " : statuscode : " + statusCode);
-                switch (statusCode) {
-                    case 200:
-                        readDataNow(jsonObj.getJSONArray("Data"));
-                    case 300:
-                        onVoidResult();
-                    case 400:
-                        onBadRequest();
-                    case 500:
-                        onRequestError();
-                    default:
-                        onUnknownStatusCode();
-                }
-            } catch (JSONException e) {
-                Log.e("JSonParsing", "Could not correctly parse received JSon");
-                e.printStackTrace();
-            }
-        } else {
+        if (jsonString == null) {
             progressionInterface.onJSonParsingFailed("Void JSon data received…");
+            return null;
+        }
+
+        try {
+            JSONObject jsonObj = new JSONObject(jsonString);
+            String message = jsonObj.getString("Message");
+            Log.d("parsage", "message : " + message);
+            switch (jsonObj.getInt("StatusCode")) {
+                case 200:
+                    Log.d("parsage", jsonString);
+                    readData(jsonObj.getJSONArray("Data"));
+                case 300:
+                    onVoidResult();
+                case 400:
+                    onBadRequest();
+                case 500:
+                    onRequestError();
+                default:
+                    onUnknownStatusCode();
+            }
+        } catch (JSONException e) {
+            Log.e("JSonParsing", "Could not correctly parse received JSon");
+            e.printStackTrace();
         }
         return null;
     }
 
+    public abstract void readData(JSONArray jsonData);
 
-    private void readDataNow(JSONArray jsonData) {
-        MySQLiteHelper dbHelper = new MySQLiteHelper("TagDatabase.db",context, null);
-        SQLiteDatabase bdd = dbHelper.getWritableDatabase();
-        bdd.beginTransaction();
-
-        PhysicalStopDAO physicalStopDAO = new PhysicalStopDAO(dbHelper, dbHelper.isCreating,
-                dbHelper.isUpgrading, dbHelper.oldVersion, dbHelper.newVersion);
-        LogicalStopDAO logicalStopDAO = new LogicalStopDAO(bdd, dbHelper.isCreating,
-                dbHelper.isUpgrading, dbHelper.oldVersion, dbHelper.newVersion);
-        LocalityDAO localityDAO = new LocalityDAO(bdd, dbHelper.isCreating,
-                dbHelper.isUpgrading, dbHelper.oldVersion, dbHelper.newVersion);
-
-        PhysicalStop physicalStop;
-        LogicalStop logicalStop;
-        Locality locality;
-        Line line;
-
-        Integer length = jsonData.length();
-        for (int i = 0; i < length; i++)
-            try {
-                physicalStop = new PhysicalStop(jsonData.getJSONObject(i));
-                physicalStopDAO.add(physicalStop);
-                logicalStop = physicalStop.getLogicalStop();
-                logicalStopDAO.add(logicalStop);
-                locality = physicalStop.getLocality();
-                localityDAO.add(locality);
-                locality = logicalStop.getLocality();
-                localityDAO.add(locality);
-                publishProgress(i, length);
-            } catch (JSONException e) {
-                Log.e("parsage de station", i + " / " + length);
-                // e.printStackTrace();
-            }
-
-        bdd.setTransactionSuccessful();
-        bdd.endTransaction();
-        dbHelper.close();
-    }
     @Override
     protected void onProgressUpdate(Integer... values){
        if (progressBar != null)
