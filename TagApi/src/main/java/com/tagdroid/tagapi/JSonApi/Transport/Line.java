@@ -40,24 +40,25 @@ public class Line {
     }
 
 
-    public Line(long Id,
-                String Name,
+    public Line(Integer Accessibility,
                 String Company,
                 long CompanyId,
                 int Deleted,
+                long Id,
+                String Name,
                 long NetworkId,
                 String NetworkName,
                 String Number,
                 long OperatorId,
                 Integer Order,
                 int Published,
-                Integer Accessibility,
                 Integer TransportMode) {
 
-        this.Id = Id;
-        this.Name = Name;
+        this.Accessibility = Accessibility;
         this.Company = Company;
         this.CompanyId = CompanyId;
+        this.Id = Id;
+        this.Name = Name;
         this.Deleted = Deleted;
         this.NetworkId = NetworkId;
         this.NetworkName = NetworkName;
@@ -66,10 +67,7 @@ public class Line {
         this.Order = Order;
         this.Published = Published;
         this.TransportMode = TransportMode;
-        this.Accessibility = Accessibility;
     }
-
-
 
     public Integer getAccessibility() {
         return Accessibility;
