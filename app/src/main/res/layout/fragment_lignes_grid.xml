@@ -39,7 +39,8 @@
                     android:background="@color/gris_normal">
                     </View>
 
-                <com.tagdroid.tagdroid.ExpandableGridView android:id="@+id/tramGrid"
+                <com.tagdroid.android.ExpandableGridView
+                    android:id="@+id/tramGrid"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:horizontalSpacing="10dp"
@@ -73,7 +74,8 @@
                     android:background="@color/chrono_shadow">
                 </View>
 
-                <com.tagdroid.tagdroid.ExpandableGridView android:id="@+id/ChronoGrid"
+                <com.tagdroid.android.ExpandableGridView
+                    android:id="@+id/ChronoGrid"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:numColumns="5"
@@ -107,7 +109,8 @@
                     android:background="@color/proximo_shadow">
                 </View>
 
-                <com.tagdroid.tagdroid.ExpandableGridView android:id="@+id/ProximoGrid"
+                <com.tagdroid.android.ExpandableGridView
+                    android:id="@+id/ProximoGrid"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:numColumns="5"
@@ -140,7 +143,8 @@
                     android:background="@color/flexo_shadow">
                 </View>
 
-                <com.tagdroid.tagdroid.ExpandableGridView android:id="@+id/FlexoGrid"
+                <com.tagdroid.android.ExpandableGridView
+                    android:id="@+id/FlexoGrid"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:numColumns="5"

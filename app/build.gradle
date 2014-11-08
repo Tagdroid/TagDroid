@@ -7,6 +7,17 @@ repositories {
 
 android {
     signingConfigs {
+        debug {
+            // path relative to project root
+            storeFile file('debug.keystore')
+        }
+        release {
+            // path relative to project root
+            storeFile file('release.jks')
+            storePassword 'com.tagdroid.android'
+            keyAlias 'release'
+            keyPassword 'com.tagdroid.android'
+        }
     }
     compileSdkVersion 19
     buildToolsVersion "21.1"
@@ -21,6 +32,10 @@ android {
         release {
             runProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            signingConfig signingConfigs.debug
         }
     }
     productFlavors {
