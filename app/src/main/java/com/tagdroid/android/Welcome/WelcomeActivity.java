@@ -18,13 +18,16 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.tagdroid.tagapi.HttpApiTask;
+import com.tagdroid.tagapi.HttpGet.HttpApiTask;
 import com.tagdroid.tagapi.ProgressionInterface;
+import com.tagdroid.tagapi.ReadJSon.ReadJSonStops;
 import com.tagdroid.tagapi.ReadJSonTask;
 import com.tagdroid.android.MainActivity;
 import com.tagdroid.android.R;
 import com.viewpagerindicator.CirclePageIndicator;
 import com.viewpagerindicator.PageIndicator;
+
+import org.json.JSONArray;
 
 import rosenpin.androidL.dialog.AndroidLDialog;
 
@@ -170,7 +173,7 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
     }
 
     private void readJSon(String jsonQueryResult) {
-        ReadJSonTask readJSonTask = new ReadJSonTask(jsonQueryResult, this, this);
+        ReadJSonTask readJSonTask = new ReadJSonStops(jsonQueryResult, this, this);
         readJSonTask.setProgressBar((ProgressBar) findViewById(R.id.parseJSON_bar));
         readJSonTask.execute();
     }
