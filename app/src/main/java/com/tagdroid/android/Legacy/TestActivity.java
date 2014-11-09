@@ -11,7 +11,7 @@ import android.widget.Toast;
 import com.tagdroid.tagapi.HttpGet.HttpApiTask;
 import com.tagdroid.tagapi.JSonApi.Transport.PhysicalStop;
 import com.tagdroid.tagapi.ProgressionInterface;
-import com.tagdroid.tagapi.ReadJSon.ReadJSonStops;
+import com.tagdroid.tagapi.JSon2SQL.ReadJSonStops;
 import com.tagdroid.tagapi.ReadJSonTask;
 import com.tagdroid.tagapi.SQLApi.MySQLiteHelper;
 import com.tagdroid.tagapi.SQLApi.Transport.PhysicalStopDAO;

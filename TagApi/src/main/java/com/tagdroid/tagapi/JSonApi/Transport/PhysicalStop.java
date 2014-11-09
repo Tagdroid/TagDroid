@@ -4,11 +4,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class PhysicalStop {
-    private Integer Category;
+    private Integer Category,
+            Direction;
     private long Id;
     private String Name;
-    private Integer Latitude,
-            Longitude,
+    private Double Latitude, Longitude;
+    private Integer LineId,
             PointType,
             LogicalStopId,
             LocalityId,
@@ -18,38 +19,45 @@ public class PhysicalStop {
     private Locality locality;
     private LogicalStop logicalStop;
 
-    public PhysicalStop(JSONObject jsonPhysicalStop) throws JSONException {
-        this.Category = jsonPhysicalStop.getInt("Category");
+    public PhysicalStop(JSONObject jsonPhysicalStop, Integer LineId, Integer Direction) throws JSONException {
+        this.Category = 0;// jsonPhysicalStop.getInt("Category");
+        this.Direction = Direction;
         this.Id = jsonPhysicalStop.getLong("Id");
         this.Name = jsonPhysicalStop.getString("Name");
-        this.Latitude = jsonPhysicalStop.getInt("Latitude");
-        this.Longitude = jsonPhysicalStop.getInt("Longitude");
+        this.Latitude = jsonPhysicalStop.getDouble("Latitude");
+        this.LineId = LineId;
+        this.Longitude = jsonPhysicalStop.getDouble("Longitude");
         this.PointType = jsonPhysicalStop.getInt("PointType");
         this.LogicalStopId = jsonPhysicalStop.getInt("LogicalStopId");
         this.LocalityId = jsonPhysicalStop.getInt("LocalityId");
         this.OperatorId = jsonPhysicalStop.getInt("OperatorId");
-        this.Accessibility = new AccessibilityValues(jsonPhysicalStop.getJSONObject("AccessibilityStatus"))
-                .getAccessibilityCode();
+        this.Accessibility = 0;//new AccessibilityValues(jsonPhysicalStop.getJSONObject("AccessibilityStatus")).getAccessibilityCode();
 
         this.locality = new Locality(jsonPhysicalStop.getJSONObject("Locality"));
         this.logicalStop = new LogicalStop(jsonPhysicalStop.getJSONObject("LogicalStop"));
-
+    }
+    public PhysicalStop(JSONObject jsonPhysicalStop) throws JSONException {
+        new PhysicalStop(jsonPhysicalStop, 0, 0);
     }
 
     public PhysicalStop(Integer Category,
+                        Integer Direction,
                         long Id,
                         String Name,
-                        Integer Latitude,
-                        Integer Longitude,
+                        Double Latitude,
+                        Integer LineId,
+                        Double Longitude,
                         Integer PointType,
                         Integer LogicalStopId,
                         Integer LocalityId,
                         Integer OperatorId,
                         Integer Accessibility) {
         this.Category = Category;
+        this.Direction = Direction;
         this.Id = Id;
         this.Name = Name;
         this.Latitude = Latitude;
+        this.LineId = LineId;
         this.Longitude = Longitude;
         this.PointType = PointType;
         this.LogicalStopId = LogicalStopId;
@@ -64,10 +72,16 @@ public class PhysicalStop {
     public Integer getCategory() {
         return Category;
     }
-    public Integer getLatitude() {
+    public Integer getDirection() {
+        return Direction;
+    }
+    public Double getLatitude() {
         return Latitude;
     }
-    public Integer getLongitude() {
+    public Integer getLineId() {
+        return LineId;
+    }
+    public Double getLongitude() {
         return Longitude;
     }
     public Integer getPointType() {

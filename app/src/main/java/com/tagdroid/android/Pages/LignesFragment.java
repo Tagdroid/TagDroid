@@ -153,25 +153,26 @@ public class LignesFragment extends Page {
 
         // create a new ImageView for each item referenced by the Adapter
         public View getView(int position, View oldView, ViewGroup parent) {
+            if (oldView != null)
+                return oldView;
             FButton view;
-            if (oldView == null) {
-                view = new FButton(context);
-                view.setLayoutParams(new GridView.LayoutParams(113, 113));
+            view = new FButton(context);
+            view.setLayoutParams(new GridView.LayoutParams(113, 113));
 
-                view.setText(lignes[position].name);
-            //    view.setTypeface(tf);
-                if(lignes[position].name.length()>3) view.setTextSize(16);
-                else view.setTextSize(30);
-                view.setTextColor(BlackorWhite(getResources().getColor(lignes[position].color)));
+            view.setText(lignes[position].name);
+            //view.setTypeface(tf);
+            //if(lignes[position].name.length()>3)
+                view.setTextSize(16);
+            //else
+            //    view.setTextSize(30);
+            view.setTextColor(BlackorWhite(getResources().getColor(lignes[position].color)));
 
 
-                view.setButtonColor(getResources().getColor(lignes[position].color));
-                view.setShadowEnabled(true);
-                view.setShadowHeight(10);
-                view.setCornerRadius(10);
-                view.setClickable(true);
-            } else
-                view = (FButton) oldView;
+            view.setButtonColor(getResources().getColor(lignes[position].color));
+            view.setShadowEnabled(true);
+            view.setShadowHeight(10);
+            view.setCornerRadius(10);
+            view.setClickable(true);
             return view;
         }
     }

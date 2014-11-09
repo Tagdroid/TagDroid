@@ -14,22 +14,16 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.tagdroid.tagapi.HttpGet.HttpApiTask;
-import com.tagdroid.tagapi.HttpGet.HttpGetLinesList;
+import com.tagdroid.tagapi.HttpGet.HttpGetLineStops;
+import com.tagdroid.tagapi.JSon2SQL.ReadJSonLineStops;
 import com.tagdroid.tagapi.ProgressionInterface;
-import com.tagdroid.tagapi.ReadJSon.ReadJSonLinesList;
-import com.tagdroid.tagapi.ReadJSon.ReadJSonStops;
-import com.tagdroid.tagapi.ReadJSonTask;
 import com.tagdroid.android.MainActivity;
 import com.tagdroid.android.R;
 import com.viewpagerindicator.CirclePageIndicator;
 import com.viewpagerindicator.PageIndicator;
-
-import org.json.JSONArray;
 
 import rosenpin.androidL.dialog.AndroidLDialog;
 
@@ -126,10 +120,11 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
                         }
                     }).show();
         } else {
-            HttpGetLinesList httpGetLinesList = new HttpGetLinesList(this);
+            //HttpGetLinesList httpGetLinesList = new HttpGetLinesList(this);
             Log.d("Welcome Status", "Start of Downloading database");
-          //  httpGetLinesList.setProgressBar((ProgressBar) findViewById(R.id.loadJSON_bar));
-            httpGetLinesList.execute();
+            //httpGetLinesList.setProgressBar((ProgressBar) findViewById(R.id.loadJSON_bar));
+            //httpGetLinesList.execute();
+            new HttpGetLineStops(27, 1, this).execute();
             db_downloading = true;
         }
     }
@@ -175,9 +170,10 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
     }
 
     private void readJSon(String jsonQueryResult) {
-        ReadJSonLinesList readJSonLinesList = new ReadJSonLinesList(jsonQueryResult, this, this);
-        readJSonLinesList.setProgressBar((ProgressBar) findViewById(R.id.parseJSON_bar));
-        readJSonLinesList.execute();
+        //ReadJSonLinesList readJSonLinesList = new ReadJSonLinesList(jsonQueryResult, this, this);
+        //readJSonLinesList.setProgressBar((ProgressBar) findViewById(R.id.parseJSON_bar));
+        //readJSonLinesList.execute();
+        new ReadJSonLineStops(jsonQueryResult, 27, 1, this, this).execute();
     }
 
     public void onDownloadStart() {

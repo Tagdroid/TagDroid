@@ -1,4 +1,4 @@
-package com.tagdroid.tagapi.ReadJSon;
+package com.tagdroid.tagapi.JSon2SQL;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -23,6 +23,7 @@ public class ReadJSonStops extends ReadJSonTask {
         super(jsonString, progressionInterface);
         this.context = context;
     }
+
     @Override
     public void readData(JSONArray jsonData) {
         MySQLiteHelper dbHelper = new MySQLiteHelper(context);
