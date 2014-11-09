@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.tagdroid.tagapi.JSonApi.Transport.PhysicalStop;
+import com.tagdroid.tagapi.SQLApi.MySQLiteHelper;
 
 public class PhysicalStopDAO {
     public static final String TABLE_NAME = "PhysicalStops",
@@ -20,7 +21,7 @@ public class PhysicalStopDAO {
             OPERATORID = "OperatorId",
             ACCESSIBILITY = "Accessibility";
 
-    public static final String TABLE_CREATE = "CREATE TABLE  " + TABLE_NAME + " (" +
+    public static final String TABLE_CREATE = "CREATE TABLE IF NOT EXISTS   " + TABLE_NAME + " (" +
             CATEGORY + " INTEGER, " +
             ID + " INTEGER PRIMARY KEY, " +
             NAME + " INTEGER, " +
@@ -35,10 +36,10 @@ public class PhysicalStopDAO {
 
     private SQLiteDatabase bdd;
 
-    public PhysicalStopDAO(MySQLiteHelper dbHelper, boolean isCreating,
+    public PhysicalStopDAO(SQLiteDatabase bdd, boolean isCreating,
                            boolean isUpdating, int oldVersion, int newVersion) {
-        this.bdd = dbHelper.getWritableDatabase();
-        if (isCreating){
+        this.bdd = bdd;
+        if (isCreating) {
             // On créé la table
             Log.d("SQLiteHelper", "Base is being created");
             bdd.execSQL(TABLE_CREATE);

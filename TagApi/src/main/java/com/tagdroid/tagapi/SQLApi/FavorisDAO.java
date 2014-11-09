@@ -5,7 +5,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.tagdroid.tagapi.JSonApi.Favori;
-import com.tagdroid.tagapi.SQLApi.Transport.MySQLiteHelper;
 
 public class FavorisDAO {
     public static final String TABLE_NAME = "Favoris",
@@ -27,9 +26,9 @@ public class FavorisDAO {
 
     private SQLiteDatabase bdd;
 
-    public FavorisDAO(MySQLiteHelper dbHelper, boolean isCreating,
+    public FavorisDAO(SQLiteDatabase bdd, boolean isCreating,
                       boolean isUpdating, int oldVersion, int newVersion) {
-        this.bdd = dbHelper.getWritableDatabase();
+        this.bdd = bdd;
         bdd.execSQL(TABLE_CREATE);
         if (isCreating){
             // On créé la table

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.tagdroid.tagapi.JSonApi.Transport.Line;
 import com.tagdroid.tagapi.JSonApi.Transport.Locality;
 import com.tagdroid.tagapi.JSonApi.Transport.LogicalStop;
 import com.tagdroid.tagapi.JSonApi.Transport.PhysicalStop;
@@ -12,7 +11,7 @@ import com.tagdroid.tagapi.ProgressionInterface;
 import com.tagdroid.tagapi.ReadJSonTask;
 import com.tagdroid.tagapi.SQLApi.Transport.LocalityDAO;
 import com.tagdroid.tagapi.SQLApi.Transport.LogicalStopDAO;
-import com.tagdroid.tagapi.SQLApi.Transport.MySQLiteHelper;
+import com.tagdroid.tagapi.SQLApi.MySQLiteHelper;
 import com.tagdroid.tagapi.SQLApi.Transport.PhysicalStopDAO;
 
 import org.json.JSONArray;
@@ -26,25 +25,20 @@ public class ReadJSonStops extends ReadJSonTask {
     }
     @Override
     public void readData(JSONArray jsonData) {
-        readDataNow(jsonData);
-    }
+        MySQLiteHelper dbHelper = new MySQLiteHelper(context);
+        SQLiteDatabase daTAGase = dbHelper.getWritableDatabase();
+        daTAGase.beginTransaction();
 
-    private void readDataNow(JSONArray jsonData) {
-        MySQLiteHelper dbHelper = new MySQLiteHelper("TagDatabase.db",context, null);
-        SQLiteDatabase bdd = dbHelper.getWritableDatabase();
-        bdd.beginTransaction();
-
-        PhysicalStopDAO physicalStopDAO = new PhysicalStopDAO(dbHelper, dbHelper.isCreating,
-                dbHelper.isUpgrading, dbHelper.oldVersion, dbHelper.newVersion);
-        LogicalStopDAO logicalStopDAO = new LogicalStopDAO(bdd, dbHelper.isCreating,
-                dbHelper.isUpgrading, dbHelper.oldVersion, dbHelper.newVersion);
-        LocalityDAO localityDAO = new LocalityDAO(bdd, dbHelper.isCreating,
-                dbHelper.isUpgrading, dbHelper.oldVersion, dbHelper.newVersion);
+        PhysicalStopDAO physicalStopDAO = new PhysicalStopDAO(daTAGase,
+                dbHelper.isCreating, dbHelper.isUpgrading, dbHelper.oldVersion, dbHelper.newVersion);
+        LogicalStopDAO logicalStopDAO = new LogicalStopDAO(daTAGase,
+                dbHelper.isCreating, dbHelper.isUpgrading, dbHelper.oldVersion, dbHelper.newVersion);
+        LocalityDAO localityDAO = new LocalityDAO(daTAGase,
+                dbHelper.isCreating, dbHelper.isUpgrading, dbHelper.oldVersion, dbHelper.newVersion);
 
         PhysicalStop physicalStop;
         LogicalStop logicalStop;
         Locality locality;
-        Line line;
 
         Integer length = jsonData.length();
         for (int i = 0; i < length; i++)
@@ -60,12 +54,11 @@ public class ReadJSonStops extends ReadJSonTask {
                 publishProgress(i, length);
             } catch (JSONException e) {
                 Log.e("parsage de station", i + " / " + length);
-                // e.printStackTrace();
+                e.printStackTrace();
             }
 
-        bdd.setTransactionSuccessful();
-        bdd.endTransaction();
+        daTAGase.setTransactionSuccessful();
+        daTAGase.endTransaction();
         dbHelper.close();
     }
-
 }

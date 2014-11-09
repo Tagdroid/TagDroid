@@ -19,7 +19,9 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.tagdroid.tagapi.HttpGet.HttpApiTask;
+import com.tagdroid.tagapi.HttpGet.HttpGetLinesList;
 import com.tagdroid.tagapi.ProgressionInterface;
+import com.tagdroid.tagapi.ReadJSon.ReadJSonLinesList;
 import com.tagdroid.tagapi.ReadJSon.ReadJSonStops;
 import com.tagdroid.tagapi.ReadJSonTask;
 import com.tagdroid.android.MainActivity;
@@ -124,10 +126,10 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
                         }
                     }).show();
         } else {
-            HttpApiTask httpApiTask = new HttpApiTask(this, "/transport/v2/GetPhysicalStops");
+            HttpGetLinesList httpGetLinesList = new HttpGetLinesList(this);
             Log.d("Welcome Status", "Start of Downloading database");
-            httpApiTask.setProgressBar((ProgressBar) findViewById(R.id.loadJSON_bar));
-            httpApiTask.execute();
+          //  httpGetLinesList.setProgressBar((ProgressBar) findViewById(R.id.loadJSON_bar));
+            httpGetLinesList.execute();
             db_downloading = true;
         }
     }
@@ -173,9 +175,9 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
     }
 
     private void readJSon(String jsonQueryResult) {
-        ReadJSonTask readJSonTask = new ReadJSonStops(jsonQueryResult, this, this);
-        readJSonTask.setProgressBar((ProgressBar) findViewById(R.id.parseJSON_bar));
-        readJSonTask.execute();
+        ReadJSonLinesList readJSonLinesList = new ReadJSonLinesList(jsonQueryResult, this, this);
+        readJSonLinesList.setProgressBar((ProgressBar) findViewById(R.id.parseJSON_bar));
+        readJSonLinesList.execute();
     }
 
     public void onDownloadStart() {

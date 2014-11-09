@@ -7,17 +7,16 @@ public class Line {
     private Integer Accessibility;
     private String Company;
     private long CompanyId;
-    private Integer Deleted;
+    private Boolean Deleted;
     private Direction[] DirectionList;
     private long Id;
     private String Name;
     private long NetworkId;
-    private String NetworkName;
     private String Number;
     private Operator mOperator;
     private long OperatorId;
     private Integer Order;
-    private Integer Published;
+    private Boolean Published;
     private Integer TransportMode;
 
     public Line(JSONObject jsonLine) throws JSONException {
@@ -25,17 +24,16 @@ public class Line {
                 .getAccessibilityCode();
         this.Company = jsonLine.getString("Company");
         this.CompanyId = jsonLine.getInt("CompanyId");
-        this.Deleted = jsonLine.getInt("Deleted");
+        this.Deleted = jsonLine.getBoolean("Deleted");
         this.DirectionList = Direction.DirectionArray(jsonLine.getJSONArray("DirectionList"));
         this.Id = jsonLine.getInt("Id");
         this.Name = jsonLine.getString("Name");
         this.NetworkId = jsonLine.getInt("NetworkId");
-        this.NetworkName = jsonLine.getString("NetworkName");
         this.Number = jsonLine.getString("Number");
         this.mOperator = new Operator(jsonLine.getJSONObject("Operator"));
         this.OperatorId = jsonLine.getInt("OperatorId");
         this.Order = jsonLine.getInt("Order");
-        this.Published = jsonLine.getInt("Published");
+        this.Published = jsonLine.getBoolean("Published");
         this.TransportMode = jsonLine.getInt("TransportMode");
     }
 
@@ -43,15 +41,14 @@ public class Line {
     public Line(Integer Accessibility,
                 String Company,
                 long CompanyId,
-                int Deleted,
+                boolean Deleted,
                 long Id,
                 String Name,
                 long NetworkId,
-                String NetworkName,
                 String Number,
                 long OperatorId,
                 Integer Order,
-                int Published,
+                boolean Published,
                 Integer TransportMode) {
 
         this.Accessibility = Accessibility;
@@ -61,7 +58,6 @@ public class Line {
         this.Name = Name;
         this.Deleted = Deleted;
         this.NetworkId = NetworkId;
-        this.NetworkName = NetworkName;
         this.Number = Number;
         this.OperatorId = OperatorId;
         this.Order = Order;
@@ -78,7 +74,7 @@ public class Line {
     public long getCompanyId() {
         return CompanyId;
     }
-    public Integer getDeleted() {
+    public Boolean getDeleted() {
         return Deleted;
     }
     public Direction[] getDirectionList() {
@@ -93,9 +89,6 @@ public class Line {
     public long getNetworkId() {
         return NetworkId;
     }
-    public String getNetworkName() {
-        return NetworkName;
-    }
     public String getNumber() {
         return Number;
     }
@@ -108,7 +101,7 @@ public class Line {
     public Integer getOrder() {
         return Order;
     }
-    public Integer getPublished() {
+    public Boolean getPublished() {
         return Published;
     }
     public Integer getTransportMode() {

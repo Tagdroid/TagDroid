@@ -13,11 +13,9 @@ import com.tagdroid.tagapi.JSonApi.Transport.PhysicalStop;
 import com.tagdroid.tagapi.ProgressionInterface;
 import com.tagdroid.tagapi.ReadJSon.ReadJSonStops;
 import com.tagdroid.tagapi.ReadJSonTask;
-import com.tagdroid.tagapi.SQLApi.Transport.MySQLiteHelper;
+import com.tagdroid.tagapi.SQLApi.MySQLiteHelper;
 import com.tagdroid.tagapi.SQLApi.Transport.PhysicalStopDAO;
 import com.tagdroid.android.R;
-
-import org.json.JSONArray;
 
 
 public class TestActivity extends ActionBarActivity implements View.OnClickListener, ProgressionInterface {
@@ -52,9 +50,9 @@ public class TestActivity extends ActionBarActivity implements View.OnClickListe
     }
 
     private void getNameFromId(Integer id) {
-        MySQLiteHelper dbHelper = new MySQLiteHelper("TagDatabase.db", this, null);
+        MySQLiteHelper dbHelper = new MySQLiteHelper(this);
 
-        PhysicalStopDAO physicalStopDAO = new PhysicalStopDAO(dbHelper, false, false, -1, -1);
+        PhysicalStopDAO physicalStopDAO = new PhysicalStopDAO(dbHelper.getWritableDatabase(), false, false, -1, -1);
         PhysicalStop testStop = physicalStopDAO.select(id);
         if (testStop != null) {
             String nom = testStop.getName();

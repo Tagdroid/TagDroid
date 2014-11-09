@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.tagdroid.tagapi.JSonApi.Favori;
 import com.tagdroid.tagapi.SQLApi.FavorisDAO;
-import com.tagdroid.tagapi.SQLApi.Transport.MySQLiteHelper;
+import com.tagdroid.tagapi.SQLApi.MySQLiteHelper;
 import com.tagdroid.android.R;
 
 import java.util.ArrayList;
@@ -21,8 +21,8 @@ public class FavorisHelper {
 
     public Favori[] getFavoris() {
         if (listeFavoris == null) {
-            MySQLiteHelper dbHelper = new MySQLiteHelper("Favoris.db", context, null);
-            FavorisDAO favorisDAO = new FavorisDAO(dbHelper, false, false, -1, -1);
+            MySQLiteHelper dbHelper = new MySQLiteHelper(context);
+            FavorisDAO favorisDAO = new FavorisDAO(dbHelper.getReadableDatabase(), false, false, -1, -1);
             listeFavoris = favorisDAO.list();
             dbHelper.close();
         }
@@ -51,8 +51,8 @@ public class FavorisHelper {
     }
 
     public static Boolean isFavori(Context context, long Id) {
-        MySQLiteHelper dbHelper = new MySQLiteHelper("Favoris.db", context, null);
-        FavorisDAO favorisDAO = new FavorisDAO(dbHelper, false, false, -1, -1);
+        MySQLiteHelper dbHelper = new MySQLiteHelper(context);
+        FavorisDAO favorisDAO = new FavorisDAO(dbHelper.getReadableDatabase(), false, false, -1, -1);
         return favorisDAO.existsFavoriOfId(Id);
     }
 
@@ -61,8 +61,8 @@ public class FavorisHelper {
     }
 
     public static int getFavorisNumber(Context context) {
-        MySQLiteHelper dbHelper = new MySQLiteHelper("Favoris.db", context, null);
-        FavorisDAO favorisDAO = new FavorisDAO(dbHelper, false, false, -1, -1);
+        MySQLiteHelper dbHelper = new MySQLiteHelper(context);
+        FavorisDAO favorisDAO = new FavorisDAO(dbHelper.getReadableDatabase(), false, false, -1, -1);
         return favorisDAO.getFavorisNumber();
     }
 }

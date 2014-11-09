@@ -31,7 +31,7 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.tagdroid.tagapi.JSonApi.Favori;
 import com.tagdroid.tagapi.SQLApi.FavorisDAO;
-import com.tagdroid.tagapi.SQLApi.Transport.MySQLiteHelper;
+import com.tagdroid.tagapi.SQLApi.MySQLiteHelper;
 import com.tagdroid.android.Favoris.FavorisHelper;
 import com.tagdroid.android.R;
 
@@ -246,8 +246,8 @@ public class StationDetailFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        MySQLiteHelper dbHelper = new MySQLiteHelper("Favoris.db", getActivity(), null);
-        FavorisDAO favorisDAO = new FavorisDAO(dbHelper, false, false, -1, -1);
+        MySQLiteHelper dbHelper = new MySQLiteHelper(getActivity());
+        FavorisDAO favorisDAO = new FavorisDAO(dbHelper.getWritableDatabase(), false, false, -1, -1);
 
 
         switch (item.getItemId()) {
