@@ -1,23 +1,27 @@
-package com.tagdroid.tagapi.ReadJSon;
+package com.tagdroid.tagapi.JSon2SQL;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.tagdroid.tagapi.JSonApi.Transport.Line;
+import com.tagdroid.tagapi.JSonApi.Transport.PhysicalStop;
 import com.tagdroid.tagapi.ProgressionInterface;
 import com.tagdroid.tagapi.ReadJSonTask;
 import com.tagdroid.tagapi.SQLApi.MySQLiteHelper;
-import com.tagdroid.tagapi.SQLApi.Transport.LinesDAO;
+import com.tagdroid.tagapi.SQLApi.Transport.PhysicalStopDAO;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 
-public class ReadJSonLinesList extends ReadJSonTask {
+public class ReadJSonLineStops extends ReadJSonTask {
     private Context context;
-    public ReadJSonLinesList(String jsonString, ProgressionInterface progressionInterface, Context context) {
+    private Integer lineId, direction;
+    public ReadJSonLineStops(String jsonString, Integer lineId, Integer direction,
+                             ProgressionInterface progressionInterface, Context context) {
         super(jsonString, progressionInterface);
         this.context = context;
+        this.lineId = lineId;
+        this.direction = direction;
     }
 
     @Override
@@ -26,17 +30,18 @@ public class ReadJSonLinesList extends ReadJSonTask {
         SQLiteDatabase daTAGase = dbHelper.getWritableDatabase();
         daTAGase.beginTransaction();
 
-        LinesDAO linesDAO = new LinesDAO(daTAGase,
+        PhysicalStopDAO physicalStopDAO = new PhysicalStopDAO(daTAGase,
                 dbHelper.isCreating, dbHelper.isUpgrading, dbHelper.oldVersion, dbHelper.newVersion);
 
-        Line line;
+        PhysicalStop physicalStop;
 
         Integer length = jsonData.length();
         for (int i = 0; i < length; i++)
             try {
-                line = new Line(jsonData.getJSONObject(i));
-                linesDAO.add(line);
+                physicalStop = new PhysicalStop(jsonData.getJSONObject(i), lineId, direction);
+                physicalStopDAO.add(physicalStop);
                 publishProgress(i, length);
+                Log.d("parsage de ligne", i + " / " + length);
             } catch (JSONException e) {
                 Log.e("parsage de ligne", i + " / " + length);
                 e.printStackTrace();
