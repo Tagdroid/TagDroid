@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.tagdroid.tagapi.JSonApi.Transport.Line;
+import com.tagdroid.tagapi.SQLApi.MySQLiteHelper;
 
 import org.json.JSONException;
 
@@ -18,15 +19,13 @@ public class LinesDAO {
             ID = "Id",
             NAME = "Name",
             NETWORKID = "NetworkID",
-            NETWORKNAME = "NetworkName",
             NUMBER = "Number",
             OPERATORID = "OperatorID",
-            ORDER = "Order",
+            ORDER = "OrderA",
             PUBLISHED = "Published",
             TRANSPORTMODE = "TransportMode";
 
-
-    public static final String TABLE_CREATE = "CREATE TABLE  " + TABLE_NAME + " (" +
+    public static final String TABLE_CREATE = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (" +
             ACCESSIBILITY + " INTEGER, " +
             COMPANY + " INTEGER, " +
             COMPANYID + " INTEGER, " +
@@ -34,22 +33,23 @@ public class LinesDAO {
             ID + " INTEGER PRIMARY KEY, " +
             NAME + " INTEGER, " +
             NETWORKID + " INTEGER, " +
-            NETWORKNAME + " INTEGER, " +
             NUMBER + " INTEGER, " +
             OPERATORID + " INTEGER, " +
             ORDER + " INTEGER, " +
             PUBLISHED + " INTEGER, " +
             TRANSPORTMODE + " INTEGER);";
+
     public static final String TABLE_DROP = "DROP TABLE IF EXISTS " + TABLE_NAME;
 
     private SQLiteDatabase bdd;
 
-    public LinesDAO(MySQLiteHelper dbHelper, boolean isCreating,
+    public LinesDAO(SQLiteDatabase bdd, boolean isCreating,
                     boolean isUpdating, int oldVersion, int newVersion) {
-        this.bdd = dbHelper.getWritableDatabase();
+        this.bdd = bdd;
         if (isCreating){
             // On créé la table
             Log.d("SQLiteHelper", "Base is being created");
+            //bdd.execSQL(TABLE_DROP);
             bdd.execSQL(TABLE_CREATE);
         }
         else if (isUpdating) {
@@ -69,7 +69,6 @@ public class LinesDAO {
         values.put(ID, m.getId());
         values.put(NAME, m.getName());
         values.put(NETWORKID, m.getNetworkId());
-        values.put(NETWORKNAME, m.getNetworkName());
         values.put(NUMBER, m.getNumber());
         values.put(OPERATORID, m.getOperatorId());
         values.put(ORDER, m.getOrder());
@@ -102,7 +101,6 @@ public class LinesDAO {
                 ID,
                 NAME,
                 NETWORKID,
-                NETWORKNAME,
                 NUMBER,
                 OPERATORID,
                 ORDER,
@@ -114,15 +112,14 @@ public class LinesDAO {
         Line line = new Line(c.getInt(0),
                 c.getString(1),
                 c.getLong(2),
-                c.getInt(3),
+                c.getInt(3) != 0,
                 c.getLong(4),
                 c.getString(5),
                 c.getLong(6),
                 c.getString(7),
-                c.getString(8),
                 c.getLong(9),
                 c.getInt(10),
-                c.getInt(12),
+                c.getInt(12) != 0,
                 c.getInt(13));
         c.close();
         return line;
@@ -130,7 +127,7 @@ public class LinesDAO {
 
     public Boolean existsLineOfId(Long id){
         Cursor c = bdd.query(TABLE_NAME, new String[]{ACCESSIBILITY, COMPANY,COMPANYID, DELETED,
-                ID, NAME, NETWORKID, NETWORKNAME, NUMBER, OPERATORID, ORDER, PUBLISHED, TRANSPORTMODE},
+                ID, NAME, NETWORKID, NUMBER, OPERATORID, ORDER, PUBLISHED, TRANSPORTMODE},
                 ID + " = \"" + id +"\"", null, null, null, null);
         c.moveToFirst();
         if(c.getCount()>0){

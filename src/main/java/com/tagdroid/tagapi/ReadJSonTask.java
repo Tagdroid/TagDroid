@@ -1,19 +1,8 @@
 package com.tagdroid.tagapi;
 
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ProgressBar;
-
-import com.tagdroid.tagapi.JSonApi.Transport.Line;
-import com.tagdroid.tagapi.JSonApi.Transport.Locality;
-import com.tagdroid.tagapi.JSonApi.Transport.LogicalStop;
-import com.tagdroid.tagapi.JSonApi.Transport.PhysicalStop;
-import com.tagdroid.tagapi.SQLApi.Transport.LocalityDAO;
-import com.tagdroid.tagapi.SQLApi.Transport.LogicalStopDAO;
-import com.tagdroid.tagapi.SQLApi.Transport.MySQLiteHelper;
-import com.tagdroid.tagapi.SQLApi.Transport.PhysicalStopDAO;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -54,10 +43,8 @@ public abstract class ReadJSonTask extends AsyncTask<Void, Integer, Void> {
         try {
             JSONObject jsonObj = new JSONObject(jsonString);
             String message = jsonObj.getString("Message");
-            Log.d("parsage", "message : " + message);
             switch (jsonObj.getInt("StatusCode")) {
                 case 200:
-                    Log.d("parsage", jsonString);
                     readData(jsonObj.getJSONArray("Data"));
                 case 300:
                     onVoidResult();
