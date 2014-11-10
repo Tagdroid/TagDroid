@@ -15,10 +15,6 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.analytics.tracking.android.EasyTracker;
-import com.google.analytics.tracking.android.Fields;
-import com.google.analytics.tracking.android.MapBuilder;
-import com.google.analytics.tracking.android.Tracker;
 import com.tagdroid.android.R;
 import com.tagdroid.android.SQLite.AlertTAG;
 
@@ -34,7 +30,6 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class InfoFragment extends Fragment {
-	private Tracker tracker;
 	
 	public static InfoFragment newInstance() {
         return new InfoFragment();
@@ -59,9 +54,7 @@ public class InfoFragment extends Fragment {
 	    }catch (InflateException e) {}
 		    
 
-		MainActivityOLD.mTitle = getActivity().getResources().getString(R.string.trafic);
-		getActivity().getActionBar().setTitle(MainActivityOLD.mTitle);
-		
+
 
 		database=new AlertTAG(mActivity);
 		database.getWritableDatabase();
@@ -81,7 +74,6 @@ public class InfoFragment extends Fragment {
         mBundle = savedInstanceState;
 		setHasOptionsMenu(true);
 		mActivity = getActivity();
-        this.tracker = EasyTracker.getInstance(this.getActivity());
 
     }
 
@@ -89,14 +81,11 @@ public class InfoFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
     	super.onCreateOptionsMenu(menu, inflater);
     	menu.clear();
-    	inflater.inflate(R.menu.menu_menu, menu);
     } 
   
   @Override
   public void onResume() {
       super.onResume();
-      this.tracker.set(Fields.SCREEN_NAME, ((Object) this).getClass().getSimpleName());
-      this.tracker.send( MapBuilder.createAppView().build() );
   }	
   
   

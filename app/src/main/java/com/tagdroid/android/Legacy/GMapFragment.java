@@ -2,13 +2,7 @@ package com.tagdroid.android.Legacy;
 
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
@@ -22,16 +16,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.analytics.tracking.android.EasyTracker;
-import com.google.analytics.tracking.android.Fields;
-import com.google.analytics.tracking.android.MapBuilder;
-import com.google.analytics.tracking.android.Tracker;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.InfoWindowAdapter;
-import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
 import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
@@ -42,7 +31,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.tagdroid.android.R;
 
 public class GMapFragment extends Fragment {
-	private Tracker tracker;
+
 	private Activity mActivity;
 	static final int REQUEST_CODE_RECOVER_PLAY_SERVICES = 1001;
 	final CharSequence[] items_tram = {"Ligne A","Ligne B","Ligne C","Ligne D","Ligne E"}; 
@@ -115,11 +104,9 @@ public class GMapFragment extends Fragment {
         mMapView.onCreate(mBundle);
         setUpMapIfNeeded(inflatedView);
         
-        StationsFragment.ligne="map";
+        String a="map";
         for(int i=0; i<5;i++) selected_tram[i]=true;
-        
-        MainActivityOLD.mTitle = mActivity.getResources().getString(R.string.map);
-        mActivity.getActionBar().setTitle(MainActivityOLD.mTitle);
+
         checkPlayServices(); 
         return inflatedView;
     }
@@ -131,7 +118,6 @@ public class GMapFragment extends Fragment {
         mBundle = savedInstanceState;
 		setHasOptionsMenu(true);
 		mActivity = getActivity();
-        this.tracker = EasyTracker.getInstance(this.getActivity());
 
     }
 
@@ -170,7 +156,7 @@ public class GMapFragment extends Fragment {
              }
         });
         
-        mMap.setOnInfoWindowClickListener(new OnInfoWindowClickListener(){
+        /*mMap.setOnInfoWindowClickListener(new OnInfoWindowClickListener(){
 			public void onInfoWindowClick(Marker marker) {
 				String snippet[] = marker.getSnippet().split("\n");
 				MainActivityOLD.titre1 = marker.getTitle();
@@ -183,7 +169,7 @@ public class GMapFragment extends Fragment {
 		        startActivity(new Intent(mActivity, MainActivityOLD.class));
 		        mActivity.finish();
 			}  		
-        }); 
+        }); */
     }
 
     @Override
@@ -191,15 +177,14 @@ public class GMapFragment extends Fragment {
     	super.onCreateOptionsMenu(menu, inflater);
     	menu.clear();
     	inflater.inflate(R.menu.menu_map, menu);
-    	inflater.inflate(R.menu.menu_menu, menu);	
     }
    
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {    
     	FragmentTransaction ft = getFragmentManager().beginTransaction();
     	
-        switch (item.getItemId()) {   
-    		case R.id.menu_tram: 			
+        switch (item.getItemId()) {
+    		/*case R.id.menu_tram:
  			   	DialogFragmentTRAM newFragment1 = new DialogFragmentTRAM();
  			   	newFragment1.show(ft, "dialog");
     			return true;
@@ -214,7 +199,7 @@ public class GMapFragment extends Fragment {
     		case R.id.menu_map:  
     			   DialogFragmentMAP newFragment4 = new DialogFragmentMAP();
     		       newFragment4.show(ft, "dialog");
-    			return true;
+    			return true;*/
     		default:
     			return super.onOptionsItemSelected(item);
     	}
@@ -225,9 +210,7 @@ public class GMapFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        mMapView.onResume();    
-        this.tracker.set(Fields.SCREEN_NAME, ((Object) this).getClass().getSimpleName());
-        this.tracker.send( MapBuilder.createAppView().build() );
+        mMapView.onResume();
     }
     
     @Override
@@ -283,7 +266,7 @@ public class GMapFragment extends Fragment {
     	  GooglePlayServicesUtil.getErrorDialog(code, mActivity, REQUEST_CODE_RECOVER_PLAY_SERVICES).show();
     }
     
-    class DialogFragmentTRAM extends DialogFragment {
+   /* class DialogFragmentTRAM extends DialogFragment {
         @NonNull
         public Dialog onCreateDialog(Bundle savedInstanceState) {
         	
@@ -397,5 +380,5 @@ public class GMapFragment extends Fragment {
     		});
             return builder_map.create();
         }
-    }
+    }*/
 }

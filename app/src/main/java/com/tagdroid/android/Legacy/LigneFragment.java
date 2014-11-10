@@ -14,16 +14,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
-import com.google.analytics.tracking.android.EasyTracker;
-import com.google.analytics.tracking.android.Fields;
-import com.google.analytics.tracking.android.MapBuilder;
-import com.google.analytics.tracking.android.Tracker;
 import com.tagdroid.android.R;
 
 import java.io.BufferedInputStream;
@@ -38,7 +32,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class LigneFragment extends Fragment {
-	private Tracker tracker;
+
 	
 	public static LigneFragment newInstance(String ligne, int id_debut, int id_fin) {
 		LigneFragment f = new LigneFragment();
@@ -60,15 +54,13 @@ public class LigneFragment extends Fragment {
 			super.onCreate(savedInstanceState);
 			setRetainInstance(true);
 			setHasOptionsMenu(true);
-	        this.tracker = EasyTracker.getInstance(this.getActivity());
+
 
 	}
 	
 	@Override
     public void onResume() {
         super.onResume();
-        this.tracker.set(Fields.SCREEN_NAME, ((Object) this).getClass().getSimpleName());
-        this.tracker.send( MapBuilder.createAppView().build() );
     }
 	
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,final Bundle savedInstanceState) {
@@ -83,11 +75,11 @@ public class LigneFragment extends Fragment {
 	    }
         
         final String ligne = this.getArguments().getString("ligne");
-        MainActivityOLD.mTitle = ligne;
+
         id_debut = this.getArguments().getInt("id_debut", 0);
         id_fin = this.getArguments().getInt("id_fin", 1);
         
-        getActivity().getActionBar().setTitle(MainActivityOLD.mTitle);
+
   
         ListViewLigne = (ListView) view.findViewById(R.id.listviewligne);      
         ArrayList<HashMap<String, String>> listItem = new ArrayList<HashMap<String, String>>();
@@ -140,7 +132,7 @@ public class LigneFragment extends Fragment {
                new int[] {R.id.img, R.id.titre,R.id.img_corres1, R.id.img_corres2, R.id.img_corres3, R.id.img_corres4, R.id.img_corres5, R.id.img_corres6, R.id.img_corres7,R.id.img_corres8, R.id.img_corres9,R.id.img_corres10 }){
        };
      
-        ListViewLigne.setAdapter(mSchedule);
+        /*ListViewLigne.setAdapter(mSchedule);
         ListViewLigne.setOnItemClickListener(new OnItemClickListener()
         {  	
         	@SuppressWarnings("unchecked")
@@ -154,7 +146,7 @@ public class LigneFragment extends Fragment {
     			MainActivityOLD.TITLES = new String[] { "STATIONDETAIL" };
     			MainActivityOLD.adapter.notifyDataSetChanged();
              }
-         });
+         });*/
         return view;
 
     }

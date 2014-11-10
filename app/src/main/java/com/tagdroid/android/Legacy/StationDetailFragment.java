@@ -3,9 +3,9 @@ package com.tagdroid.android.Legacy;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Fragment;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.text.Html;
 import android.util.Log;
 import android.view.InflateException;
@@ -21,19 +21,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.analytics.tracking.android.EasyTracker;
-import com.google.analytics.tracking.android.Fields;
-import com.google.analytics.tracking.android.MapBuilder;
-import com.google.analytics.tracking.android.Tracker;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.tagdroid.android.Favoris.FavorisHelper;
+import com.tagdroid.android.R;
 import com.tagdroid.tagapi.JSonApi.Favori;
 import com.tagdroid.tagapi.SQLApi.FavorisDAO;
 import com.tagdroid.tagapi.SQLApi.MySQLiteHelper;
-import com.tagdroid.android.Favoris.FavorisHelper;
-import com.tagdroid.android.R;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -54,7 +50,7 @@ public class StationDetailFragment extends Fragment {
     TextView tv1, tv2, tv3, tv4, tv5, tv6, tv7, tv8, tv9, tv10, tv11, tv12, tv13, tv14, tv15;
     Calcul_ID_Jour id_jour = new Calcul_ID_Jour();
     Calcul_Horaire ligne = new Calcul_Horaire();
-    private Tracker tracker;
+
     private Activity mActivity;
     private String ligne1;
     //private Menu menu;
@@ -106,9 +102,6 @@ public class StationDetailFragment extends Fragment {
 
         alert_button = (Button) view.findViewById(R.id.alert_button);
 
-        MainActivityOLD.mTitle = ligne1;
-        getActivity().getActionBar().setTitle(MainActivityOLD.mTitle);
-
 
         LinearLayout travaux = (LinearLayout) view.findViewById(R.id.travaux);
         travaux.setVisibility(View.GONE);
@@ -131,7 +124,7 @@ public class StationDetailFragment extends Fragment {
         case4.setVisibility(View.GONE);
         case5.setVisibility(View.GONE);
 
-        LinearLayout map_click_layout = (LinearLayout) view.findViewById(R.id.map_click_layout);
+        /*LinearLayout map_click_layout = (LinearLayout) view.findViewById(R.id.map_click_layout);
         map_click_layout.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 MainActivityOLD.latitude = place.latitude;
@@ -140,7 +133,7 @@ public class StationDetailFragment extends Fragment {
                 MainActivityOLD.adapter.notifyDataSetChanged();
             }
         });
-
+*/
         tv1 = (TextView) view.findViewById(R.id.vers1);
         tv2 = (TextView) view.findViewById(R.id.tps11);
         tv3 = (TextView) view.findViewById(R.id.tps12);
@@ -199,7 +192,6 @@ public class StationDetailFragment extends Fragment {
         setHasOptionsMenu(true);
         setRetainInstance(true);
         mActivity = getActivity();
-        this.tracker = EasyTracker.getInstance(this.getActivity());
     }
 
     @Override
@@ -212,8 +204,6 @@ public class StationDetailFragment extends Fragment {
         else
             station = Integer.valueOf(id_station.split("_")[0]);
         prefName = FavorisHelper.isFavori(getActivity(), station);
-        this.tracker.set(Fields.SCREEN_NAME, ((Object) this).getClass().getSimpleName());
-        this.tracker.send(MapBuilder.createAppView().build());
     }
 
 
@@ -266,7 +256,7 @@ public class StationDetailFragment extends Fragment {
                     else
                         station = Integer.valueOf(id_station.split("_")[0]);
                     favorisDAO.delete(station);
-                    MainActivityOLD.favoris_check = false;
+                    //MainActivityOLD.favoris_check = false;
 
                 } else {
                     item.setChecked(true);
@@ -282,7 +272,7 @@ public class StationDetailFragment extends Fragment {
                             station, titre, ligne1,
                             Double.valueOf(getArguments().getString("latitude")),
                             Double.valueOf(getArguments().getString("longitude"))));
-                    MainActivityOLD.favoris_check = true;
+                    //MainActivityOLD.favoris_check = true;
                 }
 
                /* NsMenuAdapter mAdapter = new NsMenuAdapter(getActivity());

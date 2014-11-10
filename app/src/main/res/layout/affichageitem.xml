@@ -38,20 +38,17 @@
                 <ImageView
                     android:id="@+id/img_corres1"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/img_41" />
+                    android:layout_height="wrap_content"/>
 
                 <ImageView
                     android:id="@+id/img_corres2"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/img_d" />
+                    android:layout_height="wrap_content"/>
 
                 <ImageView
                     android:id="@+id/img_corres3"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/img_54" />
+                    android:layout_height="wrap_content"/>
 
                 <ImageView
                     android:id="@+id/img_corres4"

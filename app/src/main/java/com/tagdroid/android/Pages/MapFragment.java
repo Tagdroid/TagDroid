@@ -8,6 +8,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -17,6 +18,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.model.LatLng;
+import com.skyfishjy.library.RippleBackground;
 import com.tagdroid.android.Page;
 import com.tagdroid.android.R;
 
@@ -51,24 +53,37 @@ public class MapFragment extends Page {
     static final int REQUEST_CODE_RECOVER_PLAY_SERVICES = 1001;
     private Activity mActivity;
     private MapView mMapView;
-    private GoogleMap mMap;
+
     private Bundle mBundle;
     private static final LatLng GRENOBLE = new LatLng(45.1869,5.72639);
+    private GoogleMap mMap;
+
 
 
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View inflatedView = inflater.inflate(R.layout.fragment_map, container, false);
+        View inflatedView;
+        if(checkPlayServices()) {
+            inflatedView = inflater.inflate(R.layout.fragment_map, container, false);
 
-        MapsInitializer.initialize(mActivity);
+            MapsInitializer.initialize(mActivity);
+            mMapView = (MapView) inflatedView.findViewById(R.id.map);
+            mMapView.onCreate(mBundle);
+            setUpMapIfNeeded(inflatedView);
+        }else{
+            inflatedView = inflater.inflate(R.layout.fragment_map_noservices, container, false);
 
-        mMapView = (MapView) inflatedView.findViewById(R.id.map);
-        mMapView.onCreate(mBundle);
-        setUpMapIfNeeded(inflatedView);
-
-        checkPlayServices();
+            final RippleBackground rippleBackground=(RippleBackground) inflatedView.findViewById(R.id.content);
+            ImageView imageView=(ImageView) inflatedView.findViewById(R.id.centerImage);
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    rippleBackground.startRippleAnimation();
+                }
+            });
+        }
         return inflatedView;
     }
 

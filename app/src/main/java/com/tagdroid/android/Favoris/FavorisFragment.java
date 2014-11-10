@@ -8,22 +8,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 
-import com.google.analytics.tracking.android.EasyTracker;
-import com.google.analytics.tracking.android.Fields;
-import com.google.analytics.tracking.android.MapBuilder;
-import com.google.analytics.tracking.android.Tracker;
-import com.tagdroid.tagapi.JSonApi.Favori;
-import com.tagdroid.android.Legacy.MainActivityOLD;
 import com.tagdroid.android.R;
 
 public class FavorisFragment extends Fragment {
     private static View view;
-    private Tracker tracker;
+
 
     public static FavorisFragment newInstance() {
         return new FavorisFragment();
@@ -41,8 +32,8 @@ public class FavorisFragment extends Fragment {
         } catch (InflateException ignored) {
         }
 
-        MainActivityOLD.mTitle = getActivity().getResources().getString(R.string.favoris);
-        getActivity().getActionBar().setTitle(MainActivityOLD.mTitle);
+       /* MainActivityOLD.mTitle = getActivity().getResources().getString(R.string.favoris);
+        getActivity().getActionBar().setTitle(MainActivityOLD.mTitle);*/
         return view;
     }
 
@@ -51,20 +42,16 @@ public class FavorisFragment extends Fragment {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
         setHasOptionsMenu(true);
-        this.tracker = EasyTracker.getInstance(this.getActivity());
     }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         menu.clear();
-        inflater.inflate(R.menu.menu_menu, menu);
     }
 
     public void onResume() {
         super.onResume();
-        this.tracker.set(Fields.SCREEN_NAME, ((Object) this).getClass().getSimpleName());
-        this.tracker.send(MapBuilder.createAppView().build());
         ListView listViewFavoris = (ListView) view.findViewById(R.id.listFavoris);
 
         final FavorisHelper favorisHelper = new FavorisHelper(getActivity());
@@ -72,7 +59,7 @@ public class FavorisFragment extends Fragment {
         if (favorisHelper.getFavorisAdaptedArray().isEmpty())
             view.findViewById(R.id.noFavsLayout).setVisibility(View.VISIBLE);
         else {
-            SimpleAdapter mSchedule = new SimpleAdapter(getActivity(),
+          /*  SimpleAdapter mSchedule = new SimpleAdapter(getActivity(),
                     favorisHelper.getFavorisAdaptedArray(),
                     R.layout.listitem_station,
                     new String[]{"nom", null, "ligne", "couleur"},
@@ -90,7 +77,7 @@ public class FavorisFragment extends Fragment {
                     MainActivityOLD.TITLES = new String[]{"STATIONDETAIL"};
                     MainActivityOLD.adapter.notifyDataSetChanged();
                 }
-            });
+            });*/
         }
     }
 }

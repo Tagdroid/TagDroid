@@ -19,21 +19,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.analytics.tracking.android.EasyTracker;
-import com.google.analytics.tracking.android.Fields;
-import com.google.analytics.tracking.android.MapBuilder;
-import com.google.analytics.tracking.android.Tracker;
 import com.google.android.gms.maps.model.LatLng;
 import com.tagdroid.android.R;
-
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -49,7 +42,7 @@ public class ProxFragment extends Fragment implements LocationListener{
 	private TextView myadress;
 	private static View view;
 	private Bundle mBundle;
-	private Tracker tracker;
+
 	
 	public static ProxFragment newInstance() {
         return new ProxFragment();
@@ -69,10 +62,7 @@ public class ProxFragment extends Fragment implements LocationListener{
 		    myadress = (TextView) view.findViewById(R.id.myadress);    
 		    ListViewProx = (ListView) view.findViewById(R.id.listViewfavoris2);	
 			getLastLocation();
-			
-			MainActivityOLD.mTitle = getActivity().getResources().getString(R.string.proximite);
-			getActivity().getActionBar().setTitle(MainActivityOLD.mTitle);
-			
+
 		return view;
 	}
 	
@@ -81,7 +71,7 @@ public class ProxFragment extends Fragment implements LocationListener{
 	        super.onCreate(savedInstanceState);
 	        mBundle = savedInstanceState;
 			setHasOptionsMenu(true);
-	        this.tracker = EasyTracker.getInstance(this.getActivity());
+
 
 	    }
 	  
@@ -130,8 +120,6 @@ public class ProxFragment extends Fragment implements LocationListener{
 	    super.onResume();
 		Resources res = getResources();
 
-	    this.tracker.set(Fields.SCREEN_NAME, ((Object) this).getClass().getSimpleName());
-	    this.tracker.send( MapBuilder.createAppView().build() );
 	    
         
         ArrayList<HashMap<String, String>> listItem = new ArrayList<HashMap<String, String>>();
@@ -199,7 +187,7 @@ public class ProxFragment extends Fragment implements LocationListener{
 	    }	
 		
 	    
-	ListViewProx.setOnItemClickListener(new OnItemClickListener()
+	/*ListViewProx.setOnItemClickListener(new OnItemClickListener()
         {  	
 		@SuppressWarnings("unchecked")
      	public void onItemClick(AdapterView<?> a, View v, int position, long id) {      		
@@ -212,7 +200,7 @@ public class ProxFragment extends Fragment implements LocationListener{
 			MainActivityOLD.TITLES = new String[] { "STATIONDETAIL" };
 			MainActivityOLD.adapter.notifyDataSetChanged();
          }
-     });
+     });*/
 	}
 
 	
@@ -295,13 +283,13 @@ public class ProxFragment extends Fragment implements LocationListener{
 					item.setChecked(false);
 					item.setIcon(R.drawable.menu_addbus);
 					Toast.makeText(getActivity(), "Bus retiré de la liste", Toast.LENGTH_SHORT).show();
-			    	MainActivityOLD.addbus_check=false;
+			    	//MainActivity.addbus_check=false;
 				}
 				else{	    		
 					item.setChecked(true);
 					item.setIcon(R.drawable.menu_addbus_checked);					
 					Toast.makeText(getActivity(), "Bus ajouté à la liste", Toast.LENGTH_SHORT).show();
-					MainActivityOLD.addbus_check=true;
+					//MainActivityOLD.addbus_check=true;
 				}
 	        	return true;
 
