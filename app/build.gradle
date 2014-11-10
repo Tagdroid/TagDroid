@@ -20,7 +20,7 @@ android {
         }
     }
     compileSdkVersion 19
-    buildToolsVersion "21.1"
+    buildToolsVersion "21.1.1"
     defaultConfig {
         applicationId "com.tagdroid.tagdroid"
         minSdkVersion 11

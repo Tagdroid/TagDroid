@@ -18,7 +18,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="30dp"
             android:layout_marginTop="10dp"
-            android:src="@drawable/logo" />
+            android:src="@drawable/ic_launcher_tagdroid" />
 
         <ImageView
             android:id="@+id/TitleLogo"
@@ -26,7 +26,7 @@
             android:layout_height="26dp"
             android:layout_gravity="start"
             android:layout_toRightOf="@+id/Logo"
-            android:src="@drawable/tag_gris" />
+            android:src="@drawable/tagdroid_about" />
 
         <TextView
             android:id="@+id/AppNonOfficielle"
