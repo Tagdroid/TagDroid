@@ -12,7 +12,7 @@ import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Menu;
@@ -209,8 +209,7 @@ public class MainActivity extends Activity implements ChangeFragmentInterface{
     // Manages the Drawer changes
     class CustomActionBarDrawerToggle extends ActionBarDrawerToggle {
         public CustomActionBarDrawerToggle(Activity mActivity, DrawerLayout mDrawerLayout) {
-            super(mActivity, mDrawerLayout, R.drawable.ic_drawer,
-                    R.string.drawer_open, R.string.drawer_close);
+            super(mActivity, mDrawerLayout, R.string.drawer_open, R.string.drawer_close);
         }
         public void onDrawerClosed(View view) {
             invalidateOptionsMenu();

@@ -4,6 +4,15 @@
     <style name="TagDroidTheme" parent="@android:style/Theme.Holo.Light">
         <item name="android:actionBarStyle">@style/TagDroidTheme.ActionBar</item>
         <item name="android:windowContentOverlay">@null</item>
+        <item name="android:logo">@android:color/transparent</item>
+
+        <item name="android:colorPrimary">@color/bleu_tag</item>
+        <item name="android:colorPrimaryDark">@color/bleu_tag_fonce</item>
+        <item name="android:statusBarColor">@color/bleu_tag_fonce</item>
+
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:fitsSystemWindows">true</item>
     </style>
 
     <!-- ActionBar styles -->
