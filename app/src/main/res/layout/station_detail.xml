@@ -49,7 +49,7 @@
                     android:gravity="center"
                     android:text="station_name"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@color/noir"
+                    android:textColor="@android:color/black"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
@@ -88,7 +88,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/alert_layout_selector"
                 android:text="Alerte Info Trafic"
-                android:textColor="@color/blanc"
+                android:textColor="@android:color/white"
                 android:visibility="gone" />
 
          <!--   <LinearLayout
@@ -129,7 +129,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="1px"
-                        android:background="@color/gris_normal"
+                        android:background="@color/darker_gray"
                         android:orientation="vertical" >
                     </LinearLayout>
                 </LinearLayout>
@@ -205,7 +205,7 @@
                 android:id="@+id/travaux"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/ligne56"
+                android:background="@color/ligne_default"
                 android:orientation="vertical" >
 
                 <LinearLayout
@@ -228,7 +228,7 @@
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
                         android:text="@string/travauxE"
-                        android:textColor="@color/blanc"
+                        android:textColor="@android:color/white"
                         android:textSize="14sp"
                         android:textStyle="italic|bold" />
 
@@ -237,7 +237,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="3dp"
-                    android:background="@color/blanc"
+                    android:background="@android:color/white"
                     android:orientation="vertical" >
 
                 </LinearLayout>
@@ -289,7 +289,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="1px"
-                        android:background="@color/gris_normal"
+                        android:background="@color/darker_gray"
                         android:orientation="vertical" >
 
                     </LinearLayout>
@@ -404,14 +404,14 @@
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="1px"
-                                    android:background="@color/gris_normal"
+                                    android:background="@color/darker_gray"
                                     android:orientation="vertical" >
                                 </LinearLayout>
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="1dp"
-                                    android:background="@color/blanc"
+                                    android:background="@android:color/white"
                                     android:orientation="vertical" >
                                 </LinearLayout>
 
@@ -432,7 +432,7 @@
                                             android:layout_height="wrap_content"
                                             android:text="@string/prochain"
                                             android:fontFamily="sans-serif-condensed"
-                                            android:textColor="@color/gris_normal"
+                                            android:textColor="@color/darker_gray"
                                             android:textSize="10sp"
                                             android:textStyle="bold" />
 
@@ -448,14 +448,13 @@
                                         <LinearLayout
                                             android:layout_width="match_parent"
                                             android:layout_height="1px"
-                                            android:background="@color/gris"
                                             android:orientation="vertical" >
                                         </LinearLayout>
 
                                         <LinearLayout
                                             android:layout_width="match_parent"
                                             android:layout_height="1dp"
-                                            android:background="@color/blanc"
+                                            android:background="@android:color/white"
                                             android:orientation="vertical" >
                                         </LinearLayout>
                                     </LinearLayout>
@@ -472,7 +471,7 @@
                                             android:layout_height="wrap_content"
                                             android:text="@string/suivant"
                                             android:fontFamily="sans-serif-condensed"
-                                            android:textColor="@color/gris_normal"
+                                            android:textColor="@color/darker_gray"
                                             android:textSize="10sp"
                                             android:textStyle="bold" />
 
@@ -529,14 +528,14 @@
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="1px"
-                                    android:background="@color/gris_normal"
+                                    android:background="@color/darker_gray"
                                     android:orientation="vertical" >
                                 </LinearLayout>
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="1dp"
-                                    android:background="@color/blanc"
+                                    android:background="@android:color/white"
                                     android:orientation="vertical" >
                                 </LinearLayout>
 
@@ -560,7 +559,7 @@
                                             android:layout_gravity="right"
                                             android:text="@string/prochain"
                                             android:fontFamily="sans-serif-condensed"
-                                            android:textColor="@color/gris_normal"
+                                            android:textColor="@color/darker_gray"
                                             android:textSize="10sp"
                                             android:textStyle="bold" />
 
@@ -577,14 +576,13 @@
                                         <LinearLayout
                                             android:layout_width="match_parent"
                                             android:layout_height="1px"
-                                            android:background="@color/gris"
                                             android:orientation="vertical" >
                                         </LinearLayout>
 
                                         <LinearLayout
                                             android:layout_width="match_parent"
                                             android:layout_height="1dp"
-                                            android:background="@color/blanc"
+                                            android:background="@android:color/white"
                                             android:orientation="vertical" >
                                         </LinearLayout>
                                     </LinearLayout>
@@ -603,7 +601,7 @@
                                             android:layout_gravity="right"
                                             android:text="@string/suivant"
                                             android:fontFamily="sans-serif-condensed"
-                                            android:textColor="@color/gris_normal"
+                                            android:textColor="@color/darker_gray"
                                             android:textSize="10sp"
                                             android:textStyle="bold" />
 
@@ -669,14 +667,14 @@
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="1px"
-                                    android:background="@color/gris_normal"
+                                    android:background="@color/darker_gray"
                                     android:orientation="vertical" >
                                 </LinearLayout>
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="1dp"
-                                    android:background="@color/blanc"
+                                    android:background="@android:color/white"
                                     android:orientation="vertical" >
                                 </LinearLayout>
 
@@ -697,7 +695,7 @@
                                             android:layout_height="wrap_content"
                                             android:text="@string/prochain"
                                             android:fontFamily="sans-serif-condensed"
-                                            android:textColor="@color/gris_normal"
+                                            android:textColor="@color/darker_gray"
                                             android:textSize="10sp"
                                             android:textStyle="bold" />
 
@@ -712,14 +710,13 @@
                                         <LinearLayout
                                             android:layout_width="match_parent"
                                             android:layout_height="1px"
-                                            android:background="@color/gris"
                                             android:orientation="vertical" >
                                         </LinearLayout>
 
                                         <LinearLayout
                                             android:layout_width="match_parent"
                                             android:layout_height="1dp"
-                                            android:background="@color/blanc"
+                                            android:background="@android:color/white"
                                             android:orientation="vertical" >
                                         </LinearLayout>
                                     </LinearLayout>
@@ -736,7 +733,7 @@
                                             android:layout_height="wrap_content"
                                             android:text="@string/suivant"
                                             android:fontFamily="sans-serif-condensed"
-                                            android:textColor="@color/gris_normal"
+                                            android:textColor="@color/darker_gray"
                                             android:textSize="10sp"
                                             android:textStyle="bold" />
 
@@ -793,14 +790,14 @@
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="1px"
-                                    android:background="@color/gris_normal"
+                                    android:background="@color/darker_gray"
                                     android:orientation="vertical" >
                                 </LinearLayout>
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="1dp"
-                                    android:background="@color/blanc"
+                                    android:background="@android:color/white"
                                     android:orientation="vertical" >
                                 </LinearLayout>
 
@@ -824,7 +821,7 @@
                                             android:layout_gravity="right"
                                             android:text="@string/prochain"
                                             android:fontFamily="sans-serif-condensed"
-                                            android:textColor="@color/gris_normal"
+                                            android:textColor="@color/darker_gray"
                                             android:textSize="10sp"
                                             android:textStyle="bold" />
 
@@ -841,14 +838,13 @@
                                         <LinearLayout
                                             android:layout_width="match_parent"
                                             android:layout_height="1px"
-                                            android:background="@color/gris"
                                             android:orientation="vertical" >
                                         </LinearLayout>
 
                                         <LinearLayout
                                             android:layout_width="match_parent"
                                             android:layout_height="1dp"
-                                            android:background="@color/blanc"
+                                            android:background="@android:color/white"
                                             android:orientation="vertical" >
                                         </LinearLayout>
                                     </LinearLayout>
@@ -867,7 +863,7 @@
                                             android:layout_gravity="right"
                                             android:text="@string/suivant"
                                             android:fontFamily="sans-serif-condensed"
-                                            android:textColor="@color/gris_normal"
+                                            android:textColor="@color/darker_gray"
                                             android:textSize="10sp"
                                             android:textStyle="bold" />
 
@@ -933,14 +929,14 @@
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="1px"
-                                    android:background="@color/gris_normal"
+                                    android:background="@color/darker_gray"
                                     android:orientation="vertical" >
                                 </LinearLayout>
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="1dp"
-                                    android:background="@color/blanc"
+                                    android:background="@android:color/white"
                                     android:orientation="vertical" >
                                 </LinearLayout>
 
@@ -961,7 +957,7 @@
                                             android:layout_height="wrap_content"
                                             android:text="@string/prochain"
                                             android:fontFamily="sans-serif-condensed"
-                                            android:textColor="@color/gris_normal"
+                                            android:textColor="@color/darker_gray"
                                             android:textSize="10sp"
                                             android:textStyle="bold" />
 
@@ -977,14 +973,13 @@
                                         <LinearLayout
                                             android:layout_width="match_parent"
                                             android:layout_height="1px"
-                                            android:background="@color/gris"
                                             android:orientation="vertical" >
                                         </LinearLayout>
 
                                         <LinearLayout
                                             android:layout_width="match_parent"
                                             android:layout_height="1dp"
-                                            android:background="@color/blanc"
+                                            android:background="@android:color/white"
                                             android:orientation="vertical" >
                                         </LinearLayout>
                                     </LinearLayout>
@@ -1001,7 +996,7 @@
                                             android:layout_height="wrap_content"
                                             android:text="@string/suivant"
                                             android:fontFamily="sans-serif-condensed"
-                                            android:textColor="@color/gris_normal"
+                                            android:textColor="@color/darker_gray"
                                             android:textSize="10sp"
                                             android:textStyle="bold" />
 
@@ -1050,7 +1045,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginBottom="10dp"
                         android:layout_marginTop="10dp"
-                        android:background="@color/gris_normal"
+                        android:background="@color/darker_gray"
                         android:orientation="vertical" >
 
                     </LinearLayout>

@@ -79,7 +79,7 @@ public class CustomAdapter extends ArrayAdapter<CustomMenuItem> {
 
         // TODO Une meilleure solution ???
         if (MainActivity.actualPosition == position){
-            view.setBackgroundColor(view.getResources().getColor(R.color.gris));
+            view.setBackgroundColor(view.getResources().getColor(R.color.lighter_gray));
             TextView principalText = (TextView) view.findViewById(R.id.menurow_title);
             principalText.setTypeface(null, Typeface.BOLD);
             principalText.setTextColor(getContext().getResources().getColor(R.color.bleu_tag));
@@ -95,7 +95,7 @@ public class CustomAdapter extends ArrayAdapter<CustomMenuItem> {
             TextView principalText = (TextView) view.findViewById(R.id.menurow_title);
 
             if(principalText!=null){
-                principalText.setTextColor(getContext().getResources().getColor(R.color.noir));
+                principalText.setTextColor(getContext().getResources().getColor(R.color.darker_gray));
                 principalText.setTypeface(null, Typeface.NORMAL);
             }
 

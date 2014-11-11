@@ -4,7 +4,9 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
-
+
+
+
     <ScrollView
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"
@@ -14,7 +16,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical" >
-
+
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -26,7 +30,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical" >
-
+
+
                     <TextView
                         android:id="@+id/correspondances"
                         android:layout_width="wrap_content"
@@ -40,13 +45,17 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
-
+
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:orientation="vertical" >
-
+
+
+
+
                     <TextView
                         android:id="@+id/myadress"
                         android:layout_width="wrap_content"
@@ -60,7 +69,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
-
+
+
+
+
+
                 <LinearLayout
                     android:id="@+id/s"
                     android:layout_width="match_parent"
@@ -68,7 +81,10 @@
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
                     android:orientation="vertical" >
-
+
+
+
+
                     <TextView
                         android:id="@+id/pass_name"
                         android:layout_width="wrap_content"
@@ -99,7 +115,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:background="@color/noir"
+                            android:background="@android:color/black"
                             android:orientation="vertical" >
                         </LinearLayout>
 
@@ -108,7 +124,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:background="@color/noir"
+                            android:background="@android:color/black"
                             android:orientation="vertical" >
 
                         </LinearLayout>
@@ -118,7 +134,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:background="@color/noir"
+                            android:background="@android:color/black"
                             android:orientation="vertical" >
 
                         </LinearLayout>
@@ -128,7 +144,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:background="@color/noir"
+                            android:background="@android:color/black"
                             android:orientation="vertical" >
 
                         </LinearLayout>
@@ -138,7 +154,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:background="@color/noir"
+                            android:background="@android:color/black"
                             android:orientation="vertical" >
 
                         </LinearLayout>
@@ -164,7 +180,6 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_gravity="bottom"
-                                android:background="@color/fond"
                                 android:orientation="vertical" >
 
                             </LinearLayout>
@@ -181,7 +196,6 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_gravity="bottom"
-                                android:background="@color/fond"
                                 android:orientation="vertical" >
                             </LinearLayout>
                         </LinearLayout>
@@ -197,7 +211,6 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_gravity="bottom"
-                                android:background="@color/fond"
                                 android:orientation="vertical" >
                             </LinearLayout>
                         </LinearLayout>
@@ -213,7 +226,6 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_gravity="bottom"
-                                android:background="@color/fond"
                                 android:orientation="vertical" >
                             </LinearLayout>
                         </LinearLayout>
@@ -229,19 +241,24 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_gravity="bottom"
-                                android:background="@color/fond"
                                 android:orientation="vertical" >
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
-
+
+
+
+
+
+
                     <LinearLayout
                         android:id="@+id/a"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:orientation="horizontal" >
-
+
+
                         <LinearLayout
                             android:id="@+id/fond_pass"
                             android:layout_width="wrap_content"
@@ -249,7 +266,11 @@
                             android:layout_marginRight="2dp"
                             android:layout_weight="1"
                             android:orientation="vertical" >
-
+
+
+
+
+
                             <TextView
                                 android:id="@+id/tps21"
                                 android:layout_width="wrap_content"
@@ -257,7 +278,7 @@
                                 android:layout_gravity="center"
                                 android:text="@string/pass_mensuel"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:textColor="@color/blanc"
+                                android:textColor="@android:color/white"
                                 android:textSize="12dp" />
 
                             <LinearLayout
@@ -265,7 +286,7 @@
                                 android:layout_height="1dp"
                                 android:layout_marginBottom="5dp"
                                 android:layout_marginTop="5dp"
-                                android:background="@color/blanc"
+                                android:background="@android:color/white"
                                 android:orientation="vertical" >
                             </LinearLayout>
 
@@ -276,11 +297,12 @@
                                 android:layout_gravity="center"
                                 android:text="Small Text"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:textColor="@color/blanc"
+                                android:textColor="@android:color/white"
                                 android:textSize="16dp"
                                 android:textStyle="bold" />
                         </LinearLayout>
-
+
+
                         <LinearLayout
                             android:id="@+id/fond_pass2"
                             android:layout_width="wrap_content"
@@ -288,7 +310,9 @@
                             android:layout_marginLeft="2dp"
                             android:layout_weight="1"
                             android:orientation="vertical" >
-
+
+
+
                             <TextView
                                 android:id="@+id/ticket_description"
                                 android:layout_width="wrap_content"
@@ -296,7 +320,7 @@
                                 android:layout_gravity="center"
                                 android:text="@string/pass_annuel"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:textColor="@color/blanc"
+                                android:textColor="@android:color/white"
                                 android:textSize="12dp" />
 
                             <LinearLayout
@@ -304,7 +328,7 @@
                                 android:layout_height="1dp"
                                 android:layout_marginBottom="5dp"
                                 android:layout_marginTop="5dp"
-                                android:background="@color/blanc"
+                                android:background="@android:color/white"
                                 android:orientation="vertical" >
                             </LinearLayout>
 
@@ -315,7 +339,7 @@
                                 android:layout_gravity="center"
                                 android:text="Small Text"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:textColor="@color/blanc"
+                                android:textColor="@android:color/white"
                                 android:textSize="16dp"
                                 android:textStyle="bold" />
 
@@ -327,7 +351,7 @@
                                 android:layout_marginTop="5dp"
                                 android:text="Medium Text"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:textColor="@color/blanc"
+                                android:textColor="@android:color/white"
                                 android:textSize="12dp" />
                         </LinearLayout>
                     </LinearLayout>

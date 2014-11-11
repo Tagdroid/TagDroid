@@ -38,7 +38,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="2px"
-        android:background="@color/gris_normal"
+        android:background="@color/darker_gray"
         android:orientation="vertical">
     </View>
 </LinearLayout>

@@ -216,9 +216,9 @@ public class PassFragment extends Fragment implements OnItemSelectedListener {
 			 selector3.setVisibility(View.INVISIBLE);
 			 selector4.setVisibility(View.INVISIBLE);
 			 selector5.setVisibility(View.INVISIBLE);
-			 pass_name.setTextColor(getResources().getColor(R.color.gris_normal));
+			 pass_name.setTextColor(getResources().getColor(R.color.darker_gray));
 			 fond_pastel.setVisibility(View.INVISIBLE);
-			 pass_pastel.setTextColor(getResources().getColor(R.color.gris_normal));
+			 pass_pastel.setTextColor(getResources().getColor(R.color.darker_gray));
 			 fond_pass.setBackground(getResources().getDrawable(R.drawable.fond_pass_cannelle));
 			 fond_pass2.setBackground(getResources().getDrawable(R.drawable.fond_pass_cannelle));
 			 annuel_bonus = getResources().getString(R.string.cannelle);
@@ -249,8 +249,8 @@ public class PassFragment extends Fragment implements OnItemSelectedListener {
 			 selector4.setVisibility(View.INVISIBLE);
 			 selector5.setVisibility(View.INVISIBLE);
 			 fond_pastel.setVisibility(View.INVISIBLE);
-			 pass_pastel.setTextColor(getResources().getColor(R.color.gris_normal));
-			 pass_name.setTextColor(getResources().getColor(R.color.gris_normal));
+			 pass_pastel.setTextColor(getResources().getColor(R.color.darker_gray));
+			 pass_name.setTextColor(getResources().getColor(R.color.darker_gray));
 			 fond_pass.setVisibility(View.GONE);
 			 fond_pass2.setBackground(getResources().getDrawable(R.drawable.fond_pass_cannelle));
 			 annuel_bonus = getResources().getString(R.string.soleil);

@@ -42,7 +42,7 @@ public class FavorisHelper {
                             R.color.class.getField(i.Ligne.toLowerCase().replaceAll(" ", "")).getInt(null)));
                 } catch (Exception e) {
                     e.printStackTrace();
-                    temp.put("couleur", String.valueOf(R.color.lignea));
+                    temp.put("couleur", String.valueOf(R.color.ligne_default));
                 }
                 favorisAdaptedArray.add(temp);
             }

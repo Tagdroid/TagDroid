@@ -2,88 +2,92 @@
 <resources>
     <color name="background_tab_pressed">#6633B5E5</color>
     <color name="pressed_tagdroidtheme">#CC038BC4</color>
-    <color name="fond">#efefef</color>
-    <color name="gris">#eeeeee</color>
-    <color name="gris_clair">#dddddd</color>
-    <color name="noir">#000000</color>
-    <color name="gris_normal">#aaaaaa</color>
     <color name="gris_fonce">#3a3e40</color>
-    <color name="blanc">#ffffff</color>
-    
-    <color name="map_pressed">#550099ff</color>
-    <color name="map_default">#00ffffff</color>
-    
-    <color name="vanille">#e29e24</color>
-    <color name="grenadine">#d2294d</color>
-    <color name="cafe">#902f24</color>
-    <color name="menthe">#68a62e</color>
-       
-    <color name="bleu_tag">#00b4f8</color> 
-    <color name="bleu_tag_fonce">#038bc4</color> 
-    <color name="bleu_tag_clair">#90dcfc</color> 
-     <color name="bleu_tag_clair2">#46c9fb</color> 
+
+    <color name="darker_gray" >@android:color/darker_gray</color>
+    <color name="lighter_gray">#ddd</color>
+
+
+    <color name="map_pressed">#509f</color>
+    <color name="map_default">#0fff</color>
+
+    <color name="vanille">#e5bd2e</color>
+    <color name="grenadine">#f033a3</color>
+    <color name="cafe">#bc5c34</color>
+    <color name="menthe">#99d420</color>
+
+    <color name="bleu_tag_fonce">#0481bb</color>
+    <color name="bleu_tag">#0499dc</color>
+    <color name="bleu_tag_clair">#04b2ff</color>
+    <color name="bleu_tag_tres_clair">#90dcfc</color>
+
+    <!-- Couleurs de lignes et de services -->
+
+    <!-- Défaut -->
+    <color name="ligne_default">#888</color>
 
     <!-- Tramways -->
-    <color name="lignea">#0077be</color>
-    <color name="ligneb">#009d3d</color>
-    <color name="lignec">#e6007e</color>
-    <color name="ligned">#f59c00</color>
-    <color name="lignee">#5c358c</color>
+    <color name="tramway">#ddd</color>
+    <color name="tramway_shadow">#aaa</color>
+    <color name="ligne_a">#0076BD</color>
+    <color name="ligne_b">#009b3A</color>
+    <color name="ligne_c">#E4007C</color>
+    <color name="ligne_d">#F39A00</color>
+    <color name="ligne_e">#58318A</color>
 
     <!-- Chrono -->
     <color name="chrono">#fdf1b4</color>
     <color name="chrono_shadow">#c7bd8c</color>
-    <color name="lignec1">#ffed00</color>
-    <color name="lignec2">#fed33c</color>
-    <color name="lignec3">#f49712</color>
-    <color name="lignec4">#fed300</color>
-    <color name="lignec5">#f9b122</color>
-    <color name="lignec6">#ffeb00</color>
+    <color name="ligne_c1">#ffed00</color>
+    <color name="ligne_c2">#fed33c</color>
+    <color name="ligne_c3">#f49712</color>
+    <color name="ligne_c4">#fed300</color>
+    <color name="ligne_c5">#f9b122</color>
+    <color name="ligne_c6">#ffeb00</color>
 
     <!-- Proximo -->
     <color name="proximo">#92eede</color>
     <color name="proximo_shadow">#82c7bb</color>
-    <color name="ligne11">#94c11f</color>
-    <color name="ligne12">#009a3e</color>
-    <color name="ligne13">#1db6b7</color>
-    <color name="ligne14">#c9cc00</color>
-    <color name="ligne15">#6cbe99</color>
-    <color name="ligne16">#74a0ce</color>
-    <color name="ligne17">#06a68a</color>
-    <color name="ligne18">#06a68a</color>
-    <color name="ligne19">#74a0ce</color>
-    <color name="ligne20">#35bad9</color>
-    <color name="ligne21">#35bad9</color>
-    <color name="ligne22">#35bad9</color>
+    <color name="ligne_11">#94c11f</color>
+    <color name="ligne_12">#009a3e</color>
+    <color name="ligne_13">#1db6b7</color>
+    <color name="ligne_14">#c9cc00</color>
+    <color name="ligne_15">#6cbe99</color>
+    <color name="ligne_16">#74a0ce</color>
+    <color name="ligne_17">#06a68a</color>
+    <color name="ligne_18">#06a68a</color>
+    <color name="ligne_19">#74a0ce</color>
+    <color name="ligne_20">#35bad9</color>
+    <color name="ligne_21">#35bad9</color>
+    <color name="ligne_22">#35bad9</color>
 
     <!-- Flexo -->
     <color name="flexo">#ffd9e0</color>
     <color name="flexo_shadow">#d7afb6</color>
-    <color name="ligne40">#ea516c</color>
-    <color name="ligne41">#e975ab</color>
-    <color name="ligne42">#8164a9</color>
-    <color name="ligne43">#8978b6</color>
-    <color name="ligne44">#9c6eae</color>
-    <color name="ligne45">#8978b6</color>
-    <color name="ligne46">#f5b4cb</color>
-    <color name="ligne47">#8978b6</color>
-    <color name="ligne48">#ea516c</color>
-    <color name="ligne49">#8164a9</color>
-    <color name="ligne50">#ba328b</color>
-    <color name="ligne51">#8978b6</color>
-    <color name="ligne52">#f192a3</color>
-    <color name="ligne53">#e975ab</color>
-    <color name="ligne54">#9c6eae</color>
-    <color name="ligne55">#9c6eae</color>
-    <color name="ligne56">#e975ab</color>
-    <color name="ligne60">#ba328b</color>
-    <color name="ligne61">#f192b4</color>
-    <color name="ligne62">#ba328b</color>
-    <color name="ligne63">#ba328b</color>
-    <color name="ligne65">#f192b4</color>
-    <color name="ligne66">#8164a9</color>
-    <color name="ligne67">#ba328b</color>
-    <color name="ligne68">#ea516c</color>
-    <color name="ligne69">#ea516c</color>
-
+    <color name="ligne_40">#ea516c</color>
+    <color name="ligne_41">#e975ab</color>
+    <color name="ligne_42">#8164a9</color>
+    <color name="ligne_43">#8978b6</color>
+    <color name="ligne_44">#9c6eae</color>
+    <color name="ligne_45">#8978b6</color>
+    <color name="ligne_46">#f5b4cb</color>
+    <color name="ligne_47">#8978b6</color>
+    <color name="ligne_48">#ea516c</color>
+    <color name="ligne_49">#8164a9</color>
+    <color name="ligne_50">#ba328b</color>
+    <color name="ligne_51">#8978b6</color>
+    <color name="ligne_52">#f192a3</color>
+    <color name="ligne_53">#e975ab</color>
+    <color name="ligne_54">#9c6eae</color>
+    <color name="ligne_55">#9c6eae</color>
+    <color name="ligne_56">#e975ab</color>
+    <color name="ligne_60">#ba328b</color>
+    <color name="ligne_61">#f192b4</color>
+    <color name="ligne_62">#ba328b</color>
+    <color name="ligne_63">#ba328b</color>
+    <color name="ligne_65">#f192b4</color>
+    <color name="ligne_66">#8164a9</color>
+    <color name="ligne_67">#ba328b</color>
+    <color name="ligne_68">#ea516c</color>
+    <color name="ligne_69">#ea516c</color>
 </resources>

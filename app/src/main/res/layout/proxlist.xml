@@ -7,7 +7,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/bleu_tag_clair"
+        android:background="@color/bleu_tag_tres_clair"
         android:orientation="vertical" >
 
         <TextView

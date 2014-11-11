@@ -106,7 +106,7 @@
 	<string name="description">DESCRIPCIÓN</string>
 	<string name="informations">INFORMACIÓN</string>		
 	<string name="about_desc">Aplicación no oficial</string>	
-	<string name="about_desc2">Compatible Android 3.0+</string>	
+	<string name="about_desc2">Compatible Android 4.0+</string>
 	<string name="about_description">Esta aplicación permite a los usuarios de la red de TAG para estar informado en tiempo real información sobre la espera de los tranvías y autobuses, y en los informes de tráfico y noticias de SEMITAG.</string>
 	<string name="footer">TAGdroid es una aplicación independiente. No tiene ninguna conexión con las empresas: TAG SEMITAG, SMTC, The Metro. Todos los productos, logos e imágenes que se encuentran en esta aplicación son propiedad de sus respectivas marcas.</string>
 	<string name="mail">Enviar mail con:</string>	

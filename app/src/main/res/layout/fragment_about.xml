@@ -74,13 +74,13 @@
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:layout_below="@+id/AuteurTitre"
-            android:background="@color/gris_normal" />
+            android:background="@color/lighter_gray" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:layout_below="@+id/AuteurLigne"
-            android:background="@color/blanc"
+            android:background="@android:color/white"
             android:orientation="vertical" />
 
         <LinearLayout
@@ -149,13 +149,13 @@
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:layout_below="@+id/CollaborateurTitre"
-            android:background="@color/gris_normal" />
+            android:background="@color/lighter_gray" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:layout_below="@+id/CollaborateurLigne"
-            android:background="@color/blanc"
+            android:background="@android:color/white"
             android:orientation="vertical" />
 
         <LinearLayout
@@ -215,13 +215,13 @@
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:layout_below="@+id/RemerciementTitre"
-            android:background="@color/gris_normal" />
+            android:background="@color/lighter_gray" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:layout_below="@+id/RemerciementLigne"
-            android:background="@color/blanc"
+            android:background="@android:color/white"
             android:orientation="vertical" />
 
 
@@ -282,13 +282,13 @@
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:layout_below="@+id/DescriptionTitre"
-            android:background="@color/gris_normal" />
+            android:background="@color/lighter_gray" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:layout_below="@+id/DescriptionLigne"
-            android:background="@color/blanc"
+            android:background="@android:color/white"
             android:orientation="vertical" />
 
         <RelativeLayout
@@ -318,7 +318,7 @@
             android:layout_marginTop="20dp"
             android:layout_gravity="fill_vertical"
             android:text="@string/footer"
-            android:textColor="@color/gris_normal"
+            android:textColor="@color/darker_gray"
             android:textSize="10dp"
             android:textStyle="italic" />
     </RelativeLayout>

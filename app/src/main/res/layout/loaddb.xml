@@ -37,8 +37,8 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:text="Chargement de la base de données"
-                android:textColor="@color/blanc"
-                android:textColorHint="@color/blanc"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white"
                 android:textSize="12sp" />
 
         </LinearLayout>

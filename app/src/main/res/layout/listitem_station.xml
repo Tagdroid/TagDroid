@@ -9,7 +9,7 @@
         android:layout_height="fill_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:background="@color/lignec"
+        android:background="@color/ligne_c"
         android:src="@drawable/shadow_right"
         android:scaleType="fitXY"/>
 
@@ -37,7 +37,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/gris_normal"
+            android:textColor="@color/darker_gray"
             android:textSize="12sp" />
     </LinearLayout>
 

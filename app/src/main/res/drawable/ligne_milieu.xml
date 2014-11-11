@@ -5,7 +5,7 @@
         android:left="4dp"
         android:right="4dp">
         <shape  android:shape="rectangle">
-            <solid android:color="@color/gris_normal" />
+            <solid android:color="@color/darker_gray" />
         </shape>
     </item>
 
@@ -17,7 +17,7 @@
         <shape  android:shape="oval">
             <size android:width="8dp"
                 android:height="8dp" />
-            <solid android:color="@color/ligneb" />
+            <solid android:color="@color/ligne_b" />
         </shape>
     </item>
 </layer-list>

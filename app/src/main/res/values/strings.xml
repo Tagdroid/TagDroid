@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">TAGdroid</string>
+    <string name="app_name">TAGDroid</string>
 
     <string name="drawer_open">Open navigation drawer</string>
-    <string name="drawer_close">Close navigation drawer</string>
+    <string name="drawer_close">Fermer le panneau</string>
 
     <string name="menu_pdf">Plan PDF</string>
 
@@ -24,8 +24,8 @@
     <string name="rate">Noter l\'application</string>
     <string name="about">À propos</string>
     <string name="settings">Paramètres</string>
-    <string name="reseau">RESEAU</string>
-    <string name="divers">DIVERS</string>
+    <string name="reseau">Réseau</string>
+    <string name="divers">Divers</string>
     <string name="menu_tram">Tramways</string>
     <string name="menu_bus">Bus</string>
     <string name="menu_others">Lieux</string>
@@ -33,16 +33,16 @@
     <string name="menu_rss">Flux RSS</string>
 
     <!-- Stations -->
-    <string name="tram">TRAMWAYS</string>
-    <string name="bus">BUS</string>
+    <string name="tram">Tramway</string>
+    <string name="bus">Bus</string>
     <string name="addtofavoris">Ajouter aux Favoris</string>
     <string name="noconnexion">Connexion internet indisponible, Réessayer</string>
 
     <!-- Stations Details -->
     <string name="correspondances">Correspondances</string>
     <string name="horaires">Horaires</string>
-    <string name="prochain">PROCHAIN</string>
-    <string name="suivant">SUIVANT</string>
+    <string name="prochain">Prochain</string>
+    <string name="suivant">Suivant</string>
     <string name="addfavoris">Station ajoutée aux favoris</string>
     <string name="delfavoris">Station supprimée des favoris</string>
     <string name="loading">Chargement en cours ...</string>
@@ -72,15 +72,15 @@
     <string name="changelog_full_title">Mises à jour :</string>
     <string name="changelog_ok_button">OK</string>
     <string name="changelog_title">Mises à jour :</string>
-    <string name="changelog_show_full">plus ...</string>
+    <string name="changelog_show_full">Plus…</string>
 
     <!-- Titres de transports -->
     <string name="combines_choose">Choisissez votre combiné :</string>
     <string name="tickets_choose">Choisissez votre ticket :</string>
     <string name="pass_situation">Votre situation :</string>
     <string name="pass_qf">Votre Quotient Familial (QF) :</string>
-    <string name="pass_mensuel">MENSUEL</string>
-    <string name="pass_annuel">ANNUEL</string>
+    <string name="pass_mensuel">Mensuel</string>
+    <string name="pass_annuel">Annuel</string>
     <string name="pass_2mois">2 mois offerts</string>
     <string name="pass_4mois">4 mois offerts</string>
     <string name="newtarif">Nouveaux tarifs depuis le 1er Septembre 2013</string>
@@ -88,14 +88,14 @@
     <string name="soleil">Offre réservée aux salariés des entreprises engagées dans une démarche de Plan de Déplacements Entreprise. Renseignez-vous auprès de votre employeur !</string>
 
     <!-- About -->
-    <string name="auteur">AUTEUR</string>
-    <string name="collaborateur">COLLABORATEURS</string>
-    <string name="remerciement">REMERCIEMENTS</string>
-    <string name="contact">CONTACT</string>
-    <string name="description">DESCRIPTION</string>
+    <string name="auteur">Auteur</string>
+    <string name="collaborateur">Collaborateurs</string>
+    <string name="remerciement">Remerciements</string>
+    <string name="contact">Contact</string>
+    <string name="description">Description</string>
     <string name="informations">INFORMATIONS</string>
     <string name="about_desc">Application non-officielle</string>
-    <string name="about_desc2">Compatible Android 3.0+</string>
+    <string name="about_desc2">Compatible Android 4.0+</string>
     <string name="about_description">Cette application permet aux usagers du réseau de Transport de l\'Agglomération Grenobloise (TAG) d\'être informés en temps réel sur l\'attente des Tramways et Bus, ainsi que sur l\'info trafic et les actualités de la société SEMITAG.</string>
     <string name="footer">TAGdroid est une application indépendante. Elle n\'a aucun lien avec les sociétés : TAG, SEMITAG, SMTC, La Métro. Tous les produits, logos et images présents dans cette application sont la propriété de leur marque respective.</string>
     <string name="mail">Envoyer un mail avec :</string>
@@ -117,5 +117,15 @@
     <string name="allons_y">Allons-y !</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="drawer_item_actualites">Actualités</string>
+    <string name="drawer_item_favoris">Favoris</string>
+    <string name="drawer_item_plan">Plan</string>
+    <string name="drawer_item_proximite">À Proximité</string>
+    <string name="drawer_item_stations">Stations</string>
+    <string name="drawer_item_tarifs">Tarifs</string>
+    <string name="drawer_item_trafic">Trafic</string>
+    <string name="menu_skip">Passer</string>
+    <string name="ns_menu_main_header2">Informations</string>
+    <string name="ns_menu_reseau_header">Réseau</string>
 
 </resources>

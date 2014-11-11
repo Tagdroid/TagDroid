@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/choose_fav"
-                android:textColor="@color/blanc" />
+                android:textColor="@android:color/white" />
         </LinearLayout>
     </LinearLayout>
 

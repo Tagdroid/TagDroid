@@ -7,7 +7,7 @@
         android:id="@+id/listviewligne"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:divider="@color/gris_normal"
+        android:divider="@color/lighter_gray"
         android:dividerHeight="1px">
     </ListView>
 </LinearLayout>
