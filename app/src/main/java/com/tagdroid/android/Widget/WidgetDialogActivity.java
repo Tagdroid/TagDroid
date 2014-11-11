@@ -33,7 +33,7 @@ public class WidgetDialogActivity extends Activity {
             TextView text_fav = (TextView) findViewById(R.id.text_fav);
             text_fav.setText(getResources().getString(R.string.nofavs));
             ImageView img_fav = (ImageView) findViewById(R.id.img_fav);
-            img_fav.setBackgroundResource(R.drawable.fav);
+            img_fav.setBackgroundResource(R.drawable.ic_favoris_2);
         } else {
             SimpleAdapter mSchedule = new SimpleAdapter(this,
                     favorisHelper.getFavorisAdaptedArray(),

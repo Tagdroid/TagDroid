@@ -50,7 +50,6 @@ dependencies {
     compile 'com.google.android.gms:play-services:+'
     compile 'com.android.support:appcompat-v7:21.0.0'
     compile 'info.hoang8f:fbutton:1.0.5'
-    compile project(':dialogL')
     compile files('libs/Pushwoosh.jar')
     compile 'com.skyfishjy.ripplebackground:library:1.0.1'
 }

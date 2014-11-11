@@ -1,6 +1,8 @@
 package com.tagdroid.android.Welcome;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -17,15 +19,13 @@ import android.view.Window;
 import android.widget.Toast;
 
 import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.tagdroid.android.MainActivity;
+import com.tagdroid.android.R;
 import com.tagdroid.tagapi.HttpGet.HttpGetLineStops;
 import com.tagdroid.tagapi.JSon2SQL.ReadJSonLineStops;
 import com.tagdroid.tagapi.ProgressionInterface;
-import com.tagdroid.android.MainActivity;
-import com.tagdroid.android.R;
 import com.viewpagerindicator.CirclePageIndicator;
 import com.viewpagerindicator.PageIndicator;
-
-import rosenpin.androidL.dialog.AndroidLDialog;
 
 public class WelcomeActivity extends FragmentActivity implements WelcomeFragment.OnButtonClicked, ProgressionInterface {
     ViewPager mPager;
@@ -107,18 +107,19 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
 
         if (activeNetworkInfo == null || !activeNetworkInfo.isConnectedOrConnecting()) {
             Log.d("Welcome Status", "Internet connection problem");
-            new AndroidLDialog.Builder(this)
-                    .Title("Pas de connexion Internet")
-                    .Message("L'application n'est pas en mesure de télécharger la base de données "
+            new AlertDialog.Builder(this)
+                    .setTitle("Pas de connexion Internet")
+                    .setMessage("L'application n'est pas en mesure de télécharger la base de données "
                             + "nécessaire au bon fonctionnement de l'application.\n\n"
                             + "TAGdroid va se fermer.\n\nActivez votre connexion Internet "
                             + "par WIFI ou données mobiles (4G, 3G, Edge) et relancez l'application.")
-                    .setPositiveButton("OK", new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
+                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
                             finish();
                         }
-                    }).show();
+                    })
+                    .setIcon(R.drawable.ic_report)
+                    .show();
         } else {
             //HttpGetLinesList httpGetLinesList = new HttpGetLinesList(this);
             Log.d("Welcome Status", "Start of Downloading database");

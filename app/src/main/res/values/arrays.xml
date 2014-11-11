@@ -10,13 +10,13 @@
         <item>@string/tarif</item>
     </array>
     <array name="drawer_items_icons">
-        <item>@drawable/direction</item>
-        <item>@drawable/fav</item>
-        <item>@drawable/radar</item>
-        <item>@drawable/map</item>
-        <item>@drawable/trafic</item>
-        <item>@drawable/news</item>
-        <item>@drawable/tarif</item>
+        <item>@drawable/ic_direction</item>
+        <item>@drawable/ic_favoris</item>
+        <item>@drawable/ic_near</item>
+        <item>@drawable/ic_map</item>
+        <item>@drawable/ic_trafic</item>
+        <item>@drawable/ic_news</item>
+        <item>@drawable/ic_tarifs</item>
     </array>
 
     <array name="drawer_items_plus_titles">
