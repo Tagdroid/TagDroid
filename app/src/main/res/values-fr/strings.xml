@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TAGDroid</string>
+
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Fermer le panneau</string>
+
+    <string name="menu_pdf">Plan PDF</string>
+
+    <!-- WIDGET -->
+    <string name="choose_fav">Choisissez votre station favorite :</string>
+
+    <!-- MENU -->
+    <string name="stations">Stations</string>
+    <string name="proximite">Proximité</string>
+    <string name="favoris">Favoris</string>
+    <string name="map">Plan</string>
+    <string name="trafic">Info Trafic</string>
+    <string name="news">Actualités</string>
+    <string name="tarif">Titres de Transport</string>
+    <string name="ticket">Les Tickets</string>
+    <string name="pass">Les Pass\'</string>
+    <string name="combines">Les Combinés</string>
+    <string name="rate">Noter l\'application</string>
+    <string name="about">À propos</string>
+    <string name="settings">Paramètres</string>
+    <string name="reseau">Réseau</string>
+    <string name="divers">Divers</string>
+    <string name="menu_tram">Tramways</string>
+    <string name="menu_bus">Bus</string>
+    <string name="menu_others">Lieux</string>
+    <string name="menu_map">Types de carte</string>
+    <string name="menu_rss">Flux RSS</string>
+
+    <!-- Stations -->
+    <string name="tram">Tramway</string>
+    <string name="bus">Bus</string>
+    <string name="addtofavoris">Ajouter aux Favoris</string>
+    <string name="noconnexion">Connexion internet indisponible, Réessayer</string>
+
+    <!-- Stations Details -->
+    <string name="correspondances">Correspondances</string>
+    <string name="horaires">Horaires</string>
+    <string name="prochain">Prochain</string>
+    <string name="suivant">Suivant</string>
+    <string name="addfavoris">Station ajoutée aux favoris</string>
+    <string name="delfavoris">Station supprimée des favoris</string>
+    <string name="loading">Chargement en cours…</string>
+    <string name="nohoraire">Pas d\'horaires disponibles</string>
+    <string name="travauxE">La Ligne E est actuellement en travaux.\nMise en service : 28 Juin 2014</string>
+
+    <!-- Proximite et Favoris -->
+    <string name="please_turn_on_gps">S\'il vous plaît, Activez le GPS</string>
+    <string name="nofavs">Aucun Favori</string>
+    <string name="noproxs">Aucune Localisation</string>
+    <string name="noaddress">Aucune adresse trouvée</string>
+    <string name="searchaddress">Recherche de l\'adresse…</string>
+
+    <!-- Plan -->
+    <string name="tramlines">Lignes de tramways :</string>
+    <string name="buslines">Lignes de bus :</string>
+    <string name="places">Lieux :</string>
+    <string name="soon">Prochainement…</string>
+    <string name="mapstype">Types de carte :</string>
+
+    <!-- Flux RSS -->
+    <string name="more">Plus d\'informations</string>
+    <string name="details">Détails</string>
+    <string name="fluxchoice">Choix du flux RSS :</string>
+
+    <!-- Changelog -->
+    <string name="changelog_full_title">Mises à jour :</string>
+    <string name="changelog_ok_button">OK</string>
+    <string name="changelog_title">Mises à jour :</string>
+    <string name="changelog_show_full">Plus…</string>
+
+    <!-- Titres de transports -->
+    <string name="combines_choose">Choisissez votre combiné :</string>
+    <string name="tickets_choose">Choisissez votre ticket :</string>
+    <string name="pass_situation">Votre situation :</string>
+    <string name="pass_qf">Votre Quotient Familial (QF) :</string>
+    <string name="pass_mensuel">Mensuel</string>
+    <string name="pass_annuel">Annuel</string>
+    <string name="pass_2mois">2 mois offerts</string>
+    <string name="pass_4mois">4 mois offerts</string>
+    <string name="newtarif">Nouveaux tarifs depuis le 1er Septembre 2013</string>
+    <string name="cannelle">Circulez librement entre 8h30 et 17h30 du lundi au samedi et toute la journée les dimanches et jours fériés.</string>
+    <string name="soleil">Offre réservée aux salariés des entreprises engagées dans une démarche de Plan de Déplacements Entreprise. Renseignez-vous auprès de votre employeur !</string>
+
+    <!-- About -->
+    <string name="auteur">Auteur</string>
+    <string name="collaborateur">Collaborateurs</string>
+    <string name="remerciement">Remerciements</string>
+    <string name="contact">Contact</string>
+    <string name="description">Description</string>
+    <string name="informations">Informations</string>
+    <string name="about_desc">Application non-officielle</string>
+    <string name="about_desc2">Compatible Android 4.0+</string>
+    <string name="about_description">Cette application permet aux usagers du réseau de Transport de l\'Agglomération Grenobloise (TAG) d\'être informés en temps réel sur l\'attente des Tramways et Bus, ainsi que sur l\'info trafic et les actualités de la société SEMITAG.</string>
+    <string name="footer">TAGdroid est une application indépendante. Elle n\'a aucun lien avec les sociétés : TAG, SEMITAG, SMTC, La Métro. Tous les produits, logos et images présents dans cette application sont la propriété de leur marque respective.</string>
+    <string name="mail">Envoyer un mail avec :</string>
+
+    <!-- Welcome -->
+    <string name="welcome_bienvenue">Bienvenue</string>
+    <string name="welcome_horaires">Prochain passage dans…</string>
+    <string name="welcome_plan">Découvrez les stations les plus proches</string>
+    <string name="welcome_trafic">Alertes trafic et actualités: restez informé !</string>
+    <string name="welcome_tarifs">Des tarifs pour tous</string>
+    <string name="welcome_ok">En avant !</string>
+
+    <string name="welcome_texte1">Merci d\'avoir installé TAGdroid, l\'application non-officielle des transports en commun de Grenoble.\n\nDécouvrez les différentes fonctionnalitées de l\'application sur les pages suivantes.</string>
+    <string name="welcome_texte2">La fonction principale permet de connaître en temps-réel le temps d\'attente des 2 prochains tramways ou bus et les horaires théoriques des suivants.\n\nAjoutez également vos stations préférées dans les favoris</string>
+    <string name="welcome_texte3">Grâce à votre géolocatisation et à la carte interactive, vous pouvez désormais vous diriger vers la station la plus proche.\n\nTéléchargez également le plan en pdf de la ligne que vous souhaitez.</string>
+    <string name="welcome_texte4">Une manifestation ou une tempête de neige causent des ralentissements du trafic sur votre ligne? Soyez le premier informé !\n\nDécouvrez aussi les dernières nouvelles publiées de la TAG et la SMTC</string>
+    <string name="welcome_texte5">Jeune, moins jeune, étudiant ou encore salarié ? Des tarifs selon votre profil vous sont proposés par la TAG.\n\nConsultez la section "Tarifs" pour connaître les prix des titres de transport, abonnements et combinés.</string>
+    <string name="welcome_texte6">TAGdroid est une application gratuite sans aucune affiliation avec la SemiTAG, TAG et SMTC.\n\nEn cas de problème, n\'hesitez pas à envoyer un email.</string>
+    <string name="allons_y">Allons-y !</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="drawer_item_actualites">Actualités</string>
+    <string name="drawer_item_favoris">Favoris</string>
+    <string name="drawer_item_plan">Plan</string>
+    <string name="drawer_item_proximite">À Proximité</string>
+    <string name="drawer_item_stations">Stations</string>
+    <string name="drawer_item_tarifs">Tarifs</string>
+    <string name="drawer_item_trafic">Trafic</string>
+    <string name="menu_skip">Passer</string>
+    <string name="ns_menu_main_header2">Informations</string>
+    <string name="ns_menu_reseau_header">Réseau</string>
+
+</resources>
