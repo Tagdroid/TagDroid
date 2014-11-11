@@ -15,7 +15,6 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
 import android.widget.Toast;
 
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -66,7 +65,6 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
     }
 
     private void startWaitingScreen() {
-        findViewById(R.id.fragment_layout).setVisibility(View.INVISIBLE);
         if (!db_downloading)
             startDownloadTask();
     }
@@ -126,21 +124,6 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
             db_downloading = true;
         }
     }
-
-    /*@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_welcome, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.menu_skip) {
-            onFinalButtonClicked();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }*/
 
     @Override
     public void onFinalButtonClicked() {

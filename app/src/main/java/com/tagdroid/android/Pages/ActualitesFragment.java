@@ -167,14 +167,16 @@ public class ActualitesFragment extends Page {
             }
 
             if (resultState > 0) {
+                getActivity().findViewById(R.id.noNews).setVisibility(View.GONE);
                 LazyAdapter adapter = new LazyAdapter(getActivity(), listItem);
                 RSSView.setDivider(null);
                 RSSView.setAdapter(adapter);
                 RSSView.setOnItemClickListener(this);
                 RSSView.setSelection(0);
-
-
             } else {
+                LazyAdapter adapter = new LazyAdapter(getActivity(), new ArrayList<HashMap<String, String>>());
+                RSSView.setAdapter(adapter);
+                getActivity().findViewById(R.id.noNews).setVisibility(View.VISIBLE);
                 Toast.makeText(getActivity(), "Erreur de récupération :\n" + stateMessage,
                         Toast.LENGTH_LONG).show();
             }

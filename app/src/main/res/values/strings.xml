@@ -127,5 +127,6 @@
     <string name="menu_skip">Passer</string>
     <string name="ns_menu_main_header2">Informations</string>
     <string name="ns_menu_reseau_header">Réseau</string>
+    <string name="nonews">Pas d\'Actualités !</string>
 
 </resources>
