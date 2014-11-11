@@ -1,7 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-   <!-- <style name="AppTheme" parent="android:Theme.Material.Light">
-        <item name="android:colorPrimary">@color/bleu_tag</item>
-        <item name="android:colorPrimaryDark">@color/bleu_tag_fonce</item>
-        <item name="android:colorAccent">@color/bleu_tag_clair</item>
-    </style>-->
+    <style name="TagDroidTheme" parent="android:Theme.Material">
+        <item name="android:actionBarStyle">@style/TagDroidTheme.ActionBar</item>
+        <item name="android:colorPrimary">@color/bleu_tag_clair</item>
+        <item name="android:colorPrimaryDark">@color/bleu_tag</item>
+        <item name="android:colorAccent">@color/bleu_tag_tres_clair</item>
+
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:logo">@android:color/transparent</item>
+
+    </style>
+
+    <!-- ActionBar styles -->
+    <style name="TagDroidTheme.ActionBar" parent="@android:style/Widget.Holo.ActionBar.Solid">
+        <item name="android:background">@color/bleu_tag_clair</item>
+    </style>
 </resources>
