@@ -63,14 +63,17 @@ public class MainActivity extends Activity implements ChangeFragmentInterface{
 
     private void initUI() {
         actionBar = getActionBar();
-        if (android.os.Build.VERSION.SDK_INT >= 14) {
-            actionBar.setHomeButtonEnabled(true);
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
+        actionBar.setHomeButtonEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerList = (ListView) findViewById(R.id.drawer_list);
         drawerToggle = new CustomActionBarDrawerToggle(this, drawer);
         drawer.setDrawerListener(drawerToggle);
+
+
+
+
         initDrawer();
     }
 

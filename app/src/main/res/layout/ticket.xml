@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_gravity="center"
-        android:background="@color/bleu_tag_tres_clair"
+        android:background="@color/bleu_tag_clair1"
         android:orientation="horizontal" >
 
         <LinearLayout

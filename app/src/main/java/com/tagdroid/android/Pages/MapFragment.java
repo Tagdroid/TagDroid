@@ -8,7 +8,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -18,7 +17,6 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.model.LatLng;
-import com.skyfishjy.library.RippleBackground;
 import com.tagdroid.android.Page;
 import com.tagdroid.android.R;
 
@@ -64,26 +62,13 @@ public class MapFragment extends Page {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View inflatedView;
-        if(checkPlayServices()) {
-            inflatedView = inflater.inflate(R.layout.fragment_map, container, false);
+        View inflatedView = inflater.inflate(R.layout.fragment_map, container, false);
 
-            MapsInitializer.initialize(mActivity);
-            mMapView = (MapView) inflatedView.findViewById(R.id.map);
-            mMapView.onCreate(mBundle);
-            setUpMapIfNeeded(inflatedView);
-        }else{
-            inflatedView = inflater.inflate(R.layout.fragment_map_noservices, container, false);
+        MapsInitializer.initialize(mActivity);
+        mMapView = (MapView) inflatedView.findViewById(R.id.map);
+        mMapView.onCreate(mBundle);
+        setUpMapIfNeeded(inflatedView);
 
-            final RippleBackground rippleBackground=(RippleBackground) inflatedView.findViewById(R.id.content);
-            ImageView imageView=(ImageView) inflatedView.findViewById(R.id.centerImage);
-            imageView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    rippleBackground.startRippleAnimation();
-                }
-            });
-        }
         return inflatedView;
     }
 

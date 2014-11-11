@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- APPLICATION COLOR -->
+    <color name="bleu_tag_fonce3">#004863</color>
+    <color name="bleu_tag_fonce2">#006c95</color>
+    <color name="bleu_tag_fonce1">#0090c6</color>
+
+    <color name="bleu_tag">#00b4f8</color>
+
+    <color name="bleu_tag_clair1">#4dcbfa</color>
+    <color name="bleu_tag_clair2">#99e1fc</color>
+    <color name="bleu_tag_clair3">#e6f8fe</color>
+
     <color name="background_tab_pressed">#6633B5E5</color>
     <color name="pressed_tagdroidtheme">#CC038BC4</color>
     <color name="gris_fonce">#3a3e40</color>
@@ -11,15 +22,13 @@
     <color name="map_pressed">#509f</color>
     <color name="map_default">#0fff</color>
 
+    <!-- Abonnements PASS'-->
     <color name="vanille">#e5bd2e</color>
     <color name="grenadine">#f033a3</color>
     <color name="cafe">#bc5c34</color>
     <color name="menthe">#99d420</color>
 
-    <color name="bleu_tag_fonce">#0481bb</color>
-    <color name="bleu_tag">#0499dc</color>
-    <color name="bleu_tag_clair">#00b4f8</color>
-    <color name="bleu_tag_tres_clair">#90dcfc</color>
+
 
     <!-- Couleurs de lignes et de services -->
 
