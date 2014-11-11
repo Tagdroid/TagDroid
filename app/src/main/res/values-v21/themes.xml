@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="TagDroidTheme" parent="android:Theme.Material">
+    <!-- The theme applied to the application or activity -->
+    <style name="TagDroidTheme" parent="@android:style/Theme.Material">
         <item name="android:actionBarStyle">@style/TagDroidTheme.ActionBar</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:logo">@android:color/transparent</item>
+
         <item name="android:colorPrimary">@color/bleu_tag_clair</item>
         <item name="android:colorPrimaryDark">@color/bleu_tag</item>
         <item name="android:colorAccent">@color/bleu_tag_tres_clair</item>
 
-        <item name="android:windowContentOverlay">@null</item>
-        <item name="android:logo">@android:color/transparent</item>
-
+        <item name="android:windowBackground">@color/bleu_tag_tres_clair</item>
     </style>
 
     <!-- ActionBar styles -->

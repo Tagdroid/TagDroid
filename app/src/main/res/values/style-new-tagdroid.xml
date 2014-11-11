@@ -6,7 +6,11 @@
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:logo">@android:color/transparent</item>
 
-        <item name="android:windowBackground">@color/bleu_tag_clair</item>
+
+
+
+
+        <item name="android:windowBackground">@color/bleu_tag_tres_clair</item>
     </style>
 
     <!-- ActionBar styles -->
