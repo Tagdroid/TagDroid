@@ -41,7 +41,7 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         getActionBar().hide();
 
-        // We check for Google Play Services… CyanogenMod without GApps for example
+        // We check for Google Play Services… CyanoFgenMod without GApps for example
         if (GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext()) != 0) {
             Toast.makeText(this, "Google Play Service non détecté. Dysfonctionnement de l'application possible.",
                     Toast.LENGTH_LONG).show();

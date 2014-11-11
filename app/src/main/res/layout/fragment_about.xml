@@ -56,9 +56,7 @@
             android:layout_toRightOf="@+id/Logo"
             android:fontFamily="sans-serif-light"
             android:text="Show Log"
-            android:textColor="@color/gris_fonce"
-            android:textStyle="bold"
-            android:typeface="normal" />
+            android:textColor="@color/gris_fonce" />
 
         <TextView
             android:id="@+id/AuteurTitre"

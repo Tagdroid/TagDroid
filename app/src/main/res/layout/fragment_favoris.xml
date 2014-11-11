@@ -9,13 +9,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="vertical"
-        android:visibility="invisible">
+        android:orientation="vertical">
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="center_horizontal"
-            android:src="@drawable/favoris2" />
+            android:src="@drawable/fav" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

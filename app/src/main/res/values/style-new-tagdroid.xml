@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- The theme applied to the application or activity -->
+    <style name="TagDroidTheme" parent="@android:style/Theme.Holo.Light">
+        <item name="android:actionBarStyle">@style/TagDroidTheme.ActionBar</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <!-- ActionBar styles -->
+    <style name="TagDroidTheme.ActionBar" parent="@android:style/Widget.Holo.Light.ActionBar.Solid">
+        <item name="android:background">@color/bleu_tag</item>
+    </style>
+
+</resources>

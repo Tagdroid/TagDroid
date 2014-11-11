@@ -183,7 +183,7 @@ public class ProxFragment extends Fragment implements LocationListener{
 	    	TextView text_prox = (TextView) view.findViewById(R.id.text_fav);
 	    	text_prox.setText(getResources().getString(R.string.noproxs));
 	    	ImageView img_fav = (ImageView) view.findViewById(R.id.img_fav);
-	    	img_fav.setBackgroundResource(R.drawable.location);
+	    	img_fav.setBackgroundResource(R.drawable.ic_action_place);
 	    }	
 		
 	    

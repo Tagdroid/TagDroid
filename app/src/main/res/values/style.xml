@@ -40,7 +40,7 @@
         <item name="android:background">@color/bleu_tag</item>
     </style>
      
-        <style name="indicator_style">
+    <style name="indicator_style">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">4dip</item>
         <item name="android:background">@color/bleu_tag</item>
