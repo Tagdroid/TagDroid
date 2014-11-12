@@ -1,4 +1,4 @@
-package com.tagdroid.android;
+package com.tagdroid.android.GridView;
 
 import android.content.Context;
 import android.util.AttributeSet;

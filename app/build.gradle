@@ -48,7 +48,8 @@ dependencies {
     compile project(':viewpagerindicator')
     compile project(':TagApi')
     compile 'com.google.android.gms:play-services:+'
-    compile 'com.android.support:appcompat-v7:21.0.0'
+    compile 'com.android.support:appcompat-v7:21.0.+'
     compile 'info.hoang8f:fbutton:1.0.5'
     compile files('libs/Pushwoosh.jar')
+    compile 'com.android.support:support-v4:21.0.+'
 }

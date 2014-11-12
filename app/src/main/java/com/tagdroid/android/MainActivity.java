@@ -1,6 +1,5 @@
 package com.tagdroid.android;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -8,12 +7,14 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,18 +32,18 @@ import com.tagdroid.android.Pages.LignesFragment;
 import com.tagdroid.android.Pages.MapFragment;
 import com.tagdroid.android.Pages.TraficInfosFragment;
 
-public class MainActivity extends Activity implements ChangeFragmentInterface{
+public class MainActivity extends ActionBarActivity implements ChangeFragmentInterface{
     private static DrawerLayout drawer;
     private static ListView drawerList;
-    private static ActionBarDrawerToggle drawerToggle;
-    private static ActionBar actionBar;
+    private ActionBarDrawerToggle mDrawerToggle;
     private static Page activePage;
     public static int actualPosition=-1;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         registerReceivers(); //Register receivers for push notifications
         PushManager pushManager = PushManager.getInstance(this);  //Create and start push manager
@@ -62,17 +63,18 @@ public class MainActivity extends Activity implements ChangeFragmentInterface{
     }
 
     private void initUI() {
-        actionBar = getActionBar();
-        actionBar.setHomeButtonEnabled(true);
-        actionBar.setDisplayHomeAsUpEnabled(true);
-
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerList = (ListView) findViewById(R.id.drawer_list);
-        drawerToggle = new CustomActionBarDrawerToggle(this, drawer);
-        drawer.setDrawerListener(drawerToggle);
 
+        mDrawerToggle = new ActionBarDrawerToggle(this, drawer, R.string.app_name, R.string.app_name);
+        mDrawerToggle.setDrawerIndicatorEnabled(true);
+        drawer.setDrawerListener(mDrawerToggle);
 
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         initDrawer();
     }
@@ -108,7 +110,7 @@ public class MainActivity extends Activity implements ChangeFragmentInterface{
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        drawerToggle.syncState();
+        mDrawerToggle.syncState();
     }
 
 
@@ -167,11 +169,16 @@ public class MainActivity extends Activity implements ChangeFragmentInterface{
     }
 
     // Manages the ActionBar touches. TODO manage the fragment menu touches…
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (drawerToggle.onOptionsItemSelected(item))
-            return true;
-        return activePage.onOptionsItemSelected(item);
+        return mDrawerToggle.onOptionsItemSelected(item) || activePage.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
 
@@ -180,9 +187,9 @@ public class MainActivity extends Activity implements ChangeFragmentInterface{
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         if (drawer.isDrawerOpen(drawerList)) {
-            actionBar.setTitle(R.string.app_name);
+            getSupportActionBar().setTitle(R.string.app_name);
         } else {
-            actionBar.setTitle(getFragmentTitle());
+            getSupportActionBar().setTitle(getFragmentTitle());
             getMenuInflater().inflate(getFragmentMenu(), menu);
 
 

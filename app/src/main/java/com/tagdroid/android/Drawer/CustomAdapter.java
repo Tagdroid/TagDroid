@@ -95,7 +95,7 @@ public class CustomAdapter extends ArrayAdapter<CustomMenuItem> {
             TextView principalText = (TextView) view.findViewById(R.id.menurow_title);
 
             if(principalText!=null){
-                principalText.setTextColor(getContext().getResources().getColor(R.color.darker_gray));
+                principalText.setTextColor(getContext().getResources().getColor(R.color.gris_fonce));
                 principalText.setTypeface(null, Typeface.NORMAL);
             }
 
