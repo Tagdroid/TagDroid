@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -38,12 +39,11 @@ public class MainActivity extends ActionBarActivity implements ChangeFragmentInt
     private ActionBarDrawerToggle mDrawerToggle;
     private static Page activePage;
     public static int actualPosition=-1;
+    private Toolbar toolbar;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
 
         registerReceivers(); //Register receivers for push notifications
         PushManager pushManager = PushManager.getInstance(this);  //Create and start push manager
@@ -56,13 +56,23 @@ public class MainActivity extends ActionBarActivity implements ChangeFragmentInt
 
         initUI();
         if (savedInstanceState == null) {
-            selectItem(0, false);
+            selectItem(1, false);
         }
         (new ChangeLog()).init(this, false);
 
     }
 
     private void initUI() {
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+        }
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setElevation(0); //Sinon shadow sous Android L
+
+
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerList = (ListView) findViewById(R.id.drawer_list);
 
@@ -70,27 +80,37 @@ public class MainActivity extends ActionBarActivity implements ChangeFragmentInt
         mDrawerToggle.setDrawerIndicatorEnabled(true);
         drawer.setDrawerListener(mDrawerToggle);
 
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        // Set an OnMenuItemClickListener to handle menu item clicks
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+
+                return true;
+            }
+        });
 
         initDrawer();
+
+
     }
 
     private void initDrawer() {
         CustomAdapter drawerAdapter = new CustomAdapter(this, 0);
         Resources res = getResources();
 
+
+       drawerAdapter.newHeader(R.drawable.tag);
         //Onglets principaux avec icones
         TypedArray titlesArray = res.obtainTypedArray(R.array.drawer_items_titles);
         TypedArray iconesArray = res.obtainTypedArray(R.array.drawer_items_icons);
-        for (int i = 0; i < titlesArray.length(); i++)
-            drawerAdapter.newSubItemIcon(titlesArray.getString(i),iconesArray.getResourceId(i, 0));
+        for (int i = 0; i < titlesArray.length(); i++){
+            if(i==2) drawerAdapter.newSubItemIconCounter(titlesArray.getString(i),iconesArray.getResourceId(i, 0), 5);
+            else drawerAdapter.newSubItemIcon(titlesArray.getString(i),iconesArray.getResourceId(i, 0));
+        }
 
-        // Divider
-        drawerAdapter.newSection("");
+        drawerAdapter.newDivider();
 
         //Onglets secondaires sans icones
         titlesArray = res.obtainTypedArray(R.array.drawer_items_plus_titles);
@@ -117,44 +137,47 @@ public class MainActivity extends ActionBarActivity implements ChangeFragmentInt
     private void selectItem(int position, boolean isApplicationProgression) {
         switch (position) {
             case 0:
-                activePage = new LignesFragment();
+                //Header
                 break;
             case 1:
-                //activePage = new FavorisFragment();
+                activePage = new LignesFragment();
                 break;
             case 2:
-                //activePage = new ProximiteFragment();
+                //activePage = new FavorisFragment();
                 break;
             case 3:
-                activePage = new MapFragment();
+                //activePage = new ProximiteFragment();
                 break;
             case 4:
-                activePage = new TraficInfosFragment();
+                activePage = new MapFragment();
                 break;
             case 5:
-                activePage = new ActualitesFragment();
+                activePage = new TraficInfosFragment();
                 break;
             case 6:
-                //activePage = new TarifsFragment();
+                activePage = new ActualitesFragment();
                 break;
             case 7:
-                //divider
+                //activePage = new TarifsFragment();
                 break;
             case 8:
-                //activePage = new SettingsFragment();
+                //divider
                 break;
             case 9:
-                activePage = new AboutFragment();
+                //activePage = new SettingsFragment();
                 break;
             case 10:
+                activePage = new AboutFragment();
+                break;
+            case 11:
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.tagdroid.android")));
                 break;
             default:
                 return;
         }
         // update selected item and title, then close the drawer
-        drawerList.setItemChecked(position, true);
-        drawer.closeDrawer(drawerList);
+
+
 
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction().replace(R.id.pager, activePage)
@@ -166,6 +189,10 @@ public class MainActivity extends ActionBarActivity implements ChangeFragmentInt
         actualPosition = position;
         Log.d("Actual Position Fragment", actualPosition+"");
         transaction.commit();
+
+        drawerList.setItemChecked(position, true);
+        drawer.closeDrawer(drawerList);
+        //
     }
 
     // Manages the ActionBar touches. TODO manage the fragment menu touches…
@@ -187,20 +214,10 @@ public class MainActivity extends ActionBarActivity implements ChangeFragmentInt
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         if (drawer.isDrawerOpen(drawerList)) {
-            getSupportActionBar().setTitle(R.string.app_name);
+            toolbar.setTitle(R.string.app_name);
         } else {
-            getSupportActionBar().setTitle(getFragmentTitle());
-            getMenuInflater().inflate(getFragmentMenu(), menu);
-
-
-            // Associate searchable configuration with the SearchView
-           /* if(activePage.getTitle().equals("Lignes")) {
-                SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-                SearchView searchView = (SearchView) menu.findItem(R.id.search).getActionView();
-                searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-            }*/
-
-
+            toolbar.setTitle(getFragmentTitle());
+            toolbar.inflateMenu(getFragmentMenu());
         }
         return super.onPrepareOptionsMenu(menu);
     }

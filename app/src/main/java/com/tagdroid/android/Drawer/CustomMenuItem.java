@@ -2,32 +2,76 @@ package com.tagdroid.android.Drawer;
 
 
 public class CustomMenuItem {
+    public boolean isDivider;
+    public boolean isHeader;
+    public boolean isIcon;
+    public boolean isCounter;
+
     public String title;
     public int iconRes;
-    public boolean isIcon;
+    public int drawable;
     public int counter;
-    public boolean isHeader;
 
-    public CustomMenuItem(String title, int iconRes, boolean iconBool, boolean header) {
-        this(title, iconRes, iconBool, header, 0);
+/*
+    public CustomMenuItem(String title, int iconRes, boolean iconBool) {
+        this(title, iconRes, iconBool,0);
     }
 
-    public CustomMenuItem(String title, boolean iconBool, boolean header) {
-        this(title, iconBool , header, 0);
+    public CustomMenuItem(String title, boolean iconBool) {
+        this(title, iconBool , 0);
+    }*/
+
+    /*** DIVIDER ***/
+    public CustomMenuItem() {
+        this.isDivider = true;
+        this.isHeader = false;
+        this.isIcon = false;
+        this.isCounter = false;
     }
 
-    public CustomMenuItem(String title, int iconRes, boolean iconBool, boolean header, int counter) {
+    /*** HEADER ***/
+    public CustomMenuItem(int drawable) {
+        this.isDivider = false;
+        this.isHeader = true;
+        this.isIcon = false;
+        this.isCounter = false;
+
+        this.drawable = drawable;
+    }
+
+    /*** ITEM SANS ICONE ***/
+    public CustomMenuItem(String title) {
+        this.isDivider = false;
+        this.isHeader = false;
+        this.isIcon = false;
+        this.isCounter = false;
+
+        this.title = title;
+    }
+
+    /*** ITEM AVEC ICONE ***/
+    public CustomMenuItem(String title, int iconRes) {
+        this.isDivider = false;
+        this.isHeader = false;
+        this.isIcon = true;
+        this.isCounter = false;
+
         this.title = title;
         this.iconRes = iconRes;
-        this.isIcon = iconBool;
-        this.isHeader = header;
+    }
+
+    /*** ITEM AVEC ICONE + COMPTEUR***/
+    public CustomMenuItem(String title, int iconRes,  int counter) {
+        this.isDivider = false;
+        this.isHeader = false;
+        this.isIcon = true;
+        this.isCounter = true;
+
+        this.title = title;
+        this.iconRes = iconRes;
         this.counter = counter;
     }
 
-    public CustomMenuItem(String title, boolean iconBool, boolean header, int counter) {
-        this.title = title;
-        this.isHeader = header;
-        this.isIcon = iconBool;
-        this.counter = counter;
-    }
+
+
 }

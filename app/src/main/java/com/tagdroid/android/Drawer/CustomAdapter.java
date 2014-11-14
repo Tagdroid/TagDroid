@@ -17,17 +17,27 @@ public class CustomAdapter extends ArrayAdapter<CustomMenuItem> {
         super(context, resource);
     }
 
-    public void newSection(String title) {
-        add(new CustomMenuItem(title, -1, false, true));
+    public void newDivider(){
+        add(new CustomMenuItem());
     }
 
-    public void newSubItemIcon(String title, int iconId) {
-        add(new CustomMenuItem(title, iconId, true, false));
+    public void newHeader(int drawable) {
+        add(new CustomMenuItem(drawable));
     }
 
     public void newSubItem(String title) {
-        add(new CustomMenuItem(title,false, false));
+        add(new CustomMenuItem(title));
     }
+
+    public void newSubItemIcon(String title, int iconRes) {
+        add(new CustomMenuItem(title, iconRes));
+    }
+
+    public void newSubItemIconCounter(String title, int iconRes, int counter) {
+        add(new CustomMenuItem(title, iconRes, counter));
+    }
+
+
 
 
     @Override
@@ -37,12 +47,12 @@ public class CustomAdapter extends ArrayAdapter<CustomMenuItem> {
 
     @Override
     public int getItemViewType(int position) {
-        return getItem(position).isHeader ? 0 : 1;
+        return getItem(position).isDivider ? 0 : 1;
     }
 
     @Override
     public boolean isEnabled(int position) {
-        return !getItem(position).isHeader;
+        return !getItem(position).isDivider && !getItem(position).isHeader;
     }
 
     public View getView(int position, View view, ViewGroup parent) {
@@ -50,25 +60,29 @@ public class CustomAdapter extends ArrayAdapter<CustomMenuItem> {
             // The view is not a recycled one: we have to inflate
             CustomMenuItem item = getItem(position);
             ViewHolder holder = new ViewHolder();
-            if (item.isHeader) {
+            if (item.isHeader){
                 view = LayoutInflater.from(getContext()).inflate(R.layout.listitem_drawer_header, parent, false);
+                holder.drawerHeader = (ImageView) view.findViewById(R.id.drawerHeader);
+                holder.drawerHeader.setBackgroundResource(item.drawable);
+            } else if (item.isDivider) {
+                view = LayoutInflater.from(getContext()).inflate(R.layout.listitem_drawer_divider, parent, false);
             } else if(item.isIcon){
                 view = LayoutInflater.from(getContext()).inflate(R.layout.listitem_drawer_item_icon, parent, false);
                 holder.principalText = (TextView) view.findViewById(R.id.menurow_title);
                 holder.principalText.setText(item.title);
-
                 holder.principalIcon = (ImageView) view.findViewById(R.id.menurow_icon);
-                if (item.iconRes > 0)
-                    holder.principalIcon.setImageResource(item.iconRes);
-                else
-                    holder.principalIcon.setVisibility(View.GONE);
+                holder.principalIcon.setImageResource(item.iconRes);
 
-                holder.counterText = (TextView) view.findViewById(R.id.menurow_counter);
-                if (item.counter > 0) {
-                    holder.counterText.setVisibility(View.VISIBLE);
-                    holder.counterText.setText("" + item.counter);
-                } else
+                if(item.isCounter){
+                    if(item.counter!=0){
+                        holder.counterText = (TextView) view.findViewById(R.id.menurow_counter);
+                        holder.counterText.setVisibility(View.VISIBLE);
+                        holder.counterText.setText("" + item.counter);
+                    }
+                   else {
                     holder.counterText.setVisibility(View.GONE);
+                   }
+                }
             } else {
                 view = LayoutInflater.from(getContext()).inflate(R.layout.listitem_drawer_item, parent, false);
                 holder.principalText = (TextView) view.findViewById(R.id.menurow_title);
@@ -91,7 +105,7 @@ public class CustomAdapter extends ArrayAdapter<CustomMenuItem> {
             }
         }
         else{
-            view.setBackgroundColor(view.getResources().getColor(android.R.color.transparent));
+            if(position!=0) view.setBackgroundColor(view.getResources().getColor(android.R.color.transparent));
             TextView principalText = (TextView) view.findViewById(R.id.menurow_title);
 
             if(principalText!=null){
@@ -113,5 +127,6 @@ public class CustomAdapter extends ArrayAdapter<CustomMenuItem> {
         public TextView principalText;
         public ImageView principalIcon;
         public TextView counterText;
+        public ImageView drawerHeader;
     }
 }

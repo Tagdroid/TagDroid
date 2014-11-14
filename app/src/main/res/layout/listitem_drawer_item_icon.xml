@@ -27,22 +27,23 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/gris_fonce"/>
 
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"></LinearLayout>
+
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
             android:id="@+id/menurow_counter"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/rectangle"
-            android:gravity="center"
-            android:minHeight="?android:attr/listPreferredItemHeightSmall"
-            android:padding="6dp"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/gris_fonce"
-            android:textSize="12sp"
+            android:layout_marginRight="10dp"
             android:visibility="gone"
-            android:textStyle="bold" />
+            android:background="@drawable/circle_fav_counter"
+            android:padding="5dp"
+            android:textSize="10sp" />
+
     </LinearLayout>
 
 </LinearLayout>
