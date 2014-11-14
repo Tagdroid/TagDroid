@@ -10,48 +10,72 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="10dp">
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:layout_marginBottom="10dp"
-            android:orientation="vertical"
-            android:paddingLeft="5dp">
-            <TextView
-                android:id="@+id/tramways"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:text="@string/tram"
-                android:textColor="@color/bleu_tag_fonce2"
-                android:textSize="18sp"/>
 
-            <com.tagdroid.android.GridView.ExpandableGridView
-                android:id="@+id/tramGrid"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="5dp"
-                android:layout_marginTop="5dp"
-                android:horizontalSpacing="8dp"
-                android:verticalSpacing="8dp"
-                android:numColumns="5"
-                android:padding="10dp"/>
-        </LinearLayout>
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical">
 
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@color/tramway"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:id="@+id/tramways"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tram"
+                        android:textColor="@color/gris_fonce"
+                        android:textSize="18sp"
+                        android:fontFamily="sans-serif-condensed"
+                        android:textAllCaps="false"
+                        android:typeface="sans"
+                        android:layout_marginLeft="10dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <com.tagdroid.android.GridView.ExpandableGridView
+                    android:id="@+id/tramGrid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:horizontalSpacing="8dp"
+                    android:verticalSpacing="8dp"
+                    android:numColumns="5"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="10dp"
             android:orientation="vertical"
-            android:paddingLeft="5dp">
+            android:layout_margin="10dp">
 
             <TextView
                 android:id="@+id/chrono"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Chrono"
-                android:textColor="@color/bleu_tag_fonce2"
-                android:textSize="18sp" />
+                android:textColor="@color/darker_gray"
+                android:textSize="18sp"
+                android:fontFamily="sans-serif-condensed"
+                android:textAllCaps="true"
+                android:textStyle="bold" />
 
 
             <com.tagdroid.android.GridView.ExpandableGridView
@@ -59,59 +83,62 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="5dp"
-                android:layout_marginTop="5dp"
                 android:horizontalSpacing="8dp"
                 android:verticalSpacing="8dp"
                 android:numColumns="5"
-                android:padding="10dp"/>
+                android:layout_margin="10dp" />
         </LinearLayout>
+        </android.support.v7.widget.CardView>
 
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
-            android:layout_marginBottom="10dp"
             android:orientation="vertical"
-            android:paddingLeft="5dp">
-
+            android:layout_margin="10dp">
             <TextView
                 android:id="@+id/proximo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="5dp"
                 android:text="Proximo"
-                android:textColor="@color/bleu_tag_fonce2"
-                android:textSize="18sp" />
-
-
+                android:textColor="@color/gris_fonce"
+                android:fontFamily="sans-serif-condensed"
+                android:textSize="18sp"
+                android:textAllCaps="false"
+                android:textStyle="bold" />
             <com.tagdroid.android.GridView.ExpandableGridView
                 android:id="@+id/ProximoGrid"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="5dp"
-                android:layout_marginTop="5dp"
                 android:horizontalSpacing="8dp"
                 android:verticalSpacing="8dp"
                 android:numColumns="5"
-                android:padding="10dp"/>
+                android:layout_margin="10dp" />
         </LinearLayout>
+        </android.support.v7.widget.CardView>
 
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
-            android:layout_marginBottom="10dp"
             android:orientation="vertical"
-            android:paddingLeft="5dp">
+            android:layout_margin="10dp">
 
             <TextView
                 android:id="@+id/flexo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="5dp"
                 android:text="Flexo"
-                android:textColor="@color/bleu_tag_fonce2"
-                android:textSize="18sp" />
+                android:textColor="@color/gris_fonce"
+                android:textSize="18sp"
+                android:fontFamily="sans-serif-condensed"
+                android:textAllCaps="false" />
 
 
             <com.tagdroid.android.GridView.ExpandableGridView
@@ -119,12 +146,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="5dp"
-                android:layout_marginTop="5dp"
                 android:horizontalSpacing="8dp"
                 android:verticalSpacing="8dp"
                 android:numColumns="5"
-                android:padding="10dp"/>
+                android:layout_margin="10dp" />
         </LinearLayout>
+        </android.support.v7.widget.CardView>
     </LinearLayout>
 </ScrollView>
