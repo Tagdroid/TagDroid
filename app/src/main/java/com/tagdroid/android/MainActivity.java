@@ -106,7 +106,7 @@ public class MainActivity extends ActionBarActivity implements ChangeFragmentInt
         TypedArray titlesArray = res.obtainTypedArray(R.array.drawer_items_titles);
         TypedArray iconesArray = res.obtainTypedArray(R.array.drawer_items_icons);
         for (int i = 0; i < titlesArray.length(); i++){
-            if(i==2) drawerAdapter.newSubItemIconCounter(titlesArray.getString(i),iconesArray.getResourceId(i, 0), 5);
+            if(i==1) drawerAdapter.newSubItemIconCounter(titlesArray.getString(i),iconesArray.getResourceId(i, 0), 5);
             else drawerAdapter.newSubItemIcon(titlesArray.getString(i),iconesArray.getResourceId(i, 0));
         }
 
