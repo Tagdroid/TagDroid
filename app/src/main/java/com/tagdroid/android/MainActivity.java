@@ -1,6 +1,5 @@
 package com.tagdroid.android;
 
-import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
@@ -50,6 +49,7 @@ public class MainActivity extends ActionBarActivity implements ChangeFragmentInt
         try {
             pushManager.onStartup(this);
         } catch (Exception e) {
+            Log.d("Push", "Error on Startup");
         }
         pushManager.registerForPushNotifications(); //Register for push!
         checkMessage(getIntent());
@@ -233,20 +233,6 @@ public class MainActivity extends ActionBarActivity implements ChangeFragmentInt
         activePage = actualPage;
     }
 
-    // Manages the Drawer changes
-    class CustomActionBarDrawerToggle extends ActionBarDrawerToggle {
-        public CustomActionBarDrawerToggle(Activity mActivity, DrawerLayout mDrawerLayout) {
-            super(mActivity, mDrawerLayout, R.string.drawer_open, R.string.drawer_close);
-        }
-        public void onDrawerClosed(View view) {
-            invalidateOptionsMenu();
-        }
-        public void onDrawerOpened(View drawerView) {
-            invalidateOptionsMenu();
-        }
-    }
-
-
     /************************************************/
     /***** PUSH NOTIFICATION PART with Pushwoosh ****/
     /**
@@ -292,11 +278,13 @@ public class MainActivity extends ActionBarActivity implements ChangeFragmentInt
         try {
             unregisterReceiver(mReceiver);
         } catch (Exception e) {
+            Log.d("Push", "Error on unRegisterReceiver mReceiver");
         }
 
         try {
             unregisterReceiver(mBroadcastReceiver);
         } catch (Exception e) {
+            Log.d("Push", "Error on unRegisterReceiver mBroadcastReceiver");
         }
     }
 

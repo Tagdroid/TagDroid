@@ -16,7 +16,7 @@
     <color name="gris_fonce">#3a3e40</color>
 
     <color name="darker_gray" >@android:color/darker_gray</color>
-    <color name="lighter_gray">#ddd</color>
+    <color name="lighter_gray">#eee</color>
 
 
     <color name="map_pressed">#509f</color>

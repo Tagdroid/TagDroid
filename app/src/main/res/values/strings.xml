@@ -89,8 +89,8 @@
 
     <!-- About -->
     <string name="auteur">Auteur</string>
-    <string name="collaborateur">Collaborateurs</string>
-    <string name="remerciement">Remerciements</string>
+    <string name="codev">Co-Développeur</string>
+    <string name="remerciement">Remerciement</string>
     <string name="contact">Contact</string>
     <string name="description">Description</string>
     <string name="informations">Informations</string>

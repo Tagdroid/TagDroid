@@ -4,301 +4,263 @@
     android:layout_width="match_parent"
     android:layout_height="fill_parent">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="20dp"
+        android:padding="10dp"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/Logo"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_gravity="start"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/ic_launcher_tagdroid" />
 
-        <ImageView
-            android:id="@+id/TitleLogo"
-            android:layout_width="116dp"
-            android:layout_height="26dp"
-            android:layout_gravity="start"
-            android:layout_toRightOf="@+id/Logo"
-            android:src="@drawable/tagdroid_about" />
+        <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+            android:layout_margin="5dp">
 
-        <TextView
-            android:id="@+id/AppNonOfficielle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/TitleLogo"
-            android:layout_toRightOf="@+id/Logo"
-            android:fontFamily="sans-serif-light"
-            android:text="@string/about_desc"
-            android:textColor="@color/gris_fonce" />
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="vertical"
+                    android:padding="10dp">
 
-        <TextView
-            android:id="@+id/Compatibilité"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/AppNonOfficielle"
-            android:layout_toRightOf="@+id/Logo"
-            android:fontFamily="sans-serif-light"
-            android:text="@string/about_desc2"
-            android:textColor="@color/gris_fonce" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal">
 
-        <Button
-            android:id="@+id/showlog"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/Compatibilité"
-            android:layout_toRightOf="@+id/Logo"
-            android:fontFamily="sans-serif-light"
-            android:text="Show Log"
-            android:textColor="@color/gris_fonce" />
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/logoApp"
+                            android:background="@drawable/ic_launcher_tagdroid"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp" />
 
-        <TextView
-            android:id="@+id/AuteurTitre"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/showlog"
-            android:layout_marginTop="20dp"
-            android:fontFamily="sans-serif-light"
-            android:text="@string/auteur"
-            android:textColor="@color/gris_fonce"
-            android:textStyle="bold" />
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content">
 
-        <View
-            android:id="@+id/AuteurLigne"
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:layout_below="@+id/AuteurTitre"
-            android:background="@color/lighter_gray" />
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_width="fill_parent"
+                                android:layout_height="fill_parent"
+                                android:padding="10dp">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:layout_below="@+id/AuteurLigne"
-            android:background="@android:color/white"
-            android:orientation="vertical" />
+                                <ImageView
+                                    android:id="@+id/TitleLogo"
+                                    android:layout_width="116dp"
+                                    android:layout_height="26dp"
+                                    android:src="@drawable/tagdroid_about" />
+
+                                <TextView
+                                    android:id="@+id/AppNonOfficielle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="sans-serif-light"
+                                    android:text="@string/about_desc"
+                                    android:textColor="@color/gris_fonce" />
+
+                                <TextView
+                                    android:id="@+id/Compatibilité"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="sans-serif-light"
+                                    android:text="@string/about_desc2"
+                                    android:textColor="@color/gris_fonce" />
+
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/showlog"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:text="Show Log"
+                        android:textColor="@color/gris_fonce" />
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp">
 
         <LinearLayout
-            android:id="@+id/AuteurLayout"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/AuteurLigne"
-            android:orientation="horizontal"
-            android:paddingRight="10dp"
-            android:paddingLeft="10dp">
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:fontFamily="sans-serif-light"
-                android:text="Quentin DESBOIS"
-                android:textColor="@color/gris_fonce"
-                android:textSize="18sp"
-                android:id="@+id/textView"
-                android:layout_gravity="center_vertical" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageView5"
+                        android:background="@drawable/ic_favoris_2"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:fontFamily="sans-serif-light"
+                        android:text="Quentin DESBOIS"
+                        android:textColor="@color/gris_fonce"
+                        android:textSize="18sp"
+                        android:id="@+id/textView"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp" />
+
+                    <TextView
+                        android:id="@+id/AuteurTitre"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/auteur"
+                        android:textColor="@color/gris_fonce"
+                        android:layout_gravity="center_horizontal"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_gravity="center_horizontal">
+
+                        <ImageButton android:id="@+id/websiteQuentin"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/about_btn_website"
+                            android:layout_gravity="top"
+                            android:padding="8dp"
+                            android:layout_marginRight="20dp" />
+
+                        <ImageButton android:id="@+id/mailQuentin"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/about_btn_mail"
+                            android:layout_gravity="right" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="1dp"
+                    android:layout_height="fill_parent"
+                    android:background="@color/lighter_gray"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"></LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:padding="10dp">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageView5"
+                        android:background="@drawable/ic_favoris_2"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:fontFamily="sans-serif-light"
+                        android:text="Félix PIÉDALLU"
+                        android:textColor="@color/gris_fonce"
+                        android:textSize="18sp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp" />
+
+                    <TextView
+                        android:id="@+id/CollaborateurTitre"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/codev"
+                        android:textColor="@color/gris_fonce"
+                        android:layout_gravity="center_horizontal"
+                        android:textStyle="bold" />
+
+                    <ImageButton
+                        android:id="@+id/mailFélix"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/about_btn_mail"
+                        android:visibility="visible"
+                        android:layout_gravity="center_horizontal" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/lighter_gray"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:nestedScrollingEnabled="false"></LinearLayout>
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"></LinearLayout>
+                android:layout_height="fill_parent"
+                android:padding="10dp">
 
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:gravity="right">
+                <TextView
+                    android:id="@+id/RemerciementTitre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="@string/remerciement"
+                    android:textColor="@color/gris_fonce" />
 
-                <ImageButton android:id="@+id/websiteQuentin"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@drawable/about_btn_website"
-                    android:layout_gravity="top"
-                    android:padding="8dp" />
-
-                <ImageButton android:id="@+id/mailQuentin"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@drawable/about_btn_mail"
-                    android:layout_gravity="right" />
-
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Alexandre LOUVRIER"
+                    android:textColor="@color/gris_fonce"
+                    android:textSize="18sp"
+                    android:layout_gravity="center_vertical" />
             </LinearLayout>
 
         </LinearLayout>
+    </android.support.v7.widget.CardView>
 
-        <TextView
-            android:id="@+id/CollaborateurTitre"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/AuteurLayout"
-            android:layout_marginTop="10dp"
-            android:fontFamily="sans-serif-light"
-            android:text="@string/collaborateur"
-            android:textColor="@color/gris_fonce"
-            android:textStyle="bold" />
-
-        <View
-            android:id="@+id/CollaborateurLigne"
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:layout_below="@+id/CollaborateurTitre"
-            android:background="@color/lighter_gray" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:layout_below="@+id/CollaborateurLigne"
-            android:background="@android:color/white"
-            android:orientation="vertical" />
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp">
 
         <LinearLayout
-            android:id="@+id/Collaborateur1Layout"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/CollaborateurLigne"
-            android:orientation="horizontal"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:fontFamily="sans-serif-light"
-                android:text="Félix PIÉDALLU"
-                android:textColor="@color/gris_fonce"
-                android:textSize="18sp"
-                android:layout_gravity="center_vertical" />
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"></LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:gravity="right">
-
-            <ImageButton
-                android:id="@+id/mailFélix"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_alignParentRight="true"
-                android:background="@drawable/about_btn_mail"
-                android:visibility="visible" />
-        </LinearLayout>
-        </LinearLayout>
-        <TextView
-            android:id="@+id/RemerciementTitre"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/Collaborateur1Layout"
-            android:layout_marginTop="10dp"
-            android:fontFamily="sans-serif-light"
-            android:text="@string/remerciement"
-            android:textColor="@color/gris_fonce"
-            android:textStyle="bold" />
-
-        <View
-            android:id="@+id/RemerciementLigne"
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:layout_below="@+id/RemerciementTitre"
-            android:background="@color/lighter_gray" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:layout_below="@+id/RemerciementLigne"
-            android:background="@android:color/white"
-            android:orientation="vertical" />
-
-
-        <LinearLayout
-            android:id="@+id/Remerciement1Layout"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/RemerciementLigne"
-            android:orientation="horizontal"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:fontFamily="sans-serif-light"
-                android:text="Alexandre LOUVRIER"
-                android:textColor="@color/gris_fonce"
-                android:textSize="18sp"
-                android:layout_gravity="center_vertical" />
-
-        <LinearLayout
-            android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_weight="1"></LinearLayout>
+            android:orientation="vertical"
+            android:padding="10dp">
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:gravity="right">
 
-            <ImageButton
-                android:id="@+id/mailAlexandre"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_alignParentRight="true"
-                android:background="@drawable/about_btn_mail"
-                android:visibility="invisible" />
-        </LinearLayout>
-        </LinearLayout>
-        <TextView
-            android:id="@+id/DescriptionTitre"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/Remerciement1Layout"
-            android:layout_marginTop="10dp"
-            android:fontFamily="sans-serif-light"
-            android:text="@string/description"
-            android:textColor="@color/gris_fonce"
-            android:textStyle="bold" />
-
-        <View
-            android:id="@+id/DescriptionLigne"
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:layout_below="@+id/DescriptionTitre"
-            android:background="@color/lighter_gray" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:layout_below="@+id/DescriptionLigne"
-            android:background="@android:color/white"
-            android:orientation="vertical" />
-
-        <RelativeLayout
-            android:id="@+id/DescriptionLayout"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/DescriptionLigne"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -306,21 +268,25 @@
                 android:layout_centerVertical="true"
                 android:fontFamily="sans-serif-light"
                 android:text="@string/about_description"
-                android:textColor="@color/gris_fonce"
-                android:layout_marginTop="10dp" />
-        </RelativeLayout>
+                android:textColor="@color/gris_fonce" />
 
-        <TextView
-            android:id="@+id/DroitsImage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/DescriptionLayout"
-            android:layout_marginTop="20dp"
-            android:layout_gravity="fill_vertical"
-            android:text="@string/footer"
-            android:textColor="@color/darker_gray"
-            android:textSize="10dp"
-            android:textStyle="italic" />
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/DroitsImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="fill_vertical"
+                android:text="@string/footer"
+                android:textColor="@color/gris_fonce"
+                android:textSize="10dp"
+                android:textStyle="italic"
+                android:typeface="serif" />
+
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+
+    </LinearLayout>
 </ScrollView>
 

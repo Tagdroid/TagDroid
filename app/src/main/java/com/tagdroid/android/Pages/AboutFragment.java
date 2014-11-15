@@ -32,7 +32,6 @@ public class AboutFragment extends Page implements View.OnClickListener {
         view.findViewById(R.id.websiteQuentin).setOnClickListener(this);
         view.findViewById(R.id.mailQuentin).setOnClickListener(this);
         view.findViewById(R.id.mailFélix).setOnClickListener(this);
-        view.findViewById(R.id.mailAlexandre).setOnClickListener(this);
 
         try {
             ((Button) view.findViewById(R.id.showlog)).setText("Version " +
