@@ -289,7 +289,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:id="@+id/"></LinearLayout>
+                    android:id="@+id/mailAlexandre"></LinearLayout>
 
             </LinearLayout>
         </android.support.v7.widget.CardView>
