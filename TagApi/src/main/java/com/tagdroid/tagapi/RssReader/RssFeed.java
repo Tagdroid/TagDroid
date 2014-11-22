@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.tagdroid.android.RssReader;
+package com.tagdroid.tagapi.RssReader;
 
 import android.os.Bundle;
 import android.os.Parcel;

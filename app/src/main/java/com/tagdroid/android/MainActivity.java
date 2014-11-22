@@ -27,7 +27,7 @@ import com.arellomobile.android.push.PushManager;
 import com.arellomobile.android.push.utils.RegisterBroadcastReceiver;
 import com.tagdroid.android.Drawer.CustomAdapter;
 import com.tagdroid.android.Pages.AboutFragment;
-import com.tagdroid.android.Pages.ActualitesFragment;
+import com.tagdroid.android.Actualites.ActualitesFragment;
 import com.tagdroid.android.Pages.LignesFragment;
 import com.tagdroid.android.Pages.MapFragment;
 import com.tagdroid.android.Pages.TraficInfosFragment;

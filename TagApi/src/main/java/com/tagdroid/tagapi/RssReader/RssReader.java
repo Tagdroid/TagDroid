@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.tagdroid.android.RssReader;
+package com.tagdroid.tagapi.RssReader;
 
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;

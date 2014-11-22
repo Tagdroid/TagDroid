@@ -1,4 +1,4 @@
-package com.tagdroid.android.Pages;
+package com.tagdroid.android.Actualites;
 
 import android.content.Intent;
 import android.graphics.Bitmap;

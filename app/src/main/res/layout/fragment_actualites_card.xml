@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/LinearLayout1"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp" >
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,12 +34,6 @@
             android:layout_toEndOf="@+id/image"
             android:ellipsize="end"
             android:lines="3"
-            android:textSize="11sp" />
-        </RelativeLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2px"
-        android:background="@color/darker_gray"
-        android:orientation="vertical">
-    </View>
-</LinearLayout>
+            android:textSize="12sp" />
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
