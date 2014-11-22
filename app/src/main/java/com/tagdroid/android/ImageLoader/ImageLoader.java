@@ -23,15 +23,15 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class ImageLoader {
-
     final int stub_id = R.drawable.tag;
     MemoryCache memoryCache = new MemoryCache();
     FileCache fileCache;
     ExecutorService executorService;
-    private Map<ImageView, String> imageViews = Collections.synchronizedMap(new WeakHashMap<ImageView, String>());
+    private Map<ImageView, String> imageViews =
+            Collections.synchronizedMap(new WeakHashMap<ImageView, String>());
 
     public ImageLoader(Context context) {
-        fileCache = new FileCache(context);
+        fileCache = new FileCache(context, "ImageLoader");
         executorService = Executors.newFixedThreadPool(5);
     }
 
@@ -61,7 +61,7 @@ public class ImageLoader {
 
         //from web
         try {
-            Bitmap bitmap = null;
+            Bitmap bitmap;
             URL imageUrl = new URL(url);
             HttpURLConnection conn = (HttpURLConnection) imageUrl.openConnection();
             conn.setConnectTimeout(30000);
@@ -103,16 +103,14 @@ public class ImageLoader {
             BitmapFactory.Options o2 = new BitmapFactory.Options();
             o2.inSampleSize = scale;
             return BitmapFactory.decodeStream(new FileInputStream(f), null, o2);
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException ignored) {
         }
         return null;
     }
 
     boolean imageViewReused(PhotoToLoad photoToLoad) {
         String tag = imageViews.get(photoToLoad.imageView);
-        if (tag == null || !tag.equals(photoToLoad.url))
-            return true;
-        return false;
+        return tag == null || !tag.equals(photoToLoad.url);
     }
 
     public void clearCache() {

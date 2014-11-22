@@ -40,7 +40,6 @@ public class RssReader {
             reader.parse(input);
 
             return handler.getResult();
-
         } catch (ParserConfigurationException e) {
             throw new SAXException();
         }

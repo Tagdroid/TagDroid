@@ -3,33 +3,17 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
-
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:id="@+id/imageView"
-        android:background="@drawable/grenoble"
-        android:scaleType="centerCrop" />
-
-    <LinearLayout
+        android:scaleType="centerCrop"
+        android:src="@drawable/grenoble" />
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|top"
-        android:orientation="vertical"
         android:padding="10dp"
-        android:layout_marginTop="10dp"
-        android:background="#22000000">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/drawerHeader"
-                android:layout_gravity="center_horizontal" />
-        </LinearLayout>
-    </LinearLayout>
+        android:id="@+id/drawerHeader"
+        android:background="#22000000"
+        android:scaleType="center"
+        android:src="@drawable/tag" />
 </FrameLayout>

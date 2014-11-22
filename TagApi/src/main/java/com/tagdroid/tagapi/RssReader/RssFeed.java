@@ -24,92 +24,89 @@ import java.util.ArrayList;
 
 public class RssFeed implements Parcelable {
 
-	private String title;
-	private String link;
-	private String description;
-	private String language;
-	private ArrayList<RssItem> rssItems;
-	
-	public RssFeed() {
-		rssItems = new ArrayList<RssItem>();
-	}
-	
-	public RssFeed(Parcel source) {
-		
-		Bundle data = source.readBundle();
-		title = data.getString("title");
-		link = data.getString("link");
-		description = data.getString("description");
-		language = data.getString("language");
-		rssItems = data.getParcelableArrayList("rssItems");
-		
-	}
+    public static final Creator<RssFeed> CREATOR = new Creator<RssFeed>() {
+        public RssFeed createFromParcel(Parcel data) {
+            return new RssFeed(data);
+        }
 
-	public void writeToParcel(Parcel dest, int flags) {
-		
-		Bundle data = new Bundle();
-		data.putString("title", title);
-		data.putString("link", link);
-		data.putString("description", description);
-		data.putString("language", language);
-		data.putParcelableArrayList("rssItems", rssItems);
-		dest.writeBundle(data);
-	}
-	
-	public static final Creator<RssFeed> CREATOR = new Creator<RssFeed>() {
-		public RssFeed createFromParcel(Parcel data) {
-			return new RssFeed(data);
-		}
-		public RssFeed[] newArray(int size) {
-			return new RssFeed[size];
-		}
-	};
+        public RssFeed[] newArray(int size) {
+            return new RssFeed[size];
+        }
+    };
+    private String title;
+    private String link;
+    private String description;
+    private String language;
+    private ArrayList<RssItem> rssItems;
 
-	public int describeContents() {
-		return 0;
-	}
-	
-	void addRssItem(RssItem rssItem) {
-		rssItems.add(rssItem);
-	}
+    public RssFeed() {
+        rssItems = new ArrayList<>();
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    public RssFeed(Parcel source) {
+        Bundle data = source.readBundle();
+        title = data.getString("title");
+        link = data.getString("link");
+        description = data.getString("description");
+        language = data.getString("language");
+        rssItems = data.getParcelableArrayList("rssItems");
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public void writeToParcel(Parcel dest, int flags) {
+        Bundle data = new Bundle();
+        data.putString("title", title);
+        data.putString("link", link);
+        data.putString("description", description);
+        data.putString("language", language);
+        data.putParcelableArrayList("rssItems", rssItems);
+        dest.writeBundle(data);
+    }
 
-	public String getLink() {
-		return link;
-	}
+    public int describeContents() {
+        return 0;
+    }
 
-	public void setLink(String link) {
-		this.link = link;
-	}
+    void addRssItem(RssItem rssItem) {
+        rssItems.add(rssItem);
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	public String getLanguage() {
-		return language;
-	}
+    public String getLink() {
+        return link;
+    }
 
-	public void setLanguage(String language) {
-		this.language = language;
-	}
+    public void setLink(String link) {
+        this.link = link;
+    }
 
-	public ArrayList<RssItem> getRssItems() {
-		return rssItems;
-	}
+    public String getDescription() {
+        return description;
+    }
 
-	public void setRssItems(ArrayList<RssItem> rssItems) {
-		this.rssItems = rssItems;
-	} 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public ArrayList<RssItem> getRssItems() {
+        return rssItems;
+    }
+
+    public void setRssItems(ArrayList<RssItem> rssItems) {
+        this.rssItems = rssItems;
+    }
 }

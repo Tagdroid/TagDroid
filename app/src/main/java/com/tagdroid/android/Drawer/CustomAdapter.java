@@ -60,13 +60,11 @@ public class CustomAdapter extends ArrayAdapter<CustomMenuItem> {
             // The view is not a recycled one: we have to inflate
             CustomMenuItem item = getItem(position);
             ViewHolder holder = new ViewHolder();
-            if (item.isHeader){
+            if (item.isHeader)
                 view = LayoutInflater.from(getContext()).inflate(R.layout.listitem_drawer_header, parent, false);
-                holder.drawerHeader = (ImageView) view.findViewById(R.id.drawerHeader);
-                holder.drawerHeader.setBackgroundResource(item.drawable);
-            } else if (item.isDivider) {
+            else if (item.isDivider)
                 view = LayoutInflater.from(getContext()).inflate(R.layout.listitem_drawer_divider, parent, false);
-            } else if(item.isIcon){
+            else if(item.isIcon){
                 view = LayoutInflater.from(getContext()).inflate(R.layout.listitem_drawer_item_icon, parent, false);
                 holder.principalText = (TextView) view.findViewById(R.id.menurow_title);
                 holder.principalText.setText(item.title);

@@ -20,7 +20,7 @@
             android:textStyle="bold"
             android:typeface="sans" />
         <ImageView android:id="@+id/image"
-            android:layout_width="65dp"
+            android:layout_width="100sp"
             android:layout_height="match_parent"
             android:layout_below="@+id/titre"
             android:layout_alignBottom="@+id/description"
@@ -32,7 +32,7 @@
             android:layout_below="@+id/titre"
             android:layout_toRightOf="@+id/image"
             android:layout_toEndOf="@+id/image"
-            android:ellipsize="end"
+            android:ellipsize="middle"
             android:lines="3"
             android:textSize="12sp" />
     </RelativeLayout>

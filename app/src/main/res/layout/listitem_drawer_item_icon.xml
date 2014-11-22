@@ -2,48 +2,34 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/ns_menu_row"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
-    <LinearLayout
-        android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+    <ImageView android:id="@+id/menurow_icon"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/ic_launcher" />
+
+    <TextView android:id="@+id/menurow_title"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:gravity="center_vertical"
+        android:minHeight="?android:attr/listPreferredItemHeightSmall"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/gris_fonce" />
 
-        <ImageView
-            android:id="@+id/menurow_icon"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:src="@drawable/ic_launcher"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="25dp"
-            android:layout_gravity="center_vertical" />
-
-        <TextView
-            android:id="@+id/menurow_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:minHeight="?android:attr/listPreferredItemHeightSmall"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/gris_fonce"/>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"></LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
-            android:id="@+id/menurow_counter"
-            android:layout_marginRight="10dp"
-            android:visibility="gone"
-            android:background="@drawable/circle_fav_counter"
-            android:padding="5dp"
-            android:textSize="10sp" />
-
-    </LinearLayout>
-
+    <TextView android:id="@+id/menurow_counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp"
+        android:padding="5dp"
+        android:visibility="gone"
+        android:background="@drawable/circle_fav_counter"
+        android:textColor="@android:color/white"
+        android:textSize="10sp" />
 </LinearLayout>
