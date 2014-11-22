@@ -59,42 +59,26 @@ public class RssHandler extends DefaultHandler {
 	
 	@Override
 	public void endElement(String uri, String localName, String qName) {
-		
-		if(rssFeed != null && rssItem == null) {
-			// Parse feed properties
-			
+		if(rssFeed != null && rssItem == null) // Parse feed properties
 			try {
 				if (qName != null && qName.length() > 0) {
 				    String methodName = "set" + qName.substring(0, 1).toUpperCase() + qName.substring(1);
 				    Method method = ((Object) rssFeed).getClass().getMethod(methodName, String.class);
 				    method.invoke(rssFeed, stringBuilder.toString());
 				}
-			} catch (SecurityException e) {
-			} catch (NoSuchMethodException e) {
-			} catch (IllegalArgumentException e) {
-			} catch (IllegalAccessException e) {
-			} catch (InvocationTargetException e) {
+			} catch (SecurityException  | NoSuchMethodException  | IllegalArgumentException
+                    | IllegalAccessException  | InvocationTargetException ignored) {
 			}
-			
-		} else {
-            if (rssItem != null) {
-                // Parse item properties
-
-                try {
-                    if (qName.equals("content:encoded"))
-                        qName = "content";
-                    String methodName = "set" + qName.substring(0, 1).toUpperCase() + qName.substring(1);
-                    Method method = ((Object) rssItem).getClass().getMethod(methodName, String.class);
-                    method.invoke(rssItem, stringBuilder.toString());
-                } catch (SecurityException e) {
-                } catch (NoSuchMethodException e) {
-                } catch (IllegalArgumentException e) {
-                } catch (IllegalAccessException e) {
-                } catch (InvocationTargetException e) {
-                }
+        else if (rssItem != null) // Parse item properties
+            try {
+                if (qName.equals("content:encoded"))
+                    qName = "content";
+                String methodName = "set" + qName.substring(0, 1).toUpperCase() + qName.substring(1);
+                Method method = ((Object) rssItem).getClass().getMethod(methodName, String.class);
+                method.invoke(rssItem, stringBuilder.toString());
+            } catch (SecurityException | NoSuchMethodException  | IllegalArgumentException
+                    | IllegalAccessException  | InvocationTargetException ignored) {
             }
-        }
-		
 	}
 
 }

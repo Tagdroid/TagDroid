@@ -133,11 +133,11 @@ public class RssItem implements Comparable<RssItem>, Parcelable {
 	}
 
 	public int compareTo(RssItem another) {
-		if(getPubDate() != null && another.getPubDate() != null) {
+		if(getPubDate() != null && another.getPubDate() != null)
 			return getPubDate().compareTo(another.getPubDate());
-		} else { 
+		else
 			return 0;
-		}
+
 	}
 	
 }

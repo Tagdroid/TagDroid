@@ -6,7 +6,6 @@ import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
@@ -49,9 +48,7 @@ public abstract class HttpGetTask extends AsyncTask<Void, Integer, Void> {
             output.close();
             input.close();
             responseString = output.toString();
-        }
-        catch (MalformedURLException e) { e.printStackTrace(); }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return null;
