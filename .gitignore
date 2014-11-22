@@ -2,7 +2,9 @@
 /gradle
 build
 /local.properties
-/build.gradle
 
-.gradle
+gradle.properties
+
 .DS_Store
+
+/build.gradle
