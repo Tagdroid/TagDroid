@@ -19,8 +19,8 @@ import android.widget.Toast;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.tagdroid.android.MainActivity;
 import com.tagdroid.android.R;
-import com.tagdroid.tagapi.HttpGet.HttpGetLineStops;
-import com.tagdroid.tagapi.JSon2SQL.ReadJSonLineStops;
+import com.tagdroid.tagapi.HttpGet.HttpGetLinesList;
+import com.tagdroid.tagapi.JSon2SQL.ReadJSonLinesList;
 import com.tagdroid.tagapi.ProgressionInterface;
 import com.viewpagerindicator.CirclePageIndicator;
 import com.viewpagerindicator.PageIndicator;
@@ -115,11 +115,11 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
                     .setIcon(R.drawable.ic_report)
                     .show();
         } else {
-            //HttpGetLinesList httpGetLinesList = new HttpGetLinesList(this);
+            HttpGetLinesList httpGetLinesList = new HttpGetLinesList(this);
             Log.d("Welcome Status", "Start of Downloading database");
             //httpGetLinesList.setProgressBar((ProgressBar) findViewById(R.id.loadJSON_bar));
-            //httpGetLinesList.execute();
-            new HttpGetLineStops(27, 1, this).execute();
+            httpGetLinesList.execute();
+            //new HttpGetLineStops(27, 1, this).execute();
             db_downloading = true;
         }
     }
@@ -150,10 +150,10 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
     }
 
     private void readJSon(String jsonQueryResult) {
-        //ReadJSonLinesList readJSonLinesList = new ReadJSonLinesList(jsonQueryResult, this, this);
+        ReadJSonLinesList readJSonLinesList = new ReadJSonLinesList(jsonQueryResult, this, this);
         //readJSonLinesList.setProgressBar((ProgressBar) findViewById(R.id.parseJSON_bar));
-        //readJSonLinesList.execute();
-        new ReadJSonLineStops(jsonQueryResult, 27, 1, this, this).execute();
+        readJSonLinesList.execute();
+        //new ReadJSonLineStops(jsonQueryResult, 27, 1, this, this).execute();
     }
 
     public void onDownloadStart() {

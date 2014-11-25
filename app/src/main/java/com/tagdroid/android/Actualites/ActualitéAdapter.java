@@ -10,16 +10,16 @@ import android.widget.TextView;
 
 import com.tagdroid.android.ImageLoader.ImageLoader;
 import com.tagdroid.android.R;
-import com.tagdroid.tagapi.Actualites.Actualité;
+import com.tagdroid.tagapi.Actualites.Actualite;
 
 import java.util.List;
 
 public class ActualitéAdapter extends RecyclerView.Adapter<ActualitéAdapter.ActualitéViewHolder> {
     OnItemClickListener onItemClickListener;
-    private List<Actualité> actualitéList;
+    private List<Actualite> actualitéList;
     private ImageLoader imageLoader;
 
-    public ActualitéAdapter(List<Actualité> actualitéList, Context context) {
+    public ActualitéAdapter(List<Actualite> actualitéList, Context context) {
         this.actualitéList = actualitéList;
         imageLoader = new ImageLoader(context);
     }
@@ -36,7 +36,7 @@ public class ActualitéAdapter extends RecyclerView.Adapter<ActualitéAdapter.Ac
 
     @Override
     public void onBindViewHolder(ActualitéViewHolder actualitéViewHolder, int i) {
-        Actualité actualité = actualitéList.get(i);
+        Actualite actualité = actualitéList.get(i);
         actualitéViewHolder.vTitre.setText(actualité.titre);
         actualitéViewHolder.vDescr.setText(actualité.description);
         imageLoader.DisplayImage(actualité.image, actualitéViewHolder.vImage);

@@ -17,7 +17,7 @@ public class HttpGetActualites extends AsyncTask<Void, Void, Integer> {
 
     private Exception exception;
 
-    private List<Actualité> ActualitésList = new ArrayList<>();
+    private List<Actualite> ActualitésList = new ArrayList<>();
 
     public HttpGetActualites(int FluxId, ProgressionInterface progressionInterface) {
         this.progressionInterface = progressionInterface;
@@ -51,7 +51,7 @@ public class HttpGetActualites extends AsyncTask<Void, Void, Integer> {
                             .replace("IMF_VIGNETTEALAUNE", "IMF_LARGE");
 
                     ActualitésList.add(
-                            new Actualité(rssItem.getTitle(), rssItem.getLink(), description, image, FluxId)
+                            new Actualite(rssItem.getTitle(), rssItem.getLink(), description, image, FluxId)
                     );
                 }
                 break;
@@ -69,7 +69,7 @@ public class HttpGetActualites extends AsyncTask<Void, Void, Integer> {
                     String image = rssItem.getDescription().split("img src=\"")[1].split("\"")[0];
 
                     ActualitésList.add(
-                            new Actualité(rssItem.getTitle(), rssItem.getLink(), description, image, FluxId)
+                            new Actualite(rssItem.getTitle(), rssItem.getLink(), description, image, FluxId)
                     );
                 }
                 break;
@@ -86,7 +86,7 @@ public class HttpGetActualites extends AsyncTask<Void, Void, Integer> {
             progressionInterface.onDownloadFailed(exception);
     }
 
-    public List<Actualité> getResult() {
+    public List<Actualite> getResult() {
         return ActualitésList;
     }
 }

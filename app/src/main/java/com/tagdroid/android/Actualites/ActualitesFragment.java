@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import com.tagdroid.android.Page;
 import com.tagdroid.android.R;
-import com.tagdroid.tagapi.Actualites.Actualité;
+import com.tagdroid.tagapi.Actualites.Actualite;
 import com.tagdroid.tagapi.Actualites.Flux;
 import com.tagdroid.tagapi.Actualites.HttpGetActualites;
 import com.tagdroid.tagapi.ProgressionInterface;
@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ActualitesFragment extends Page implements ProgressionInterface, ActualitéAdapter.OnItemClickListener {
-    private List<Actualité> actualitésList;
+    private List<Actualite> actualitésList;
 
     private int RSSChannel;
     private ProgressDialog progression;
@@ -52,7 +52,7 @@ public class ActualitesFragment extends Page implements ProgressionInterface, Ac
         actuCardList.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         if (actualitésList == null) {
-            actuCardList.setAdapter(new ActualitéAdapter(new ArrayList<Actualité>(),getActivity()));
+            actuCardList.setAdapter(new ActualitéAdapter(new ArrayList<Actualite>(),getActivity()));
             httpGetActualites.execute();
         }
         return view;
@@ -100,7 +100,7 @@ public class ActualitesFragment extends Page implements ProgressionInterface, Ac
 
     @Override
     public void onDownloadFailed(Exception e) {
-        actuCardList.setAdapter(new ActualitéAdapter(new ArrayList<Actualité>(),getActivity()));
+        actuCardList.setAdapter(new ActualitéAdapter(new ArrayList<Actualite>(),getActivity()));
         getActivity().findViewById(R.id.noNews).setVisibility(View.VISIBLE);
         Toast.makeText(getActivity(), "Erreur de récupération :\n" + e.getLocalizedMessage(),
                 Toast.LENGTH_LONG).show();
@@ -143,7 +143,7 @@ public class ActualitesFragment extends Page implements ProgressionInterface, Ac
 
     @Override
     public void onItemClick(View view, int position) {
-        Actualité actualité = actualitésList.get(position);
+        Actualite actualité = actualitésList.get(position);
 
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
 

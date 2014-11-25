@@ -9,6 +9,8 @@ import com.tagdroid.tagapi.JSonApi.Transport.Line;
 
 import org.json.JSONException;
 
+import java.util.ArrayList;
+
 public class LinesDAO {
     public static final String TABLE_NAME = "Lines",
             ID = "Id", NUMBER = "Number", NAME = "Name", IS_ACTIVE = "IsActive", ORDER = "Order";
@@ -58,6 +60,17 @@ public class LinesDAO {
             return bdd.insert(TABLE_NAME, null, createValues(m));
     }
 
+    public ArrayList<Line> getAllLines() {
+        ArrayList<Line> allLines = new ArrayList<>();
+        Cursor cursor = bdd.query(TABLE_NAME, AllColumns, null, null, null, null, null);
+        if (cursor .moveToFirst())
+            while (!cursor.isAfterLast()) {
+                allLines.add(lineFromCursor(cursor));
+                cursor.moveToNext();
+            }
+        return allLines;
+    }
+
     private Cursor getLineCursor(long id) {
         return bdd.query(TABLE_NAME, AllColumns, ID + " = \"" + id + "\"", null, null, null, null);
     }
@@ -68,11 +81,7 @@ public class LinesDAO {
         return exists;
     }
 
-    public Line select(long id) throws JSONException {
-        Cursor c = getLineCursor(id);
-        if (!c.moveToFirst())
-            return null;
-
+    public Line lineFromCursor(Cursor c) {
         Line line = new Line(c.getLong(0),
                 c.getString(1),
                 c.getString(2),
@@ -82,4 +91,10 @@ public class LinesDAO {
         return line;
     }
 
+    public Line select(long id) throws JSONException {
+        Cursor c = getLineCursor(id);
+        if (!c.moveToFirst())
+            return null;
+        return lineFromCursor(c);
+    }
 }

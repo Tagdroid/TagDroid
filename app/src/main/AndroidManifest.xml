@@ -88,31 +88,5 @@
             android:name="com.google.android.gms.ads.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             />
-
-        <!--
-        <receiver android:name=".WidgetActivity">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="com.tagdroid.android.ACTION_SHOW_NEXT" />
-                <action android:name="com.tagdroid.android.ACTION_SHOW_PREVIOUS" />
-                <action android:name="com.tagdroid.android.ACTION_SHOW_CADRE" />
-                <action android:name="com.tagdroid.android.ACTION_SHOW_HEAD" />
-            </intent-filter>
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/widget_provider" />
-        </receiver>
-
-        --><!-- Configure activity --><!--
-        <activity android:name=".WidgetConfigure">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".WidgetDialogActivity"
-            android:noHistory="true"
-            android:theme="@android:style/Theme.Holo.Light.Dialog" />
-        -->
     </application>
 </manifest>
