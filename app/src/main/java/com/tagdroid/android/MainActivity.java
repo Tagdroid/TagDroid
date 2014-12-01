@@ -1,48 +1,43 @@
 package com.tagdroid.android;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.content.res.TypedArray;
 import android.net.Uri;
-import android.os.Bundle;
-import android.support.v4.widget.DrawerLayout;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v4.app.FragmentManager;
+import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
+import android.support.v4.widget.DrawerLayout;
 
 import com.arellomobile.android.push.BasePushMessageReceiver;
 import com.arellomobile.android.push.PushManager;
 import com.arellomobile.android.push.utils.RegisterBroadcastReceiver;
-import com.tagdroid.android.Drawer.CustomAdapter;
-import com.tagdroid.android.Pages.AboutFragment;
-import com.tagdroid.android.Actualites.ActualitesFragment;
-import com.tagdroid.android.Pages.LignesFragment;
-import com.tagdroid.android.Pages.MapFragment;
-import com.tagdroid.android.Pages.TraficInfosFragment;
+import com.tagdroid.android.Drawer.DrawerFragment;
+import com.tagdroid.android.Welcome.WelcomeActivity;
+import com.tagdroid.android.Pages.*;
+import com.tagdroid.android.Pages.Actualites.ActualitesFragment;
 
-public class MainActivity extends ActionBarActivity implements ChangeFragmentInterface{
-    private static DrawerLayout drawer;
-    private static ListView drawerList;
-    private ActionBarDrawerToggle mDrawerToggle;
-    private static Page activePage;
-    public static int actualPosition=-1;
-    private Toolbar toolbar;
+public class MainActivity extends ActionBarActivity implements DrawerFragment.DrawerCallbacks,
+        Page.ChangeFragmentInterface {
+
+    // Used to store the last screen title. For use in {@link #restoreActionBar()}.
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
+        Log.d("MainActivity", "onCreate");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        if ( !PreferenceManager.getDefaultSharedPreferences(this).getBoolean("AppAlreadyLaunched", false)) {
+            startActivity(new Intent(this, WelcomeActivity.class));
+            finish();
+            return;
+        }
+        Log.d("MainActivity", "setContentView");
+        setContentView(R.layout.main_activity);
 
         registerReceivers(); //Register receivers for push notifications
         PushManager pushManager = PushManager.getInstance(this);  //Create and start push manager
@@ -54,184 +49,88 @@ public class MainActivity extends ActionBarActivity implements ChangeFragmentInt
         pushManager.registerForPushNotifications(); //Register for push!
         checkMessage(getIntent());
 
-        initUI();
-        if (savedInstanceState == null) {
-            selectItem(1, false);
-        }
-        (new ChangeLog()).init(this, false);
+        Log.d("MainActivity", "setContentViewFinished");
 
+        /** Get the Toolbar as the Actionbar */
+        Log.d("mainactivity", "oncreateToolbar");
+        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+
+        /** Setup the Drawer */
+        DrawerFragment drawerFragment = (DrawerFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.left_drawer);
+        drawerFragment.setUp(findViewById(R.id.left_drawer),
+                (DrawerLayout) findViewById(R.id.drawer_layout));
+        new ChangeLog(this).showIfNewVersion(false);
     }
 
-    private void initUI() {
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        if (toolbar != null) {
-            setSupportActionBar(toolbar);
-        }
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setElevation(0); //Sinon shadow sous Android L
-
-
-        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawerList = (ListView) findViewById(R.id.drawer_list);
-
-        mDrawerToggle = new ActionBarDrawerToggle(this, drawer, R.string.app_name, R.string.app_name);
-        mDrawerToggle.setDrawerIndicatorEnabled(true);
-        drawer.setDrawerListener(mDrawerToggle);
-
-
-
-        // Set an OnMenuItemClickListener to handle menu item clicks
-        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-
-                return true;
-            }
-        });
-
-        initDrawer();
-
-
+    public void setFragmentTitle(String title) {
+        setTitle(title);
     }
 
-    private void initDrawer() {
-        CustomAdapter drawerAdapter = new CustomAdapter(this, 0);
-        Resources res = getResources();
-
-
-       drawerAdapter.newHeader(R.drawable.tag);
-        //Onglets principaux avec icones
-        TypedArray titlesArray = res.obtainTypedArray(R.array.drawer_items_titles);
-        TypedArray iconesArray = res.obtainTypedArray(R.array.drawer_items_icons);
-        for (int i = 0; i < titlesArray.length(); i++){
-            if(i==1) drawerAdapter.newSubItemIconCounter(titlesArray.getString(i),iconesArray.getResourceId(i, 0), 5);
-            else drawerAdapter.newSubItemIcon(titlesArray.getString(i),iconesArray.getResourceId(i, 0));
-        }
-
-        drawerAdapter.newDivider();
-
-        //Onglets secondaires sans icones
-        titlesArray = res.obtainTypedArray(R.array.drawer_items_plus_titles);
-        for (int i = 0; i < titlesArray.length(); i++)
-            drawerAdapter.newSubItem(titlesArray.getString(i));
-
-
-        drawerList.setAdapter(drawerAdapter);
-
-        drawerList.setOnItemClickListener(new ListView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                selectItem(position, actualPosition > 0);
-            }
-        });
-    }
     @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        mDrawerToggle.syncState();
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
     }
-
-
-    private void selectItem(int position, boolean isApplicationProgression) {
-        switch (position) {
-            case 0:
-                //Header
-                break;
-            case 1:
-                activePage = new LignesFragment();
-                break;
-            case 2:
-                //activePage = new FavorisFragment();
-                break;
-            case 3:
-                //activePage = new ProximiteFragment();
-                break;
-            case 4:
-                activePage = new MapFragment();
-                break;
-            case 5:
-                activePage = new TraficInfosFragment();
-                break;
-            case 6:
-                activePage = new ActualitesFragment();
-                break;
-            case 7:
-                //activePage = new TarifsFragment();
-                break;
-            case 8:
-                //divider
-                break;
-            case 9:
-                //activePage = new SettingsFragment();
-                break;
-            case 10:
-                activePage = new AboutFragment();
-                break;
-            case 11:
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.tagdroid.android")));
-                break;
-            default:
-                return;
-        }
-        // update selected item and title, then close the drawer
-
-
-
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction().replace(R.id.pager, activePage)
-                .setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.fade_in);
-        if (isApplicationProgression) {
-            transaction.addToBackStack("activePage");
-            Log.d("main","add to backstack " + actualPosition + " " + position);
-        }
-        actualPosition = position;
-        Log.d("Actual Position Fragment", actualPosition+"");
-        transaction.commit();
-
-        drawerList.setItemChecked(position, true);
-        drawer.closeDrawer(drawerList);
-        //
-    }
-
-    // Manages the ActionBar touches. TODO manage the fragment menu touches…
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        return mDrawerToggle.onOptionsItemSelected(item) || activePage.onOptionsItemSelected(item);
-    }
+        int id = item.getItemId();
 
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        mDrawerToggle.onConfigurationChanged(newConfig);
-    }
-
-
-
-    // Recreate the ActionBar : Title and menu (called on invalidate or onCreate)
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        if (drawer.isDrawerOpen(drawerList)) {
-            toolbar.setTitle(R.string.app_name);
-        } else {
-            toolbar.setTitle(getFragmentTitle());
-            toolbar.inflateMenu(getFragmentMenu());
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
         }
-        return super.onPrepareOptionsMenu(menu);
+
+        return super.onOptionsItemSelected(item);
     }
-    Integer getFragmentMenu() {
-        return activePage.getMenuId();
+
+    @Override
+    public void onDrawerItemSelected(int position) {
+        Page page;
+        switch (position) {
+            case  1: page = new LignesFragment();
+                break;
+            // case  2: page = new FavorisFragment();
+            //     break;
+            // case  3: page = new ProximiteFragment();
+            //     break;
+            // case  4: page = new MapFragment();
+            //     break;
+            // case  5: page = new TraficInfosFragment();
+            //     break;
+            case  6: page = new ActualitesFragment();
+                break;
+            // case  7: page = new TarifsFragment();
+            //     break;
+            case  8: return; //divider
+            // case  9: page = new SettingsFragment();
+            //     break;
+            case 10: page = new AboutFragment();
+                break;
+            case 11: startActivity(new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("market://details?id=com.tagdroid.android")));
+                return;
+            default:
+                return;
+        }
+
+        // update the main content by replacing fragments
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.pager, page).commit();
     }
-    String getFragmentTitle() {
-        return activePage.getTitle();
+
+    @Override
+    public void onDrawerOpenOrClose(boolean isOpen) {
+        if (!isOpen)
+            supportInvalidateOptionsMenu();
     }
 
     @Override
     public void onChangeFragment(Page actualPage) {
-        activePage = actualPage;
     }
+
 
     /************************************************/
     /***** PUSH NOTIFICATION PART with Pushwoosh ****/

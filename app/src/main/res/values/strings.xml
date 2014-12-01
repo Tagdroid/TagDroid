@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">TAGDroid</string>
+    <string name="authorName">Quentin DESBOIS</string>
+    <string name="author2Name">Félix PIÉDALLU</string>
+    <string name="collaboName">Alexandre LOUVRIER</string>
 
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Fermer le panneau</string>
@@ -128,5 +131,4 @@
     <string name="ns_menu_main_header2">Informations</string>
     <string name="ns_menu_reseau_header">Réseau</string>
     <string name="nonews">Pas d\'Actualités !</string>
-
 </resources>

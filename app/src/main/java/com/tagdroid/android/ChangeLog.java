@@ -6,72 +6,70 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.webkit.WebView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class ChangeLog {
     private static final String VERSIONNAME_KEY = "PREFS_VERSIONNAME_KEY";
-    private static final String EOCL = "END_OF_CHANGE_LOG";
     private static Context context;
+    private static boolean initialized = false;
+    private static String
+            oldVersionName,
+            nowVersionName;
+
     private boolean fullLog;
     private static Listmode listMode = Listmode.NONE;
-    private static StringBuffer changeLogString;
-    private static String oldVersionName, nowVersionName;
 
-    public void init(Context context, boolean fullLog) {
+    public ChangeLog(Context context) {
         ChangeLog.context = context;
-        this.fullLog = fullLog;
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-        oldVersionName = preferences.getString(VERSIONNAME_KEY, "");
-        try {
-            nowVersionName = context.getPackageManager().getPackageInfo(context.getPackageName(), 0)
-                    .versionName;
-        } catch (NameNotFoundException e) {
-            e.printStackTrace();
+        if (!initialized) {
+            // Si le Changelog n'est pas initialisé on va regarder si l'appli a changé de version
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+            oldVersionName = preferences.getString(VERSIONNAME_KEY, "NO_OLD_VERSION_NAME");
+            try {
+                nowVersionName = context.getPackageManager()
+                        .getPackageInfo(context.getPackageName(), 0).versionName;
+                // save new version number to preferences
+                preferences.edit().putString(VERSIONNAME_KEY, nowVersionName).apply();
+            } catch (NameNotFoundException e) {
+                e.printStackTrace();
+                nowVersionName = "NO_VERSION_NAME";
+            }
+            initialized = true;
         }
-        // save new version number to preferences
-        preferences.edit().putString(VERSIONNAME_KEY, nowVersionName).apply();
-
-        if (isAppNewerVersion())
-            getLogDialog().show();
+        Log.d("changelog", oldVersionName + " to " + nowVersionName);
     }
 
-    public void start(boolean fullLog) {
+    public void showIfNewVersion(boolean fullLog) {
+        if (isAppNewVersion())
+            show(fullLog);
+    }
+
+    public void show(boolean fullLog) {
         this.fullLog = fullLog;
         getLogDialog().show();
     }
 
-    private static boolean isAppNewerVersion() {
+    private static boolean isAppNewVersion() {
         return (!nowVersionName.equals(oldVersionName));
     }
 
-    private static boolean firstRunEver() {
-        return (oldVersionName.equals(""));
-    }
-
     private AlertDialog getLogDialog() {
-        return getDialog();
-    }
-
-
-    private AlertDialog getDialog() {
         WebView webView = new WebView(context);
-        webView.setBackgroundColor(0);
         webView.loadDataWithBaseURL(null, getLog(), "text/html", "UTF-8", null);
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle(context.getResources()
-                .getString(fullLog ? R.string.changelog_full_title : R.string.changelog_title))
+        AlertDialog.Builder builder = new AlertDialog.Builder(context)
+                .setTitle(context.getResources().getString(
+                        fullLog ? R.string.changelog_full_title : R.string.changelog_title))
                 .setView(webView)
-                .setCancelable(false)
                 .setPositiveButton(context.getResources().getString(R.string.changelog_ok_button),
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
+                                dialog.dismiss();
                             }
                         });
 
@@ -80,100 +78,102 @@ public class ChangeLog {
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             dialog.cancel();
-                            fullLog = true;
-                            getLogDialog().show();
+                            show(true);
                         }
                     });
         return builder.create();
     }
 
     private String getLog() {
-        changeLogString = new StringBuffer();
+        StringBuilder changeLogString = new StringBuilder();
         try {
-            InputStream ins = context.getResources().openRawResource(R.raw.changelog);
-            BufferedReader br = new BufferedReader(new InputStreamReader(ins));
-            String line;
-            boolean advanceToEOVS = false; // if true: ignore further version sections
-            while ((line = br.readLine()) != null) {
+            BufferedReader br = new BufferedReader(
+                    new InputStreamReader(context.getResources().openRawResource(R.raw.changelog)));
+            String line, content;
+            char marker;
+            boolean EndOfLog = false;
+            while (!EndOfLog && (line = br.readLine()) != null) {
                 line = line.trim();
-                char marker = line.length() > 0 ? line.charAt(0) : 0;
-                if (marker == '$') {
-                    // begin of a version section
-                    closeList();
-                    String version = line.substring(1).trim();
-                    // stop output?
-                    if (!fullLog)
-                        if (oldVersionName.equals(version))
-                            advanceToEOVS = true;
-                        else if (version.equals(EOCL))
-                            advanceToEOVS = false;
-
-                } else if (!advanceToEOVS) {
-                    switch (marker) {
-                        case '%':
-                            // line contains version title
-                            closeList();
-                            changeLogString.append("<div class='title'>").append(line.substring(1).trim()).append("</div>\n");
-                            break;
-                        case '_':
-                            // line contains version title
-                            closeList();
-                            changeLogString.append("<div class='subtitle'>").append(line.substring(1).trim()).append("</div>\n");
-                            break;
-                        case '!':
-                            // line contains free text
-                            closeList();
-                            changeLogString.append("<div class='freetext'>").append(line.substring(1).trim()).append("</div>\n");
-                            break;
-                        case '#':
-                            // line contains numbered list item
-                            openList(Listmode.ORDERED);
-                            changeLogString.append("<li>").append(line.substring(1).trim()).append("</li>\n");
-                            break;
-                        case '*':
-                            // line contains bullet list item
-                            openList(Listmode.UNORDERED);
-                            changeLogString.append("<li>").append(line.substring(1).trim()).append("</li>\n");
-                            break;
-                        default:
-                            // no special character: just use line as is
-                            closeList();
-                            changeLogString.append(line).append("\n");
-                    }
+                if (line.length()==0)
+                    continue;
+                marker = line.charAt(0);
+                content = line.substring(1).trim();
+                switch (marker) {
+                    case '$':
+                        String version = line.substring(1).trim();
+                        if (!fullLog && (
+                                version.equals(oldVersionName)) )
+                            EndOfLog = true;
+                        break;
+                    case '%': // line contains version title
+                        changeLogString.append(closeList())
+                                .append("<div class='title'>")
+                                .append(content).append("</div>\n");
+                        break;
+                    case '_': // line contains version description
+                        changeLogString.append(closeList())
+                                .append("<div class='subtitle'>")
+                                .append(content).append("</div>\n");
+                        break;
+                    case '!': // line contains free text
+                        changeLogString.append(closeList())
+                                .append("<div class='freetext'>")
+                                .append(content).append("</div>\n");
+                        break;
+                    case '#': // line contains numbered list item
+                        changeLogString.append(openList(Listmode.ORDERED))
+                                .append("<li>")
+                                .append(content).append("</li>\n");
+                        break;
+                    case '*': // line contains bullet list item
+                        changeLogString.append(openList(Listmode.UNORDERED))
+                                .append("<li>")
+                                .append(content).append("</li>\n");
+                        break;
+                    default: // no special character: just use line as is
+                        changeLogString.append(closeList())
+                                .append(line).append("\n");
                 }
             }
-            closeList();
+            changeLogString.append(closeList())
+                    .append("</body></html>");
             br.close();
+            return changeLogString.toString();
         } catch (IOException e) {
             e.printStackTrace();
+            return "";
         }
-        return changeLogString.toString();
     }
 
-    private static void openList(Listmode newListMode) {
-        if (listMode == newListMode)
-            return;
-        switch (listMode) {
+    private static String openList(Listmode newListMode) {
+        if (newListMode.equals(listMode) ||
+            newListMode.equals(Listmode.NONE))
+            return "";
+        String returnString = closeList().concat("<div class='list'>");
+        switch (newListMode) {
             case ORDERED:
-                changeLogString.append("<div class='list'><ol>\n");
+                returnString+="<ol>\n";
                 break;
             case UNORDERED:
-                changeLogString.append("<div class='list'><ul>\n");
+                returnString+="<ul>\n";
                 break;
         }
         listMode = newListMode;
+        return returnString;
     }
 
-    private static void closeList() {
+    private static String closeList() {
+        String returnString = "";
         switch (listMode) {
             case ORDERED:
-                changeLogString.append("</ol></div>\n");
+                returnString = "</ol></div>\n";
                 break;
             case UNORDERED:
-                changeLogString.append("</ul></div>\n");
+                returnString = "</ul></div>\n";
                 break;
         }
         listMode = Listmode.NONE;
+        return returnString;
     }
 
     private static enum Listmode {

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,15 +23,17 @@ public class AboutFragment extends Page implements View.OnClickListener {
 
     @Override
     public Integer getMenuId() {
-        return R.menu.menu_about;
+        return null;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Log.d("page", "onCreateView");
         View view = inflater.inflate(R.layout.fragment_about, container, false);
         view.findViewById(R.id.showlog).setOnClickListener(this);
         view.findViewById(R.id.websiteQuentin).setOnClickListener(this);
         view.findViewById(R.id.mailQuentin).setOnClickListener(this);
+        view.findViewById(R.id.websiteFélix).setOnClickListener(this);
         view.findViewById(R.id.mailFélix).setOnClickListener(this);
 
         try {
@@ -49,7 +52,7 @@ public class AboutFragment extends Page implements View.OnClickListener {
 
         switch (v.getId()) {
             case R.id.showlog:
-                (new ChangeLog()).start(false);
+                (new ChangeLog(getActivity())).show(true);
                 break;
             case R.id.websiteQuentin:
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.quentindesbois.fr")));
@@ -58,12 +61,12 @@ public class AboutFragment extends Page implements View.OnClickListener {
                 intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"tagdroid.grenoble@gmail.com"});
                 startActivity(Intent.createChooser(intent, getResources().getString(R.string.mail)));
                 break;
+            case R.id.websiteFélix:
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://84.100.10.90")));
+                break;
             case R.id.mailFélix:
                 intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"felix@piedallu.me"});
                 startActivity(Intent.createChooser(intent, getResources().getString(R.string.mail)));
-                break;
-            case R.id.mailAlexandre:
-                Toast.makeText(getActivity(), "Alexandre n'a pas donné son adresse mail !", Toast.LENGTH_SHORT).show();
                 break;
             default:
                 break;

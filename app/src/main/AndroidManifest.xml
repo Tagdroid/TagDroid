@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tagdroid.android" >
 
@@ -5,7 +6,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-    <!-- Internet access and status-->
+    <!-- Internet access and status -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -15,78 +16,78 @@
     <uses-permission android:name="android.permission.ACCESS_GPS" />
     <uses-permission android:name="android.permission.LOCATION" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
-    <uses-feature android:glEsVersion="0x00020000" android:required="true" />
-    <permission android:name="com.tagdroid.android.permission.MAPS_RECEIVE" android:protectionLevel="signature" />
+    <uses-feature android:glEsVersion="0x00020000" 
+        android:required="true" />
+    <permission android:name="com.tagdroid.android.permission.MAPS_RECEIVE" 
+        android:protectionLevel="signature" />
+
     <uses-permission android:name="com.tagdroid.android.permission.MAPS_RECEIVE" />
 
     <!-- Push Notification Access -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <permission android:name="com.tagdroid.android.permission.C2D_MESSAGE" android:protectionLevel="signature" />
+    <permission android:name="com.tagdroid.android.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
     <uses-permission android:name="com.tagdroid.android.permission.C2D_MESSAGE" />
-    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 
     <application
         android:allowBackup="true"
         android:description="@string/about_description"
         android:icon="@drawable/ic_launcher_beta"
         android:label="@string/app_name"
-        android:theme="@style/TagDroidTheme">
+        android:theme="@style/TagDroidTheme" >
 
         <!-- Service Google Map V2 -->
-        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
-        <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyDv3wzyAx55KoZQ_Fr8LkaZz4mB-BR6xRw" />
-        <!--  KEY DEBUG : AIzaSyDv3wzyAx55KoZQ_Fr8LkaZz4mB-BR6xRw -->
-        <!--  KEY RELEASE : AIzaSyCOZNvHGe849GZz7f5jRcLG1gBszLSUfMw -->
+        <meta-data android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data android:name="com.google.android.maps.v2.API_KEY" 
+            android:value="AIzaSyDv3wzyAx55KoZQ_Fr8LkaZz4mB-BR6xRw" />
+        <!-- KEY DEBUG : AIzaSyDv3wzyAx55KoZQ_Fr8LkaZz4mB-BR6xRw -->
+        <!-- KEY RELEASE : AIzaSyCOZNvHGe849GZz7f5jRcLG1gBszLSUfMw -->
 
         <!-- Search VIEW -->
         <meta-data android:name="android.app.searchable" android:resource="@xml/searchable" />
 
-        <!--<uses-library android:name="com.google.android.maps" android:required="true" />-->
+        <!--<uses-library android:name="com.google.android.maps"
+            android:required="true" />-->
 
-        <meta-data android:name="PW_APPID" android:value="B1218-30CD2" />
-        <meta-data android:name="PW_PROJECT_ID" android:value="A312151031009" />
+        <meta-data android:name="PW_APPID"
+            android:value="B1218-30CD2" />
+        <meta-data android:name="PW_PROJECT_ID"
+            android:value="A312151031009" />
 
-        <activity android:name="com.arellomobile.android.push.PushWebview"/>
-        <activity android:name="com.arellomobile.android.push.MessageActivity"/>
-        <activity android:name="com.arellomobile.android.push.PushHandlerActivity"/>
+        <activity android:name="com.arellomobile.android.push.PushWebview" />
+        <activity android:name="com.arellomobile.android.push.MessageActivity" />
+        <activity android:name="com.arellomobile.android.push.PushHandlerActivity" />
+
         <receiver
             android:name="com.google.android.gcm.GCMBroadcastReceiver"
-            android:permission="com.google.android.c2dm.permission.SEND">
+            android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>
+
                 <!-- Receives the actual messages. -->
-                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
                 <!-- Receives the registration id. -->
-                <action android:name="com.google.android.c2dm.intent.REGISTRATION"/>
-                <category android:name="PACKAGE_NAME"/>
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+                <category android:name="PACKAGE_NAME" />
             </intent-filter>
         </receiver>
-        <service android:name="com.arellomobile.android.push.PushGCMIntentService"/>
 
-
-
+        <service android:name="com.arellomobile.android.push.PushGCMIntentService" />
 
         <activity
-            android:label="@string/app_name"
-            android:name="com.tagdroid.android.Welcome.WelcomeActivity"
-            android:theme="@style/TagDroidTheme.Welcome"
-            android:noHistory="true">
-            <intent-filter>
-                <action android:name="com.tagdroid.android.MESSAGE"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
+            android:name="com.tagdroid.android.MainActivity"
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.tagdroid.android.MainActivity"
-            />
-        <activity
-            android:name="com.google.android.gms.ads.AdActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
-            />
+
+        <activity android:name="com.tagdroid.android.Welcome.WelcomeActivity" >
+        </activity>
     </application>
 </manifest>

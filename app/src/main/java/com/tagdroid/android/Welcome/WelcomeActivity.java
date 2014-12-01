@@ -1,9 +1,12 @@
 package com.tagdroid.android.Welcome;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -19,8 +22,8 @@ import android.widget.Toast;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.tagdroid.android.MainActivity;
 import com.tagdroid.android.R;
-import com.tagdroid.tagapi.HttpGet.HttpGetLinesList;
-import com.tagdroid.tagapi.JSon2SQL.ReadJSonLinesList;
+import com.tagdroid.tagapi.HttpGet.HttpGetLineStops;
+import com.tagdroid.tagapi.JSon2SQL.ReadJSonLineStops;
 import com.tagdroid.tagapi.ProgressionInterface;
 import com.viewpagerindicator.CirclePageIndicator;
 import com.viewpagerindicator.PageIndicator;
@@ -54,7 +57,7 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
                 startActivity(new Intent(this, MainActivity.class));
                 finish();
             } else {
-                setContentView(R.layout.activity_welcome);
+                setContentView(R.layout.welcome_activity);
                 startWaitingScreen();
             }
         } else {
@@ -63,13 +66,16 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
         }
     }
 
+
+
     private void startWaitingScreen() {
         if (!db_downloading)
             startDownloadTask();
     }
 
+    @SuppressLint("WrongViewCast")
     public void startWelcomeScreen() {
-        setContentView(R.layout.activity_welcome);
+        setContentView(R.layout.welcome_activity);
 
         /*if (Build.VERSION.SDK_INT >= 14) {
             getActionBar().setIcon(R.drawable.tag);
@@ -77,7 +83,7 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
         } else getActionBar().setTitle(R.string.welcome_bienvenue);*/
 
         WelcomeAdapter mAdapter = new WelcomeAdapter(getSupportFragmentManager());
-        mPager = (ViewPager)findViewById(R.id.pager);
+        mPager = (ViewPager) findViewById(R.id.pager);
         mPager.setAdapter(mAdapter);
         CirclePageIndicator indicator = (CirclePageIndicator)findViewById(R.id.indicator);
         mIndicator = indicator;
@@ -115,11 +121,11 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
                     .setIcon(R.drawable.ic_report)
                     .show();
         } else {
-            HttpGetLinesList httpGetLinesList = new HttpGetLinesList(this);
+            //HttpGetLinesList httpGetLinesList = new HttpGetLinesList(this);
             Log.d("Welcome Status", "Start of Downloading database");
             //httpGetLinesList.setProgressBar((ProgressBar) findViewById(R.id.loadJSON_bar));
-            httpGetLinesList.execute();
-            //new HttpGetLineStops(27, 1, this).execute();
+            //httpGetLinesList.execute();
+            new HttpGetLineStops(27, 1, this).execute();
             db_downloading = true;
         }
     }
@@ -150,10 +156,10 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
     }
 
     private void readJSon(String jsonQueryResult) {
-        ReadJSonLinesList readJSonLinesList = new ReadJSonLinesList(jsonQueryResult, this, this);
+        //ReadJSonLinesList readJSonLinesList = new ReadJSonLinesList(jsonQueryResult, this, this);
         //readJSonLinesList.setProgressBar((ProgressBar) findViewById(R.id.parseJSON_bar));
-        readJSonLinesList.execute();
-        //new ReadJSonLineStops(jsonQueryResult, 27, 1, this, this).execute();
+        //readJSonLinesList.execute();
+        new ReadJSonLineStops(jsonQueryResult, 27, 1, this, this).execute();
     }
 
     public void onDownloadStart() {
@@ -199,8 +205,22 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
     }
 
     public class WelcomeAdapter extends FragmentStatePagerAdapter {
+        private int[] colors;
+        private TypedArray images;
+        private String[] titles;
+        private String[] descrs;
+
         public WelcomeAdapter(FragmentManager fm) {
             super(fm);
+            setItems();
+        }
+
+        private void setItems() {
+            Resources res = getResources();
+            colors = res.getIntArray(R.array.welcome_colors);
+            images = res.obtainTypedArray(R.array.welcome_images);
+            titles = res.getStringArray(R.array.welcome_titles);
+            descrs = res.getStringArray(R.array.welcome_descriptions);
         }
 
         @Override
@@ -213,6 +233,10 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
             WelcomeFragment fragment = new WelcomeFragment();
             Bundle args = new Bundle();
             args.putInt("position", position);
+            args.putInt("color",    colors[position]);
+            args.putInt("image",    images.getResourceId(position, -1));
+            args.putString("title", titles[position]);
+            args.putString("descr", descrs[position]);
             fragment.setArguments(args);
             return fragment;
         }

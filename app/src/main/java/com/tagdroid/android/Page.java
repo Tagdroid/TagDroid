@@ -1,7 +1,8 @@
 package com.tagdroid.android;
 
 import android.app.Activity;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
+import android.util.Log;
 
 public abstract class Page extends Fragment {
     public abstract String  getTitle();
@@ -11,14 +12,17 @@ public abstract class Page extends Fragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        // This makes sure that the container activity has implemented
-        // the callback interface. If not, it throws an exception
+        Log.d("page", "onAttach");
         try {
             changeFragmentInterface = (ChangeFragmentInterface) activity;
         } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString()
                     + " must implement OnHeadlineSelectedListener");
         }
+        ((MainActivity) activity).setFragmentTitle(getTitle());
     }
 
+    public interface ChangeFragmentInterface {
+        void onChangeFragment(Page actualPage);
+    }
 }

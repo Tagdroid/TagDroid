@@ -16,7 +16,7 @@ public class TarifsFragment extends Page {
 
     @Override
     public Integer getMenuId() {
-        return R.menu.menu_about;
+        return null;
     }
 
     @Override
