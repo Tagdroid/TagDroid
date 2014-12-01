@@ -8,7 +8,7 @@ public class Flux {
             "http://www.tag.fr/rss_evenement.php",
             "http://www.smtc-grenoble.org/actualites-rss"
     };
-    private final static String[] RSSNAMES ={
+    private final static String[] RSSNAMES = {
             "TAG",
             "SMTC"
     };

@@ -1,7 +1,6 @@
 package com.tagdroid.tagapi.Actualites;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 import com.tagdroid.tagapi.ProgressionInterface;
 import com.tagdroid.tagapi.RssReader.RssFeed;
@@ -44,7 +43,7 @@ public class HttpGetActualites extends AsyncTask<Void, Void, Integer> {
         switch (FluxId) {
             case 0:
                 for (RssItem rssItem : rssFeed.getRssItems()) {
-                    String[] descriptions = rssItem.getDescription().split("> ");
+                    String[] descriptions = rssItem.getDescription().split(">");
                     String description = descriptions[1];
                     String image = "http://www.tag.fr"
                             +descriptions[0].split("src=\"")[1].split("\"")[0]
@@ -57,14 +56,16 @@ public class HttpGetActualites extends AsyncTask<Void, Void, Integer> {
                 break;
             case 1:
                 for (RssItem rssItem : rssFeed.getRssItems()) {
-                    String description = rssItem.getDescription()
-                            .split("<span[^>]*>")[1]
-                            .split("</span")[0]
+                    String description = rssItem.getDescription();
+                    //Log.d("description ", description);
+                    /*description = description
+                            .split("<span")[1]
+                            .split("&lt;/span")[0]
                             .replace("<em>", "").replace("</em>", "")
                             .replace("<strong>", "").replace("</strong>", "")
                             .replace("<br />", "\n")
                             .replace("<span style=\"font-size:12px;\">", "").replace("</span>", "")
-                            .replace("</p>", "");
+                            .replace("</p>", "");*/
 
                     String image = rssItem.getDescription().split("img src=\"")[1].split("\"")[0];
 
@@ -74,7 +75,6 @@ public class HttpGetActualites extends AsyncTask<Void, Void, Integer> {
                 }
                 break;
         }
-        Log.d("auie", "parsing done " + FluxId);
         return FluxId;
     }
 
