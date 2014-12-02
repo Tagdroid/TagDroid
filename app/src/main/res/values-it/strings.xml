@@ -124,13 +124,6 @@
 	<string name="welcome_texte4">In caso di problemi, non esitate a e-mail.</string>
 	<string name="welcome_texte5">l\'applicazione presenta un menù scorrevole in parte sinistra dell\'interfaccia. Scorrere verso destra per visualizzare o fare clic sul pulsante del menu in alto a sinistra.</string>
 	<string name="welcome_texte6">Aggiungi le tue stazioni preferite ...</string>
-	<string name="welcome_texte7">e trovare rapidamente in questa sezione.</string>
-	<string name="welcome_texte8">Osservare le stazioni più vicine della vostra posizione.</string>
-	<string name="welcome_texte9">Navigando mappa di Grenoble e direttamente selezionare la stazione da consultare.</string>
-	<string name="welcome_texte10">È anche possibile scaricare il file pdf mappa di linee. Questa mappa soggiorno salvato nella cache di dati, in modo da poter consultare offline.</string>
-	<string name="welcome_texte11">Ora, i segnalibri di visualizzazione direttamente sul tuo desktop grazie al nuovo widget.</string>
-	<string name="welcome_texte12">Scopri troppo sezioni \ "Rapporto sul traffico \", \ "News \" e \ "Trasporti Ticket \" permettete di essere meglio informati sulla rete di TAG.</string>
-	<string name="welcome_texte13">Non esitate a valutare questa applicazione su Google Play Store. In qualche modo, state contribuendo al suo sviluppo.</string>
-	<string name="welcome_texte14">Ok, tu sai tutto di. È possibile premere il tasto verde!</string>
+
     <string name="allons_y">Allons-y !</string>
 </resources>

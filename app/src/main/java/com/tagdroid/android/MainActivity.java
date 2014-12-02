@@ -1,5 +1,6 @@
 package com.tagdroid.android;
 
+
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
@@ -25,20 +26,23 @@ import android.widget.ListView;
 import com.arellomobile.android.push.BasePushMessageReceiver;
 import com.arellomobile.android.push.PushManager;
 import com.arellomobile.android.push.utils.RegisterBroadcastReceiver;
+import com.tagdroid.android.Actualites.ActualitesFragment;
 import com.tagdroid.android.Drawer.CustomAdapter;
 import com.tagdroid.android.Pages.AboutFragment;
-import com.tagdroid.android.Actualites.ActualitesFragment;
 import com.tagdroid.android.Pages.LignesFragment;
 import com.tagdroid.android.Pages.MapFragment;
+import com.tagdroid.android.Pages.TarifsFragment;
 import com.tagdroid.android.Pages.TraficInfosFragment;
 
 public class MainActivity extends ActionBarActivity implements ChangeFragmentInterface{
     private static DrawerLayout drawer;
     private static ListView drawerList;
     private ActionBarDrawerToggle mDrawerToggle;
+    private Toolbar toolbar;
+
     private static Page activePage;
     public static int actualPosition=-1;
-    private Toolbar toolbar;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,19 +67,18 @@ public class MainActivity extends ActionBarActivity implements ChangeFragmentInt
     }
 
     private void initUI() {
+        /**** TOOLBAR ****/
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        if (toolbar != null) {
-            setSupportActionBar(toolbar);
-        }
-
+        if (toolbar != null) {setSupportActionBar(toolbar);}
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setElevation(0); //Sinon shadow sous Android L
 
 
+
+        /**** SIDE NAV ****/
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerList = (ListView) findViewById(R.id.drawer_list);
-
         mDrawerToggle = new ActionBarDrawerToggle(this, drawer, R.string.app_name, R.string.app_name);
         mDrawerToggle.setDrawerIndicatorEnabled(true);
         drawer.setDrawerListener(mDrawerToggle);
@@ -158,7 +161,7 @@ public class MainActivity extends ActionBarActivity implements ChangeFragmentInt
                 activePage = new ActualitesFragment();
                 break;
             case 7:
-                //activePage = new TarifsFragment();
+                activePage = new TarifsFragment();
                 break;
             case 8:
                 //divider
@@ -328,3 +331,6 @@ public class MainActivity extends ActionBarActivity implements ChangeFragmentInt
         checkMessage(intent);
     }
 }
+
+
+

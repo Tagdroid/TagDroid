@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pass_situation"
+                android:id="@+id/textView3"
+                android:layout_marginBottom="10dp"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                card_view:cardCornerRadius="4dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:padding="10dp">
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spinner2"
+                    android:layout_margin="10dp"
+                    android:entries="@array/pass_situation"
+                    android:focusable="true" />
+
+            </android.support.v7.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pass_qf"
+                android:id="@+id/textView8"
+                android:layout_marginBottom="10dp"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                card_view:cardCornerRadius="4dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+                android:padding="10dp">
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spinner3"
+                    android:layout_margin="10dp"
+                    android:entries="@array/pass_qf" />
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/pass_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                card_view:cardCornerRadius="4dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:padding="10dp">
+
+                <LinearLayout
+                    android:id="@+id/card_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="PASS MENTHE"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_margin="20dp"
+                        android:id="@+id/title_pass"
+                        android:textStyle="bold" />
+
+                    </LinearLayout>
+
+
+            </android.support.v7.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.CardView
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    card_view:cardCornerRadius="4dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:padding="10dp"
+                    android:layout_marginRight="10dp">
+
+                    <LinearLayout
+                        android:id="@+id/card_layout1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Mensuel"
+                            android:layout_margin="10dp"
+                            android:layout_gravity="center_horizontal"
+                            android:id="@+id/pass_mensuel" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Medium Text"
+                            android:id="@+id/pass_mensuel_prix"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
+                            android:layout_gravity="center_horizontal" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Medium Text"
+                            android:id="@+id/pass_mensuel_bonus"
+                            android:layout_gravity="center_horizontal"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    card_view:cardCornerRadius="4dp"
+                    android:layout_gravity="center"
+                    android:padding="10dp"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:id="@+id/card_layout2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Annuel"
+                            android:layout_margin="10dp"
+                            android:layout_gravity="center_horizontal"
+                            android:id="@+id/pass_annuel" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Large Text"
+                            android:id="@+id/pass_annuel_prix"
+                            android:layout_gravity="center_horizontal"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Medium Text"
+                            android:id="@+id/pass_annuel_bonus"
+                            android:layout_gravity="center_horizontal"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

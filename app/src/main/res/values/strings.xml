@@ -74,16 +74,24 @@
     <string name="changelog_title">Mises à jour :</string>
     <string name="changelog_show_full">Plus…</string>
 
-    <!-- Titres de transports -->
-    <string name="combines_choose">Choisissez votre combiné :</string>
-    <string name="tickets_choose">Choisissez votre ticket :</string>
-    <string name="pass_situation">Votre situation :</string>
-    <string name="pass_qf">Votre Quotient Familial (QF) :</string>
-    <string name="pass_mensuel">Mensuel</string>
-    <string name="pass_annuel">Annuel</string>
-    <string name="pass_2mois">2 mois offerts</string>
-    <string name="pass_4mois">4 mois offerts</string>
-    <string name="newtarif">Nouveaux tarifs depuis le 1er Septembre 2013</string>
+    <!-- Tarifs -->
+        <!-- Tickets -->
+        <string name="tickets_choose">Choisissez votre ticket :</string>
+
+
+        <!-- Abonnements -->
+        <string name="pass_situation">Votre situation :</string>
+        <string name="pass_qf">Votre Quotient Familial (QF) :</string>
+        <string name="pass_mensuel">Mensuel</string>
+        <string name="pass_annuel">Annuel</string>
+        <string name="pass_2mois">2 mois offerts</string>
+        <string name="pass_4mois">4 mois offerts</string>
+
+        <!-- Combinés -->
+        <string name="combines_choose">Choisissez votre combiné :</string>
+
+
+
     <string name="cannelle">Circulez librement entre 8h30 et 17h30 du lundi au samedi et toute la journée les dimanches et jours fériés.</string>
     <string name="soleil">Offre réservée aux salariés des entreprises engagées dans une démarche de Plan de Déplacements Entreprise. Renseignez-vous auprès de votre employeur !</string>
 
@@ -116,7 +124,6 @@
     <string name="welcome_texte6">TAGdroid est une application gratuite sans aucune affiliation avec la SemiTAG, TAG et SMTC.\n\nEn cas de problème, n\'hesitez pas à envoyer un email.</string>
     <string name="allons_y">Allons-y !</string>
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="drawer_item_actualites">Actualités</string>
     <string name="drawer_item_favoris">Favoris</string>
     <string name="drawer_item_plan">Plan</string>
