@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="welcome_colors">
+        <item>#cdfcea</item>
+        <item>#fffddf</item>
+        <item>#b0e3f9</item>
+        <item>#fec2e4</item>
+        <item>#c0d9fb</item>
+        <item>#c2ffdc</item>
+    </array>
+    <array name="welcome_images">
+        <item>@drawable/welcome1</item>
+        <item>@drawable/welcome2</item>
+        <item>@drawable/welcome3</item>
+        <item>@drawable/welcome4</item>
+        <item>@drawable/welcome5</item>
+        <item>@drawable/welcome6</item>
+    </array>
+    <array name="welcome_titles">
+        <item>@string/welcome_bienvenue</item>
+        <item>@string/welcome_horaires</item>
+        <item>@string/welcome_plan</item>
+        <item>@string/welcome_trafic</item>
+        <item>@string/welcome_tarifs</item>
+        <item>@string/welcome_ok</item>
+    </array>
+    <array name="welcome_descriptions">
+        <item>@string/welcome_texte1</item>
+        <item>@string/welcome_texte2</item>
+        <item>@string/welcome_texte3</item>
+        <item>@string/welcome_texte4</item>
+        <item>@string/welcome_texte5</item>
+        <item>@string/welcome_texte6</item>
+    </array>
+</resources>

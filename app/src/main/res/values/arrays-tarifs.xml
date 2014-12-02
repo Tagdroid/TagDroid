@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="ticket_title">
+        <item>1 voyage</item>
+        <item>10 voyages</item>
+        <item>10 voyages (tarif réduit)</item>
+        <item>10 voyages (tarif groupe)</item>
+        <item>30 voyages</item>
+        <item>Tribu</item>
+        <item>Visitag 1 jour</item>
+        <item>Visitag 3 jours</item>
+        <item>Parking + Relais</item>
+    </array>
+
+    <array name="ticket_text">
+        <item>Titre disponible en agences de mobilité, points services, distributeurs, Relais TAG et sur la boutique en ligne.\n\nVoyage valable une heure, correspondances et retour autorisés.\n\nLe dernier trajet en correspondance doit débuter avant la fin de l\'heure.</item>
+        <item>Titre disponible en agences de mobilité, Points services, distributeurs, Relais TAG et sur la boutique en ligne.\n\nChaque voyage est valable une heure, correspondances et retour autorisés.\n\nLe dernier trajet en correspondance doit débuter avant la fin de l\'heure.\n\nPossibilité de voyager à plusieurs avec le même titre qui doit être validé autant de fois que de personne.</item>
+        <item>Invalidité, famille nombreuse ou +65 ans (sur présentation de la carte Famille nombreuse de couleur bleue ou sur présentation de la carte d\'invalidité ou carte d\'identité).\n\nChaque voyage est valable une heure, correspondances et retour autorisés.\n\nLe dernier trajet en correspondance doit débuter avant la fin de l\'heure.\n\nVous avez la possibilité de voyager à plusieurs avec la même carte qui doit être validée autant de fois que de personnes.\n\nToutes les personnes bénéficiant du tarif réduit doivent être munies de leur justificatif.\n\nTitre disponible en agences de mobilité, Points services, distributeurs, Relais TAG et sur la boutique en ligne.</item>
+        <item>Ticket réservé aux groupes de 10 à 30 personnes, munis d\'une autorisation de déplacement demandée 48h avant à Allo TAG, à présenter en cas de contrôle.\n\nAccès pendant 1 heure à l\'ensemble du réseau aux heures suivantes :\n\tles lundis, mardis, jeudis et vendredis de 9h à 16h30\n\tles mercredis et samedis à partir de 9h\n\tles dimanches, jours fériés et pendant les vacances scolaires toute la journée.\n\nCorrespondances et retour autorisés.\n\nCe titre doit être validé autant de fois que de personnes.\n\nLe ticket 10 voyages tarif groupe est uniquement vendu en agences de mobilité.</item>
+        <item>3 cartes de 10 voyages.\n\nTitre disponible en agences de mobilité, Points services, distributeurs, Relais TAG et sur la boutique en ligne.\n\nChaque voyage est valable une heure, correspondances et retour autorisés.\n\nLe dernier trajet en correspondance doit débuter avant la fin de l\'heure.\n\nPossibilité de voyager à plusieurs avec le même titre qui doit être validé autant de fois que de personnes.</item>
+        <item>Valable pendant 1 jour calendaire, sur l\'ensemble du réseau pour une famille de 2 à 5 personnes, circulant obligatoirement ensemble (une famille correspond à 1 adulte accompagné de 1, 2, 3, 4 enfants ou 2 adultes accompagnés de 1, 2 ou 3 enfants. Les enfants doivent être âgés de moins de 18 ans).\n\nTitre disponible en agences de mobilité, Points services, distributeurs et Relais TAG.</item>
+        <item>Titre disponible en agences de mobilité, Points services, distributeurs et sur la boutique en ligne.\n\nElle vous permet la libre circulation pendant un jour sur tout le réseau.</item>
+        <item>Titre disponible en agences de mobilité, Points services, distributeurs et sur la boutique en ligne.\n\nElle vous permet la libre circulation pendant trois jours calendaires sur tout le réseau après la première validation.</item>
+        <item>les P+R sont accessibles tous les jours de 4h30 à 1h30 (sauf Grand Sablon et Vallier - Catane : de 7h à 20h) et gratuits pour les voyageurs munis d’un titre de transport TAG ou d’un abonnement Métrovélo "consigne".\n\nSi vous ne disposez pas de titre de transport TAG, veuillez vous adresser à l\’agent de surveillance (dans les P+R gardiennés) qui dispose du titre à l\’unité à 1€50 (valable 1 heure en correspondance) ou du titre Tribu à 5€ (libre circulation pour 5 personnes voyageant ensemble, soit 2 adultes + 1 à 3 enfants de moins de 18 ans ou 1 adulte + 1 à 4 enfants de moins de 18 ans).</item>
+    </array>
+    <array name="ticket_prix">
+        <item>1,50 €</item>
+        <item>13,40 €</item>
+        <item>9,20 €</item>
+        <item>9,20 €</item>
+        <item>36,50 €</item>
+        <item>5,00 €</item>
+        <item>5,00 €</item>
+        <item>12,00 €</item>
+        <item>12,00 €</item>
+    </array>
+    <array name="ticket_prix_bis">
+        <item>* Attention, le coût d\'un ticket à bord d\'un bus est majoré à 2 €</item>
+        <item>Economisez 1,60 € par rapport à l\'achat de 10 tickets "1 voyage"</item>
+        <item></item>
+        <item></item>
+        <item>Economisez 3,70 € par rapport à l\'achat de 3 tickets "10 voyages" et 8,50 € par rapport à l\'achat de 30 tickets "1 voyage".</item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item>* Attention, le coût d\'un ticket à bord d\'un bus est majoré à 2 €</item>
+    </array>
+
+    <array name="pass_situation">
+        <item>4 à 18 ans</item>
+        <item>19 à 25 ans</item>
+        <item>26 à 64 ans</item>
+        <item>+ de 65 ans</item>
+        <item>+ de 75 ans</item>
+        <item>Invalides à 80%</item>
+    </array>
+
+    <array name="pass_qf">
+        <item>Aucun</item>
+        <item>0 à 400 € (Pastel 1)</item>
+        <item>401 à 485 € (Pastel 2)</item>
+        <item>486 à 570 € (Pastel 3)</item>
+        <item>571 à 640 € (Pastel 4)</item>
+    </array>
+
+    <array name="pass_mensuel_prix">
+        <item>17,40 €</item>
+        <item>27,10 €</item>
+        <item>49,90 €</item>
+        <item>27,70 €</item>
+        <item>GRAUIT</item>
+        <item>27,70 €</item>
+    </array>
+
+    <array name="pass_mensuel_prix_pastel">
+        <item></item>
+        <item>2,50 €</item>
+        <item>9,80 €</item>
+        <item>14,80 €</item>
+        <item>19,70 €</item>
+    </array>
+
+    <array name="pass_mensuel_bonus">
+        <item></item>
+        <item>soit 30 €/an</item>
+        <item>soit 117,60 €/an</item>
+        <item>soit 177,60 €/an</item>
+        <item>soit 236,40 €/an</item>
+    </array>
+
+    <array name="pass_annuel_prix">
+        <item>174,00 €</item>
+        <item>216,80 €</item>
+        <item>499,00 €</item>
+        <item>221,60 €</item>
+        <item>GRATUIT</item>
+        <item>221,60 €</item>
+    </array>
+
+    <array name="pass_annuel_bonus">
+        <item>2 mois offerts</item>
+        <item>4 mois offerts</item>
+        <item>2 mois offerts</item>
+        <item>4 mois offerts</item>
+        <item></item>
+        <item>4 mois offerts</item>
+    </array>
+
+    <array name="combines_title">
+        <item>TAG + Cité lib</item>
+        <item>TER + TAG (+ TCL)</item>
+        <item>TAG + Transisère</item>
+        <item>TAG + Métrovélo</item>
+    </array>
+
+    <array name="combines_image">
+        <item>@drawable/citelib</item>
+        <item>@drawable/ter</item>
+        <item>@drawable/transisere</item>
+        <item>@drawable/metrovelo</item>
+    </array>
+
+    <array name="combines_text">
+        <item>Si vous êtes abonné annuel TAG, bénéficiez de 40\%% de réduction sur l’abonnement annuel Cité lib et de 15\%% de réduction sur votre Pass’ TAG.</item>
+        <item>Les abonnements mensuels disponibles sur carte OuRA! vous permettent de circuler librement sur le réseau TAG et sur un trajet TER dont la gare d’origine
+            ou de destination se situe dans la limite des gares de Saint-Égrève, Grenoble, Échirolles, Pont-de-Claix et Gières Universités.\n\n Les abonnements mensuels
+            TER + TAG + TCL* offrent la libre circulation sur les réseaux urbains de Grenoble et Lyon. Pour les gares de Vif, Jarrie-Vizille et Saint-Georges -de-Commiers :
+            abonnements TER+TAG à tarif réduit.</item>
+        <item>3 formules Transisère donnent accès aux lignes départementales iséroises et à la libre circulation sur le réseau TAG : Pass’ 1 jour, Pass’Mensuel
+            et Pass’Annuel incluant la zone A.\n\nCirculez librement sur les lignes Transisère à l’intérieur de l’agglomération grenobloise avec un titre TAG.</item>
+        <item>Abonnés annuels TAG (+ de 16 ans), bénéficiez de 200 h/an offertes au service de location en MétrovéloBox ainsi que de tarifs réduits sur les services Métrovélo.</item>
+    </array>
+
+    <array name="combines_text_gras">
+        <item>Souscription en agences de Mobilité</item>
+        <item>Souscription en gare SNCF et rechargement en agences de Mobilité</item>
+        <item>Souscription en agences de Mobilité</item>
+        <item>Souscription en agences de Mobilité et Métrovélo</item>
+    </array>
+
+    <array name="combines_text_plus">
+        <item></item>
+        <item>* TCL : Transports en Commun Lyonnais.</item>
+        <item></item>
+        <item></item>
+    </array>
+</resources>

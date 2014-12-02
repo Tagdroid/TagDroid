@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="drawer_items_titles">
+        <item>@string/stations</item>
+        <item>@string/favoris</item>
+        <item>@string/proximite</item>
+        <item>@string/map</item>
+        <item>@string/trafic</item>
+        <item>@string/news</item>
+        <item>@string/tarif</item>
+    </array>
+    <array name="drawer_items_icons">
+        <item>@drawable/cat_direction</item>
+        <item>@drawable/cat_favoris</item>
+        <item>@drawable/cat_near</item>
+        <item>@drawable/cat_map</item>
+        <item>@drawable/cat_trafic</item>
+        <item>@drawable/cat_news</item>
+        <item>@drawable/cat_tarifs</item>
+    </array>
+    <array name="drawer_items_icons_selected">
+        <item>@drawable/cat_direction_selected</item>
+        <item>@drawable/cat_favoris_selected</item>
+        <item>@drawable/cat_near_selected</item>
+        <item>@drawable/cat_map_selected</item>
+        <item>@drawable/cat_trafic_selected</item>
+        <item>@drawable/cat_news_selected</item>
+        <item>@drawable/cat_tarifs_selected</item>
+    </array>
+
+    <array name="drawer_items_plus_titles">
+        <item>@string/settings</item>
+        <item>@string/about</item>
+        <item>@string/rate</item>
+    </array>
+</resources>

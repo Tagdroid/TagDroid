@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TagDroidTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <!--ActionBar and StatusBar styles-->
+        <item name="drawerArrowStyle">@style/TagDroidTheme.DrawerArrowStyle</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowBackground">@color/bleu_tag_f40</item>
+        <item name="colorPrimary">@color/bleu_tag</item>
+        <item name="colorPrimaryDark">@color/bleu_tag_f75</item>
+        <item name="colorAccent">@color/bleu_tag_c50</item>
+    </style>
+
+    <style name="TagDroidTheme.DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">true</item>
+        <item name="color">@android:color/white</item>
+    </style>
+
+    <style name="MySearchViewStyle" parent="Widget.AppCompat.SearchView">
+    </style>
+</resources>

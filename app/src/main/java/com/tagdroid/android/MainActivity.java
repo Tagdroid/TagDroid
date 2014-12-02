@@ -102,8 +102,8 @@ public class MainActivity extends ActionBarActivity implements DrawerFragment.Dr
             //     break;
             case  6: page = new ActualitesFragment();
                 break;
-            // case  7: page = new TarifsFragment();
-            //     break;
+            case  7: page = new TarifsFragment();
+                break;
             case  8: return; //divider
             // case  9: page = new SettingsFragment();
             //     break;
@@ -115,7 +115,6 @@ public class MainActivity extends ActionBarActivity implements DrawerFragment.Dr
             default:
                 return;
         }
-
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.pager, page).commit();

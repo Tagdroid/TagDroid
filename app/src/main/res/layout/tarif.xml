@@ -1,29 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:android1="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <!-- Include Tab Indicator -->
 
     <RelativeLayout
-        xmlns:tools="http://schemas.android.com/tools"
-        android1:layout_width="match_parent"
-        android1:layout_height="match_parent" >
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
 
-     <!--   <com.astuetz.viewpager.extensions.PagerSlidingTabStrip
-            android1:id="@+id/tabs"
-            android1:layout_width="match_parent"
-            android1:layout_height="48dip" />
--->
+        <com.astuetz.PagerSlidingTabStrip
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:pstsIndicatorColor ="@android:color/white"
+            android:textColor ="@android:color/white" />
+
+
         <android.support.v4.view.ViewPager
-            android1:id="@+id/pager"
-            android1:layout_width="match_parent"
-            android1:layout_height="wrap_content"
-            android1:layout_below="@+id/tabs"
-            tools:context=".MainActivity" >
-        </android.support.v4.view.ViewPager>
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tabs"/>
+
     </RelativeLayout>
 
 </LinearLayout>
