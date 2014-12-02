@@ -13,6 +13,6 @@ android {
     }
 }
 
-dependencies {
+dependencies { 
     compile 'com.loopj.android:android-async-http:1.4.6'
 }
