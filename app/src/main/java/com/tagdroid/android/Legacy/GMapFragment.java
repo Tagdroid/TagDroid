@@ -63,7 +63,7 @@ public class GMapFragment extends Fragment {
     	private final View mContents;
     	
 	    CustomInfoWindowAdapter() {
-	        mContents = mActivity.getLayoutInflater().inflate(R.layout.custom_info_contents, null);
+	        mContents = mActivity.getLayoutInflater().inflate(R.layout.legacy_custom_info_contents, null);
 	    }
 	    
 	    public View getInfoContents(Marker marker) {
@@ -96,7 +96,7 @@ public class GMapFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View inflatedView = inflater.inflate(R.layout.map, container, false);
+        View inflatedView = inflater.inflate(R.layout.legacy_map, container, false);
 
         MapsInitializer.initialize(mActivity);
 

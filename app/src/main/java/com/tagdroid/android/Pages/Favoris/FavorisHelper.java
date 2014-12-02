@@ -1,4 +1,4 @@
-package com.tagdroid.android.Favoris;
+package com.tagdroid.android.Pages.Favoris;
 
 import android.content.Context;
 

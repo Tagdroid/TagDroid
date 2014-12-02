@@ -36,7 +36,7 @@ public class CombinesFragment extends Fragment implements OnItemSelectedListener
 	
 	
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.combines, container, false);
+		View view = inflater.inflate(R.layout.legacy_combines, container, false);
 
 		String[] items = new String[] {"TAG + Cité Lib", "TAG + TER + TCL", "TAG + Transisère",
 				"Métrovélo", "P+R Vallier-Catane"};

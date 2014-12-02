@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,11 +21,20 @@ import com.tagdroid.android.Page;
 import com.tagdroid.android.R;
 
 
-public class TarifsFragment extends Page{
+public class TarifsFragment extends Page {
+    @Override
+    public String getTitle() {
+        return getString(R.string.tarif);
+    }
+
+    @Override
+    public Integer getMenuId() {
+        return null;
+    }
 
     Spinner spinner2,
             spinner3;
-    View card_layout,
+    CardView card_layout,
             card_layout1,
             card_layout2;
 
@@ -36,32 +46,18 @@ public class TarifsFragment extends Page{
             pass_annuel_prix,
             pass_annuel_bonus;
 
-
-    @Override
-    public String getTitle() {
-        return getString(R.string.tarif);
-    }
-
-    @Override
-    public Integer getMenuId() {
-        return null;
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        if (savedInstanceState != null)
+            return super.onCreateView(inflater, container, savedInstanceState);
+
         View view = inflater.inflate(R.layout.tarif, container, false);
 
         /**** SLIDING PAGER ****/
 
         ViewPager pager = (ViewPager) view.findViewById(R.id.viewpager);
-
-        ViewPagerAdapter adapter = new ViewPagerAdapter();
-        pager.setAdapter(adapter);
-
-        PagerSlidingTabStrip tabs = (PagerSlidingTabStrip) view.findViewById(R.id.tabs);
-        tabs.setViewPager(pager);
-
-
+        pager.setAdapter(new ViewPagerAdapter());
+        ((PagerSlidingTabStrip) view.findViewById(R.id.tabs)).setViewPager(pager);
         return view;
     }
 
@@ -104,9 +100,9 @@ public class TarifsFragment extends Page{
                     view = inflater.inflate(R.layout.tarif2, null);
                     spinner2 = (Spinner) view.findViewById(R.id.spinner2);
                     spinner3 = (Spinner) view.findViewById(R.id.spinner3);
-                    card_layout = (View) view.findViewById(R.id.card_layout);
-                    card_layout1 = (View) view.findViewById(R.id.card_layout1);
-                    card_layout2 = (View) view.findViewById(R.id.card_layout2);
+                    card_layout = (CardView) view.findViewById(R.id.card_pass);
+                    card_layout1 = (CardView) view.findViewById(R.id.card_layout1);
+                    card_layout2 = (CardView) view.findViewById(R.id.card_layout2);
 
                     title_pass = (TextView) view.findViewById(R.id.title_pass);
                     pass_mensuel = (TextView) view.findViewById(R.id.pass_mensuel);
@@ -172,52 +168,45 @@ public class TarifsFragment extends Page{
         private void setValue(){
             int situation =  spinner2.getSelectedItemPosition();
             int qf =  spinner3.getSelectedItemPosition();
+            int colorValue = 0;
 
             switch (situation){
                 case 0 :
-                    card_layout.setBackgroundColor(getResources().getColor(R.color.grenadine));
-                    card_layout1.setBackgroundColor(getResources().getColor(R.color.grenadine));
-                    card_layout2.setBackgroundColor(getResources().getColor(R.color.grenadine));
+                    colorValue = R.color.grenadine;
                     title_pass.setText("PASS' GRENADINE");
                     break;
 
                 case 1 :
-                    card_layout.setBackgroundColor(getResources().getColor(R.color.cafe));
-                    card_layout1.setBackgroundColor(getResources().getColor(R.color.cafe));
-                    card_layout2.setBackgroundColor(getResources().getColor(R.color.cafe));
+                    colorValue = R.color.cafe;
                     title_pass.setText("PASS' CAFE");
                     break;
 
                 case 2 :
-                    card_layout.setBackgroundColor(getResources().getColor(R.color.vanille));
-                    card_layout1.setBackgroundColor(getResources().getColor(R.color.vanille));
-                    card_layout2.setBackgroundColor(getResources().getColor(R.color.vanille));
+                    colorValue = R.color.cafe;
                     title_pass.setText("PASS' VANILLE");
                     break;
 
                 case 3 :
-                    card_layout.setBackgroundColor(getResources().getColor(R.color.menthe));
-                    card_layout1.setBackgroundColor(getResources().getColor(R.color.menthe));
-                    card_layout2.setBackgroundColor(getResources().getColor(R.color.menthe));
+                    colorValue = R.color.cafe;
                     title_pass.setText("PASS' MENTHE");
                     break;
 
                 case 4 :
-                    card_layout.setBackgroundColor(getResources().getColor(R.color.canelle));
-                    card_layout1.setBackgroundColor(getResources().getColor(R.color.canelle));
-                    card_layout2.setBackgroundColor(getResources().getColor(R.color.canelle));
+                    colorValue = R.color.cafe;
                     title_pass.setText("PASS' CANELLE 12");
                     break;
 
                 case 5 :
-                    card_layout.setBackgroundColor(getResources().getColor(R.color.menthe));
-                    card_layout1.setBackgroundColor(getResources().getColor(R.color.menthe));
-                    card_layout2.setBackgroundColor(getResources().getColor(R.color.menthe));
+                    colorValue = R.color.cafe;
                     title_pass.setText("PASS' MENTHE");
                     break;
                 default:
                     break;
             }
+
+            // card_layout.setCardBackgroundColor(getResources().getColor(colorValue));
+            // card_layout1.setBackgroundColor(getResources().getColor(colorValue));
+            // card_layout2.setBackgroundColor(getResources().getColor(colorValue));
 
             int ColorText;
             if(situation==0||situation==1||situation==3||situation==5) ColorText = Color.WHITE;

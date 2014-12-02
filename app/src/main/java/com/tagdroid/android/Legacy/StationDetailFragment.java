@@ -25,7 +25,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.tagdroid.android.Favoris.FavorisHelper;
+import com.tagdroid.android.Pages.Favoris.FavorisHelper;
 import com.tagdroid.android.R;
 import com.tagdroid.tagapi.JSonApi.Favori;
 import com.tagdroid.tagapi.SQLApi.FavorisDAO;
@@ -89,7 +89,7 @@ public class StationDetailFragment extends Fragment {
         }
 
 
-        view2 = inflater.inflate(R.layout.alert_trafic_dialog, null);
+        view2 = inflater.inflate(R.layout.legacy_alert_trafic_dialog, null);
 
         load_layout = (LinearLayout) view.findViewById(R.id.load_layout);
         data_layout = (LinearLayout) view.findViewById(R.id.horaires_body);

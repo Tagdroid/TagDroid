@@ -37,7 +37,7 @@ public class LigneFragment extends Fragment {
 	public static LigneFragment newInstance(String ligne, int id_debut, int id_fin) {
 		LigneFragment f = new LigneFragment();
 		Bundle b = new Bundle();	
-		b.putString("ligne", ligne);
+		b.putString("legacy_ligne", ligne);
 		b.putInt("id_debut", id_debut);
 		b.putInt("id_fin", id_fin);
 		f.setArguments(b);
@@ -70,11 +70,11 @@ public class LigneFragment extends Fragment {
 	            parent.removeView(view);
 	    }
 	    try {
-	        view = inflater.inflate(R.layout.ligne, container, false);
+	        view = inflater.inflate(R.layout.legacy_ligne, container, false);
 	    } catch (InflateException e) {
 	    }
         
-        final String ligne = this.getArguments().getString("ligne");
+        final String ligne = this.getArguments().getString("legacy_ligne");
 
         id_debut = this.getArguments().getInt("id_debut", 0);
         id_fin = this.getArguments().getInt("id_fin", 1);
@@ -127,7 +127,7 @@ public class LigneFragment extends Fragment {
             listItem.add(map);
         }
   
-       SimpleAdapter mSchedule = new SimpleAdapter (getActivity(), listItem, R.layout.affichageitem,
+       SimpleAdapter mSchedule = new SimpleAdapter (getActivity(), listItem, R.layout.legacy_affichageitem,
                new String[] {"img", "titre", "corres1", "corres2", "corres3", "corres4", "corres5", "corres6", "corres7", "corres8", "corres9", "corres10"}, 
                new int[] {R.id.img, R.id.titre,R.id.img_corres1, R.id.img_corres2, R.id.img_corres3, R.id.img_corres4, R.id.img_corres5, R.id.img_corres6, R.id.img_corres7,R.id.img_corres8, R.id.img_corres9,R.id.img_corres10 }){
        };
@@ -217,12 +217,12 @@ public class LigneFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {            
         switch (item.getItemId()) {
     		case R.id.menu_pdf:
-    			String[] numero_ligne2=this.getArguments().getString("ligne").split(" ");
+    			String[] numero_ligne2=this.getArguments().getString("legacy_ligne").split(" ");
     			File folder = new File(Environment.getExternalStorageDirectory().toString(), "TAGdroid");
 	        	folder.mkdir();
 	        	File file = new File(folder, "PLAN_"+numero_ligne2[1]+".pdf");
 
-	        	if(this.getArguments().getString("ligne").equals("Ligne E"))Toast.makeText(getActivity(), "Pas de plan disponible pour la ligne E", Toast.LENGTH_SHORT).show();	        	
+	        	if(this.getArguments().getString("legacy_ligne").equals("Ligne E"))Toast.makeText(getActivity(), "Pas de plan disponible pour la legacy_ligne E", Toast.LENGTH_SHORT).show();
 	        	else{
 	        		if(!file.exists()){	        		
 		        		try {

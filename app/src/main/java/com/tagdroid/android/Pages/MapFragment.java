@@ -62,7 +62,7 @@ public class MapFragment extends Page {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View inflatedView = inflater.inflate(R.layout.fragment_map, container, false);
+        View inflatedView = inflater.inflate(R.layout.legacy_fragment_map, container, false);
 
         MapsInitializer.initialize(mActivity);
         mMapView = (MapView) inflatedView.findViewById(R.id.map);

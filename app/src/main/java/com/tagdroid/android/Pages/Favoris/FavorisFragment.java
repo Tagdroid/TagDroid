@@ -1,4 +1,4 @@
-package com.tagdroid.android.Favoris;
+package com.tagdroid.android.Pages.Favoris;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -61,7 +61,7 @@ public class FavorisFragment extends Fragment {
         else {
           /*  SimpleAdapter mSchedule = new SimpleAdapter(getActivity(),
                     favorisHelper.getFavorisAdaptedArray(),
-                    R.layout.listitem_station,
+                    R.layout.legacy_listitem_station,
                     new String[]{"nom", null, "ligne", "couleur"},
                     new int[]{R.id.titre, R.id.distance, R.id.station, R.id.fond_color});
 

@@ -167,7 +167,7 @@ public class ProxFragment extends Fragment implements LocationListener{
 	    	        }
 	    	    });
 	    		
-	            SimpleAdapter mSchedule = new SimpleAdapter (getActivity(), listItem.subList(0, 10),R.layout.listitem_station,
+	            SimpleAdapter mSchedule = new SimpleAdapter (getActivity(), listItem.subList(0, 10),R.layout.legacy_listitem_station,
 	                    									new String[] {"titre",  "distance", "ligne1", "color"},
 	                    									new int[] { R.id.titre, R.id.distance, R.id.station, R.id.fond_color});
 	           
