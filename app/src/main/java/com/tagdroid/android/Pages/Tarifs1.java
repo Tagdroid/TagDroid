@@ -21,7 +21,7 @@ public class Tarifs1 extends Page {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.tarif1, container, false);
+        View view = inflater.inflate(R.layout.fragment_tarif_tickets, container, false);
         return view;
     }
 

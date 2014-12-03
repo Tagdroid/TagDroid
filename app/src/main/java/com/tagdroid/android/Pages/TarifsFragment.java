@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +33,7 @@ public class TarifsFragment extends Page {
 
     Spinner spinner2,
             spinner3;
-    CardView card_layout,
+    View card_layout,
             card_layout1,
             card_layout2;
 
@@ -51,7 +50,7 @@ public class TarifsFragment extends Page {
         if (savedInstanceState != null)
             return super.onCreateView(inflater, container, savedInstanceState);
 
-        View view = inflater.inflate(R.layout.tarif, container, false);
+        View view = inflater.inflate(R.layout.fragment_tarif, container, false);
 
         /**** SLIDING PAGER ****/
 
@@ -80,7 +79,7 @@ public class TarifsFragment extends Page {
             View view = null;
             switch (position) {
                 case 0:
-                    view = inflater.inflate(R.layout.tarif1, null);
+                    view = inflater.inflate(R.layout.fragment_tarif_tickets, null);
                     Spinner spinner1 = (Spinner) view.findViewById(R.id.spinner1);
                     final TextView ticket_text = (TextView) view.findViewById(R.id.ticket_text);
                     final TextView ticket_prix = (TextView) view.findViewById(R.id.ticket_prix);
@@ -97,12 +96,12 @@ public class TarifsFragment extends Page {
 
                     break;
                 case 1:
-                    view = inflater.inflate(R.layout.tarif2, null);
+                    view = inflater.inflate(R.layout.fragment_tarif_pass, null);
                     spinner2 = (Spinner) view.findViewById(R.id.spinner2);
                     spinner3 = (Spinner) view.findViewById(R.id.spinner3);
-                    card_layout = (CardView) view.findViewById(R.id.card_pass);
-                    card_layout1 = (CardView) view.findViewById(R.id.card_layout1);
-                    card_layout2 = (CardView) view.findViewById(R.id.card_layout2);
+                    card_layout = (View) view.findViewById(R.id.card_pass);
+                    card_layout1 = (View) view.findViewById(R.id.card_layout1);
+                    card_layout2 = (View) view.findViewById(R.id.card_layout2);
 
                     title_pass = (TextView) view.findViewById(R.id.title_pass);
                     pass_mensuel = (TextView) view.findViewById(R.id.pass_mensuel);
@@ -125,7 +124,7 @@ public class TarifsFragment extends Page {
                     });
                     break;
                 case 2:
-                    view = inflater.inflate(R.layout.tarif3, null);
+                    view = inflater.inflate(R.layout.fragment_tarif_combines, null);
                     Spinner spinner4 = (Spinner) view.findViewById(R.id.spinner4);
                     final ImageView image = (ImageView)view.findViewById(R.id.combines_image);
                     final TextView combines_text = (TextView) view.findViewById(R.id.combines_text);
@@ -182,31 +181,31 @@ public class TarifsFragment extends Page {
                     break;
 
                 case 2 :
-                    colorValue = R.color.cafe;
+                    colorValue = R.color.vanille;
                     title_pass.setText("PASS' VANILLE");
                     break;
 
                 case 3 :
-                    colorValue = R.color.cafe;
+                    colorValue = R.color.menthe;
                     title_pass.setText("PASS' MENTHE");
                     break;
 
                 case 4 :
-                    colorValue = R.color.cafe;
+                    colorValue = R.color.canelle;
                     title_pass.setText("PASS' CANELLE 12");
                     break;
 
                 case 5 :
-                    colorValue = R.color.cafe;
+                    colorValue = R.color.menthe;
                     title_pass.setText("PASS' MENTHE");
                     break;
                 default:
                     break;
             }
 
-            // card_layout.setCardBackgroundColor(getResources().getColor(colorValue));
-            // card_layout1.setBackgroundColor(getResources().getColor(colorValue));
-            // card_layout2.setBackgroundColor(getResources().getColor(colorValue));
+            card_layout.setBackgroundColor(getResources().getColor(colorValue));
+            card_layout1.setBackgroundColor(getResources().getColor(colorValue));
+            card_layout2.setBackgroundColor(getResources().getColor(colorValue));
 
             int ColorText;
             if(situation==0||situation==1||situation==3||situation==5) ColorText = Color.WHITE;
