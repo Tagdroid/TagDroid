@@ -54,7 +54,6 @@
         <item>+ de 75 ans</item>
         <item>Invalides à 80%</item>
     </array>
-
     <array name="pass_qf">
         <item>Aucun</item>
         <item>0 à 400 € (Pastel 1)</item>
@@ -71,15 +70,6 @@
         <item>GRAUIT</item>
         <item>27,70 €</item>
     </array>
-
-    <array name="pass_mensuel_prix_pastel">
-        <item></item>
-        <item>2,50 €</item>
-        <item>9,80 €</item>
-        <item>14,80 €</item>
-        <item>19,70 €</item>
-    </array>
-
     <array name="pass_mensuel_bonus">
         <item></item>
         <item>soit 30 €/an</item>
@@ -87,7 +77,6 @@
         <item>soit 177,60 €/an</item>
         <item>soit 236,40 €/an</item>
     </array>
-
     <array name="pass_annuel_prix">
         <item>174,00 €</item>
         <item>216,80 €</item>
@@ -95,6 +84,14 @@
         <item>221,60 €</item>
         <item>GRATUIT</item>
         <item>221,60 €</item>
+    </array>
+
+    <array name="pass_mensuel_prix_pastel">
+        <item></item>
+        <item>2,50 €</item>
+        <item>9,80 €</item>
+        <item>14,80 €</item>
+        <item>19,70 €</item>
     </array>
 
     <array name="pass_annuel_bonus">

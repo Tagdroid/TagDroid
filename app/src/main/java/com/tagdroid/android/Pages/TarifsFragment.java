@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +35,7 @@ public class TarifsFragment extends Page {
 
     Spinner spinner2,
             spinner3;
-    View card_layout,
+    CardView card_layout,
             card_layout1,
             card_layout2;
 
@@ -99,9 +101,9 @@ public class TarifsFragment extends Page {
                     view = inflater.inflate(R.layout.fragment_tarif_pass, null);
                     spinner2 = (Spinner) view.findViewById(R.id.spinner2);
                     spinner3 = (Spinner) view.findViewById(R.id.spinner3);
-                    card_layout = (View) view.findViewById(R.id.card_pass);
-                    card_layout1 = (View) view.findViewById(R.id.card_layout1);
-                    card_layout2 = (View) view.findViewById(R.id.card_layout2);
+                    card_layout = (CardView) view.findViewById(R.id.card_pass);
+                    card_layout1 = (CardView) view.findViewById(R.id.card_layout1);
+                    card_layout2 = (CardView) view.findViewById(R.id.card_layout2);
 
                     title_pass = (TextView) view.findViewById(R.id.title_pass);
                     pass_mensuel = (TextView) view.findViewById(R.id.pass_mensuel);
@@ -167,49 +169,47 @@ public class TarifsFragment extends Page {
         private void setValue(){
             int situation =  spinner2.getSelectedItemPosition();
             int qf =  spinner3.getSelectedItemPosition();
-            int colorValue = 0;
+            int colorResource = 0;
 
             switch (situation){
                 case 0 :
-                    colorValue = R.color.grenadine;
+                    colorResource = R.color.grenadine;
                     title_pass.setText("PASS' GRENADINE");
                     break;
 
                 case 1 :
-                    colorValue = R.color.cafe;
+                    colorResource = R.color.cafe;
                     title_pass.setText("PASS' CAFE");
                     break;
 
                 case 2 :
-                    colorValue = R.color.vanille;
+                    colorResource = R.color.vanille;
                     title_pass.setText("PASS' VANILLE");
                     break;
 
                 case 3 :
-                    colorValue = R.color.menthe;
+                    colorResource = R.color.menthe;
                     title_pass.setText("PASS' MENTHE");
                     break;
 
                 case 4 :
-                    colorValue = R.color.canelle;
+                    colorResource = R.color.canelle;
                     title_pass.setText("PASS' CANELLE 12");
                     break;
 
                 case 5 :
-                    colorValue = R.color.menthe;
+                    colorResource = R.color.menthe;
                     title_pass.setText("PASS' MENTHE");
                     break;
                 default:
                     break;
             }
 
-            card_layout.setBackgroundColor(getResources().getColor(colorValue));
-            card_layout1.setBackgroundColor(getResources().getColor(colorValue));
-            card_layout2.setBackgroundColor(getResources().getColor(colorValue));
-
             int ColorText;
-            if(situation==0||situation==1||situation==3||situation==5) ColorText = Color.WHITE;
-            else ColorText = Color.BLACK;
+            if(situation==0||situation==1||situation==3||situation==5)
+                ColorText = Color.WHITE;
+            else
+                ColorText = Color.BLACK;
             title_pass.setTextColor(ColorText);
             pass_mensuel.setTextColor(ColorText);
             pass_mensuel_prix.setTextColor(ColorText);
@@ -218,25 +218,34 @@ public class TarifsFragment extends Page {
             pass_annuel_bonus.setTextColor(ColorText);
             pass_mensuel_bonus.setTextColor(ColorText);
 
-
             pass_annuel_prix.setText(getResources().getStringArray(R.array.pass_annuel_prix)[situation]);
             pass_annuel_bonus.setText(getResources().getStringArray(R.array.pass_annuel_bonus)[situation]);
-            if(qf==0 || situation==4){
-                // SI QF = 0 OU + de 75 ANS
-                pass_mensuel_prix.setText(getResources().getStringArray(R.array.pass_mensuel_prix)[situation]);
-                pass_mensuel_bonus.setText(getResources().getStringArray(R.array.pass_mensuel_bonus)[0]);
-                if(qf==0) card_layout1.getBackground().setAlpha(255);
-            }else{
-                card_layout1.getBackground().setAlpha(255 - (100/qf));
 
-                if((situation==0 && spinner3.getSelectedItemPosition() ==4)){
-                    pass_mensuel_prix.setText(getResources().getStringArray(R.array.pass_mensuel_prix)[situation]);
-                    pass_mensuel_bonus.setText("");
-                }else{
-                    pass_mensuel_prix.setText(getResources().getStringArray(R.array.pass_mensuel_prix_pastel)[qf]);
-                    pass_mensuel_bonus.setText(getResources().getStringArray(R.array.pass_mensuel_bonus)[qf]);
-                }
+            float alpha = 0;
+
+            if(qf == 0  // Si pas Pastel…
+            || situation == 4   // Si personnes âgées
+            || (situation == 0 && qf == 4)) {   // Pas Enfants QF4
+                pass_mensuel_prix.setText(getResources().getStringArray(R.array.pass_mensuel_prix)[situation]);
+                pass_mensuel_bonus.setText("");
+            } else {
+                alpha = ((float)qf)/14;
+                pass_mensuel_prix.setText(getResources().getStringArray(R.array.pass_mensuel_prix_pastel)[qf]);
+                pass_mensuel_bonus.setText(getResources().getStringArray(R.array.pass_mensuel_bonus)[qf]);
             }
+
+            // On éclaircit la couleur, car la transparence fait chier
+            int colorValue = getResources().getColor(colorResource);
+            float val1=255*alpha,
+                val2=1-alpha;
+            int pastelColor = Color.rgb(
+                    (int)(val1+val2*Color.red(colorValue)),
+                    (int)(val1+val2*Color.green(colorValue)),
+                    (int)(val1+val2*Color.blue(colorValue)));
+
+            card_layout .setCardBackgroundColor(colorValue);
+            card_layout1.setCardBackgroundColor(pastelColor);
+            card_layout2.setCardBackgroundColor(colorValue);
         }
     }
- }
+}
