@@ -23,7 +23,7 @@ import com.tagdroid.tagapi.ProgressionInterface;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ActualitesFragment extends Page implements ProgressionInterface, ActualitéAdapter.OnItemClickListener {
+public class ActualitesFragment extends Page implements ProgressionInterface, ActualiteAdapter.OnItemClickListener {
     private List<Actualite> actualitésList;
 
     private int RSSChannel;
@@ -52,7 +52,7 @@ public class ActualitesFragment extends Page implements ProgressionInterface, Ac
         actuCardList.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         if (actualitésList == null) {
-            actuCardList.setAdapter(new ActualitéAdapter(new ArrayList<Actualite>(),getActivity()));
+            actuCardList.setAdapter(new ActualiteAdapter(new ArrayList<Actualite>(),getActivity()));
             httpGetActualites.execute();
         }
         return view;
@@ -101,7 +101,7 @@ public class ActualitesFragment extends Page implements ProgressionInterface, Ac
     @Override
     public void onDownloadFailed(Exception e) {
         progression.dismiss();
-        actuCardList.setAdapter(new ActualitéAdapter(new ArrayList<Actualite>(),getActivity()));
+        actuCardList.setAdapter(new ActualiteAdapter(new ArrayList<Actualite>(),getActivity()));
         getActivity().findViewById(R.id.noNews).setVisibility(View.VISIBLE);
         Toast.makeText(getActivity(), "Erreur de chargement :\n" + e.getLocalizedMessage(),
                 Toast.LENGTH_LONG).show();
@@ -116,9 +116,9 @@ public class ActualitesFragment extends Page implements ProgressionInterface, Ac
     public void onDownloadComplete(String resultString) {
         progression.dismiss();
         actualitésList = httpGetActualites.getResult();
-        ActualitéAdapter actualitéAdapter = new ActualitéAdapter(actualitésList, getActivity());
-        actualitéAdapter.setOnItemClickListener(this);
-        actuCardList.setAdapter(actualitéAdapter);
+        ActualiteAdapter actualiteAdapter = new ActualiteAdapter(actualitésList, getActivity());
+        actualiteAdapter.setOnItemClickListener(this);
+        actuCardList.setAdapter(actualiteAdapter);
     }
 
     @Override

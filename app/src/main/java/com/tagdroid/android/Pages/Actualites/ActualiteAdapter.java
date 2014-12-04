@@ -14,13 +14,13 @@ import com.tagdroid.tagapi.Actualites.Actualite;
 
 import java.util.List;
 
-public class ActualitéAdapter extends RecyclerView.Adapter<ActualitéAdapter.ActualitéViewHolder> {
+public class ActualiteAdapter extends RecyclerView.Adapter<ActualiteAdapter.ActualiteViewHolder> {
     OnItemClickListener onItemClickListener;
-    private List<Actualite> actualitéList;
+    private List<Actualite> actualiteList;
     private ImageLoader imageLoader;
 
-    public ActualitéAdapter(List<Actualite> actualitéList, Context context) {
-        this.actualitéList = actualitéList;
+    public ActualiteAdapter(List<Actualite> actualitéList, Context context) {
+        this.actualiteList = actualitéList;
         imageLoader = new ImageLoader(context);
     }
     public void setOnItemClickListener(final OnItemClickListener onItemClickListener) {
@@ -28,39 +28,36 @@ public class ActualitéAdapter extends RecyclerView.Adapter<ActualitéAdapter.Ac
     }
 
     @Override
-    public ActualitéViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public ActualiteViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         final View itemView = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.actualites_card, viewGroup, false);
-        return new ActualitéViewHolder(itemView);
+        return new ActualiteViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(ActualitéViewHolder actualitéViewHolder, int i) {
-        Actualite actualité = actualitéList.get(i);
-        actualitéViewHolder.vTitre.setText(actualité.titre);
-        actualitéViewHolder.vDescr.setText(actualité.description);
-        imageLoader.DisplayImage(actualité.image, actualitéViewHolder.vImage);
+    public void onBindViewHolder(ActualiteViewHolder actualiteViewHolder, int i) {
+        Actualite actualite = actualiteList.get(i);
+        actualiteViewHolder.vTitre.setText(actualite.titre);
+        imageLoader.DisplayImage(actualite.image, actualiteViewHolder.vImage);
     }
 
     @Override
     public int getItemCount() {
-        return actualitéList.size();
+        return actualiteList.size();
     }
 
     public interface OnItemClickListener {
         public void onItemClick(View view, int position);
     }
 
-    public class ActualitéViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ActualiteViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView vTitre;
-        private TextView vDescr;
         private ImageView vImage;
 
-        public ActualitéViewHolder(View view) {
+        public ActualiteViewHolder(View view) {
             super(view);
             view.setOnClickListener(this);
             vTitre = (TextView) view.findViewById(R.id.titre);
-            vDescr = (TextView) view.findViewById(R.id.description);
             vImage = (ImageView)view.findViewById(R.id.image);
         }
 

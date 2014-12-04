@@ -29,7 +29,7 @@ public class ActualitesDetailsFragment extends Page implements View.OnClickListe
 
     @Override
     public String getTitle() {
-        return title;
+        return getResources().getString(R.string.news_details);
     }
     @Override
     public Integer getMenuId() {
@@ -75,10 +75,13 @@ public class ActualitesDetailsFragment extends Page implements View.OnClickListe
                 break;
         }
 
-        new DownloadImageTask((ImageView) view.findViewById(R.id.photo))
-                .execute(url_photo);
-        ((TextView) view.findViewById(R.id.description))
-                .setText(Html.fromHtml(description));
+        Log.d("PHOTO",url_photo);
+
+        new DownloadImageTask((ImageView) view.findViewById(R.id.photo)).execute(url_photo);
+        ((TextView) view.findViewById(R.id.titre)).setText(Html.fromHtml(title));
+        ((TextView) view.findViewById(R.id.description)).setText(Html.fromHtml(description));
+
+
         view.findViewById(R.id.button_more).setOnClickListener(this);
         return view;
     }

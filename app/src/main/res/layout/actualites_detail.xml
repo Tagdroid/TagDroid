@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -20,24 +21,36 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <TextView android:text="@string/description"
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/gris_fonce"
-                android:textStyle="bold" />
-            <View android:background="@color/gris_fonce"
-                android:layout_width="match_parent"
-                android:layout_height="1dp" />
-            <TextView android:id="@+id/description"
-                android:layout_width="match_parent"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Large Text"
+                android:id="@+id/titre"
+                android:fontFamily="sans-serif-condensed"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/gris_fonce"
-                android:textSize="@dimen/list_small_desc_textsize" />
-            <Button android:id="@+id/button_more"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Medium Text"
+                android:id="@+id/description"
+                android:typeface="serif" />
+
+            <info.hoang8f.widget.FButton android:id="@+id/button_more"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:text="@string/more" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/more"
+                android:textColor="@android:color/white"
+                fbutton:buttonColor="#34495e"
+                fbutton:shadowEnabled="true"
+                fbutton:shadowHeight="5dp"
+                fbutton:cornerRadius="10dp"/>
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

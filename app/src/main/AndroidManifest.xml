@@ -87,7 +87,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.tagdroid.android.Welcome.WelcomeActivity" >
+        <activity android:name="com.tagdroid.android.Welcome.WelcomeActivity">
         </activity>
     </application>
 </manifest>

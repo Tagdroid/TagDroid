@@ -20,6 +20,7 @@
     <string name="map">Plan</string>
     <string name="trafic">Info Trafic</string>
     <string name="news">Actualités</string>
+    <string name="news_details">Détails</string>
     <string name="tarif">Titres de Transport</string>
     <string name="ticket">Les Tickets</string>
     <string name="pass">Les Pass\'</string>
