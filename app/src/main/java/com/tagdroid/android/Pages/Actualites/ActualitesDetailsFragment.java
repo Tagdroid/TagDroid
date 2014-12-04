@@ -21,11 +21,11 @@ import com.tagdroid.android.R;
 import java.io.InputStream;
 
 public class ActualitesDetailsFragment extends Page implements View.OnClickListener {
-    private Integer RSSChannel;
-    private String title;
-    private String description;
-    private String url_more;
-    private String url_photo;
+    public static Integer RSSChannel;
+    public static String title;
+    public static String description;
+    public static String url_more;
+    public static String url_photo;
 
     @Override
     public String getTitle() {

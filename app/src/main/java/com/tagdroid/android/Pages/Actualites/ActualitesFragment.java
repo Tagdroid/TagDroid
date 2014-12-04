@@ -103,7 +103,7 @@ public class ActualitesFragment extends Page implements ProgressionInterface, Ac
         progression.dismiss();
         actuCardList.setAdapter(new ActualitéAdapter(new ArrayList<Actualite>(),getActivity()));
         getActivity().findViewById(R.id.noNews).setVisibility(View.VISIBLE);
-        Toast.makeText(getActivity(), "Erreur de récupération :\n" + e.getLocalizedMessage(),
+        Toast.makeText(getActivity(), "Erreur de chargement :\n" + e.getLocalizedMessage(),
                 Toast.LENGTH_LONG).show();
     }
 

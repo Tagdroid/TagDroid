@@ -50,7 +50,6 @@
     <string name="delfavoris">Station supprimée des favoris</string>
     <string name="loading">Chargement en cours…</string>
     <string name="nohoraire">Pas d\'horaires disponibles</string>
-    <string name="travauxE">La Ligne E est actuellement en travaux.\nMise en service : 28 Juin 2014</string>
 
     <!-- Proximite et Favoris -->
     <string name="please_turn_on_gps">S\'il vous plaît, Activez le GPS</string>

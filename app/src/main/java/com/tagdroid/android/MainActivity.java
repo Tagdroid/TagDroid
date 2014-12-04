@@ -23,8 +23,10 @@ import com.tagdroid.android.Welcome.WelcomeActivity;
 import com.tagdroid.android.Pages.*;
 import com.tagdroid.android.Pages.Actualites.ActualitesFragment;
 
+
 public class MainActivity extends ActionBarActivity implements DrawerFragment.DrawerCallbacks,
         Page.ChangeFragmentInterface {
+    public static boolean firstSee=true;
 
     // Used to store the last screen title. For use in {@link #restoreActionBar()}.
     @Override
@@ -35,6 +37,11 @@ public class MainActivity extends ActionBarActivity implements DrawerFragment.Dr
             startActivity(new Intent(this, WelcomeActivity.class));
             finish();
             return;
+        }
+
+        if(firstSee){ //Avoid new display on rotate at first launch
+            new ChangeLog(this).showIfNewVersion(false);
+            firstSee=false;
         }
         Log.d("MainActivity", "setContentView");
         setContentView(R.layout.main_activity);
@@ -60,7 +67,7 @@ public class MainActivity extends ActionBarActivity implements DrawerFragment.Dr
                 .findFragmentById(R.id.left_drawer);
         drawerFragment.setUp(findViewById(R.id.left_drawer),
                 (DrawerLayout) findViewById(R.id.drawer_layout));
-        new ChangeLog(this).showIfNewVersion(false);
+
     }
 
 
