@@ -1,1 +1,1 @@
-include ':viewpagerindicator', ':app', ':TagApi'
+include ':app', ':viewpagerindicator', ':TagApi'

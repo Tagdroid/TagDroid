@@ -1,10 +1,6 @@
 /.idea
+/.gradle
 /gradle
 build
 /local.properties
-
-gradle.properties
-
 .DS_Store
-
-/build.gradle
