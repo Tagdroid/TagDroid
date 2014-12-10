@@ -94,7 +94,7 @@
     <orderEntry type="library" exported="" name="play-services-6.1.71" level="project" />
     <orderEntry type="library" exported="" name="cardview-v7-21.0.2" level="project" />
     <orderEntry type="module" module-name="viewpagerindicator" exported="" />
-    <orderEntry type="module" module-name="tagapi" exported="" />
+    <orderEntry type="module" module-name="TagApi" exported="" />
   </component>
 </module>
 
