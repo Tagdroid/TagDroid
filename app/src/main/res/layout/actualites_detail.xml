@@ -46,10 +46,10 @@
                 android:layout_height="wrap_content"
                 android:text="@string/more"
                 android:textColor="@android:color/white"
-                fbutton:buttonColor="#34495e"
-                fbutton:shadowEnabled="true"
-                fbutton:shadowHeight="5dp"
-                fbutton:cornerRadius="10dp"/>
+                fbutton:buttonColor="@color/bleu_tag_f50"
+                fbutton:shadowHeight="2dp"
+                fbutton:cornerRadius="8dp"
+                fbutton:shadowEnabled="true"/>
 
         </LinearLayout>
     </ScrollView>

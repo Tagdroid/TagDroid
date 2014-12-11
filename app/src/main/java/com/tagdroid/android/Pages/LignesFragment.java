@@ -161,7 +161,6 @@ public class LignesFragment extends Page {
             return 0;
         }
 
-//        Typeface tf = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Thin.ttf");
 
         // create a new ImageView for each item referenced by the Adapter
         public View getView(int position, View oldView, ViewGroup parent) {
@@ -169,18 +168,16 @@ public class LignesFragment extends Page {
                 return oldView;
             FButton view;
             view = new FButton(context);
-            view.setLayoutParams(new GridView.LayoutParams(113, 113));
             view.setText(lignes[position].name);
-            //view.setTypeface(tf);
-            //if(lignes[position].name.length()>3)
+            if(lignes[position].name.length()>3)
+                view.setTextSize(14);
+            else
                 view.setTextSize(16);
-            //else
-            //    view.setTextSize(30);
             view.setTextColor(BlackorWhite(getResources().getColor(lignes[position].color)));
             view.setButtonColor(getResources().getColor(lignes[position].color));
             view.setShadowEnabled(true);
-            view.setShadowHeight(10);
-            view.setCornerRadius(10);
+            view.setShadowHeight(15);
+            view.setCornerRadius(15);
             view.setClickable(false);
             view.setFocusable(false);
             view.setFocusableInTouchMode(false);
