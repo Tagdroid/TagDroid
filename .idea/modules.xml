@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/TagApi/TagApi.iml" filepath="$PROJECT_DIR$/TagApi/TagApi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TAGDroid-Complet.iml" filepath="$PROJECT_DIR$/TAGDroid-Complet.iml" />
       <module fileurl="file://$PROJECT_DIR$/TagApi/TagApi.iml" filepath="$PROJECT_DIR$/TagApi/TagApi.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/tagdroid-complet.iml" filepath="$PROJECT_DIR$/tagdroid-complet.iml" />

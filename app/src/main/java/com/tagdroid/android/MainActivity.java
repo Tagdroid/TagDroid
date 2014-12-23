@@ -101,8 +101,8 @@ public class MainActivity extends ActionBarActivity implements DrawerFragment.Dr
                 break;
             // case  2: page = new FavorisFragment();
             //     break;
-            // case  3: page = new ProximiteFragment();
-            //     break;
+            case  3: page = new StationDetailFragment();
+                break;
             // case  4: page = new MapFragment();
             //     break;
             // case  5: page = new TraficInfosFragment();

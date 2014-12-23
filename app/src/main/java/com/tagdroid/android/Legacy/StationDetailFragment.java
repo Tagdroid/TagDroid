@@ -91,9 +91,7 @@ public class StationDetailFragment extends Fragment {
 
         view2 = inflater.inflate(R.layout.legacy_alert_trafic_dialog, null);
 
-        load_layout = (LinearLayout) view.findViewById(R.id.load_layout);
         data_layout = (LinearLayout) view.findViewById(R.id.horaires_body);
-        no_horaires_layout = (LinearLayout) view.findViewById(R.id.no_horaires_layout);
 
         //Recuperation des variables
         titre = this.getArguments().getString("titre");
@@ -103,26 +101,7 @@ public class StationDetailFragment extends Fragment {
         alert_button = (Button) view.findViewById(R.id.alert_button);
 
 
-        LinearLayout travaux = (LinearLayout) view.findViewById(R.id.travaux);
-        travaux.setVisibility(View.GONE);
-
-
         case1 = (LinearLayout) view.findViewById(R.id.case1);
-        case1_suivant = (LinearLayout) view.findViewById(R.id.case1_suivant);
-        case2 = (LinearLayout) view.findViewById(R.id.case2);
-        case2_suivant = (LinearLayout) view.findViewById(R.id.case2_suivant);
-        case3 = (LinearLayout) view.findViewById(R.id.case3);
-        case3_suivant = (LinearLayout) view.findViewById(R.id.case3_suivant);
-        case4 = (LinearLayout) view.findViewById(R.id.case4);
-        case4_suivant = (LinearLayout) view.findViewById(R.id.case4_suivant);
-        case5 = (LinearLayout) view.findViewById(R.id.case5);
-        case5_suivant = (LinearLayout) view.findViewById(R.id.case5_suivant);
-
-        case1.setVisibility(View.GONE);
-        case2.setVisibility(View.GONE);
-        case3.setVisibility(View.GONE);
-        case4.setVisibility(View.GONE);
-        case5.setVisibility(View.GONE);
 
         /*LinearLayout map_click_layout = (LinearLayout) view.findViewById(R.id.map_click_layout);
         map_click_layout.setOnClickListener(new View.OnClickListener() {
@@ -137,18 +116,7 @@ public class StationDetailFragment extends Fragment {
         tv1 = (TextView) view.findViewById(R.id.vers1);
         tv2 = (TextView) view.findViewById(R.id.tps11);
         tv3 = (TextView) view.findViewById(R.id.tps12);
-        tv4 = (TextView) view.findViewById(R.id.vers2);
-        tv5 = (TextView) view.findViewById(R.id.tps21);
-        tv6 = (TextView) view.findViewById(R.id.tps22);
-        tv7 = (TextView) view.findViewById(R.id.vers3);
-        tv8 = (TextView) view.findViewById(R.id.tps31);
-        tv9 = (TextView) view.findViewById(R.id.tps32);
-        tv10 = (TextView) view.findViewById(R.id.vers4);
-        tv11 = (TextView) view.findViewById(R.id.tps41);
-        tv12 = (TextView) view.findViewById(R.id.tps42);
-        tv13 = (TextView) view.findViewById(R.id.vers5);
-        tv14 = (TextView) view.findViewById(R.id.tps51);
-        tv15 = (TextView) view.findViewById(R.id.tps52);
+
 
 
         int image_ligne = this.getResources().getIdentifier(ligne1.toLowerCase().replace(" ", "") + "_default", "drawable", mActivity.getPackageName());
@@ -157,12 +125,8 @@ public class StationDetailFragment extends Fragment {
         place = new LatLng(Float.parseFloat(getArguments().getString("latitude")), Float.parseFloat(getArguments().getString("longitude")));
         setUpMapIfNeeded();
 
-        // Mise en forme de la page
-        TextView tv_station = (TextView) view.findViewById(R.id.station_name2);
-        tv_station.setText(titre.toUpperCase());
 
-        if (ligne1.equals("Ligne E")) travaux.setVisibility(View.VISIBLE);
-        else getData();
+        getData();
 
         final AlertDialog dialog = new AlertDialog.Builder(getActivity()).setView(view2).create();
         alert_button.setOnClickListener(new View.OnClickListener() {
