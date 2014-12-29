@@ -36,7 +36,7 @@ public abstract class ReadJSonTask extends AsyncTask<Void, Integer, Void> {
     @Override
     protected Void doInBackground(Void... arg0) {
         if (jsonString == null) {
-            progressionInterface.onJSonParsingFailed("Void JSon data received…");
+            progressionInterface.onJSonParsingFailed(new JSONException("Void JSON"));
             return null;
         }
 
@@ -57,6 +57,7 @@ public abstract class ReadJSonTask extends AsyncTask<Void, Integer, Void> {
             }
         } catch (JSONException e) {
             Log.e("JSonParsing", "Could not correctly parse received JSon");
+            Log.e("JSonParsingcontent : ", jsonString);
             e.printStackTrace();
         }
         return null;
@@ -73,6 +74,7 @@ public abstract class ReadJSonTask extends AsyncTask<Void, Integer, Void> {
     private static void onVoidResult() {
     }
     private static void onBadRequest() {
+
     }
     private static void onRequestError() {
     }

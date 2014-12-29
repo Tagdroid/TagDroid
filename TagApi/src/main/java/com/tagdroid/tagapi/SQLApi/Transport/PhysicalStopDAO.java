@@ -22,7 +22,7 @@ public class PhysicalStopDAO {
             OPERATORID = "OperatorId",
             ACCESSIBILITY = "Accessibility";
 
-    public static final String TABLE_CREATE = "CREATE TABLE IF NOT EXISTS   " + TABLE_NAME + " (" +
+    public static final String TABLE_CREATE = "CREATE TABLE " + TABLE_NAME + " (" +
             CATEGORY + " INTEGER, " +
             DIRECTION + " INTEGER, " +
             ID + " INTEGER PRIMARY KEY, " +
@@ -118,7 +118,7 @@ public class PhysicalStopDAO {
                 c.getInt(8),
                 c.getInt(9),
                 c.getInt(10),
-                null);
+                0);
         c.close();
         return physicalStop;
     }

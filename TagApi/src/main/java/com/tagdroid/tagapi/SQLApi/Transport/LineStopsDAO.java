@@ -23,7 +23,7 @@ public class LineStopsDAO {
     private String[] AllColumns = new String[]{ID, NAME, LOGICALSTOPID, LOCALITYID,
             LATITUDE, LONGITUDE, LINE_ID, DIRECTION,};
 
-    public static final String TABLE_CREATE = "CREATE TABLE IF NOT EXISTS   " + TABLE_NAME + " (" +
+    public static final String TABLE_CREATE = "CREATE TABLE " + TABLE_NAME + " (" +
             ID          + " INTEGER PRIMARY KEY, " +
             NAME        + " TEXT, " +
             LOGICALSTOPID + " INTEGER, " +

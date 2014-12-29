@@ -25,7 +25,7 @@ public class Line {
         this.Number = jsonLine.getString("Number");
         this.Name = jsonLine.getString("Name");
         this.IsActive = jsonLine.getBoolean("Published") && !jsonLine.getBoolean("Deleted");
-        this.DirectionList = Direction.DirectionArray(jsonLine.getJSONArray("DirectionList"));
+        this.DirectionList = Direction.DirectionArray(jsonLine.getJSONArray("DirectionList"), Id);
 
         this.Order = jsonLine.getInt("Order");
     }

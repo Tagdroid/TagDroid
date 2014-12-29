@@ -6,9 +6,9 @@ import org.json.JSONObject;
 
 public class DisruptedStopPoint {
     /*private String ServiceLevel;
-    private Integer Direction,
+    private int Direction,
             LineId;*/
-    private Integer StopPointId;
+    private int StopPointId;
 
 
     public DisruptedStopPoint(JSONObject jsonDisruptionType) throws JSONException {
@@ -19,9 +19,9 @@ public class DisruptedStopPoint {
     }
 
     public DisruptedStopPoint(/*String ServiceLevel,
-                               Integer Direction,
-                               Integer LineId*/
-                                Integer StopPointId) {
+                               int Direction,
+                               int LineId*/
+                                int StopPointId) {
 
         /*this.ServiceLevel = ServiceLevel;
         this.Direction = Direction;
@@ -30,7 +30,7 @@ public class DisruptedStopPoint {
     }
 
     public static DisruptedStopPoint[] DisruptedStopPointArray(JSONArray jsonDirectionArray) throws JSONException {
-        Integer length = jsonDirectionArray.length();
+        int length = jsonDirectionArray.length();
         DisruptedStopPoint[] disruptedStopPointArray = new DisruptedStopPoint[length];
         for (int i = 0; i < length; i++)
             disruptedStopPointArray[i] = (new DisruptedStopPoint(jsonDirectionArray.getJSONObject(i)));
@@ -39,14 +39,14 @@ public class DisruptedStopPoint {
     /*public String getServiceLevel() {
         return ServiceLevel;
     }
-    public Integer getDirection() {
+    public int getDirection() {
         return Direction;
     }
-    public Integer getLineId() {
+    public int getLineId() {
         return LineId;
     }*/
 
-    public Integer getStopPointId() {
+    public int getStopPointId() {
         return StopPointId;
     }
 

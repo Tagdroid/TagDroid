@@ -16,7 +16,7 @@ public class LineStop {
     private Locality locality;
     private LogicalStop logicalStop;
 
-    public LineStop(JSONObject jsonPhysicalStop, Integer LineId, Integer Direction) throws JSONException {
+    public LineStop(JSONObject jsonPhysicalStop, int LineId, int Direction) throws JSONException {
         this.Id = jsonPhysicalStop.getLong("Id");
         this.Name = jsonPhysicalStop.getString("Name");
         this.LogicalStopId = jsonPhysicalStop.getInt("LogicalStopId");

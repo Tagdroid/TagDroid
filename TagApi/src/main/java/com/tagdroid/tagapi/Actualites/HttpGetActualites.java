@@ -81,7 +81,7 @@ public class HttpGetActualites extends AsyncTask<Void, Void, Integer> {
     @Override
     protected void onPostExecute(Integer resultState) {
         if (resultState >= 0)
-            progressionInterface.onDownloadComplete("");
+            progressionInterface.onDownloadComplete();
         else
             progressionInterface.onDownloadFailed(exception);
     }

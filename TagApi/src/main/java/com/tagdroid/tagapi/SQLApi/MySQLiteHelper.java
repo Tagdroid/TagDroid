@@ -10,7 +10,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 
     public boolean isUpgrading = false,
             isCreating = false;
-    public Integer oldVersion = -1,
+    public int oldVersion = -1,
             newVersion = -1;
 
     public MySQLiteHelper(Context context) {

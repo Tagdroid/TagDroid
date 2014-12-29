@@ -108,12 +108,7 @@ public class ActualitesFragment extends Page implements ProgressionInterface, Ac
     }
 
     @Override
-    public void onDownloadFailed(Integer e) {
-
-    }
-
-    @Override
-    public void onDownloadComplete(String resultString) {
+    public void onDownloadComplete() {
         progression.dismiss();
         actualitésList = httpGetActualites.getResult();
         ActualiteAdapter actualiteAdapter = new ActualiteAdapter(actualitésList, getActivity());
@@ -123,22 +118,12 @@ public class ActualitesFragment extends Page implements ProgressionInterface, Ac
 
     @Override
     public void onJSonParsingStarted() {
-
     }
-
     @Override
     public void onJSonParsingFailed(Exception e) {
-
     }
-
-    @Override
-    public void onJSonParsingFailed(String e) {
-
-    }
-
     @Override
     public void onJSonParsingComplete() {
-
     }
 
 

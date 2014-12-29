@@ -15,8 +15,9 @@ import org.json.JSONException;
 
 public class ReadJSonLineStops extends ReadJSonTask {
     private Context context;
-    private Integer lineId, direction;
-    public ReadJSonLineStops(String jsonString, Integer lineId, Integer direction,
+    private long lineId;
+    private int direction;
+    public ReadJSonLineStops(String jsonString, long lineId, int direction,
                              ProgressionInterface progressionInterface, Context context) {
         super(jsonString, progressionInterface);
         this.context = context;
@@ -35,7 +36,7 @@ public class ReadJSonLineStops extends ReadJSonTask {
 
         PhysicalStop physicalStop;
 
-        Integer length = jsonData.length();
+        int length = jsonData.length();
         for (int i = 0; i < length; i++)
             try {
                 physicalStop = new PhysicalStop(jsonData.getJSONObject(i), lineId, direction);

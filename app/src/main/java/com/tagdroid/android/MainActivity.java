@@ -39,7 +39,7 @@ public class MainActivity extends ActionBarActivity implements DrawerFragment.Dr
             return;
         }
 
-        if(firstSee){ //Avoid new display on rotate at first launch
+        if(firstSee){ //Avoid to display the Changelog at each rotate on first launch…
             new ChangeLog(this).showIfNewVersion(false);
             firstSee=false;
         }

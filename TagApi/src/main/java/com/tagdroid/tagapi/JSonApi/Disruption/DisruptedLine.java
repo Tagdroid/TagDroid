@@ -5,7 +5,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class DisruptedLine {
-    private Integer Direction,
+    private int Direction,
             LineId;
     private String ServiceLevel;
 
@@ -16,8 +16,8 @@ public class DisruptedLine {
         this.ServiceLevel = jsonDisruptionLine.getString("ServiceLevel");
     }
 
-    public DisruptedLine(Integer Direction,
-                          Integer LineId,
+    public DisruptedLine(int Direction,
+                          int LineId,
                           String ServiceLevel) {
         this.Direction = Direction;
         this.LineId = LineId;
@@ -25,17 +25,17 @@ public class DisruptedLine {
     }
 
     public static DisruptedLine[] DisruptedLineArray(JSONArray jsonDirectionArray) throws JSONException {
-        Integer length = jsonDirectionArray.length();
+        int length = jsonDirectionArray.length();
         DisruptedLine[] disruptedLineArray = new DisruptedLine[length];
         for (int i = 0; i < length; i++)
             disruptedLineArray[i] = (new DisruptedLine(jsonDirectionArray.getJSONObject(i)));
         return disruptedLineArray;
     }
 
-    public Integer getDirection() {
+    public int getDirection() {
         return Direction;
     }
-    public Integer getLineId() {
+    public int getLineId() {
         return LineId;
     }
     public String getServiceLevel() {

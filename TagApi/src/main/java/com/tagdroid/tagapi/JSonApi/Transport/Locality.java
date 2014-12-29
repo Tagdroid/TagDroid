@@ -5,7 +5,7 @@ import org.json.JSONObject;
 
 public class Locality {
     private long Id;
-    private Integer InseeCode,
+    private int InseeCode,
             Latitude,
             Longitude;
     String Name;
@@ -19,9 +19,9 @@ public class Locality {
     }
 
     public Locality(long Id,
-                    Integer InseeCode,
-                    Integer Latitude,
-                    Integer Longitude,
+                    int InseeCode,
+                    int Latitude,
+                    int Longitude,
                     String Name) {
         this.Id = Id;
         this.InseeCode = InseeCode;
@@ -37,10 +37,10 @@ public class Locality {
     public long getInseeCode() {
         return InseeCode;
     }
-    public Integer getLatitude() {
+    public int getLatitude() {
         return Latitude;
     }
-    public Integer getLongitude() {
+    public int getLongitude() {
         return Longitude;
     }
     public String getName() {

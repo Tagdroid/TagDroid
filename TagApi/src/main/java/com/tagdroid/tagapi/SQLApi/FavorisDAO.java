@@ -15,7 +15,7 @@ public class FavorisDAO {
             LONGITUDE = "Longitude",
             FAVORI = "Favori";
 
-    public static final String TABLE_CREATE = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (" +
+    public static final String TABLE_CREATE = "CREATE TABLE " + TABLE_NAME + " (" +
             ID + " INTEGER PRIMARY KEY, " +
             NAME + " STRING, " +
             LINE + " STRING, " +

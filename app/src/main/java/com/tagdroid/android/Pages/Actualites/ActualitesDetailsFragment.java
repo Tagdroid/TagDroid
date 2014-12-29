@@ -21,7 +21,7 @@ import com.tagdroid.android.R;
 import java.io.InputStream;
 
 public class ActualitesDetailsFragment extends Page implements View.OnClickListener {
-    public static Integer RSSChannel;
+    public static int RSSChannel;
     public static String title;
     public static String description;
     public static String url_more;
@@ -36,14 +36,14 @@ public class ActualitesDetailsFragment extends Page implements View.OnClickListe
         return R.menu.menu_actu_details;
     }
 
-    public static ActualitesDetailsFragment newInstance(Integer RSSChannel, String title, String description,
+    public static ActualitesDetailsFragment newInstance(int RSSChannel, String title, String description,
                                                         String url_more, String url_photo) {
         ActualitesDetailsFragment fragment = new ActualitesDetailsFragment();
-        fragment.RSSChannel = RSSChannel;
-        fragment.title = title;
-        fragment.description = description;
-        fragment.url_more = url_more;
-        fragment.url_photo = url_photo;
+        ActualitesDetailsFragment.RSSChannel = RSSChannel;
+        ActualitesDetailsFragment.title = title;
+        ActualitesDetailsFragment.description = description;
+        ActualitesDetailsFragment.url_more = url_more;
+        ActualitesDetailsFragment.url_photo = url_photo;
         return fragment;
     }
 

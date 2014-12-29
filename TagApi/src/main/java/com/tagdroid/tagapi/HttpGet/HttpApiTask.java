@@ -20,7 +20,7 @@ public class HttpApiTask extends AsyncTask<Void, Integer, Void> {
 
     private ProgressionInterface progressionInterface;
     private ProgressBar progressBar;
-    private Integer fileLength;
+    private int fileLength;
 
     public HttpApiTask(ProgressionInterface progressionInterface, String apiPath) {
         this.progressionInterface = progressionInterface;
@@ -50,7 +50,7 @@ public class HttpApiTask extends AsyncTask<Void, Integer, Void> {
             ByteArrayOutputStream output = new ByteArrayOutputStream();
 
             byte data[] = new byte[1024];
-            Integer total = 0;
+            int total = 0;
             int count;
             while ((count = input.read(data)) != -1) {
                 total += count;
@@ -80,6 +80,6 @@ public class HttpApiTask extends AsyncTask<Void, Integer, Void> {
     protected void onPostExecute(Void result) {
         if (progressBar != null)
             progressBar.setProgress(100);
-        progressionInterface.onDownloadComplete(responseString);
+        progressionInterface.onDownloadComplete();
     }
 }

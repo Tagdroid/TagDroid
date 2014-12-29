@@ -41,7 +41,7 @@ public class ReadJSonStops extends ReadJSonTask {
         LogicalStop logicalStop;
         Locality locality;
 
-        Integer length = jsonData.length();
+        int length = jsonData.length();
         for (int i = 0; i < length; i++)
             try {
                 physicalStop = new PhysicalStop(jsonData.getJSONObject(i));

@@ -13,7 +13,7 @@ public class Disruption {
     private DisruptionType disruptionType;
     private String EndValidityDateString;
     private long Id;
-    private Integer Latitude, Longitude;
+    private int Latitude, Longitude;
     private String Name;
     private String Source;
 
@@ -41,8 +41,8 @@ public class Disruption {
                       String CreateDateString,
                       String EndValidityDateString,
                       long Id,
-                      Integer Latitude,
-                      Integer Longitude,
+                      int Latitude,
+                      int Longitude,
                       String Name,
                       String Source) {
 
@@ -76,10 +76,10 @@ public class Disruption {
     public long getId() {
         return Id;
     }
-    public Integer getLatitude() {
+    public int getLatitude() {
         return Latitude;
     }
-    public Integer getLongitude() {
+    public int getLongitude() {
         return Longitude;
     }
     public String getName() {

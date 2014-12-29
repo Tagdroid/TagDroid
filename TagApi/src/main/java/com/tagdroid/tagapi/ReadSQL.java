@@ -15,7 +15,7 @@ public class ReadSQL {
         this.context = context;
     }
 
-    public Line[] getAllLines() {
+    public ArrayList<Line> getAllLines() {
         MySQLiteHelper dbHelper = new MySQLiteHelper(context);
         SQLiteDatabase daTAGase = dbHelper.getWritableDatabase();
         daTAGase.beginTransaction();
@@ -28,8 +28,6 @@ public class ReadSQL {
         daTAGase.setTransactionSuccessful();
         daTAGase.endTransaction();
         dbHelper.close();
-
-        Line[] allLines = allLinesArrayList.toArray(new Line[allLinesArrayList.size()]);
-        return allLines;
+        return allLinesArrayList;
     }
 }

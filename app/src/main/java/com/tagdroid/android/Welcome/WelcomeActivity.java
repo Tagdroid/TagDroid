@@ -1,6 +1,5 @@
 package com.tagdroid.android.Welcome;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -22,18 +21,13 @@ import android.widget.Toast;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.tagdroid.android.MainActivity;
 import com.tagdroid.android.R;
-import com.tagdroid.tagapi.HttpGet.HttpGetLineStops;
-import com.tagdroid.tagapi.JSon2SQL.ReadJSonLineStops;
-import com.tagdroid.tagapi.ProgressionInterface;
+import com.tagdroid.tagapi.HttpGet.HttpGetDatabase;
 import com.viewpagerindicator.CirclePageIndicator;
-import com.viewpagerindicator.PageIndicator;
 
-public class WelcomeActivity extends FragmentActivity implements WelcomeFragment.OnButtonClicked, ProgressionInterface {
+public class WelcomeActivity extends FragmentActivity implements WelcomeFragment.OnButtonClicked {
     ViewPager mPager;
-    PageIndicator mIndicator;
-    boolean db_downloading = false,
-            db_OK,
-            skip = false;
+    boolean skip = false;
+    HttpGetDatabase httpGetDatabase = new HttpGetDatabase(this);
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,50 +37,15 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
         if (GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext()) != 0) {
             Toast.makeText(this, "Google Play Service non détecté. Dysfonctionnement de l'application possible.",
                     Toast.LENGTH_LONG).show();
-            Log.d("Welcome Status", "Google Play Service undetected");
+            Log.d("WelcomeActivity", "Google Play Service undetected");
         }
 
-        db_OK = this.getDatabasePath("TagDatabase.db").exists();
-
-        // We check if it's the first app launch…
-        if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean("AppAlreadyLaunched", false)) {
-            Log.d("Welcome Status", "App already launched");
-            // …and if DB exists
-            if (db_OK) {
-                Log.d("Welcome Status", "Database already exists");
-                startActivity(new Intent(this, MainActivity.class));
-                finish();
-            } else {
-                setContentView(R.layout.welcome_activity);
-                startWaitingScreen();
-            }
-        } else {
-            Log.d("Welcome Status", "First App Launch");
-            startWelcomeScreen();
-        }
-    }
-
-
-
-    private void startWaitingScreen() {
-        if (!db_downloading)
-            startDownloadTask();
-    }
-
-    @SuppressLint("WrongViewCast")
-    public void startWelcomeScreen() {
         setContentView(R.layout.welcome_activity);
-
-        /*if (Build.VERSION.SDK_INT >= 14) {
-            getActionBar().setIcon(R.drawable.tag);
-            getActionBar().setTitle("");
-        } else getActionBar().setTitle(R.string.welcome_bienvenue);*/
 
         WelcomeAdapter mAdapter = new WelcomeAdapter(getSupportFragmentManager());
         mPager = (ViewPager) findViewById(R.id.pager);
         mPager.setAdapter(mAdapter);
         CirclePageIndicator indicator = (CirclePageIndicator)findViewById(R.id.indicator);
-        mIndicator = indicator;
         indicator.setViewPager(mPager);
 
         final float density = getResources().getDisplayMetrics().density;
@@ -106,13 +65,14 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
 
         if (activeNetworkInfo == null || !activeNetworkInfo.isConnectedOrConnecting()) {
-            Log.d("Welcome Status", "Internet connection problem");
+            Log.d("WelcomeActivity", "Internet connection problem");
             new AlertDialog.Builder(this)
                     .setTitle("Pas de connexion Internet")
                     .setMessage("L'application n'est pas en mesure de télécharger la base de données "
                             + "nécessaire au bon fonctionnement de l'application.\n\n"
                             + "TAGdroid va se fermer.\n\nActivez votre connexion Internet "
                             + "par WIFI ou données mobiles (4G, 3G, Edge) et relancez l'application.")
+
                     .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             finish();
@@ -121,12 +81,8 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
                     .setIcon(R.drawable.ic_report)
                     .show();
         } else {
-            //HttpGetLinesList httpGetLinesList = new HttpGetLinesList(this);
-            Log.d("Welcome Status", "Start of Downloading database");
-            //httpGetLinesList.setProgressBar((ProgressBar) findViewById(R.id.loadJSON_bar));
-            //httpGetLinesList.execute();
-            new HttpGetLineStops(27, 1, this).execute();
-            db_downloading = true;
+            Log.d("WelcomeActivity", "Start of Downloading database");
+            httpGetDatabase.execute();
         }
     }
 
@@ -137,71 +93,24 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
                 .putBoolean("AppAlreadyLaunched", true)
                 .apply();
 
-        if (db_OK) {
+        if (httpGetDatabase.isFinished) {
             startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
             finish();
-        } else
-            startWaitingScreen();
+        } else{
+            skip = true;
+        } //TODO Need to implement some "waiting" window
+
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt("pageItem", mPager.getCurrentItem());
+        outState.putInt("pageItem", mPager.getCurrentItem()); //TODO useful ?
     }
 
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-    }
-
-    private void readJSon(String jsonQueryResult) {
-        //ReadJSonLinesList readJSonLinesList = new ReadJSonLinesList(jsonQueryResult, this, this);
-        //readJSonLinesList.setProgressBar((ProgressBar) findViewById(R.id.parseJSON_bar));
-        //readJSonLinesList.execute();
-        new ReadJSonLineStops(jsonQueryResult, 27, 1, this, this).execute();
-    }
-
-    public void onDownloadStart() {
-        Toast.makeText(this, "Début du téléchargement…", Toast.LENGTH_SHORT).show();
-        Log.e("Download", "Début du téléchargement…");
-    }
-
-    public void onDownloadFailed(Integer e) {
-        Toast.makeText(this, "Failed to download file", Toast.LENGTH_SHORT).show();
-        Log.e("Download", "Failed to download file");
-        Log.e("Download", "StatusCode : " + e);
-    }
-
-    public void onDownloadFailed(Exception e) {
-        Toast.makeText(this, "Failed to download file", Toast.LENGTH_SHORT).show();
-        Log.e("Download", "Failed to download file");
-        e.printStackTrace();
-    }
-
-    public void onDownloadComplete(String resultString) {
-        Toast.makeText(this, "Le téléchargement est terminé.", Toast.LENGTH_SHORT).show();
-        Log.d("Download", "Download finished !");
-        readJSon(resultString);
-    }
-
-    public void onJSonParsingStarted() {
-    }
-
-    public void onJSonParsingFailed(Exception e) {
-    }
-
-    public void onJSonParsingFailed(String e) {
-        Log.e("JSonParsing", e);
-    }
-
-    public void onJSonParsingComplete() {
-        db_OK = true;
-        Log.d("JSonParsing", "Finished !");
-        if (skip) {
-            startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
-            finish();
-        }
     }
 
     public class WelcomeAdapter extends FragmentStatePagerAdapter {

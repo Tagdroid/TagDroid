@@ -4,10 +4,12 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.tagdroid.tagapi.JSonApi.Transport.Direction;
 import com.tagdroid.tagapi.JSonApi.Transport.Line;
 import com.tagdroid.tagapi.ProgressionInterface;
 import com.tagdroid.tagapi.ReadJSonTask;
 import com.tagdroid.tagapi.SQLApi.MySQLiteHelper;
+import com.tagdroid.tagapi.SQLApi.Transport.DirectionDAO;
 import com.tagdroid.tagapi.SQLApi.Transport.LinesDAO;
 
 import org.json.JSONArray;
@@ -28,14 +30,25 @@ public class ReadJSonLinesList extends ReadJSonTask {
 
         LinesDAO linesDAO = new LinesDAO(daTAGase,
                 dbHelper.isCreating, dbHelper.isUpgrading, dbHelper.oldVersion, dbHelper.newVersion);
+        DirectionDAO directionDAO = new DirectionDAO(daTAGase,
+                dbHelper.isCreating, dbHelper.isUpgrading, dbHelper.oldVersion, dbHelper.newVersion);
 
         Line line;
+        Direction[] directions;
 
-        Integer length = jsonData.length();
+        int length = jsonData.length();
         for (int i = 0; i < length; i++)
             try {
                 line = new Line(jsonData.getJSONObject(i));
                 linesDAO.add(line);
+
+                // Saving the directions
+                directions = line.getDirectionList();
+                for (Direction direction : directions) {
+                    directionDAO.add(direction);
+                    Log.d("parsage de ligne", i + " / " + length + ", direction " + direction.getName());
+                }
+
                 publishProgress(i, length);
             } catch (JSONException e) {
                 Log.e("parsage de ligne", i + " / " + length);
@@ -45,6 +58,5 @@ public class ReadJSonLinesList extends ReadJSonTask {
         daTAGase.setTransactionSuccessful();
         daTAGase.endTransaction();
         dbHelper.close();
-
     }
 }

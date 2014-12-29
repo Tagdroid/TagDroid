@@ -4,13 +4,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class PhysicalStop {
-    private Integer Category,
+    private int Category,
             Direction;
     private long Id;
     private String Name;
     private Double Latitude, Longitude;
-    private Integer LineId,
-            PointType,
+    private long LineId;
+    private int PointType,
             LogicalStopId,
             LocalityId,
             OperatorId,
@@ -19,7 +19,7 @@ public class PhysicalStop {
     private Locality locality;
     private LogicalStop logicalStop;
 
-    public PhysicalStop(JSONObject jsonPhysicalStop, Integer LineId, Integer Direction) throws JSONException {
+    public PhysicalStop(JSONObject jsonPhysicalStop, long LineId, int Direction) throws JSONException {
         this.Category = 0;// jsonPhysicalStop.getInt("Category");
         this.Direction = Direction;
         this.Id = jsonPhysicalStop.getLong("Id");
@@ -40,18 +40,18 @@ public class PhysicalStop {
         new PhysicalStop(jsonPhysicalStop, 0, 0);
     }
 
-    public PhysicalStop(Integer Category,
-                        Integer Direction,
+    public PhysicalStop(int Category,
+                        int Direction,
                         long Id,
                         String Name,
                         Double Latitude,
-                        Integer LineId,
+                        int LineId,
                         Double Longitude,
-                        Integer PointType,
-                        Integer LogicalStopId,
-                        Integer LocalityId,
-                        Integer OperatorId,
-                        Integer Accessibility) {
+                        int PointType,
+                        int LogicalStopId,
+                        int LocalityId,
+                        int OperatorId,
+                        int Accessibility) {
         this.Category = Category;
         this.Direction = Direction;
         this.Id = Id;
@@ -69,37 +69,37 @@ public class PhysicalStop {
     public long getId() {
         return Id;
     }
-    public Integer getCategory() {
+    public int getCategory() {
         return Category;
     }
-    public Integer getDirection() {
+    public int getDirection() {
         return Direction;
     }
     public Double getLatitude() {
         return Latitude;
     }
-    public Integer getLineId() {
+    public long getLineId() {
         return LineId;
     }
     public Double getLongitude() {
         return Longitude;
     }
-    public Integer getPointType() {
+    public int getPointType() {
         return PointType;
     }
-    public Integer getLogicalStopId() {
+    public int getLogicalStopId() {
         return LogicalStopId;
     }
-    public Integer getLocalityId() {
+    public int getLocalityId() {
         return LocalityId;
     }
-    public Integer getOperatorId() {
+    public int getOperatorId() {
         return OperatorId;
     }
     public String getName() {
         return Name;
     }
-    public Integer getAccessibility() {
+    public int getAccessibility() {
         return Accessibility;
     }
     public Locality getLocality() { return locality; }

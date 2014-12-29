@@ -5,9 +5,9 @@ import org.json.JSONObject;
 
 public class LogicalStop {
     private long Id;
-    private Integer LocalityId;
+    private int LocalityId;
     private String Name;
-    private Integer PointType;
+    private int PointType;
     private Locality locality;
 
     public LogicalStop(JSONObject jsonLogicalStop) throws JSONException {
@@ -19,7 +19,7 @@ public class LogicalStop {
         this.locality = new Locality(jsonLogicalStop.getJSONObject("Locality"));
     }
 
-    public LogicalStop(long Id, Integer LocalityId, String Name, Integer PointType) {
+    public LogicalStop(long Id, int LocalityId, String Name, int PointType) {
         this.Id = Id;
         this.LocalityId = LocalityId;
         this.Name = Name;
@@ -29,13 +29,13 @@ public class LogicalStop {
     public long getId() {
         return Id;
     }
-    public Integer getLocalityId() {
+    public int getLocalityId() {
         return LocalityId;
     }
     public String getName() {
         return Name;
     }
-    public Integer getPointType() {
+    public int getPointType() {
         return PointType;
     }
     public Locality getLocality() { return locality; }

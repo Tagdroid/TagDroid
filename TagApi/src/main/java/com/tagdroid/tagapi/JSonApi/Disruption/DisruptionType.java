@@ -12,8 +12,8 @@ import org.json.JSONObject;
 // J'ai modifié ton code pour avoir un ordre alphabétique ;) Tu peux virer ce comm dès que tu l'as lu !
 
 public class DisruptionType {
-    private Integer Code;
-    private Integer Id;
+    private int Code;
+    private int Id;
     private String Name;
 
 
@@ -23,18 +23,18 @@ public class DisruptionType {
         this.Name = jsonDisruptionType.getString("Name");
     }
 
-    public DisruptionType(Integer Code,
-                          Integer Id,
+    public DisruptionType(int Code,
+                          int Id,
                           String Name) {
         this.Code = Code;
         this.Id = Id;
         this.Name = Name;
     }
 
-    public Integer getCode() {
+    public int getCode() {
         return Code;
     }
-    public Integer getId() {
+    public int getId() {
         return Id;
     }
     public String getName() {
