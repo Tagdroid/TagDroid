@@ -13,15 +13,14 @@ import java.util.ArrayList;
 
 public class LinesDAO {
     public static final String TABLE_NAME = "Lines",
-            ID = "Id", NUMBER = "Number", NAME = "Name", IS_ACTIVE = "IsActive", ORDER = "OrderId";
-    public static final String[] AllColumns = new String[]{ID, NUMBER, NAME, IS_ACTIVE, ORDER};
+            ID = "Id", NUMBER = "Number", NAME = "Name", IS_ACTIVE = "IsActive";
+    public static final String[] AllColumns = new String[]{ID, NUMBER, NAME, IS_ACTIVE};
 
     public static final String TABLE_CREATE = "CREATE TABLE "+ TABLE_NAME +" ("
             + ID        +" INTEGER PRIMARY KEY, "
             + NUMBER    +" TEXT, "
             + NAME      +" TEXT, "
-            + IS_ACTIVE +" INTEGER, "
-            + ORDER     +" INTEGER);";
+            + IS_ACTIVE +" INTEGER);";
 
     public static final String TABLE_DROP = "DROP TABLE IF EXISTS " + TABLE_NAME;
 
@@ -49,7 +48,6 @@ public class LinesDAO {
         values.put(NUMBER, m.getNumber());
         values.put(NAME, m.getName());
         values.put(IS_ACTIVE, m.getIsActive());
-        values.put(ORDER, m.getOrder());
         return values;
     }
 
@@ -86,8 +84,7 @@ public class LinesDAO {
         return new Line(c.getLong(0),
                 c.getString(1),
                 c.getString(2),
-                c.getInt(3) != 0,
-                c.getInt(4));
+                c.getInt(3) != 0);
     }
 
     public Line select(long id) throws JSONException {

@@ -1,7 +1,6 @@
 package com.tagdroid.tagapi.HttpGet;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.tagdroid.tagapi.JSonApi.Transport.Direction;
 import com.tagdroid.tagapi.JSonApi.Transport.Line;
@@ -10,6 +9,7 @@ import com.tagdroid.tagapi.ReadSQL;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
+/* Will download the whole Database at first start or at update */
 
 public class HttpGetDatabase implements ProgressionInterface {
     private final Context context;
@@ -31,7 +31,7 @@ public class HttpGetDatabase implements ProgressionInterface {
     public void execute() {
         HttpGetLinesList httpGetLinesList = new HttpGetLinesList(this, context);
         httpGetLinesList.execute();
-        Log.d("HttpGetDatabase", "httpgetlineslist just called");
+        isFinished = true;
     }
 
     private void downloadAllLines() {

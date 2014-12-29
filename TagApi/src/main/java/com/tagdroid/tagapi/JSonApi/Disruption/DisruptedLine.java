@@ -9,7 +9,6 @@ public class DisruptedLine {
             LineId;
     private String ServiceLevel;
 
-
     public DisruptedLine(JSONObject jsonDisruptionLine) throws JSONException {
         this.Direction = jsonDisruptionLine.getInt("Direction");
         this.LineId = jsonDisruptionLine.getInt("LineId");
@@ -17,8 +16,8 @@ public class DisruptedLine {
     }
 
     public DisruptedLine(int Direction,
-                          int LineId,
-                          String ServiceLevel) {
+                         int LineId,
+                         String ServiceLevel) {
         this.Direction = Direction;
         this.LineId = LineId;
         this.ServiceLevel = ServiceLevel;

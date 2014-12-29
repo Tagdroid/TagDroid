@@ -1,4 +1,4 @@
-package com.tagdroid.tagapi.JSon2SQL;
+package com.tagdroid.tagapi.HttpGet;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -8,7 +8,6 @@ import com.tagdroid.tagapi.JSonApi.Transport.Locality;
 import com.tagdroid.tagapi.JSonApi.Transport.LogicalStop;
 import com.tagdroid.tagapi.JSonApi.Transport.PhysicalStop;
 import com.tagdroid.tagapi.ProgressionInterface;
-import com.tagdroid.tagapi.ReadJSonTask;
 import com.tagdroid.tagapi.SQLApi.Transport.LocalityDAO;
 import com.tagdroid.tagapi.SQLApi.Transport.LogicalStopDAO;
 import com.tagdroid.tagapi.SQLApi.MySQLiteHelper;
@@ -17,14 +16,14 @@ import com.tagdroid.tagapi.SQLApi.Transport.PhysicalStopDAO;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-public class ReadJSonStops extends ReadJSonTask {
+/* N'est plus utilisé mais on conserve le code "au cas où" il sert */
+
+public class ReadJSonStops {
     private Context context;
     public ReadJSonStops(String jsonString, ProgressionInterface progressionInterface, Context context) {
-        super(jsonString, progressionInterface);
         this.context = context;
     }
 
-    @Override
     public void readData(JSONArray jsonData) {
         MySQLiteHelper dbHelper = new MySQLiteHelper(context);
         SQLiteDatabase daTAGase = dbHelper.getWritableDatabase();
@@ -52,7 +51,6 @@ public class ReadJSonStops extends ReadJSonTask {
                 localityDAO.add(locality);
                 locality = logicalStop.getLocality();
                 localityDAO.add(locality);
-                publishProgress(i, length);
             } catch (JSONException e) {
                 Log.e("parsage de station", i + " / " + length);
                 e.printStackTrace();

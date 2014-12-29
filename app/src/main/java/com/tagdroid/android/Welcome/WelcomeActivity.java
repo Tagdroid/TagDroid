@@ -26,7 +26,6 @@ import com.viewpagerindicator.CirclePageIndicator;
 
 public class WelcomeActivity extends FragmentActivity implements WelcomeFragment.OnButtonClicked {
     ViewPager mPager;
-    boolean skip = false;
     HttpGetDatabase httpGetDatabase = new HttpGetDatabase(this);
 
     @Override
@@ -88,7 +87,6 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
 
     @Override
     public void onFinalButtonClicked() {
-        skip = true;
         PreferenceManager.getDefaultSharedPreferences(this).edit()
                 .putBoolean("AppAlreadyLaunched", true)
                 .apply();
@@ -97,7 +95,6 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
             startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
             finish();
         } else{
-            skip = true;
         } //TODO Need to implement some "waiting" window
 
     }

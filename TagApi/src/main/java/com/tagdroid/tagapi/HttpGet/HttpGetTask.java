@@ -2,8 +2,13 @@ package com.tagdroid.tagapi.HttpGet;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.tagdroid.tagapi.ProgressionInterface;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -26,11 +31,20 @@ public abstract class HttpGetTask extends AsyncTask<Void, Integer, Void> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        // progressionInterface.onDownloadStart();
+        progressionInterface.onDownloadStart();
     }
 
     @Override
     protected Void doInBackground(Void... params) {
+        downloadTask();
+        if (responseString.equals("")) {
+            return null; // There has been an error to manage.
+        }
+        readJsonTask();
+        return null;
+    }
+
+    private void downloadTask() {
         try {
             URL url = new URL(RequestUrl);
             URLConnection connection = url.openConnection();
@@ -44,8 +58,39 @@ public abstract class HttpGetTask extends AsyncTask<Void, Integer, Void> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
     }
+
+    private void readJsonTask() {
+        try {
+            JSONObject jsonObj = new JSONObject(responseString);
+            String message = jsonObj.getString("Message");
+            switch (jsonObj.getInt("StatusCode")) {
+                case 200:
+                    readData(jsonObj.getJSONArray("Data"));
+                    break;
+               /* case 300:
+                    onVoidResult();
+                    break;
+                case 400:
+                    onBadRequest();
+                    break;
+                case 500:
+                    onRequestError();
+                    break;*/
+                default:
+                    throw new Exception("Response StatusCode is " + jsonObj.getInt("StatusCode")
+                            +" with the message : " + message);
+                    //onUnknownStatusCode();
+            }
+        } catch (JSONException e) {
+            Log.e("JSonParsing", "Could not correctly parse received JSon");
+            Log.e("JSonParsingcontent : ", responseString);
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public abstract void readData(JSONArray jsonData);
 
     @Override
     protected void onPostExecute(Void result) {
