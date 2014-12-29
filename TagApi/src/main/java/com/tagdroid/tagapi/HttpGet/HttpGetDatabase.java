@@ -17,12 +17,7 @@ public class HttpGetDatabase implements ProgressionInterface {
 
     private boolean isHttpGetLinesListFinished = false;
 
-    private HttpGetLineStops httpGetLineStops;
-
     ArrayList<Line> linesList;
-    private int linesCount,
-            lineProgress,
-            lineDirectionProgress;
 
     public HttpGetDatabase(Context context) {
         this.context = context;
@@ -71,8 +66,6 @@ public class HttpGetDatabase implements ProgressionInterface {
         if (!isHttpGetLinesListFinished) {
             isHttpGetLinesListFinished = true;
             linesList   = (new ReadSQL(context)).getAllLines();
-            linesCount  = linesList.size();
-            lineProgress=0;
             downloadAllLines();
         }
     }
