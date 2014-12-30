@@ -89,7 +89,7 @@
         </activity>
 
         <activity android:name="com.tagdroid.android.Welcome.WelcomeActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="sensorPortrait">
         </activity>
     </application>
 </manifest>
