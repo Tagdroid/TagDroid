@@ -40,7 +40,6 @@ public class HttpGetLinesList extends HttpGetTask {
                 // Saving the directions
                 for (Direction direction : line.getDirectionList()) {
                     directionDAO.add(direction);
-                    //Log.d("parsage de lignes", i + " / " + length + ", direction " + direction.getName());
                 }
 
                 publishProgress(i, length);

@@ -20,12 +20,10 @@ public abstract class DAO<T> {
         this.bdd = bdd;
     }
     public DAO<T> create() {
-        //Log.d("SQLiteHelper", "Table "+ TABLE_NAME() +" is being created");
         bdd.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_NAME() + " " + COLUMNS());
         return this;
     }
     public DAO<T> update(int oldVersion, int newVersion) {
-        //Log.d("SQLiteHelper", "Table "+ TABLE_NAME() +" is being updated from "+oldVersion+" to "+newVersion);
         bdd.execSQL(TABLE_DROP());
         bdd.execSQL("CREATE TABLE " + TABLE_NAME() + " " + COLUMNS());
         return this;

@@ -68,7 +68,6 @@ public class DrawerAdapter extends ArrayAdapter<DrawerItem> {
         if (drawerItemList.get(position).isDivider)
             return divider(parent);
 
-        Log.d("getView", ""+position);
         convertView = LayoutInflater.from(getContext()).inflate(R.layout.main_drawer_item, parent, false);
 
         DrawerItem drawerItem = drawerItemList.get(position);

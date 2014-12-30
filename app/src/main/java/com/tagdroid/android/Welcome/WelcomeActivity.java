@@ -9,7 +9,6 @@ import android.content.res.TypedArray;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
@@ -82,13 +81,9 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
                     .setIcon(R.drawable.ic_report)
                     .show();
         } else {
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    Log.d("WelcomeActivity", "Start of Downloading database");
-                    httpGetDatabase.execute();
-                }
-            }, 2000);
+            Log.d("WelcomeActivity", "Start of Downloading database");
+            httpGetDatabase.execute();
+
         }
     }
 

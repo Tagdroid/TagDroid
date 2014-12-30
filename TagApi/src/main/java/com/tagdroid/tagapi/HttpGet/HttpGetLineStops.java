@@ -51,7 +51,6 @@ public class HttpGetLineStops extends HttpGetTask {
                 locality = lineStop.getLocality();
                 localityDAO.update(locality);
                 publishProgress(i, length);
-                //Log.d("parsage de stops", i + " / " + length);
             } catch (JSONException e) {
                 Log.e("parsage de stops", i + " / " + length);
                 e.printStackTrace();
