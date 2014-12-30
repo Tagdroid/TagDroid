@@ -108,6 +108,11 @@ public class ActualitesFragment extends Page implements ProgressionInterface, Ac
     }
 
     @Override
+    public void onDownloadProgression(int progression, int total) {
+
+    }
+
+    @Override
     public void onDownloadComplete() {
         progression.dismiss();
         actualitésList = httpGetActualites.getResult();

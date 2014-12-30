@@ -5,9 +5,16 @@
     <android.support.v4.view.ViewPager android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
     <com.viewpagerindicator.CirclePageIndicator android:id="@+id/indicator"
         android:paddingBottom="10dp"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
         android:layout_gravity="bottom" />
+
+    <ProgressBar android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_gravity="center_horizontal|bottom" />
 </FrameLayout>

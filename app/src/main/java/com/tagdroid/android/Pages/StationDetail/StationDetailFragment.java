@@ -117,6 +117,11 @@ public class StationDetailFragment extends Page implements ProgressionInterface,
     }
 
     @Override
+    public void onDownloadProgression(int progression, int total) {
+
+    }
+
+    @Override
     public void onDownloadComplete() {
         progression.dismiss();
         StationCardList = gethoraires.getResult();

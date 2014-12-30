@@ -35,16 +35,19 @@ public class HttpGetDatabase implements ProgressionInterface {
     @Override
     public void onDownloadStart() {
     }
-
     @Override
     public void onDownloadFailed(Exception e) {
+    }
+    @Override
+    public void onDownloadProgression(int progression, int total) {
+
     }
 
     @Override
     public void onDownloadComplete() {
         Log.d("ondowloadcomplete", "ondownloadcomplete");
         if (isHttpGetLinesListFinished) {
-            Log.d("httpgetdatabase", "downloadline " + linesProgression + "/" + linesCount);
+            progressionInterface.onDownloadProgression(linesProgression, linesCount);
             downloadNext();
         } else {
             isHttpGetLinesListFinished = true;

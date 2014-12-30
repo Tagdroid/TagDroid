@@ -16,6 +16,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -28,6 +29,8 @@ import com.viewpagerindicator.CirclePageIndicator;
 public class WelcomeActivity extends FragmentActivity implements WelcomeFragment.OnButtonClicked, ProgressionInterface {
     ViewPager mPager;
     HttpGetDatabase httpGetDatabase = new HttpGetDatabase(this, this);
+    private int progression=0, total=0;
+    private ProgressBar progressBar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,6 +58,7 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
         indicator.setFillColor(0xCC000000);
         indicator.setStrokeWidth(0);
 
+        progressBar = (ProgressBar)findViewById(R.id.progressBar);
         startDownloadTask();
     }
 
@@ -95,7 +99,7 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
             startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
             finish();
         } else{//TODO Need to implement some "waiting" window
-            Toast.makeText(this, R.string.wait_for_download_to_finish,Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,R.string.wait_for_download_to_finish, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -121,8 +125,20 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
     }
 
     @Override
+    public void onDownloadProgression(int progression, int total) {
+        Log.d("WelcomeActivity", "downloadline " + progression + "/" + total);
+        this.progression = progression;
+        this.total = total;
+        progressBar.setMax(total);
+        progressBar.setProgress(progression);
+        if (progression < total)
+            progressBar.setSecondaryProgress(progression+1);
+    }
+
+    @Override
     public void onDownloadComplete() {
         Log.d("WelcomeActivity", "onDownloadComplete");
+        progressBar.setProgress(total);
     }
 
     public class WelcomeAdapter extends FragmentStatePagerAdapter {
