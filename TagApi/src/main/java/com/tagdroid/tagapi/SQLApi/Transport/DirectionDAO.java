@@ -7,8 +7,6 @@ import android.util.Log;
 
 import com.tagdroid.tagapi.JSonApi.Transport.Direction;
 
-import org.json.JSONException;
-
 import java.util.ArrayList;
 
 public class DirectionDAO {
@@ -27,7 +25,7 @@ public class DirectionDAO {
         this.bdd = bdd;
         if (isCreating) {
             // On créé la table
-            Log.d("SQLiteHelper", "Base is being created");
+            Log.d("SQLiteHelper", "Table Direction is being created");
             //bdd.execSQL(TABLE_DROP);
             bdd.execSQL(TABLE_CREATE);
         } else if (isUpdating) {
@@ -46,45 +44,29 @@ public class DirectionDAO {
     }
 
     public long add(Direction m) {
-        if (existsLineOfId(m.getLineId()))
-            return 0;
-        else
-            return bdd.insert(TABLE_NAME, null, createValues(m));
+        return bdd.insert(TABLE_NAME, null, createValues(m));
     }
 
-    public ArrayList<Direction> getAllLines() {
+    private Cursor getLineDirectionsCursor(long id) {
+        return bdd.query(TABLE_NAME, AllColumns, LINE_ID + " = ? ", new String[]{"" + id}, null, null, null);
+    }
+
+    public ArrayList<Direction> getDirectionsOfLine(long id) {
         ArrayList<Direction> allLines = new ArrayList<>();
-        Cursor cursor = bdd.query(TABLE_NAME, AllColumns, null, null, null, null, null);
+        Cursor cursor = bdd.query(TABLE_NAME, AllColumns, LINE_ID + " = ? ", new String[]{"" + id}, null, null, null);
         if (cursor.moveToFirst())
             while (!cursor.isLast()) {
-                allLines.add(lineFromCursor(cursor));
+                allLines.add(directionFromCursor(cursor));
                 cursor.moveToNext();
             }
         cursor.close();
         return allLines;
+
     }
 
-    private Cursor getLineCursor(long id) {
-        return bdd.query(TABLE_NAME, AllColumns, DIRECTION + " = \"" + id + "\"", null, null, null, null);
-    }
-
-    public Boolean existsLineOfId(long id) {
-        Cursor c = getLineCursor(id);
-        boolean exists = c.moveToFirst();
-        c.close();
-        return exists;
-    }
-
-    public Direction lineFromCursor(Cursor c) {
+    private Direction directionFromCursor(Cursor c) {
         return new Direction(c.getInt(0),
                 c.getString(1),
                 c.getLong(2));
-    }
-
-    public Direction select(long id) throws JSONException {
-        Cursor c = getLineCursor(id);
-        if (!c.moveToFirst())
-            return null;
-        return lineFromCursor(c);
     }
 }

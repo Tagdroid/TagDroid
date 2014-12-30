@@ -5,7 +5,7 @@ import org.json.JSONObject;
 
 public class Operator {
     private String Code;
-    private int Id;
+    private long Id;
     private String Name;
 
     public Operator(JSONObject jsonOperator) throws JSONException {
@@ -17,7 +17,7 @@ public class Operator {
     public String getCode() {
         return Code;
     }
-    public int getId() {
+    public long getId() {
         return Id;
     }
     public String getName() {

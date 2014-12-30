@@ -117,17 +117,6 @@ public class ActualitesFragment extends Page implements ProgressionInterface, Ac
     }
 
     @Override
-    public void onJSonParsingStarted() {
-    }
-    @Override
-    public void onJSonParsingFailed(Exception e) {
-    }
-    @Override
-    public void onJSonParsingComplete() {
-    }
-
-
-    @Override
     public void onItemClick(View view, int position) {
         Actualite actualité = actualitésList.get(position);
 

@@ -8,7 +8,7 @@ import android.util.Log;
 import com.tagdroid.tagapi.JSonApi.Transport.PhysicalStop;
 
 public class PhysicalStopDAO {
-    public static final String TABLE_NAME = "LineStops",
+    public static final String TABLE_NAME = "PhysicalStops",
             CATEGORY = "CATEGORY",
             DIRECTION = "Direction",
             ID = "Id",
@@ -44,11 +44,11 @@ public class PhysicalStopDAO {
         PhysicalStopDAO.bdd = bdd;
         if (isCreating) {
             // On créé la table
-            Log.d("SQLiteHelper", "Base is being created");
+            Log.d("SQLiteHelper", "Table PhysicalStops is being created");
             bdd.execSQL(TABLE_CREATE);
         }
         else if (isUpdating) {
-            Log.d("SQLiteHelper", "Base is being updated");
+            Log.d("SQLiteHelper", "Table PhysicalStops is being updated");
             bdd.execSQL(TABLE_DROP);
             bdd.execSQL(TABLE_CREATE);
         }

@@ -31,7 +31,7 @@ public class LinesDAO {
         this.bdd = bdd;
         if (isCreating) {
             // On créé la table
-            Log.d("SQLiteHelper", "Base is being created");
+            Log.d("SQLiteHelper", "Table Lines is being created");
             //bdd.execSQL(TABLE_DROP);
             bdd.execSQL(TABLE_CREATE);
         }
@@ -52,10 +52,7 @@ public class LinesDAO {
     }
 
     public long add(Line m) {
-        if (existsLineOfId(m.getId()))
-            return 0;
-        else
-            return bdd.insert(TABLE_NAME, null, createValues(m));
+        return bdd.insert(TABLE_NAME, null, createValues(m));
     }
 
     public ArrayList<Line> getAllLines() {
@@ -72,12 +69,6 @@ public class LinesDAO {
 
     private Cursor getLineCursor(long id) {
         return bdd.query(TABLE_NAME, AllColumns, ID + " = \"" + id + "\"", null, null, null, null);
-    }
-    public Boolean existsLineOfId(long id) {
-        Cursor c = getLineCursor(id);
-        boolean exists = c.moveToFirst();
-        c.close();
-        return exists;
     }
 
     public Line lineFromCursor(Cursor c) {

@@ -9,6 +9,7 @@ import android.content.res.TypedArray;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
@@ -22,17 +23,18 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.tagdroid.android.MainActivity;
 import com.tagdroid.android.R;
 import com.tagdroid.tagapi.HttpGet.HttpGetDatabase;
+import com.tagdroid.tagapi.ProgressionInterface;
 import com.viewpagerindicator.CirclePageIndicator;
 
-public class WelcomeActivity extends FragmentActivity implements WelcomeFragment.OnButtonClicked {
+public class WelcomeActivity extends FragmentActivity implements WelcomeFragment.OnButtonClicked, ProgressionInterface {
     ViewPager mPager;
-    HttpGetDatabase httpGetDatabase = new HttpGetDatabase(this);
+    HttpGetDatabase httpGetDatabase = new HttpGetDatabase(this, this);
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // We check for Google Play Services… CyanoFgenMod without GApps for example
+        // We check for Google Play Services… CyanogenMod without GApps for example
         if (GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext()) != 0) {
             Toast.makeText(this, "Google Play Service non détecté. Dysfonctionnement de l'application possible.",
                     Toast.LENGTH_LONG).show();
@@ -80,23 +82,26 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
                     .setIcon(R.drawable.ic_report)
                     .show();
         } else {
-            Log.d("WelcomeActivity", "Start of Downloading database");
-            httpGetDatabase.execute();
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Log.d("WelcomeActivity", "Start of Downloading database");
+                    httpGetDatabase.execute();
+                }
+            }, 2000);
         }
     }
 
     @Override
     public void onFinalButtonClicked() {
-        PreferenceManager.getDefaultSharedPreferences(this).edit()
-                .putBoolean("AppAlreadyLaunched", true)
-                .apply();
-
         if (httpGetDatabase.isFinished) {
+            PreferenceManager.getDefaultSharedPreferences(this).edit()
+                    .putBoolean("AppAlreadyLaunched", true).apply();
             startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
             finish();
-        } else{
-        } //TODO Need to implement some "waiting" window
-
+        } else{//TODO Need to implement some "waiting" window
+            Toast.makeText(this, R.string.wait_for_download_to_finish,Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
@@ -108,6 +113,21 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
+    }
+
+    @Override
+    public void onDownloadStart() {
+        Log.d("WelcomeActivity", "onDownloadStart");
+    }
+
+    @Override
+    public void onDownloadFailed(Exception e) {
+        Log.d("WelcomeActivity", "onDownloadFailed : " +e.getMessage());
+    }
+
+    @Override
+    public void onDownloadComplete() {
+        Log.d("WelcomeActivity", "onDownloadComplete");
     }
 
     public class WelcomeAdapter extends FragmentStatePagerAdapter {

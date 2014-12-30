@@ -140,4 +140,5 @@
     <string name="nonews">Pas d\'Actualités !</string>
     <string name="mensuel">Mensuel</string>
     <string name="annuel">Annuel</string>
+    <string name="wait_for_download_to_finish">Veuillez patienter la fin du téléchargement…</string>
 </resources>

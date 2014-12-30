@@ -33,6 +33,9 @@ public class Line {
         this.Number = Number;
         this.IsActive = IsActive;
     }
+    public void setDirectionList(Direction[] directionList) {
+        this.DirectionList = directionList;
+    }
 
     public long getId() {
         return Id;
