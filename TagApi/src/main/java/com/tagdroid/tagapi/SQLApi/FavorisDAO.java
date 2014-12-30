@@ -6,53 +6,48 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.tagdroid.tagapi.JSonApi.Favori;
 
-public class FavorisDAO {
-    public static final String TABLE_NAME = "Favoris",
-            ID = "Id",
+public class FavorisDAO extends DAO<Favori>{
+    @Override
+    protected String TABLE_NAME() {
+        return "Favoris";
+    }
+
+    @Override
+    protected String COLUMNS() {
+        return "(" + ID + " INTEGER PRIMARY KEY, " +
+                NAME + " STRING, " +
+                LINE + " STRING, " +
+                LATITUDE + " INTEGER, " +
+                LONGITUDE + " INTEGER, " +
+                FAVORI + " BOOLEAN)";
+    }
+
+    public static final String ID = "Id",
             NAME = "Name",
             LINE = "Line",
             LATITUDE = "Latitude",
             LONGITUDE = "Longitude",
             FAVORI = "Favori";
 
-    public static final String TABLE_CREATE = "CREATE TABLE " + TABLE_NAME + " (" +
-            ID + " INTEGER PRIMARY KEY, " +
-            NAME + " STRING, " +
-            LINE + " STRING, " +
-            LATITUDE + " INTEGER, " +
-            LONGITUDE + " INTEGER, " +
-            FAVORI + " BOOLEAN)";
-    public static final String TABLE_DROP = "DROP TABLE IF EXISTS " + TABLE_NAME;
 
-    private SQLiteDatabase bdd;
-
-    public FavorisDAO(SQLiteDatabase bdd, boolean isCreating,
-                      boolean isUpdating, int oldVersion, int newVersion) {
-        this.bdd = bdd;
-        bdd.execSQL(TABLE_CREATE);
-        if (isCreating){
-            // On créé la table
-            bdd.execSQL(TABLE_CREATE);
-        }
-        else if (isUpdating) {
-            bdd.execSQL(TABLE_DROP);
-            bdd.execSQL(TABLE_CREATE);
-        }
+    public FavorisDAO(SQLiteDatabase bdd) {
+        super(bdd);
     }
 
-    public long add(Favori favori) {
-        if (existsFavoriOfId(favori.Id))
-            return 0;
-        else {
-            ContentValues values = new ContentValues();
-            values.put(ID, favori.Id);
-            values.put(NAME, favori.Name);
-            values.put(LINE, favori.Ligne);
-            values.put(LATITUDE, favori.Latitude);
-            values.put(LONGITUDE, favori.Longitude);
-            return bdd.insert(TABLE_NAME, null, values);
+    @Override
+    protected ContentValues createValues(Favori m) {
+        ContentValues values = new ContentValues();
+        values.put(ID, m.Id);
+        values.put(NAME, m.Name);
+        values.put(LINE, m.Ligne);
+        values.put(LATITUDE, m.Latitude);
+        values.put(LONGITUDE, m.Longitude);
+        return values;
+    }
 
-        }
+    @Override
+    protected Favori fromCursor(Cursor cursor) {
+        return null;
     }
 
     public long modify(Favori favori) {
@@ -62,15 +57,15 @@ public class FavorisDAO {
         values.put(LINE, favori.Ligne);
         values.put(LATITUDE, favori.Latitude);
         values.put(LONGITUDE, favori.Longitude);
-        return bdd.update(TABLE_NAME, values, ID + " = " + favori.Id, null);
+        return bdd.update(TABLE_NAME(), values, ID + " = " + favori.Id, null);
     }
 
     public int delete(long id) {
-        return bdd.delete(TABLE_NAME, ID + " = " + id, null);
+        return bdd.delete(TABLE_NAME(), ID + " = " + id, null);
     }
 
     public Favori select(long Id) {
-        Cursor c = bdd.query(TABLE_NAME, new String[]{
+        Cursor c = bdd.query(TABLE_NAME(), new String[]{
                 ID,
                 NAME,
                 LINE,
@@ -87,7 +82,7 @@ public class FavorisDAO {
     }
 
     public Favori[] list() {
-        Cursor c = bdd.query(TABLE_NAME, new String[]{ID, NAME, LINE, LATITUDE, LONGITUDE},
+        Cursor c = bdd.query(TABLE_NAME(), new String[]{ID, NAME, LINE, LATITUDE, LONGITUDE},
                 null, null, null, null, null);
         int nombreFavoris = c.getCount();
 
@@ -104,12 +99,12 @@ public class FavorisDAO {
     }
 
     public int getFavorisNumber() {
-        return bdd.query(TABLE_NAME, new String[]{ID, NAME, LINE, LATITUDE, LONGITUDE},
+        return bdd.query(TABLE_NAME(), new String[]{ID, NAME, LINE, LATITUDE, LONGITUDE},
                 null, null, null, null, null).getCount();
     }
 
     public Boolean existsFavoriOfId(Long id){
-        Cursor c = bdd.query(TABLE_NAME, new String[]{ID, NAME, LINE, LATITUDE, LONGITUDE},
+        Cursor c = bdd.query(TABLE_NAME(), new String[]{ID, NAME, LINE, LATITUDE, LONGITUDE},
                 ID + " = \"" + id +"\"", null, null, null, null);
         c.moveToFirst();
         if(c.getCount()>0){

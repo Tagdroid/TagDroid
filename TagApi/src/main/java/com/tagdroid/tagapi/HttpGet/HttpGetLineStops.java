@@ -6,7 +6,7 @@ import android.util.Log;
 
 import com.tagdroid.tagapi.JSonApi.Transport.PhysicalStop;
 import com.tagdroid.tagapi.ProgressionInterface;
-import com.tagdroid.tagapi.SQLApi.MySQLiteHelper;
+import com.tagdroid.tagapi.SQLApi.DatabaseHelper;
 import com.tagdroid.tagapi.SQLApi.Transport.PhysicalStopDAO;
 
 import org.json.JSONArray;
@@ -25,12 +25,11 @@ public class HttpGetLineStops extends HttpGetTask {
 
     @Override
     public void readData(JSONArray jsonData) {
-        MySQLiteHelper dbHelper = new MySQLiteHelper(context);
+        DatabaseHelper dbHelper = DatabaseHelper.getInstance(context);
         SQLiteDatabase daTAGase = dbHelper.getWritableDatabase();
         daTAGase.beginTransaction();
 
-        PhysicalStopDAO physicalStopDAO = new PhysicalStopDAO(daTAGase,
-                dbHelper.isCreating, dbHelper.isUpgrading, dbHelper.oldVersion, dbHelper.newVersion);
+        PhysicalStopDAO physicalStopDAO = (PhysicalStopDAO)new PhysicalStopDAO(daTAGase).update(0,0);
 
         PhysicalStop physicalStop;
 
@@ -40,16 +39,14 @@ public class HttpGetLineStops extends HttpGetTask {
                 physicalStop = new PhysicalStop(jsonData.getJSONObject(i), lineId, direction);
                 physicalStopDAO.add(physicalStop);
                 publishProgress(i, length);
-                Log.d("parsage de ligne", i + " / " + length);
+                //Log.d("parsage de stops", i + " / " + length);
             } catch (JSONException e) {
-                Log.e("parsage de ligne", i + " / " + length);
+                Log.e("parsage de stops", i + " / " + length);
                 e.printStackTrace();
             }
 
         daTAGase.setTransactionSuccessful();
         daTAGase.endTransaction();
-        dbHelper.close();
-
     }
 
     @Override

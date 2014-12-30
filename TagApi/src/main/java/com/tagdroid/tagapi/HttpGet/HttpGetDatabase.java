@@ -7,7 +7,6 @@ import com.tagdroid.tagapi.JSonApi.Transport.Direction;
 import com.tagdroid.tagapi.JSonApi.Transport.Line;
 import com.tagdroid.tagapi.ProgressionInterface;
 import com.tagdroid.tagapi.ReadSQL;
-import com.tagdroid.tagapi.SQLApi.Transport.DirectionDAO;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
@@ -41,12 +40,15 @@ public class HttpGetDatabase implements ProgressionInterface {
 
     private void downloadAllLines() {
         Log.d("httpgetdatabase", "downloadalllines");
+        int length = linesList.size(), progression = 0;
         for (Line line: linesList) {
+            Log.d("httpgetdatabase", "downloadline " + progression + "/"+length);
+            progression++;
             if (line.getDirectionList() != null)
                 for (Direction direction : line.getDirectionList())
                     try {
-                        Log.d("httpgetdatabase", "downloadline " + line.getNumber()+ ", dir " + direction.getDirection());
                         (new HttpGetLineStops(line.getId(), direction.getDirection(), this, context)).execute().get();
+                         //TODO Pas du tout bon…
                     } catch (InterruptedException | ExecutionException e) {
                         e.printStackTrace();
                     }
@@ -66,7 +68,7 @@ public class HttpGetDatabase implements ProgressionInterface {
         if (!isHttpGetLinesListFinished) {
             isHttpGetLinesListFinished = true;
             linesList = (new ReadSQL(context)).getAllLines();
-            //downloadAllLines();
+            downloadAllLines();
         }
     }
 }

@@ -10,7 +10,7 @@ import com.tagdroid.tagapi.JSonApi.Transport.PhysicalStop;
 import com.tagdroid.tagapi.ProgressionInterface;
 import com.tagdroid.tagapi.SQLApi.Transport.LocalityDAO;
 import com.tagdroid.tagapi.SQLApi.Transport.LogicalStopDAO;
-import com.tagdroid.tagapi.SQLApi.MySQLiteHelper;
+import com.tagdroid.tagapi.SQLApi.DatabaseHelper;
 import com.tagdroid.tagapi.SQLApi.Transport.PhysicalStopDAO;
 
 import org.json.JSONArray;
@@ -25,12 +25,11 @@ public class ReadJSonStops {
     }
 
     public void readData(JSONArray jsonData) {
-        MySQLiteHelper dbHelper = new MySQLiteHelper(context);
+        DatabaseHelper dbHelper = DatabaseHelper.getInstance(context);
         SQLiteDatabase daTAGase = dbHelper.getWritableDatabase();
         daTAGase.beginTransaction();
 
-        PhysicalStopDAO physicalStopDAO = new PhysicalStopDAO(daTAGase,
-                dbHelper.isCreating, dbHelper.isUpgrading, dbHelper.oldVersion, dbHelper.newVersion);
+        PhysicalStopDAO physicalStopDAO = new PhysicalStopDAO(daTAGase);
         LogicalStopDAO logicalStopDAO = new LogicalStopDAO(daTAGase,
                 dbHelper.isCreating, dbHelper.isUpgrading, dbHelper.oldVersion, dbHelper.newVersion);
         LocalityDAO localityDAO = new LocalityDAO(daTAGase,
@@ -58,6 +57,5 @@ public class ReadJSonStops {
 
         daTAGase.setTransactionSuccessful();
         daTAGase.endTransaction();
-        dbHelper.close();
     }
 }

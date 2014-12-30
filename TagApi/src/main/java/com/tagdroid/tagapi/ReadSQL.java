@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.tagdroid.tagapi.JSonApi.Transport.Direction;
 import com.tagdroid.tagapi.JSonApi.Transport.Line;
-import com.tagdroid.tagapi.SQLApi.MySQLiteHelper;
+import com.tagdroid.tagapi.SQLApi.DatabaseHelper;
 import com.tagdroid.tagapi.SQLApi.Transport.DirectionDAO;
 import com.tagdroid.tagapi.SQLApi.Transport.LinesDAO;
 
@@ -18,22 +18,20 @@ public class ReadSQL {
     }
 
     public ArrayList<Line> getAllLines() {
-        MySQLiteHelper dbHelper = new MySQLiteHelper(context);
+        DatabaseHelper dbHelper = DatabaseHelper.getInstance(context);
         SQLiteDatabase daTAGase = dbHelper.getWritableDatabase();
         daTAGase.beginTransaction();
 
-        LinesDAO linesDAO = new LinesDAO(daTAGase,
-                dbHelper.isCreating, dbHelper.isUpgrading, dbHelper.oldVersion, dbHelper.newVersion);
-        DirectionDAO directionDAO = new DirectionDAO(daTAGase,
-                dbHelper.isCreating, dbHelper.isUpgrading, dbHelper.oldVersion, dbHelper.newVersion);
+        LinesDAO linesDAO = new LinesDAO(daTAGase);
+        DirectionDAO directionDAO = new DirectionDAO(daTAGase);
 
         ArrayList<Line> allLinesArrayList = linesDAO.getAllLines();
-        for (Line i : allLinesArrayList)
-            i.setDirectionList(directionDAO.getDirectionsOfLine(i.getId()).toArray(new Direction[2]));
-
+        for (Line i : allLinesArrayList) {
+            ArrayList<Direction> directions = directionDAO.getDirectionsOfLine(i.getId());
+            i.setDirectionList(directions.toArray(new Direction[directions.size()]));
+        }
         daTAGase.setTransactionSuccessful();
         daTAGase.endTransaction();
-        dbHelper.close();
         return allLinesArrayList;
     }
 }

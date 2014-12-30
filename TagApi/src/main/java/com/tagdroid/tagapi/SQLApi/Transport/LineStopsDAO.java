@@ -1,6 +1,5 @@
 package com.tagdroid.tagapi.SQLApi.Transport;
 
-
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;

@@ -7,7 +7,7 @@ import android.util.Log;
 import com.tagdroid.tagapi.JSonApi.Transport.Direction;
 import com.tagdroid.tagapi.JSonApi.Transport.Line;
 import com.tagdroid.tagapi.ProgressionInterface;
-import com.tagdroid.tagapi.SQLApi.MySQLiteHelper;
+import com.tagdroid.tagapi.SQLApi.DatabaseHelper;
 import com.tagdroid.tagapi.SQLApi.Transport.DirectionDAO;
 import com.tagdroid.tagapi.SQLApi.Transport.LinesDAO;
 
@@ -22,14 +22,12 @@ public class HttpGetLinesList extends HttpGetTask {
 
     @Override
     public void readData(JSONArray jsonData) {
-        MySQLiteHelper dbHelper = new MySQLiteHelper(context);
+        DatabaseHelper dbHelper = DatabaseHelper.getInstance(context);
         SQLiteDatabase daTAGase = dbHelper.getWritableDatabase();
         daTAGase.beginTransaction();
 
-        LinesDAO linesDAO = new LinesDAO(daTAGase,
-                dbHelper.isCreating, dbHelper.isUpgrading, dbHelper.oldVersion, dbHelper.newVersion);
-        DirectionDAO directionDAO = new DirectionDAO(daTAGase,
-                dbHelper.isCreating, dbHelper.isUpgrading, dbHelper.oldVersion, dbHelper.newVersion);
+        LinesDAO linesDAO = (LinesDAO)new LinesDAO(daTAGase).update(dbHelper.oldVersion, dbHelper.newVersion);
+        DirectionDAO directionDAO = (DirectionDAO)new DirectionDAO(daTAGase).update(dbHelper.oldVersion, dbHelper.newVersion);
 
         Line line;
 
@@ -42,18 +40,17 @@ public class HttpGetLinesList extends HttpGetTask {
                 // Saving the directions
                 for (Direction direction : line.getDirectionList()) {
                     directionDAO.add(direction);
-                    //Log.d("parsage de ligne", i + " / " + length + ", direction " + direction.getName());
+                    //Log.d("parsage de lignes", i + " / " + length + ", direction " + direction.getName());
                 }
 
                 publishProgress(i, length);
             } catch (JSONException e) {
-                Log.e("parsage de ligne", i + " / " + length);
+                Log.e("parsage de lignes", i + " / " + length);
                 e.printStackTrace();
             }
 
         daTAGase.setTransactionSuccessful();
         daTAGase.endTransaction();
-        dbHelper.close();
     }
 
     @Override

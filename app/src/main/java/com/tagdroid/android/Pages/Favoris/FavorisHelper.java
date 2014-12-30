@@ -1,10 +1,11 @@
 package com.tagdroid.android.Pages.Favoris;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 
 import com.tagdroid.tagapi.JSonApi.Favori;
 import com.tagdroid.tagapi.SQLApi.FavorisDAO;
-import com.tagdroid.tagapi.SQLApi.MySQLiteHelper;
+import com.tagdroid.tagapi.SQLApi.DatabaseHelper;
 import com.tagdroid.android.R;
 
 import java.util.ArrayList;
@@ -21,8 +22,8 @@ public class FavorisHelper {
 
     public Favori[] getFavoris() {
         if (listeFavoris == null) {
-            MySQLiteHelper dbHelper = new MySQLiteHelper(context);
-            FavorisDAO favorisDAO = new FavorisDAO(dbHelper.getReadableDatabase(), false, false, -1, -1);
+            DatabaseHelper dbHelper = DatabaseHelper.getInstance(context);
+            FavorisDAO favorisDAO = new FavorisDAO(dbHelper.getReadableDatabase());
             listeFavoris = favorisDAO.list();
             dbHelper.close();
         }
@@ -51,8 +52,8 @@ public class FavorisHelper {
     }
 
     public static Boolean isFavori(Context context, long Id) {
-        MySQLiteHelper dbHelper = new MySQLiteHelper(context);
-        FavorisDAO favorisDAO = new FavorisDAO(dbHelper.getReadableDatabase(), false, false, -1, -1);
+        DatabaseHelper dbHelper = DatabaseHelper.getInstance(context);
+        FavorisDAO favorisDAO = new FavorisDAO(dbHelper.getReadableDatabase());
         return favorisDAO.existsFavoriOfId(Id);
     }
 
@@ -61,8 +62,8 @@ public class FavorisHelper {
     }
 
     public static int getFavorisNumber(Context context) {
-        MySQLiteHelper dbHelper = new MySQLiteHelper(context);
-        FavorisDAO favorisDAO = new FavorisDAO(dbHelper.getReadableDatabase(), false, false, -1, -1);
+        DatabaseHelper dbHelper = DatabaseHelper.getInstance(context);
+        FavorisDAO favorisDAO = new FavorisDAO(dbHelper.getReadableDatabase());
         return favorisDAO.getFavorisNumber();
     }
 }

@@ -3,46 +3,35 @@ package com.tagdroid.tagapi.SQLApi.Transport;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import com.tagdroid.tagapi.JSonApi.Transport.Line;
+import com.tagdroid.tagapi.SQLApi.DAO;
 
 import org.json.JSONException;
 
 import java.util.ArrayList;
 
-public class LinesDAO {
-    public static final String TABLE_NAME = "Lines",
-            ID = "Id", NUMBER = "Number", NAME = "Name", IS_ACTIVE = "IsActive";
+public class LinesDAO extends DAO<Line>{
+    @Override
+    protected String TABLE_NAME() {
+        return "Lines";
+    }
+    public static final String ID = "Id", NUMBER = "Number", NAME = "Name", IS_ACTIVE = "IsActive";
+    @Override
+    protected String COLUMNS() {
+        return "(" + ID     +" INTEGER PRIMARY KEY, "
+                + NUMBER    +" TEXT, "
+                + NAME      +" TEXT, "
+                + IS_ACTIVE +" INTEGER);";
+    }
     public static final String[] AllColumns = new String[]{ID, NUMBER, NAME, IS_ACTIVE};
 
-    public static final String TABLE_CREATE = "CREATE TABLE "+ TABLE_NAME +" ("
-            + ID        +" INTEGER PRIMARY KEY, "
-            + NUMBER    +" TEXT, "
-            + NAME      +" TEXT, "
-            + IS_ACTIVE +" INTEGER);";
-
-    public static final String TABLE_DROP = "DROP TABLE IF EXISTS " + TABLE_NAME;
-
-    private SQLiteDatabase bdd;
-
-    public LinesDAO(SQLiteDatabase bdd, boolean isCreating,
-                    boolean isUpdating, int oldVersion, int newVersion) {
-        this.bdd = bdd;
-        if (isCreating) {
-            // On créé la table
-            Log.d("SQLiteHelper", "Table Lines is being created");
-            //bdd.execSQL(TABLE_DROP);
-            bdd.execSQL(TABLE_CREATE);
-        }
-        else if (isUpdating) {
-            Log.d("SQLiteHelper", "Base is being updated");
-            bdd.execSQL(TABLE_DROP);
-            bdd.execSQL(TABLE_CREATE);
-        }
+    public LinesDAO(SQLiteDatabase bdd) {
+        super(bdd);
     }
 
-    private ContentValues createValues(Line m) {
+    @Override
+    protected ContentValues createValues(Line m) {
         ContentValues values = new ContentValues();
         values.put(ID, m.getId());
         values.put(NUMBER, m.getNumber());
@@ -51,37 +40,32 @@ public class LinesDAO {
         return values;
     }
 
-    public long add(Line m) {
-        return bdd.insert(TABLE_NAME, null, createValues(m));
-    }
-
-    public ArrayList<Line> getAllLines() {
-        ArrayList<Line> allLines = new ArrayList<>();
-        Cursor cursor = bdd.query(TABLE_NAME, AllColumns, null, null, null, null, null);
-        if (cursor .moveToFirst())
-            while (!cursor.isLast()) {
-                allLines.add(lineFromCursor(cursor));
-                cursor.moveToNext();
-            }
-        cursor.close();
-        return allLines;
-    }
-
-    private Cursor getLineCursor(long id) {
-        return bdd.query(TABLE_NAME, AllColumns, ID + " = \"" + id + "\"", null, null, null, null);
-    }
-
-    public Line lineFromCursor(Cursor c) {
+    @Override
+    protected Line fromCursor(Cursor c) {
         return new Line(c.getLong(0),
                 c.getString(1),
                 c.getString(2),
                 c.getInt(3) != 0);
     }
 
+    public ArrayList<Line> getAllLines() {
+        ArrayList<Line> allLines = new ArrayList<>();
+        Cursor cursor = bdd.query(TABLE_NAME(), AllColumns, null, null, null, null, null);
+        while (cursor.moveToNext())
+            allLines.add(fromCursor(cursor));
+
+        cursor.close();
+        return allLines;
+    }
+
+    private Cursor getLineCursor(long id) {
+        return bdd.query(TABLE_NAME(), AllColumns, ID + " = \"" + id + "\"", null, null, null, null);
+    }
+
     public Line select(long id) throws JSONException {
         Cursor c = getLineCursor(id);
         if (!c.moveToFirst())
             return null;
-        return lineFromCursor(c);
+        return fromCursor(c);
     }
 }
