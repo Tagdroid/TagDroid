@@ -16,7 +16,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -98,7 +97,6 @@ public class StationDetailFragment extends Fragment {
         ligne1 = this.getArguments().getString("ligne1");
         id_station = this.getArguments().getString("id_station");
 
-        alert_button = (Button) view.findViewById(R.id.alert_button);
 
 
         case1 = (LinearLayout) view.findViewById(R.id.case1);
@@ -113,14 +111,13 @@ public class StationDetailFragment extends Fragment {
             }
         });
 */
-        tv1 = (TextView) view.findViewById(R.id.vers1);
-        tv2 = (TextView) view.findViewById(R.id.tps11);
-        tv3 = (TextView) view.findViewById(R.id.tps12);
+        tv1 = (TextView) view.findViewById(R.id.direction);
+        tv2 = (TextView) view.findViewById(R.id.horaire1);
+        tv3 = (TextView) view.findViewById(R.id.horaire2);
 
 
 
         int image_ligne = this.getResources().getIdentifier(ligne1.toLowerCase().replace(" ", "") + "_default", "drawable", mActivity.getPackageName());
-        ((ImageView) view.findViewById(R.id.logo_ligne)).setImageResource(image_ligne);
 
         place = new LatLng(Float.parseFloat(getArguments().getString("latitude")), Float.parseFloat(getArguments().getString("longitude")));
         setUpMapIfNeeded();
