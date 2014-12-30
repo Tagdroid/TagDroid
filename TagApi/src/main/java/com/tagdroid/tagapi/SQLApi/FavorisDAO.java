@@ -22,6 +22,11 @@ public class FavorisDAO extends DAO<Favori>{
                 FAVORI + " BOOLEAN)";
     }
 
+    @Override
+    protected String[] AllColumns() {
+        return new String[]{ID, NAME, LINE, LATITUDE, LONGITUDE};
+    }
+
     public static final String ID = "Id",
             NAME = "Name",
             LINE = "Line",

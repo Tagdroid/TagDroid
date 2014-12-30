@@ -7,23 +7,24 @@ import org.json.JSONObject;
 public class LineStop {
     private long Id;
     private String Name;
+    private int Position;
+    private double Latitude, Longitude;
+    private LogicalStop logicalStop;
     private long LogicalStopId;
+    private Locality locality;
     private long LocalityId;
 
-    private double Latitude, Longitude;
-    private int LineId, Direction;
+    private long LineId;
+    private int Direction;
 
-    private Locality locality;
-    private LogicalStop logicalStop;
-
-    public LineStop(JSONObject jsonPhysicalStop, int LineId, int Direction) throws JSONException {
+    public LineStop(JSONObject jsonPhysicalStop, long LineId, int Direction, int position) throws JSONException {
         this.Id = jsonPhysicalStop.getLong("Id");
         this.Name = jsonPhysicalStop.getString("Name");
+        this.Position = position;
         this.LogicalStopId = jsonPhysicalStop.getInt("LogicalStopId");
         this.Latitude = jsonPhysicalStop.getDouble("Latitude");
         this.Longitude = jsonPhysicalStop.getDouble("Longitude");
         this.LocalityId = jsonPhysicalStop.getInt("LocalityId");
-
 
         this.Direction = Direction;
         this.LineId = LineId;
@@ -32,12 +33,13 @@ public class LineStop {
         this.logicalStop = new LogicalStop(jsonPhysicalStop.getJSONObject("LogicalStop"));
     }
 
-    public LineStop(long Id, String Name,
+    public LineStop(long Id, String Name, int position,
                     long LogicalStopId, int LocalityId,
                     double Latitude, double Longitude,
-                    int LineId, int Direction) {
+                    long LineId, int Direction) {
         this.Id = Id;
         this.Name = Name;
+        this.Position = position;
         this.LogicalStopId = LogicalStopId;
         this.LocalityId = LocalityId;
         this.Direction = Direction;
@@ -52,6 +54,9 @@ public class LineStop {
     public String getName() {
         return Name;
     }
+    public int getPosition() {
+        return Position;
+    }
     public long getLogicalStopId() {
         return LogicalStopId;
     }
@@ -64,7 +69,7 @@ public class LineStop {
     public double getLongitude() {
         return Longitude;
     }
-    public int getLineId() {
+    public long getLineId() {
         return LineId;
     }
     public int getDirection() {

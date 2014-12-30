@@ -5,7 +5,7 @@
         <item name="drawerArrowStyle">@style/TagDroidTheme.DrawerArrowStyle</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:windowBackground">@color/bleu_tag</item>
+        <item name="android:windowBackground">@color/bleu_tag_f85</item>
         <item name="colorPrimary">@color/bleu_tag</item>
         <item name="colorPrimaryDark">@color/bleu_tag_f85</item>
         <item name="colorAccent">@color/bleu_tag_c50</item>

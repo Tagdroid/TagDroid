@@ -1,4 +1,4 @@
-package com.tagdroid.tagapi.SQLApi.Transport;
+package com.tagdroid.tagapi.Legacy;
 
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -20,8 +20,6 @@ public class PhysicalStopDAO extends DAO<PhysicalStop> {
             LOCALITYID = "LocalityId",
             OPERATORID = "OperatorId",
             ACCESSIBILITY = "Accessibility";
-    public static final String[] AllColumns = new String[]{CATEGORY, DIRECTION, ID, NAME,
-            LATITUDE, LINE_ID, LONGITUDE, POINTTYPE, LOGICALSTOPID, LOCALITYID, OPERATORID, ACCESSIBILITY};
 
     public PhysicalStopDAO(SQLiteDatabase bdd) {
         super(bdd);
@@ -46,6 +44,12 @@ public class PhysicalStopDAO extends DAO<PhysicalStop> {
                 LOCALITYID + " INTEGER, " +
                 OPERATORID + " INTEGER, " +
                 ACCESSIBILITY + " INTEGER);";
+    }
+
+    @Override
+    protected String[] AllColumns() {
+        return new String[]{CATEGORY, DIRECTION, ID, NAME,
+                LATITUDE, LINE_ID, LONGITUDE, POINTTYPE, LOGICALSTOPID, LOCALITYID, OPERATORID, ACCESSIBILITY};
     }
 
     @Override
@@ -83,7 +87,7 @@ public class PhysicalStopDAO extends DAO<PhysicalStop> {
     }
 
     public PhysicalStop select(long id) {
-        Cursor c = bdd.query(TABLE_NAME(), AllColumns, ID + " = \"" + id + "\"", null, null, null, null);
+        Cursor c = bdd.query(TABLE_NAME(), AllColumns(), ID + " = \"" + id + "\"", null, null, null, null);
         if (!c.moveToFirst())
             return null;
         return fromCursor(c);

@@ -3,57 +3,48 @@ package com.tagdroid.tagapi.SQLApi.Transport;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import com.tagdroid.tagapi.JSonApi.Transport.LineStop;
+import com.tagdroid.tagapi.SQLApi.DAO;
 
-import org.json.JSONException;
+public class LineStopsDAO extends DAO<LineStop> {
+    public static final String ID = "Id", NAME = "Name", POSITION = "Position", LOGICALSTOPID = "LogicalStopId",
+            LOCALITYID = "LocalityId", LATITUDE = "Latitude", LONGITUDE = "Longitude",
+            LINE_ID = "LineId", DIRECTION = "Direction";
 
-public class LineStopsDAO {
-    public static final String TABLE_NAME = "LineStops",
-            ID = "Id",
-            NAME = "Name",
-            LOGICALSTOPID = "LogicalStopId",
-            LOCALITYID = "LocalityId",
-            LATITUDE = "Latitude",
-            LONGITUDE = "Longitude",
-            LINE_ID = "LineId",
-            DIRECTION = "Direction";
-    private String[] AllColumns = new String[]{ID, NAME, LOGICALSTOPID, LOCALITYID,
-            LATITUDE, LONGITUDE, LINE_ID, DIRECTION,};
-
-    public static final String TABLE_CREATE = "CREATE TABLE " + TABLE_NAME + " (" +
-            ID          + " INTEGER PRIMARY KEY, " +
-            NAME        + " TEXT, " +
-            LOGICALSTOPID + " INTEGER, " +
-            LOCALITYID  + " INTEGER, " +
-            LATITUDE    + " REAL, " +
-            LONGITUDE   + " REAL, " +
-            LINE_ID     + " INTEGER, " +
-            DIRECTION   + " INTEGER);";
-    public static final String TABLE_DROP = "DROP TABLE IF EXISTS " + TABLE_NAME;
-
-    private static SQLiteDatabase bdd;
-
-    public LineStopsDAO(SQLiteDatabase bdd, boolean isCreating,
-                           boolean isUpdating, int oldVersion, int newVersion) {
-        LineStopsDAO.bdd = bdd;
-        if (isCreating) {
-            // On créé la table
-            Log.d("SQLiteHelper", "Base is being created");
-            bdd.execSQL(TABLE_CREATE);
-        }
-        else if (isUpdating) {
-            Log.d("SQLiteHelper", "Base is being updated");
-            bdd.execSQL(TABLE_DROP);
-            bdd.execSQL(TABLE_CREATE);
-        }
+    public LineStopsDAO(SQLiteDatabase bdd) {
+        super(bdd);
     }
 
-    private ContentValues createValues(LineStop m) {
+    @Override
+    protected String TABLE_NAME() {
+        return "LineStops";
+    }
+
+    @Override
+    protected String COLUMNS() {
+        return "(" + ID     + " INTEGER PRIMARY KEY, " +
+                NAME        + " TEXT, " +
+                POSITION    + " INTEGER, " +
+                LOGICALSTOPID+" INTEGER, " +
+                LOCALITYID  + " INTEGER, " +
+                LATITUDE    + " REAL, " +
+                LONGITUDE   + " REAL, " +
+                LINE_ID     + " INTEGER, " +
+                DIRECTION   + " INTEGER);";
+    }
+
+    @Override
+    protected String[] AllColumns() {
+        return new String[]{ID, NAME, POSITION, LOGICALSTOPID, LOCALITYID, LATITUDE, LONGITUDE, LINE_ID, DIRECTION,};
+    }
+
+    @Override
+    protected ContentValues createValues(LineStop m) {
         ContentValues values = new ContentValues();
         values.put(ID, m.getId());
         values.put(NAME, m.getName());
+        values.put(POSITION, m.getPosition());
         values.put(LOGICALSTOPID, m.getLogicalStopId());
         values.put(LOCALITYID, m.getLocalityId());
         values.put(LATITUDE, m.getLatitude());
@@ -63,37 +54,26 @@ public class LineStopsDAO {
         return values;
     }
 
-    public long add(LineStop m) {
-        if (existsLineOfId(m.getId()))
-            return 0;
-        else
-            return bdd.insert(TABLE_NAME, null, createValues(m));
+    @Override
+    protected LineStop fromCursor(Cursor cursor) {
+        return new LineStop(cursor.getLong(0),
+                cursor.getString(1),
+                cursor.getInt(2),
+                cursor.getLong(2),
+                cursor.getInt(3),
+                cursor.getDouble(4),
+                cursor.getDouble(5),
+                cursor.getInt(6),
+                cursor.getInt(7));
     }
 
-    private Cursor getLineCursor(long id) {
-        return bdd.query(TABLE_NAME, AllColumns, ID + " = \"" + id + "\"", null, null, null, null);
-    }
-    public Boolean existsLineOfId(long id) {
-        Cursor c = getLineCursor(id);
-        boolean exists = c.moveToFirst();
-        c.close();
-        return exists;
-    }
-
-    public LineStop select(long id) throws JSONException {
-        Cursor c = getLineCursor(id);
-        if (!c.moveToFirst())
+    public LineStop select(long id) {
+        Cursor cursor = bdd.query(TABLE_NAME(), AllColumns(),
+                ID + " = ?",
+                new String[]{String.valueOf(id)},
+                null, null, null);
+        if (!cursor.moveToFirst())
             return null;
-
-        LineStop line = new LineStop(c.getLong(0),
-                c.getString(1),
-                c.getLong(2),
-                c.getInt(3),
-                c.getDouble(4),
-                c.getDouble(5),
-                c.getInt(6),
-                c.getInt(7));
-        c.close();
-        return line;
+        return fromCursor(cursor);
     }
 }

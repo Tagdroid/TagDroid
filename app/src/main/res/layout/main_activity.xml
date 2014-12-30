@@ -4,18 +4,16 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="@dimen/activity_statusbar_height"
     tools:context="com.tagdroid.android.Drawer.DrawerFragment" >
     <LinearLayout android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/activity_statusbar_height"
         android:orientation="vertical">
         <android.support.v7.widget.Toolbar android:id="@+id/toolbar"
             xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:layout_alignParentTop="true"
-            android:minHeight="?attr/actionBarSize"
+            android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
@@ -27,6 +25,7 @@
     </LinearLayout>
 
     <fragment android:id="@+id/left_drawer"
+        android:layout_marginTop="@dimen/activity_statusbar_height"
         android:layout_width="@dimen/navigation_drawer_width"
         android:layout_height="match_parent"
         android:layout_gravity="start"

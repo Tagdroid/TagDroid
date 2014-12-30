@@ -3,44 +3,40 @@ package com.tagdroid.tagapi.SQLApi.Transport;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import com.tagdroid.tagapi.JSonApi.Transport.Locality;
+import com.tagdroid.tagapi.SQLApi.DAO;
 
-public class LocalityDAO {
-    public static final String TABLE_NAME = "Locality",
-            ID = "Id",
-            INSEECODE = "InseeCode",
-            LATITUDE = "Latitude",
-            LONGITUDE = "Longitude",
-            NAME = "Name";
+public class LocalityDAO extends DAO<Locality> {
+    public static final String ID = "Id", INSEECODE = "InseeCode", LATITUDE = "Latitude",
+            LONGITUDE = "Longitude", NAME = "Name";
 
-    public static final String TABLE_CREATE = "CREATE TABLE " + TABLE_NAME + " (" +
-            ID + " INTEGER PRIMARY KEY, " +
-            INSEECODE + " INTEGER, " +
-            LATITUDE + " INTEGER, " +
-            LONGITUDE + " INTEGER, " +
-            NAME + " INTEGER);";
-    public static final String TABLE_DROP = "DROP TABLE IF EXISTS " + TABLE_NAME;
-
-    private SQLiteDatabase bdd;
-
-    public LocalityDAO(SQLiteDatabase bdd, boolean isCreating,
-                           boolean isUpdating, int oldVersion, int newVersion) {
-        this.bdd = bdd;
-        if (isCreating){
-            // On créé la table
-            Log.d("SQLiteHelper", "Base is being created");
-            bdd.execSQL(TABLE_CREATE);
-        }
-        else if (isUpdating) {
-            Log.d("SQLiteHelper", "Base is being updated");
-            bdd.execSQL(TABLE_DROP);
-            bdd.execSQL(TABLE_CREATE);
-        }
+    public LocalityDAO(SQLiteDatabase bdd) {
+        super(bdd);
     }
 
-    private ContentValues createValues(Locality m) {
+    @Override
+    protected String TABLE_NAME() {
+        return "Locality";
+    }
+
+    @Override
+    protected String COLUMNS() {
+        return "(" +
+                ID + " INTEGER PRIMARY KEY, " +
+                INSEECODE + " INTEGER, " +
+                LATITUDE + " INTEGER, " +
+                LONGITUDE + " INTEGER, " +
+                NAME + " INTEGER);";
+    }
+
+    @Override
+    protected String[] AllColumns() {
+        return new String[]{ID, INSEECODE, LATITUDE, LONGITUDE, NAME};
+    }
+
+    @Override
+    protected ContentValues createValues(Locality m) {
         ContentValues values = new ContentValues();
         values.put(ID, m.getId());
         values.put(INSEECODE, m.getInseeCode());
@@ -50,48 +46,34 @@ public class LocalityDAO {
         return values;
     }
 
-    public long add(Locality m) {
-        if (existsPhysicalStopOfId(m.getId()))
-            return 0;
-        else
-            return bdd.insert(TABLE_NAME, null, createValues(m));
-    }
-
-    public int modify(Locality m) {
-        return bdd.update(TABLE_NAME, createValues(m), ID + " = " + m.getId(), null);
-    }
-
-    public int delete(long id) {
-        return bdd.delete(TABLE_NAME, ID + " = " + id, null);
+    @Override
+    protected Locality fromCursor(Cursor cursor) {
+        return new Locality(cursor.getLong(0),
+                cursor.getInt(1),
+                cursor.getInt(2),
+                cursor.getInt(3),
+                cursor.getString(4));
     }
 
     public Locality select(long id) {
-        Cursor c = bdd.query(TABLE_NAME, new String[]{
-                ID,
-                INSEECODE,
-                LATITUDE,
-                LONGITUDE,
-                NAME}, ID + " = \"" + id + "\"", null, null, null, null);
-        c.moveToFirst();
-        Locality locality = new Locality(c.getLong(0),
-                c.getInt(1),
-                c.getInt(2),
-                c.getInt(3),
-                c.getString(4));
-        c.close();
-        return locality;
+        Cursor cursor = bdd.query(TABLE_NAME(), AllColumns(),
+                ID + " = ?",
+                new String[]{String.valueOf(id)},
+                null, null, null);
+        if (!cursor.moveToFirst())
+            return null;
+        return fromCursor(cursor);
     }
 
-    public Boolean existsPhysicalStopOfId(Long id){
-        Cursor c = bdd.query(TABLE_NAME, new String[]{ID, INSEECODE, LATITUDE, LONGITUDE, NAME},
-                ID + " = \"" + id +"\"", null, null, null, null);
-        c.moveToFirst();
-        if(c.getCount()>0){
-            c.close();
-            return true;
-        } else {
-            c.close();
-            return false;
-        }
+    public long update(Locality m) {
+        return bdd.insertWithOnConflict(TABLE_NAME(), null, createValues(m),SQLiteDatabase.CONFLICT_IGNORE);
+    }
+
+    public Boolean existsPhysicalStopOfId(Long id) {
+        Cursor cursor = bdd.query(TABLE_NAME(), AllColumns(),
+                ID + " = ?",
+                new String[]{String.valueOf(id)},
+                null, null, null);
+        return cursor.moveToFirst();
     }
 }

@@ -25,7 +25,7 @@ public class ReadSQL {
         LinesDAO linesDAO = new LinesDAO(daTAGase);
         DirectionDAO directionDAO = new DirectionDAO(daTAGase);
 
-        ArrayList<Line> allLinesArrayList = linesDAO.getAllLines();
+        ArrayList<Line> allLinesArrayList = linesDAO.selectAll();
         for (Line i : allLinesArrayList) {
             ArrayList<Direction> directions = directionDAO.getDirectionsOfLine(i.getId());
             i.setDirectionList(directions.toArray(new Direction[directions.size()]));

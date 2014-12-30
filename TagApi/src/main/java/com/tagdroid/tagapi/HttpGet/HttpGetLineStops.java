@@ -4,10 +4,14 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.tagdroid.tagapi.JSonApi.Transport.PhysicalStop;
+import com.tagdroid.tagapi.JSonApi.Transport.LineStop;
+import com.tagdroid.tagapi.JSonApi.Transport.Locality;
+import com.tagdroid.tagapi.JSonApi.Transport.LogicalStop;
 import com.tagdroid.tagapi.ProgressionInterface;
 import com.tagdroid.tagapi.SQLApi.DatabaseHelper;
-import com.tagdroid.tagapi.SQLApi.Transport.PhysicalStopDAO;
+import com.tagdroid.tagapi.SQLApi.Transport.LineStopsDAO;
+import com.tagdroid.tagapi.SQLApi.Transport.LocalityDAO;
+import com.tagdroid.tagapi.SQLApi.Transport.LogicalStopDAO;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,15 +33,23 @@ public class HttpGetLineStops extends HttpGetTask {
         SQLiteDatabase daTAGase = dbHelper.getWritableDatabase();
         daTAGase.beginTransaction();
 
-        PhysicalStopDAO physicalStopDAO = (PhysicalStopDAO)new PhysicalStopDAO(daTAGase).update(0,0);
+        LineStopsDAO lineStopsDAO = (LineStopsDAO)new LineStopsDAO(daTAGase).create();
+        LogicalStopDAO logicalStopDAO = (LogicalStopDAO)new LogicalStopDAO(daTAGase).create();
+        LocalityDAO localityDAO = (LocalityDAO)new LocalityDAO(daTAGase).create();
 
-        PhysicalStop physicalStop;
+        LineStop lineStop;
+        LogicalStop logicalStop;
+        Locality locality;
 
         int length = jsonData.length();
         for (int i = 0; i < length; i++)
             try {
-                physicalStop = new PhysicalStop(jsonData.getJSONObject(i), lineId, direction);
-                physicalStopDAO.add(physicalStop);
+                lineStop = new LineStop(jsonData.getJSONObject(i), lineId, direction, i);
+                lineStopsDAO.update(lineStop);
+                logicalStop = lineStop.getLogicalStop();
+                logicalStopDAO.update(logicalStop);
+                locality = lineStop.getLocality();
+                localityDAO.update(locality);
                 publishProgress(i, length);
                 //Log.d("parsage de stops", i + " / " + length);
             } catch (JSONException e) {
@@ -47,10 +59,5 @@ public class HttpGetLineStops extends HttpGetTask {
 
         daTAGase.setTransactionSuccessful();
         daTAGase.endTransaction();
-    }
-
-    @Override
-    protected void onPostExecute(Void result) {
-        super.onPostExecute(result);
     }
 }

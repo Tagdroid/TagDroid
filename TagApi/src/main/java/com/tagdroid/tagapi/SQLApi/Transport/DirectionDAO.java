@@ -10,21 +10,27 @@ import com.tagdroid.tagapi.SQLApi.DAO;
 import java.util.ArrayList;
 
 public class DirectionDAO extends DAO<Direction> {
+    public static final String DIRECTION = "Direction", NAME = "Name", LINE_ID = "LineId";
+
+    public DirectionDAO(SQLiteDatabase bdd) {
+        super(bdd);
+    }
+
     @Override
     protected String TABLE_NAME() {
         return "Directions";
     }
-    public static final String DIRECTION = "Direction", NAME = "Name", LINE_ID = "LineId";
+
     @Override
     protected String COLUMNS() {
-        return "(" + DIRECTION  + " INTEGER, "
-                + NAME          + " TEXT, "
-                + LINE_ID       + " INTEGER);";
+        return "(" + DIRECTION + " INTEGER, "
+                + NAME + " TEXT, "
+                + LINE_ID + " INTEGER);";
     }
-    public static final String[] AllColumns = new String[]{DIRECTION, NAME, LINE_ID};
 
-    public DirectionDAO(SQLiteDatabase bdd) {
-        super(bdd);
+    @Override
+    protected String[] AllColumns() {
+        return new String[]{DIRECTION, NAME, LINE_ID};
     }
 
     @Override
@@ -45,7 +51,10 @@ public class DirectionDAO extends DAO<Direction> {
 
     public ArrayList<Direction> getDirectionsOfLine(long id) {
         ArrayList<Direction> allDirections = new ArrayList<>();
-        Cursor cursor = bdd.query(TABLE_NAME(), AllColumns, LINE_ID + " = ? ", new String[]{"" + id}, null, null, null);
+        Cursor cursor = bdd.query(TABLE_NAME(), AllColumns(),
+                LINE_ID + " = ? ",
+                new String[]{String.valueOf(id)},
+                null, null, null);
         while (cursor.moveToNext())
             allDirections.add(fromCursor(cursor));
 

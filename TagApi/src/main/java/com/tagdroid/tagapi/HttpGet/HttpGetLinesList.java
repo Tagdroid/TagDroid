@@ -26,8 +26,8 @@ public class HttpGetLinesList extends HttpGetTask {
         SQLiteDatabase daTAGase = dbHelper.getWritableDatabase();
         daTAGase.beginTransaction();
 
-        LinesDAO linesDAO = (LinesDAO)new LinesDAO(daTAGase).update(dbHelper.oldVersion, dbHelper.newVersion);
-        DirectionDAO directionDAO = (DirectionDAO)new DirectionDAO(daTAGase).update(dbHelper.oldVersion, dbHelper.newVersion);
+        LinesDAO linesDAO = (LinesDAO)new LinesDAO(daTAGase).create();
+        DirectionDAO directionDAO = (DirectionDAO)new DirectionDAO(daTAGase).create();
 
         Line line;
 

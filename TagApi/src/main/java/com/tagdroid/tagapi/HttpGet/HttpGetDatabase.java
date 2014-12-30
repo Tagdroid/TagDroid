@@ -42,8 +42,8 @@ public class HttpGetDatabase implements ProgressionInterface {
         Log.d("httpgetdatabase", "downloadalllines");
         int length = linesList.size(), progression = 0;
         for (Line line: linesList) {
-            Log.d("httpgetdatabase", "downloadline " + progression + "/"+length);
             progression++;
+            Log.d("httpgetdatabase", "downloadline " + progression + "/"+length);
             if (line.getDirectionList() != null)
                 for (Direction direction : line.getDirectionList())
                     try {

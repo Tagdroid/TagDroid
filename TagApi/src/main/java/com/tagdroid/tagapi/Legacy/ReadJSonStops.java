@@ -1,4 +1,4 @@
-package com.tagdroid.tagapi.HttpGet;
+package com.tagdroid.tagapi.Legacy;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -11,7 +11,6 @@ import com.tagdroid.tagapi.ProgressionInterface;
 import com.tagdroid.tagapi.SQLApi.Transport.LocalityDAO;
 import com.tagdroid.tagapi.SQLApi.Transport.LogicalStopDAO;
 import com.tagdroid.tagapi.SQLApi.DatabaseHelper;
-import com.tagdroid.tagapi.SQLApi.Transport.PhysicalStopDAO;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,10 +29,8 @@ public class ReadJSonStops {
         daTAGase.beginTransaction();
 
         PhysicalStopDAO physicalStopDAO = new PhysicalStopDAO(daTAGase);
-        LogicalStopDAO logicalStopDAO = new LogicalStopDAO(daTAGase,
-                dbHelper.isCreating, dbHelper.isUpgrading, dbHelper.oldVersion, dbHelper.newVersion);
-        LocalityDAO localityDAO = new LocalityDAO(daTAGase,
-                dbHelper.isCreating, dbHelper.isUpgrading, dbHelper.oldVersion, dbHelper.newVersion);
+        LogicalStopDAO logicalStopDAO = new LogicalStopDAO(daTAGase);
+        LocalityDAO localityDAO = new LocalityDAO(daTAGase);
 
         PhysicalStop physicalStop;
         LogicalStop logicalStop;
