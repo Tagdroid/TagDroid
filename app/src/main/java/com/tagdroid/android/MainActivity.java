@@ -5,28 +5,34 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
-import android.preference.PreferenceManager;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.support.v4.widget.DrawerLayout;
 
 import com.arellomobile.android.push.BasePushMessageReceiver;
 import com.arellomobile.android.push.PushManager;
 import com.arellomobile.android.push.utils.RegisterBroadcastReceiver;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.drive.Drive;
 import com.tagdroid.android.Drawer.DrawerFragment;
-import com.tagdroid.android.Welcome.WelcomeActivity;
-import com.tagdroid.android.Pages.*;
+import com.tagdroid.android.Pages.AboutFragment;
 import com.tagdroid.android.Pages.Actualites.ActualitesFragment;
+import com.tagdroid.android.Pages.LignesFragment;
+import com.tagdroid.android.Pages.StationDetail.StationDetailFragment;
+import com.tagdroid.android.Pages.TarifsFragment;
+import com.tagdroid.android.Welcome.WelcomeActivity;
 
 
 public class MainActivity extends ActionBarActivity implements DrawerFragment.DrawerCallbacks,
         Page.ChangeFragmentInterface {
     public static boolean firstSee=true;
+    private GoogleApiClient mGoogleApiClient;
 
     // Used to store the last screen title. For use in {@link #restoreActionBar()}.
     @Override
@@ -45,6 +51,12 @@ public class MainActivity extends ActionBarActivity implements DrawerFragment.Dr
         }
         Log.d("MainActivity", "setContentView");
         setContentView(R.layout.main_activity);
+
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addApi(Drive.API)
+                .addScope(Drive.SCOPE_FILE)
+                .build();
+
 
         registerReceivers(); //Register receivers for push notifications
         PushManager pushManager = PushManager.getInstance(this);  //Create and start push manager
