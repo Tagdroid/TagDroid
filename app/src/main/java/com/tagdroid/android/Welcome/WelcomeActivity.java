@@ -29,7 +29,7 @@ import com.viewpagerindicator.CirclePageIndicator;
 public class WelcomeActivity extends FragmentActivity implements WelcomeFragment.OnButtonClicked, ProgressionInterface {
     ViewPager mPager;
     HttpGetDatabase httpGetDatabase = new HttpGetDatabase(this, this);
-    private int progression=0, total=0;
+    private int total=0;
     private ProgressBar progressBar;
 
     @Override
@@ -127,18 +127,18 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
     @Override
     public void onDownloadProgression(int progression, int total) {
         Log.d("WelcomeActivity", "downloadline " + progression + "/" + total);
-        this.progression = progression;
-        this.total = total;
-        progressBar.setMax(total);
-        progressBar.setProgress(progression);
-        if (progression < total)
-            progressBar.setSecondaryProgress(progression+1);
+        if (total == 0) {
+            this.total = total;
+            progressBar.setMax(total * total);
+        }
+        progressBar.setProgress(progression*progression);
+        progressBar.setSecondaryProgress(progression*total);
     }
 
     @Override
     public void onDownloadComplete() {
         Log.d("WelcomeActivity", "onDownloadComplete");
-        progressBar.setProgress(total);
+        progressBar.setProgress(total*total);
     }
 
     public class WelcomeAdapter extends FragmentStatePagerAdapter {
