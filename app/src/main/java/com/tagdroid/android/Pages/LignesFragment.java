@@ -144,7 +144,8 @@ public class LignesFragment extends Page {
                 @Override
                 public void onClick(View v) {
                         Log.d("Ligne", ligne.getNumber());
-                        Toast.makeText(getActivity(), "Ligne "+ligne.getNumber(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Ligne "+ligne.getNumber() + " type " + ligne.LineType,
+                                Toast.LENGTH_SHORT).show();
                     }
                 });
             return lineButton;
