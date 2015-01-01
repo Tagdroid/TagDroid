@@ -141,4 +141,7 @@
     <string name="mensuel">Mensuel</string>
     <string name="annuel">Annuel</string>
     <string name="wait_for_download_to_finish">Veuillez attendre la fin du téléchargement de la base de données…</string>
+    <string name="chrono">Chrono</string>
+    <string name="proximo">Proximo</string>
+    <string name="flexo">Flexo</string>
 </resources>

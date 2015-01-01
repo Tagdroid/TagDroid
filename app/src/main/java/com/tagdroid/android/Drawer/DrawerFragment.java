@@ -169,7 +169,7 @@ public class DrawerFragment extends Fragment {
                 public void run() {
                     mCallbacks.onDrawerItemSelected(finalPosition);
                 }
-            }, 300);
+            }, 100);
         }
     }
 

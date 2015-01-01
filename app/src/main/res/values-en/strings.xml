@@ -2,4 +2,7 @@
 <resources>
     <string name="app_name">TAGDroid</string>
     <string name="auteur">Autor</string>
+    <string name="chrono">Chrono</string>
+    <string name="proximo">Proximo</string>
+    <string name="flexo">Flexo</string>
 </resources>

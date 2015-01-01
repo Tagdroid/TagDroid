@@ -127,18 +127,17 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
     @Override
     public void onDownloadProgression(int progression, int total) {
         Log.d("WelcomeActivity", "downloadline " + progression + "/" + total);
-        if (total == 0) {
-            this.total = total;
-            progressBar.setMax(total * total);
-        }
-        progressBar.setProgress(progression*progression);
-        progressBar.setSecondaryProgress(progression*total);
+        this.total = total;
+        progressBar.setMax(total);
+
+        progressBar.setProgress(progression);
+        progressBar.setSecondaryProgress(progression);
     }
 
     @Override
     public void onDownloadComplete() {
         Log.d("WelcomeActivity", "onDownloadComplete");
-        progressBar.setProgress(total*total);
+        progressBar.setProgress(total);
     }
 
     public class WelcomeAdapter extends FragmentStatePagerAdapter {

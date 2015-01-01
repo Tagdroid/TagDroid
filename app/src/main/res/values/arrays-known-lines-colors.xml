@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Défaut -->
+    <color name="ligne_default">#888</color>
+
+    <array name="known_tramways_colors">
+        <item>#0076BD</item>
+        <item>#009b3A</item>
+        <item>#E4007C</item>
+        <item>#F39A00</item>
+        <item>#58318A</item>
+        <item>#5C3292</item>
+    </array>
+
+    <array name="known_chrono_colors">
+        <item>#ffed00</item>
+        <item>#fed33c</item>
+        <item>#f49712</item>
+        <item>#fed300</item>
+        <item>#f9b122</item>
+        <item>#ffeb00</item>
+    </array>
+
+    <array name="known_proximo_colors">
+        <item>#94c11f</item>
+        <item>#009a3e</item>
+        <item>#1db6b7</item>
+        <item>#c9cc00</item>
+        <item>#6cbe99</item>
+        <item>#74a0ce</item>
+        <item>#06a68a</item>
+        <item>#06a68a</item>
+        <item>#74a0ce</item>
+        <item>#35bad9</item>
+        <item>#35bad9</item>
+        <item>#35bad9</item>
+    </array>
+
+    <array name="known_flexo_colors">
+        <item>#ea516c</item>
+        <item>#e975ab</item>
+        <item>#8164a9</item>
+        <item>#8978b6</item>
+        <item>#9c6eae</item>
+        <item>#8978b6</item>
+        <item>#f5b4cb</item>
+        <item>#8978b6</item>
+        <item>#ea516c</item>
+        <item>#8164a9</item>
+        <item>#ba328b</item>
+        <item>#8978b6</item>
+        <item>#f192a3</item>
+        <item>#e975ab</item>
+        <item>#9c6eae</item>
+        <item>#9c6eae</item>
+        <item>#e975ab</item>
+        <item>#4b2582</item>
+        <item>#502182</item>
+        <item>#ba328b</item>
+        <item>#f192b4</item>
+        <item>#ba328b</item>
+        <item>#ba328b</item>
+        <item>#f192b4</item>
+        <item>#8164a9</item>
+        <item>#ba328b</item>
+        <item>#ea516c</item>
+        <item>#ea516c</item>
+    </array>
+</resources>

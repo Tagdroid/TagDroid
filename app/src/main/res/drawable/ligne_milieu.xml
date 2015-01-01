@@ -17,7 +17,7 @@
         <shape  android:shape="oval">
             <size android:width="8dp"
                 android:height="8dp" />
-            <solid android:color="@color/ligne_b" />
+            <solid android:color="@color/ligne_default" />
         </shape>
     </item>
 </layer-list>

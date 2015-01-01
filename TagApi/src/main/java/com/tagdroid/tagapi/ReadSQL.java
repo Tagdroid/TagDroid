@@ -19,7 +19,7 @@ public class ReadSQL {
 
     public ArrayList<Line> getAllLines() {
         DatabaseHelper dbHelper = DatabaseHelper.getInstance(context);
-        SQLiteDatabase daTAGase = dbHelper.getWritableDatabase();
+        SQLiteDatabase daTAGase = dbHelper.getReadableDatabase();
         daTAGase.beginTransaction();
 
         LinesDAO linesDAO = new LinesDAO(daTAGase);

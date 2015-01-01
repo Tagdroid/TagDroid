@@ -5,12 +5,17 @@ import org.json.JSONObject;
 
 public class Line {
     private long Id;
-    private String Name;        // Contient les noms des terminus. "Description" quoi.
     private String Number;      // En fait le nom de la ligne (C2, etc)
+    private String Name;        // Contient les noms des terminus. "Description" quoi.
     private boolean IsActive;   // Détermine si la ligne est active ou non
     private Direction[] DirectionList;  // Contient la liste des directions.
 
-    private int TransportMode;  // Toujours 0
+    // Valeurs non enregistrées dans la base de données mais utilisées dans l'appli
+    public int color;
+    public int LineType = 0;   // Le type de ligne (0=Inconnu,1 = Tram, 2 = Chrono, 3 = Proximo, 4 = Flexo)
+    public final static int TRAM = 1, CHRONO = 2, PROXIMO = 3, FLEXO = 4;
+
+/*    private int TransportMode;  // Toujours 0
     private int Accessibility;  // Toujours 0,0,0,0
     private String Company;     // Toujours TAG
     private long CompanyId;     // Toujours 2
@@ -18,33 +23,43 @@ public class Line {
     private Operator mOperator; // Toujours 1
     private long OperatorId;    // --
     private int Order;          // C'est quoi ce machin… Certaines lignes ont le même.
-
+*/
     public Line(JSONObject jsonLine) throws JSONException {
         this.Id = jsonLine.getLong("Id");
-        this.Name = jsonLine.getString("Name");
         this.Number = jsonLine.getString("Number");
+        this.Name = jsonLine.getString("Name");
         this.IsActive = jsonLine.getBoolean("Published") && !jsonLine.getBoolean("Deleted");
         this.DirectionList = Direction.DirectionArray(jsonLine.getJSONArray("DirectionList"), Id);
     }
 
-    public Line(long Id, String Name, String Number, boolean IsActive) {
+    public Line(long Id, String Number, String Name, boolean IsActive) {
         this.Id = Id;
-        this.Name = Name;
         this.Number = Number;
+        this.Name = Name;
         this.IsActive = IsActive;
     }
     public void setDirectionList(Direction[] directionList) {
         this.DirectionList = directionList;
     }
 
+    public Line setColor(int color) {
+        this.color = color;
+        return this;
+    }
+
+    public Line setLineType(int lineType) {
+        this.LineType = lineType;
+        return this;
+    }
+
     public long getId() {
         return Id;
     }
-    public String getName() {
-        return Name;
-    }
     public String getNumber() {
         return Number;
+    }
+    public String getName() {
+        return Name;
     }
     public boolean getIsActive() {
         return IsActive;

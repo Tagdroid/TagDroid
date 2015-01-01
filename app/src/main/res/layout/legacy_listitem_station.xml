@@ -9,7 +9,7 @@
         android:layout_height="fill_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:background="@color/ligne_c"
+        android:background="@color/ligne_default"
         android:src="@drawable/shadow_right"
         android:scaleType="fitXY"/>
 

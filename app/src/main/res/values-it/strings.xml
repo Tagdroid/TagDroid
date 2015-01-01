@@ -126,4 +126,7 @@
 	<string name="welcome_texte6">Aggiungi le tue stazioni preferite ...</string>
 
     <string name="allons_y">Allons-y !</string>
+    <string name="chrono">Chrono</string>
+    <string name="proximo">Proximo</string>
+    <string name="flexo">Flexo</string>
 </resources>

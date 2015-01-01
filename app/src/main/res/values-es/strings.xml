@@ -125,4 +125,7 @@
 	<string name="welcome_texte5">la aplicación cuenta con un menú de deslizamiento en el lado izquierdo de la interfaz. Deslice hacia la derecha para que se muestre o haga clic en el botón del menú superior izquierda.</string>
 	<string name="welcome_texte6">Añade tus estaciones favoritas ...</string>
     <string name="allons_y">Allons-y !</string>
+    <string name="chrono">Chrono</string>
+    <string name="proximo">Proximo</string>
+    <string name="flexo">Flexo</string>
 </resources>

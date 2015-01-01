@@ -1,7 +1,7 @@
 package com.tagdroid.android.Pages;
 
-import android.app.Activity;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,18 +9,20 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.Toast;
 
 import com.tagdroid.android.Page;
 import com.tagdroid.android.R;
+import com.tagdroid.tagapi.JSonApi.Transport.Line;
+import com.tagdroid.tagapi.ReadSQL;
+
+import java.util.ArrayList;
 
 import info.hoang8f.widget.FButton;
 
 public class LignesFragment extends Page {
-    private Activity mContext = getActivity();
     public LignesFragment() {
     }
     @Override
@@ -42,118 +44,72 @@ public class LignesFragment extends Page {
         }
     }
 
+    private ArrayList<Line> allLines;
+    private ArrayList<String> allLinesNumbers;
+
+
+    private ArrayList<Line> matchKnownLines(int known_names, int known_colors, int LineType) {
+        // Pour chaque type de ligne, si elle est dans la base de données on l'ajoute à l'arraylist correspondante.
+        // On la supprime de allLines pour voir si il nous reste des lignes non connues.
+        TypedArray knownNames   = getResources().obtainTypedArray(known_names);
+        TypedArray knownColors  = getResources().obtainTypedArray(known_colors);
+
+        ArrayList<Line> matchedLines = new ArrayList<>();
+
+        for (int i = 0; i < knownNames.length(); i++) {
+            int a;
+            if ((a = allLinesNumbers.indexOf(knownNames.getString(i))) >= 0) {
+                matchedLines.add(allLines.get(a).setColor(knownColors.getColor(i, 0)).setLineType(LineType));
+                allLines.remove(a);
+                allLinesNumbers.remove(a);
+            }
+        }
+        return matchedLines;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_lignes_grid, container, false);
-        GridView tramGridView = (GridView) view.findViewById(R.id.tramGrid);
 
-        //Typeface tf2 = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Black.ttf");
-        /*TextView tramways = (TextView) view.findViewById(R.id.tramways);
-        TextView chrono = (TextView) view.findViewById(R.id.chrono);
-        TextView proximo = (TextView) view.findViewById(R.id.proximo);
-        TextView flexo = (TextView) view.findViewById(R.id.flexo);
-        tramways.setTypeface(tf2);
-        chrono.setTypeface(tf2);
-        proximo.setTypeface(tf2);
-        flexo.setTypeface(tf2);*/
+        // Get all Lines from SQLite
+        allLines = new ReadSQL(getActivity()).getAllLines();
+        allLinesNumbers = new ArrayList<>();
+        // Plus pratique pour contains()
+        for (Line i : allLines)
+            allLinesNumbers.add(i.getNumber());
 
-        final Ligne[] lignesTram = new Ligne[5];
-        lignesTram[0] = new Ligne(R.color.ligne_a, "A", 0);
-        lignesTram[1] = new Ligne(R.color.ligne_b, "B", 0);
-        lignesTram[2] = new Ligne(R.color.ligne_c, "C", 0);
-        lignesTram[3] = new Ligne(R.color.ligne_d, "D", 0);
-        lignesTram[4] = new Ligne(R.color.ligne_e, "E", 0);
+        GridView tramGridView       = (GridView) view.findViewById(R.id.tramGrid);
+        ArrayList<Line> tramways    = matchKnownLines(R.array.known_tramways, R.array.known_tramways_colors, Line.TRAM);
+        tramGridView.setAdapter(new LigneAdapter(getActivity(), tramways));
 
-        GridView ChronoGridView = (GridView) view.findViewById(R.id.ChronoGrid);
-        final Ligne[] lignesChrono = new Ligne[7];
-        lignesChrono[0] = new Ligne(R.color.ligne_c1, "C1", 0);
-        lignesChrono[1] = new Ligne(R.color.ligne_c2, "C2", 0);
-        lignesChrono[2] = new Ligne(R.color.ligne_c3, "C3", 0);
-        lignesChrono[3] = new Ligne(R.color.ligne_c4, "C4", 0);
-        lignesChrono[4] = new Ligne(R.color.ligne_c5, "C5", 0);
-        lignesChrono[5] = new Ligne(R.color.ligne_c6, "C6", 0);
-        lignesChrono[6] = new Ligne(R.color.ligne_e, "Ebus", 0);
+        GridView ChronoGridView     = (GridView) view.findViewById(R.id.chronoGrid);
+        ArrayList<Line> chrono      = matchKnownLines(R.array.known_chrono, R.array.known_chrono_colors, Line.CHRONO);
+        ChronoGridView.setAdapter(new LigneAdapter(getActivity(), chrono));
 
-        GridView ProximoGridView = (GridView) view.findViewById(R.id.ProximoGrid);
-        final Ligne[] lignesProximo = new Ligne[12];
-        lignesProximo[0] = new Ligne(R.color.ligne_11, "11", 0);
-        lignesProximo[1] = new Ligne(R.color.ligne_12, "12", 0);
-        lignesProximo[2] = new Ligne(R.color.ligne_13, "13", 0);
-        lignesProximo[3] = new Ligne(R.color.ligne_14, "14", 0);
-        lignesProximo[4] = new Ligne(R.color.ligne_15, "15", 0);
-        lignesProximo[5] = new Ligne(R.color.ligne_16, "16", 0);
-        lignesProximo[6] = new Ligne(R.color.ligne_17, "17", 0);
-        lignesProximo[7] = new Ligne(R.color.ligne_18, "18", 0);
-        lignesProximo[8] = new Ligne(R.color.ligne_19, "19", 0);
-        lignesProximo[9] = new Ligne(R.color.ligne_20, "20", 0);
-        lignesProximo[10] = new Ligne(R.color.ligne_21, "21", 0);
-        lignesProximo[11] = new Ligne(R.color.ligne_22, "22", 0);
+        GridView ProximoGridView    = (GridView) view.findViewById(R.id.proximoGrid);
+        ArrayList<Line> proximo     = matchKnownLines(R.array.known_proximo, R.array.known_proximo_colors, Line.PROXIMO);
+        ProximoGridView.setAdapter(new LigneAdapter(getActivity(), proximo));
 
-        GridView FlexoGridView = (GridView) view.findViewById(R.id.FlexoGrid);
-        final Ligne[] lignesFlexo = new Ligne[3];
-        lignesFlexo[0] = new Ligne(R.color.ligne_40, "40", 0);
-        lignesFlexo[1] = new Ligne(R.color.ligne_41, "41", 0);
-        lignesFlexo[2] = new Ligne(R.color.ligne_42, "42", 0);
-
-
-
-
-        /* L'event OnItemClick ne fonctionne pas ! Des idées ???? */
-
-
-
-       tramGridView.setAdapter(new LigneAdapter(getActivity(), lignesTram));
-        tramGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                Log.d("Bouton GridView", position + "");
-                Log.d("Bouton GridView name", lignesTram[position].name);
-                Toast.makeText(getActivity(), "Ligne "+lignesTram[position].name, Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        ChronoGridView.setAdapter(new LigneAdapter(getActivity(), lignesChrono));
-        ChronoGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                Log.d("Bouton GridView", position + "");
-                Log.d("Bouton GridView name", lignesChrono[position].name);
-                Toast.makeText(getActivity(), "Ligne "+lignesChrono[position].name, Toast.LENGTH_SHORT).show();
-            }
-        });
-        ProximoGridView.setAdapter(new LigneAdapter(getActivity(), lignesProximo));
-        ProximoGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                Log.d("Bouton GridView", position + "");
-                Log.d("Bouton GridView name", lignesProximo[position].name);
-                Toast.makeText(getActivity(), "Ligne "+lignesProximo[position].name, Toast.LENGTH_SHORT).show();
-            }
-        });
-        FlexoGridView.setAdapter(new LigneAdapter(getActivity(), lignesFlexo));
-        FlexoGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                Log.d("Bouton GridView", position + "");
-                Log.d("Bouton GridView name", lignesFlexo[position].name);
-                Toast.makeText(getActivity(), "Ligne "+lignesFlexo[position].name, Toast.LENGTH_SHORT).show();
-            }
-        });
+        GridView FlexoGridView      = (GridView) view.findViewById(R.id.flexoGrid);
+        ArrayList<Line> flexo       = matchKnownLines(R.array.known_flexo,    R.array.known_flexo_colors, Line.FLEXO);
+        FlexoGridView.setAdapter(new LigneAdapter(getActivity(), flexo));
 
         return view;
-    }
-    private String[] getLignesfromDB() {
-
-        return null;
     }
 
     public class LigneAdapter extends BaseAdapter {
         private Context context;
-        Ligne[] lignes;
-        public LigneAdapter(Context context, Ligne[] lignes) {
+        ArrayList<Line> lignes;
+
+        public LigneAdapter(Context context, ArrayList<Line> lignes) {
             this.context = context;
             this.lignes = lignes;
         }
+
         public int getCount() {
-            return lignes.length;
+            return lignes.size();
         }
+
         public Object getItem(int position) {
             return this;
         }
@@ -161,48 +117,48 @@ public class LignesFragment extends Page {
             return 0;
         }
 
-
-        // create a new ImageView for each item referenced by the Adapter
-        public View getView(int position, View oldView, ViewGroup parent) {
+        public View getView(final int position, View oldView, ViewGroup parent) {
             if (oldView != null)
                 return oldView;
-            FButton view;
-            view = new FButton(context);
-            view.setText(lignes[position].name);
-            if(lignes[position].name.length()>3)
-                view.setTextSize(14);
+
+            final Line ligne = lignes.get(position);
+            String nom = ligne.getNumber();
+            int couleur= ligne.color;
+
+            FButton lineButton = new FButton(context);
+            lineButton.setText(nom);
+
+            if(nom.length()>3)
+                lineButton.setTextSize(14);
             else
-                view.setTextSize(16);
-            view.setTextColor(BlackorWhite(getResources().getColor(lignes[position].color)));
-            view.setButtonColor(getResources().getColor(lignes[position].color));
-            view.setShadowEnabled(true);
-            view.setShadowHeight(15);
-            view.setCornerRadius(15);
-            view.setClickable(false);
-            view.setFocusable(false);
-            view.setFocusableInTouchMode(false);
-            return view;
+                lineButton.setTextSize(16);
+
+            lineButton.setTextColor(BlackorWhite(couleur));
+
+            lineButton.setButtonColor(couleur);
+            lineButton.setShadowEnabled(true);
+            lineButton.setShadowHeight(5);
+            lineButton.setCornerRadius(7);
+
+            lineButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                        Log.d("Ligne", ligne.getNumber());
+                        Toast.makeText(getActivity(), "Ligne "+ligne.getNumber(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+            return lineButton;
         }
     }
 
-   private static int BlackorWhite(int color) {
+    private static int BlackorWhite(int color) {
         double brightness = (int)Math.sqrt(Color.red(color)*Color.red(color)*.241 +
-                                       Color.green(color)*Color.green(color)*.691 +
-                                       Color.blue(color)*Color.blue(color)*.068);
+                Color.green(color)*Color.green(color)*.691 +
+                Color.blue(color)*Color.blue(color)*.068);
 
-        if (brightness<=160) return Color.WHITE;
-        else return Color.BLACK;
-    }
-
-    private class Ligne {
-        int color;
-        String name;
-        int ligneId;
-        public Ligne(int color, String name, int ligneId) {
-            this.color = color;
-            this.name = name;
-            this.ligneId = ligneId;
-        }
+        if (brightness<=160)
+            return Color.WHITE;
+        else
+            return Color.BLACK;
     }
 }
-
