@@ -5,8 +5,10 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.tagdroid.tagapi.JSonApi.Transport.Direction;
 import com.tagdroid.tagapi.JSonApi.Transport.Line;
+import com.tagdroid.tagapi.JSonApi.Transport.LineStop;
 import com.tagdroid.tagapi.SQLApi.DatabaseHelper;
 import com.tagdroid.tagapi.SQLApi.Transport.DirectionDAO;
+import com.tagdroid.tagapi.SQLApi.Transport.LineStopsDAO;
 import com.tagdroid.tagapi.SQLApi.Transport.LinesDAO;
 
 import java.util.ArrayList;
@@ -33,5 +35,20 @@ public class ReadSQL {
         daTAGase.setTransactionSuccessful();
         daTAGase.endTransaction();
         return allLinesArrayList;
+    }
+
+    public ArrayList<LineStop> getStops(Line line, Direction direction) {
+        DatabaseHelper dbHelper = DatabaseHelper.getInstance(context);
+        SQLiteDatabase daTAGase = dbHelper.getReadableDatabase();
+        daTAGase.beginTransaction();
+
+        LineStopsDAO lineStopsDAO = new LineStopsDAO(daTAGase);
+
+        ArrayList<LineStop> stopsArrayList = lineStopsDAO
+                .stopsFromLineAndDirection(line.getId(), direction.getDirection());
+
+        daTAGase.setTransactionSuccessful();
+        daTAGase.endTransaction();
+        return stopsArrayList;
     }
 }

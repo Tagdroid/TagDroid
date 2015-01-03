@@ -11,7 +11,9 @@
 
     <!-- S = , 50, -->
     <color name="bleu_tag_clair1">#40cbff</color>
-    <color name="bleu_tag_c50">#95ddf8</color>
+    <color name="bleu_tag_c50">#80dcff</color>
+    <color name="bleu_tag_c25">#bfeeff</color>
+
 
     <color name="background_tab_pressed">#6633B5E5</color>
     <color name="pressed_tagdroidtheme">#CC038BC4</color>

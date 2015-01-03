@@ -8,7 +8,6 @@ import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.CardView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -78,7 +77,7 @@ public class TarifsFragment extends Page {
         public Object instantiateItem(View collection, int position) {
             LayoutInflater inflater = (LayoutInflater) collection.getContext()
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View view = null;
+            View view;
             switch (position) {
                 case 0:
                     view = inflater.inflate(R.layout.fragment_tarif_tickets, null);
@@ -93,7 +92,8 @@ public class TarifsFragment extends Page {
                             ticket_prix.setText(getResources().getStringArray(R.array.ticket_prix)[i]);
                             ticket_prix_bis.setText(getResources().getStringArray(R.array.ticket_prix_bis)[i]);
                         }
-                        public void onNothingSelected(AdapterView<?> adapterView) {return;}
+                        public void onNothingSelected(AdapterView<?> adapterView) {
+                        }
                     });
 
                     break;
@@ -116,16 +116,16 @@ public class TarifsFragment extends Page {
                     spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l){setValue();}
                         public void onNothingSelected(AdapterView<?> adapterView) {
-                            return;
                         }
                     });
 
                     spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l){setValue();}
-                        public void onNothingSelected(AdapterView<?> adapterView) {return;}
+                        public void onNothingSelected(AdapterView<?> adapterView) {
+                        }
                     });
                     break;
-                case 2:
+                default:
                     view = inflater.inflate(R.layout.fragment_tarif_combines, null);
                     Spinner spinner4 = (Spinner) view.findViewById(R.id.spinner4);
                     final ImageView image = (ImageView)view.findViewById(R.id.combines_image);
@@ -143,7 +143,8 @@ public class TarifsFragment extends Page {
                             combines_text_gras.setText(getResources().getStringArray(R.array.combines_text_gras)[i]);
                             combines_text_plus.setText(getResources().getStringArray(R.array.combines_text_plus)[i]);
                         }
-                        public void onNothingSelected(AdapterView<?> adapterView) {return;}
+                        public void onNothingSelected(AdapterView<?> adapterView) {
+                        }
                     });
                     break;
             }
@@ -158,7 +159,7 @@ public class TarifsFragment extends Page {
 
         @Override
         public boolean isViewFromObject(View arg0, Object arg1) {
-            return arg0 == ((View) arg1);
+            return arg0 == arg1;
         }
 
         @Override

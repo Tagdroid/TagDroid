@@ -15,7 +15,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import com.tagdroid.android.R;
@@ -70,7 +69,7 @@ public class LigneFragment extends Fragment {
 	            parent.removeView(view);
 	    }
 	    try {
-	        view = inflater.inflate(R.layout.legacy_ligne, container, false);
+	        //view = inflater.inflate(R.layout.legacy_ligne, container, false);
 	    } catch (InflateException e) {
 	    }
         
@@ -81,7 +80,7 @@ public class LigneFragment extends Fragment {
         
 
   
-        ListViewLigne = (ListView) view.findViewById(R.id.listviewligne);      
+        //ListViewLigne = (ListView) view.findViewById(R.id.listviewligne);
         ArrayList<HashMap<String, String>> listItem = new ArrayList<HashMap<String, String>>();
         HashMap<String, String> map;
 
@@ -127,11 +126,11 @@ public class LigneFragment extends Fragment {
             listItem.add(map);
         }
   
-       SimpleAdapter mSchedule = new SimpleAdapter (getActivity(), listItem, R.layout.legacy_affichageitem,
+   /*    SimpleAdapter mSchedule = new SimpleAdapter (getActivity(), listItem, R.layout.legacy_affichageitem,
                new String[] {"img", "titre", "corres1", "corres2", "corres3", "corres4", "corres5", "corres6", "corres7", "corres8", "corres9", "corres10"}, 
                new int[] {R.id.img, R.id.titre,R.id.img_corres1, R.id.img_corres2, R.id.img_corres3, R.id.img_corres4, R.id.img_corres5, R.id.img_corres6, R.id.img_corres7,R.id.img_corres8, R.id.img_corres9,R.id.img_corres10 }){
        };
-     
+     */
         /*ListViewLigne.setAdapter(mSchedule);
         ListViewLigne.setOnItemClickListener(new OnItemClickListener()
         {  	

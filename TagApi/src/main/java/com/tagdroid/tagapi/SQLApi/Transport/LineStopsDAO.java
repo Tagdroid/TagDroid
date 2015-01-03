@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import com.tagdroid.tagapi.JSonApi.Transport.LineStop;
 import com.tagdroid.tagapi.SQLApi.DAO;
 
+import java.util.ArrayList;
+
 public class LineStopsDAO extends DAO<LineStop> {
     public static final String ID = "Id", NAME = "Name", POSITION = "Position", LOGICALSTOPID = "LogicalStopId",
             LOCALITYID = "LocalityId", LATITUDE = "Latitude", LONGITUDE = "Longitude",
@@ -23,7 +25,7 @@ public class LineStopsDAO extends DAO<LineStop> {
 
     @Override
     protected String COLUMNS() {
-        return "(" + ID     + " INTEGER PRIMARY KEY, " +
+        return "(" + ID     + " INTEGER, " +
                 NAME        + " TEXT, " +
                 POSITION    + " INTEGER, " +
                 LOGICALSTOPID+" INTEGER, " +
@@ -67,13 +69,15 @@ public class LineStopsDAO extends DAO<LineStop> {
                 cursor.getInt(7));
     }
 
-    public LineStop select(long id) {
+    public ArrayList<LineStop> stopsFromLineAndDirection(long lineId, int directionId) {
+        ArrayList<LineStop> stopsFromLineAndDirection = new ArrayList<>();
         Cursor cursor = bdd.query(TABLE_NAME(), AllColumns(),
-                ID + " = ?",
-                new String[]{String.valueOf(id)},
+                LINE_ID + " = ? AND " + DIRECTION + " = ?",
+                new String[]{String.valueOf(lineId),String.valueOf(directionId)},
                 null, null, null);
-        if (!cursor.moveToFirst())
-            return null;
-        return fromCursor(cursor);
+        while (cursor.moveToNext())
+            stopsFromLineAndDirection.add(fromCursor(cursor));
+        cursor.close();
+        return stopsFromLineAndDirection;
     }
 }

@@ -29,7 +29,7 @@ public class ActualitesDetailsFragment extends Page implements View.OnClickListe
 
     @Override
     public String getTitle() {
-        return getResources().getString(R.string.news_details);
+        return title;
     }
     @Override
     public Integer getMenuId() {

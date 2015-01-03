@@ -31,4 +31,5 @@
         android:layout_gravity="start"
         android:name="com.tagdroid.android.Drawer.DrawerFragment"
         tools:layout="@layout/main_drawer" />
+
 </android.support.v4.widget.DrawerLayout>

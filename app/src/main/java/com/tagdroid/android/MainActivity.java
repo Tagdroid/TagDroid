@@ -7,7 +7,7 @@ import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v4.app.FragmentManager;
+import android.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
@@ -23,7 +23,7 @@ import com.google.android.gms.drive.Drive;
 import com.tagdroid.android.Drawer.DrawerFragment;
 import com.tagdroid.android.Pages.AboutFragment;
 import com.tagdroid.android.Pages.Actualites.ActualitesFragment;
-import com.tagdroid.android.Pages.LignesFragment;
+import com.tagdroid.android.Pages.LignesGridFragment;
 import com.tagdroid.android.Pages.StationDetail.StationDetailFragment;
 import com.tagdroid.android.Pages.TarifsFragment;
 import com.tagdroid.android.Welcome.WelcomeActivity;
@@ -75,7 +75,7 @@ public class MainActivity extends ActionBarActivity implements DrawerFragment.Dr
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
 
         /** Setup the Drawer */
-        DrawerFragment drawerFragment = (DrawerFragment) getSupportFragmentManager()
+        DrawerFragment drawerFragment = (DrawerFragment) getFragmentManager()
                 .findFragmentById(R.id.left_drawer);
         drawerFragment.setUp(findViewById(R.id.left_drawer),
                 (DrawerLayout) findViewById(R.id.drawer_layout));
@@ -109,7 +109,7 @@ public class MainActivity extends ActionBarActivity implements DrawerFragment.Dr
     public void onDrawerItemSelected(int position) {
         Page page;
         switch (position) {
-            case  1: page = new LignesFragment();
+            case  1: page = new LignesGridFragment();
                 break;
             // case  2: page = new FavorisFragment();
             //     break;
@@ -135,7 +135,7 @@ public class MainActivity extends ActionBarActivity implements DrawerFragment.Dr
                 return;
         }
         // update the main content by replacing fragments
-        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.pager, page).commit();
     }
 

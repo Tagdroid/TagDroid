@@ -4,7 +4,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
+import android.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -126,7 +126,7 @@ public class ActualitesFragment extends Page implements ProgressionInterface, Ac
         Actualite actualité = actualitésList.get(position);
 
         FragmentTransaction fragmentTransaction = getActivity()
-                .getSupportFragmentManager().beginTransaction();
+                .getFragmentManager().beginTransaction();
 
         ActualitesDetailsFragment actualitesDetailsFragment = ActualitesDetailsFragment.newInstance(RSSChannel,
                 actualité.titre,
@@ -134,10 +134,10 @@ public class ActualitesFragment extends Page implements ProgressionInterface, Ac
                 actualité.url,
                 actualité.image);
 
-        fragmentTransaction.replace(R.id.pager, actualitesDetailsFragment);
         changeFragmentInterface.onChangeFragment(actualitesDetailsFragment);
 
-        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        fragmentTransaction.setCustomAnimations(R.anim.fadein, R.anim.fadeout, R.anim.fadein, R.anim.fadeout);
+        fragmentTransaction.replace(R.id.pager, actualitesDetailsFragment);
         fragmentTransaction.addToBackStack("activePage");
         fragmentTransaction.commit();
     }

@@ -1,7 +1,7 @@
 package com.tagdroid.android.Pages.Favoris;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -14,11 +14,6 @@ import com.tagdroid.android.R;
 
 public class FavorisFragment extends Fragment {
     private static View view;
-
-
-    public static FavorisFragment newInstance() {
-        return new FavorisFragment();
-    }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (view != null) {

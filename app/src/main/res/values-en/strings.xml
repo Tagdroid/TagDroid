@@ -5,4 +5,8 @@
     <string name="chrono">Chrono</string>
     <string name="proximo">Proximo</string>
     <string name="flexo">Flexo</string>
+    <string name="other_lines">Autres lignes</string>
+    <string name="about">About</string>
+    <string name="choix_directions">Choisissez votre direction</string>
+    <string name="lines">Toutes les lignes</string>
 </resources>
