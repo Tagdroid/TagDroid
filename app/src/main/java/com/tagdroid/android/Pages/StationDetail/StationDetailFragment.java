@@ -130,11 +130,6 @@ public class StationDetailFragment extends Page implements ProgressionInterface,
         recycler_view.setAdapter(stationCardAdapter);
     }
 
-
-    public void onJSonParsingStarted() {}
-    public void onJSonParsingFailed(Exception e) {}
-    public void onJSonParsingComplete() {}
-
     @Override
     public void onItemClick(View view, int position) {}
 

@@ -147,4 +147,10 @@
     <string name="other_lines">Autres lignes</string>
     <string name="choix_directions">Choisissez votre direction</string>
     <string name="lines">Toutes les lignes</string>
+
+    <!-- Settings -->
+    <string name="change_langue">Langue actuelle :</string>
+
+
+
 </resources>

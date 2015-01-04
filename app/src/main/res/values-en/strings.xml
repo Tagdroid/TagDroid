@@ -9,4 +9,8 @@
     <string name="about">About</string>
     <string name="choix_directions">Choisissez votre direction</string>
     <string name="lines">Toutes les lignes</string>
+
+    <!-- Settings -->
+    <string name="change_langue">Current language :</string>
+
 </resources>

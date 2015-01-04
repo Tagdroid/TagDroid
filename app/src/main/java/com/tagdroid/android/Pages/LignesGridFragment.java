@@ -156,8 +156,8 @@ public class LignesGridFragment extends Page {
 
             lineButton.setButtonColor(couleur);
             lineButton.setShadowEnabled(true);
-            lineButton.setShadowHeight(5);
-            lineButton.setCornerRadius(7);
+            lineButton.setShadowHeight(7);
+            lineButton.setCornerRadius(12);
 
             lineButton.setOnClickListener(new View.OnClickListener() {
                 @Override
