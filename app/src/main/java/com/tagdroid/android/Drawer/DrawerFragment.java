@@ -19,7 +19,7 @@ import android.widget.Toast;
 import com.tagdroid.android.R;
 
 
-public class DrawerFragment extends Fragment {
+public class DrawerFragment extends Fragment implements ListView.OnItemClickListener{
     /** Remember the position of the selected item. */
     private static final String STATE_SELECTED_POSITION = "selected_drawer_position";
     private int mCurrentSelectedPosition = 1;
@@ -68,21 +68,13 @@ public class DrawerFragment extends Fragment {
         }
 
         drawerContainerView = getActivity().findViewById(R.id.left_drawer);
-
-        // Select either the default item (0) or the last selected item.
-        selectItem(mCurrentSelectedPosition);
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         drawerListView = (ListView) inflater
                 .inflate(R.layout.main_drawer, container, false);
-        drawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                selectItem(position);
-            }
-        });
+        drawerListView.setOnItemClickListener(this);
 
         initDrawerLayout();
         return drawerListView;
@@ -148,6 +140,9 @@ public class DrawerFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         // Indicate that this fragment would like to influence the set of actions in the action bar.
         setHasOptionsMenu(true);
+
+        // Select either the default item (0) or the last selected item.
+        selectItem(mCurrentSelectedPosition);
     }
 
     private void selectItem(int position) {
@@ -161,18 +156,21 @@ public class DrawerFragment extends Fragment {
 
         if (drawerLayout != null)
                     drawerLayout.closeDrawer(drawerContainerView);
+    }
 
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, final int i, long l) {
+        selectItem(i);
         if (mCallbacks != null) {
-            final int finalPosition = position;
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    mCallbacks.onDrawerItemSelected(finalPosition);
+                    mCallbacks.onDrawerItemSelected(i);
                 }
-            }, 100);
+            }, 150);
         }
     }
-
 
     @Override
     public void onDetach() {

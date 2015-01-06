@@ -138,7 +138,6 @@ public class ActualitesFragment extends Page implements ProgressionInterface, Ac
 
         fragmentTransaction.setCustomAnimations(R.anim.fadein, R.anim.fadeout, R.anim.fadein, R.anim.fadeout);
         fragmentTransaction.replace(R.id.pager, actualitesDetailsFragment);
-        fragmentTransaction.addToBackStack("activePage");
         fragmentTransaction.commit();
     }
 }

@@ -199,15 +199,12 @@ public class LignesGridFragment extends Page {
                                 public void onClick(DialogInterface dialog, int which) {
                                     ReadSQL.setSelectedLineAndDirection(line, directions[which]);
 
-                                    FragmentTransaction fragmentTransaction = getActivity()
-                                            .getFragmentManager().beginTransaction();
                                     LineStopsFragment lineStopsFragment = new LineStopsFragment();
                                     changeFragmentInterface.onChangeFragment(lineStopsFragment);
 
-                                    fragmentTransaction.setCustomAnimations(R.anim.fadein, R.anim.fadeout,
-                                            R.anim.fadein, R.anim.fadeout);
+                                    FragmentTransaction fragmentTransaction = getActivity()
+                                            .getFragmentManager().beginTransaction();
                                     fragmentTransaction.replace(R.id.pager, lineStopsFragment);
-                                    fragmentTransaction.addToBackStack("activePage");
                                     fragmentTransaction.commit();
                                 }
                             });

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,9 +32,10 @@ public class LineStopsFragment extends Page{
     private ArrayList<LineStop> lineStops;
 
     private void getDetailsFromSQL() {
+        Log.d("Details", "getDetailsFromSQL");
         ligne = ReadSQL.getSelectedLine();
         direction = ReadSQL.getSelectedDirection();
-        lineStops = ReadSQL.getStops(ligne.getId(), direction.getDirection(),getActivity());
+        lineStops = ReadSQL.getStops(ligne.getId(), direction.getDirection(), getActivity());
     }
 
     public LineStopsFragment() {
@@ -61,7 +63,6 @@ public class LineStopsFragment extends Page{
                 fragmentTransaction.setCustomAnimations(R.anim.fadein, R.anim.fadeout,
                         R.anim.fadein, R.anim.fadeout);
                 fragmentTransaction.replace(R.id.pager, stationDetailFragment);
-                fragmentTransaction.addToBackStack("activePage");
                 fragmentTransaction.commit();
             }
         });

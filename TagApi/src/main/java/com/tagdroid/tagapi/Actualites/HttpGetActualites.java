@@ -86,7 +86,7 @@ public class HttpGetActualites extends AsyncTask<Void, Void, Integer> {
             progressionInterface.onDownloadFailed(exception);
     }
 
-    public static List<Actualite> getResult() {
+    public List<Actualite> getResult() {
         return ActualitésList;
     }
 }

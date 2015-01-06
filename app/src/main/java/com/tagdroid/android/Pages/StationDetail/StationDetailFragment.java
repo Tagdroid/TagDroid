@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +47,7 @@ public class StationDetailFragment extends Page implements ProgressionInterface,
         getDetailsFromSQL();
     }
     private void getDetailsFromSQL() {
+        Log.d("Details","getDetailsFromSQL");
         ligne = ReadSQL.getSelectedLine();
         direction = ReadSQL.getSelectedDirection();
         lineStop = ReadSQL.getSelectedLineStop();

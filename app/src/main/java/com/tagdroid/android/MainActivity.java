@@ -25,10 +25,8 @@ import com.tagdroid.android.Pages.AboutFragment;
 import com.tagdroid.android.Pages.Actualites.ActualitesFragment;
 import com.tagdroid.android.Pages.LignesGridFragment;
 import com.tagdroid.android.Pages.SettingsFragment;
-import com.tagdroid.android.Pages.StationDetail.StationDetailFragment;
 import com.tagdroid.android.Pages.TarifsFragment;
 import com.tagdroid.android.Welcome.WelcomeActivity;
-
 
 public class MainActivity extends ActionBarActivity implements DrawerFragment.DrawerCallbacks,
         Page.ChangeFragmentInterface {
@@ -38,7 +36,6 @@ public class MainActivity extends ActionBarActivity implements DrawerFragment.Dr
     // Used to store the last screen title. For use in {@link #restoreActionBar()}.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d("MainActivity", "onCreate");
         super.onCreate(savedInstanceState);
         if ( !PreferenceManager.getDefaultSharedPreferences(this).getBoolean("AppAlreadyLaunched", false)) {
             startActivity(new Intent(this, WelcomeActivity.class));
@@ -50,7 +47,6 @@ public class MainActivity extends ActionBarActivity implements DrawerFragment.Dr
             new ChangeLog(this).showIfNewVersion(false);
             firstSee=false;
         }
-        Log.d("MainActivity", "setContentView");
         setContentView(R.layout.main_activity);
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -69,7 +65,6 @@ public class MainActivity extends ActionBarActivity implements DrawerFragment.Dr
         pushManager.registerForPushNotifications(); //Register for push!
         checkMessage(getIntent());
 
-        Log.d("MainActivity", "setContentViewFinished");
 
         /** Get the Toolbar as the Actionbar */
         Log.d("mainactivity", "oncreateToolbar");
@@ -80,12 +75,8 @@ public class MainActivity extends ActionBarActivity implements DrawerFragment.Dr
                 .findFragmentById(R.id.left_drawer);
         drawerFragment.setUp(findViewById(R.id.left_drawer),
                 (DrawerLayout) findViewById(R.id.drawer_layout));
-
-    }
-
-
-    public void setFragmentTitle(String title) {
-        setTitle(title);
+        if (savedInstanceState == null)
+            onDrawerItemSelected(1);
     }
 
     @Override
@@ -114,8 +105,8 @@ public class MainActivity extends ActionBarActivity implements DrawerFragment.Dr
                 break;
             // case  2: page = new FavorisFragment();
             //     break;
-            case  3: page = new StationDetailFragment();
-                break;
+            // case  3: page = new StationDetailFragment();
+            //    break;
             // case  4: page = new MapFragment();
             //     break;
             // case  5: page = new TraficInfosFragment();
@@ -135,6 +126,7 @@ public class MainActivity extends ActionBarActivity implements DrawerFragment.Dr
             default:
                 return;
         }
+        onChangeFragment(page);
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.pager, page).commit();
@@ -147,7 +139,12 @@ public class MainActivity extends ActionBarActivity implements DrawerFragment.Dr
     }
 
     @Override
-    public void onChangeFragment(Page actualPage) {
+    public void onChangeFragment(Page newPage) {
+    }
+
+    @Override
+    public void setActivityTitle(String title) {
+        setTitle(title);
     }
 
 
