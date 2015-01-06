@@ -13,8 +13,17 @@ public class FavorisDAO extends DAO<Favori>{
     }
 
     @Override
+    protected String ID() {
+        return "Id";
+    }
+    public static final String NAME = "Name",
+            LINE = "Line",
+            LATITUDE = "Latitude",
+            LONGITUDE = "Longitude",
+            FAVORI = "Favori";
+    @Override
     protected String COLUMNS() {
-        return "(" + ID + " INTEGER PRIMARY KEY, " +
+        return "(" + ID() + " INTEGER PRIMARY KEY, " +
                 NAME + " STRING, " +
                 LINE + " STRING, " +
                 LATITUDE + " INTEGER, " +
@@ -24,16 +33,8 @@ public class FavorisDAO extends DAO<Favori>{
 
     @Override
     protected String[] AllColumns() {
-        return new String[]{ID, NAME, LINE, LATITUDE, LONGITUDE};
+        return new String[]{ID(), NAME, LINE, LATITUDE, LONGITUDE};
     }
-
-    public static final String ID = "Id",
-            NAME = "Name",
-            LINE = "Line",
-            LATITUDE = "Latitude",
-            LONGITUDE = "Longitude",
-            FAVORI = "Favori";
-
 
     public FavorisDAO(SQLiteDatabase bdd) {
         super(bdd);
@@ -42,7 +43,7 @@ public class FavorisDAO extends DAO<Favori>{
     @Override
     protected ContentValues createValues(Favori m) {
         ContentValues values = new ContentValues();
-        values.put(ID, m.Id);
+        values.put(ID(), m.Id);
         values.put(NAME, m.Name);
         values.put(LINE, m.Ligne);
         values.put(LATITUDE, m.Latitude);
@@ -57,38 +58,20 @@ public class FavorisDAO extends DAO<Favori>{
 
     public long modify(Favori favori) {
         ContentValues values = new ContentValues();
-        values.put(ID, favori.Id);
+        values.put(ID(), favori.Id);
         values.put(NAME, favori.Name);
         values.put(LINE, favori.Ligne);
         values.put(LATITUDE, favori.Latitude);
         values.put(LONGITUDE, favori.Longitude);
-        return bdd.update(TABLE_NAME(), values, ID + " = " + favori.Id, null);
+        return bdd.update(TABLE_NAME(), values, ID() + " = " + favori.Id, null);
     }
 
     public int delete(long id) {
-        return bdd.delete(TABLE_NAME(), ID + " = " + id, null);
-    }
-
-    public Favori select(long Id) {
-        Cursor c = bdd.query(TABLE_NAME(), new String[]{
-                ID,
-                NAME,
-                LINE,
-                LATITUDE,
-                LONGITUDE}, ID + " = \"" + Id + "\"", null, null, null, null);
-        c.moveToFirst();
-        Favori favori = new Favori(c.getInt(0),
-                c.getString(1),
-                c.getString(2),
-                c.getDouble(2),
-                c.getDouble(3));
-        c.close();
-        return favori;
+        return bdd.delete(TABLE_NAME(), ID() + " = " + id, null);
     }
 
     public Favori[] list() {
-        Cursor c = bdd.query(TABLE_NAME(), new String[]{ID, NAME, LINE, LATITUDE, LONGITUDE},
-                null, null, null, null, null);
+        Cursor c = bdd.query(TABLE_NAME(), AllColumns(), null, null, null, null, null);
         int nombreFavoris = c.getCount();
 
         Favori[] favoris = new Favori[nombreFavoris];
@@ -104,13 +87,11 @@ public class FavorisDAO extends DAO<Favori>{
     }
 
     public int getFavorisNumber() {
-        return bdd.query(TABLE_NAME(), new String[]{ID, NAME, LINE, LATITUDE, LONGITUDE},
-                null, null, null, null, null).getCount();
+        return bdd.query(TABLE_NAME(),AllColumns(), null, null, null, null, null).getCount();
     }
 
     public Boolean existsFavoriOfId(Long id){
-        Cursor c = bdd.query(TABLE_NAME(), new String[]{ID, NAME, LINE, LATITUDE, LONGITUDE},
-                ID + " = \"" + id +"\"", null, null, null, null);
+        Cursor c = bdd.query(TABLE_NAME(), AllColumns(), ID() + " = \"" + id +"\"", null, null, null, null);
         c.moveToFirst();
         if(c.getCount()>0){
             c.close();

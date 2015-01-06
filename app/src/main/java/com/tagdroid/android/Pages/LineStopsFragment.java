@@ -1,5 +1,6 @@
 package com.tagdroid.android.Pages;
 
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
@@ -12,9 +13,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.tagdroid.android.Page;
+import com.tagdroid.android.Pages.StationDetail.StationDetailFragment;
 import com.tagdroid.android.R;
 import com.tagdroid.tagapi.JSonApi.Transport.Direction;
 import com.tagdroid.tagapi.JSonApi.Transport.Line;
@@ -24,39 +25,52 @@ import com.tagdroid.tagapi.ReadSQL;
 import java.util.ArrayList;
 
 public class LineStopsFragment extends Page{
-    Line ligne;
-    Direction direction;
-    ArrayList<LineStop> lineStops;
+    private static Line ligne;
+    private static Direction direction;
 
-    public void setLineAndDirection(Line ligne, Direction direction) {
-        this.ligne = ligne;
-        this.direction = direction;
-        lineStops = new ReadSQL(getActivity()).getStops(ligne, direction);
+    private ArrayList<LineStop> lineStops;
+
+    private void getDetailsFromSQL() {
+        ligne = ReadSQL.getSelectedLine();
+        direction = ReadSQL.getSelectedDirection();
+        lineStops = ReadSQL.getStops(ligne.getId(), direction.getDirection(),getActivity());
     }
 
+    public LineStopsFragment() {
+        getDetailsFromSQL();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_linestops, container, false);
+
         final StopsArrayAdapter adapter = new StopsArrayAdapter(getActivity());
 
         ((ListView)view).setAdapter(adapter);
         ((ListView)view).setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                LineStop clickedStop = lineStops.get(i);
+                ReadSQL.setSelectedLineStop(lineStops.get(i));
 
-                Toast.makeText(getActivity(), "clicked "+i+ " ("+clickedStop.getName()+")", Toast.LENGTH_SHORT).show();
+                FragmentTransaction fragmentTransaction = getActivity()
+                        .getFragmentManager().beginTransaction();
+                StationDetailFragment stationDetailFragment = new StationDetailFragment();
+
+                changeFragmentInterface.onChangeFragment(stationDetailFragment);
+
+                fragmentTransaction.setCustomAnimations(R.anim.fadein, R.anim.fadeout,
+                        R.anim.fadein, R.anim.fadeout);
+                fragmentTransaction.replace(R.id.pager, stationDetailFragment);
+                fragmentTransaction.addToBackStack("activePage");
+                fragmentTransaction.commit();
             }
         });
-
-
         return view;
     }
 
     @Override
     public String getTitle() {
-        return null;
+        return ligne.getNumber() + ", "+getResources().getString(R.string.direction)+" "+direction.getName();
     }
     @Override
     public Integer getMenuId() {

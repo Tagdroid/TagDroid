@@ -8,7 +8,11 @@ import com.tagdroid.tagapi.JSonApi.Transport.Locality;
 import com.tagdroid.tagapi.SQLApi.DAO;
 
 public class LocalityDAO extends DAO<Locality> {
-    public static final String ID = "Id", INSEECODE = "InseeCode", LATITUDE = "Latitude",
+    @Override
+    protected String ID() {
+        return "Direction";
+    }
+    public static final String INSEECODE = "InseeCode", LATITUDE = "Latitude",
             LONGITUDE = "Longitude", NAME = "Name";
 
     public LocalityDAO(SQLiteDatabase bdd) {
@@ -23,7 +27,7 @@ public class LocalityDAO extends DAO<Locality> {
     @Override
     protected String COLUMNS() {
         return "(" +
-                ID + " INTEGER PRIMARY KEY, " +
+                ID() + " INTEGER PRIMARY KEY, " +
                 INSEECODE + " INTEGER, " +
                 LATITUDE + " INTEGER, " +
                 LONGITUDE + " INTEGER, " +
@@ -32,13 +36,13 @@ public class LocalityDAO extends DAO<Locality> {
 
     @Override
     protected String[] AllColumns() {
-        return new String[]{ID, INSEECODE, LATITUDE, LONGITUDE, NAME};
+        return new String[]{ID(), INSEECODE, LATITUDE, LONGITUDE, NAME};
     }
 
     @Override
     protected ContentValues createValues(Locality m) {
         ContentValues values = new ContentValues();
-        values.put(ID, m.getId());
+        values.put(ID(), m.getId());
         values.put(INSEECODE, m.getInseeCode());
         values.put(LATITUDE, m.getLatitude());
         values.put(LONGITUDE, m.getLongitude());
@@ -55,25 +59,7 @@ public class LocalityDAO extends DAO<Locality> {
                 cursor.getString(4));
     }
 
-    public Locality select(long id) {
-        Cursor cursor = bdd.query(TABLE_NAME(), AllColumns(),
-                ID + " = ?",
-                new String[]{String.valueOf(id)},
-                null, null, null);
-        if (!cursor.moveToFirst())
-            return null;
-        return fromCursor(cursor);
-    }
-
     public long update(Locality m) {
         return bdd.insertWithOnConflict(TABLE_NAME(), null, createValues(m),SQLiteDatabase.CONFLICT_IGNORE);
-    }
-
-    public Boolean existsPhysicalStopOfId(Long id) {
-        Cursor cursor = bdd.query(TABLE_NAME(), AllColumns(),
-                ID + " = ?",
-                new String[]{String.valueOf(id)},
-                null, null, null);
-        return cursor.moveToFirst();
     }
 }

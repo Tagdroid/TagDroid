@@ -12,5 +12,6 @@
 
     <!-- Settings -->
     <string name="change_langue">Current language :</string>
+    <string name="direction">direction</string>
 
 </resources>

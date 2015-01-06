@@ -17,21 +17,38 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.maps.GoogleMap;
 import com.tagdroid.android.Page;
 import com.tagdroid.android.R;
+import com.tagdroid.tagapi.JSonApi.Transport.Direction;
+import com.tagdroid.tagapi.JSonApi.Transport.Line;
+import com.tagdroid.tagapi.JSonApi.Transport.LineStop;
 import com.tagdroid.tagapi.ProgressionInterface;
+import com.tagdroid.tagapi.ReadSQL;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class StationDetailFragment extends Page implements ProgressionInterface, StationCardAdapter.OnItemClickListener {
+    private LineStop lineStop;
+    private Line ligne;
+    private Direction direction;
+
     @Override
     public String getTitle() {
-        return "Victor Hugo";
+        return lineStop.getName();
     }
 
     @Override
     public Integer getMenuId() {
         return null;
+    }
+
+    public StationDetailFragment() {
+        getDetailsFromSQL();
+    }
+    private void getDetailsFromSQL() {
+        ligne = ReadSQL.getSelectedLine();
+        direction = ReadSQL.getSelectedDirection();
+        lineStop = ReadSQL.getSelectedLineStop();
     }
 
     private Handler handler = new Handler();
@@ -42,7 +59,6 @@ public class StationDetailFragment extends Page implements ProgressionInterface,
     private List<StationCard> StationCardList;
     private GetHoraires gethoraires;
     private ProgressDialog progression;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

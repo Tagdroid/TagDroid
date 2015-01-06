@@ -9,13 +9,17 @@ import com.tagdroid.tagapi.SQLApi.DAO;
 
 public class LogicalStopDAO extends DAO<LogicalStop> {
     @Override
+    protected String ID() {
+        return "Direction";
+    }
+    @Override
     protected String TABLE_NAME() {
         return "LogicalStops";
     }
 
-    public static final String ID = "Id", LOCALITYID = "LocalityId", NAME = "Name", POINTTYPE = "PointType";
+    public static final String LOCALITYID = "LocalityId", NAME = "Name", POINTTYPE = "PointType";
     @Override protected String[] AllColumns() {
-        return new String[]{ID, LOCALITYID, NAME, POINTTYPE};
+        return new String[]{ID(), LOCALITYID, NAME, POINTTYPE};
     }
     public LogicalStopDAO(SQLiteDatabase bdd) {
         super(bdd);
@@ -24,7 +28,7 @@ public class LogicalStopDAO extends DAO<LogicalStop> {
     @Override
     protected String COLUMNS() {
         return "(" +
-                ID          + " INTEGER PRIMARY KEY, " +
+                ID()        + " INTEGER PRIMARY KEY, " +
                 NAME        + " INTEGER, " +
                 POINTTYPE   + " INTEGER, " +
                 LOCALITYID  + " INTEGER);";
@@ -33,7 +37,7 @@ public class LogicalStopDAO extends DAO<LogicalStop> {
     @Override
     protected ContentValues createValues(LogicalStop m) {
         ContentValues values = new ContentValues();
-        values.put(ID, m.getId());
+        values.put(ID(), m.getId());
         values.put(LOCALITYID, m.getLocalityId());
         values.put(NAME, m.getName());
         values.put(POINTTYPE, m.getPointType());
@@ -48,22 +52,4 @@ public class LogicalStopDAO extends DAO<LogicalStop> {
     public long update(LogicalStop m) {
         return bdd.insertWithOnConflict(TABLE_NAME(), null, createValues(m), SQLiteDatabase.CONFLICT_IGNORE);
     }
-
-    public LogicalStop select(long id) {
-        Cursor cursor = bdd.query(TABLE_NAME(), AllColumns(),
-                ID + " = ?",
-                new String[]{String.valueOf(id)},
-                null, null, null);
-        cursor.moveToFirst();
-        return fromCursor(cursor);
-    }
-
-    public Boolean existsPhysicalStopOfId(Long id) {
-        Cursor cursor = bdd.query(TABLE_NAME(), AllColumns(),
-                ID + " = ?",
-                new String[]{String.valueOf(id)},
-                null, null, null);
-        return cursor.moveToFirst();
-    }
-
 }

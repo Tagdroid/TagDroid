@@ -86,11 +86,13 @@ public class LignesGridFragment extends Page {
         View view = inflater.inflate(R.layout.fragment_lignes_grid, container, false);
 
         // Get all Lines from SQLite
-        allLines = new ReadSQL(getActivity()).getAllLines();
+        allLines = new ArrayList<>(ReadSQL.getAllLines(getActivity()));
+
         allLinesNumbers = new ArrayList<>();
         // Plus pratique pour contains()
-        for (Line i : allLines)
+        for (Line i : allLines) {
             allLinesNumbers.add(i.getNumber());
+        }
 
         ArrayList<Line> tramways = matchKnownLines(R.array.known_tramways, R.array.known_tramways_colors, Line.TRAM);
         ((GridView) view.findViewById(R.id.tramGrid)).setAdapter(new LigneAdapter(getActivity(), tramways));
@@ -195,12 +197,11 @@ public class LignesGridFragment extends Page {
                     .setItems(directionNames.toArray(new String[2]),
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
+                                    ReadSQL.setSelectedLineAndDirection(line, directions[which]);
 
                                     FragmentTransaction fragmentTransaction = getActivity()
                                             .getFragmentManager().beginTransaction();
                                     LineStopsFragment lineStopsFragment = new LineStopsFragment();
-                                    lineStopsFragment.setLineAndDirection(line, directions[which]);
-
                                     changeFragmentInterface.onChangeFragment(lineStopsFragment);
 
                                     fragmentTransaction.setCustomAnimations(R.anim.fadein, R.anim.fadeout,

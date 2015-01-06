@@ -67,8 +67,7 @@
             android:layout_marginTop="125dp"
             android:layout_marginLeft="160dp" />
 
-        <fragment
-            class="com.google.android.gms.maps.MapFragment"
+        <fragment class="com.google.android.gms.maps.MapFragment"
             android:id="@+id/map2"
             android:layout_width="match_parent"
             android:layout_height="140dp"/>

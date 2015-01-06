@@ -14,30 +14,32 @@ import com.tagdroid.tagapi.SQLApi.Transport.LinesDAO;
 import java.util.ArrayList;
 
 public class ReadSQL {
-    private Context context;
-    public ReadSQL(Context context) {
-        this.context = context;
-    }
+    private static ArrayList<Line> AllLines;
+    private static Line         selectedLine;
+    private static Direction    selectedDirection;
+    private static LineStop     selectedLineStop;
 
-    public ArrayList<Line> getAllLines() {
-        DatabaseHelper dbHelper = DatabaseHelper.getInstance(context);
-        SQLiteDatabase daTAGase = dbHelper.getReadableDatabase();
-        daTAGase.beginTransaction();
+    public static ArrayList<Line> getAllLines(Context context) {
+        if (AllLines == null) {
+            DatabaseHelper dbHelper = DatabaseHelper.getInstance(context);
+            SQLiteDatabase daTAGase = dbHelper.getReadableDatabase();
+            daTAGase.beginTransaction();
 
-        LinesDAO linesDAO = new LinesDAO(daTAGase);
-        DirectionDAO directionDAO = new DirectionDAO(daTAGase);
+            LinesDAO linesDAO = new LinesDAO(daTAGase);
+            DirectionDAO directionDAO = new DirectionDAO(daTAGase);
 
-        ArrayList<Line> allLinesArrayList = linesDAO.selectAll();
-        for (Line i : allLinesArrayList) {
-            ArrayList<Direction> directions = directionDAO.getDirectionsOfLine(i.getId());
-            i.setDirectionList(directions.toArray(new Direction[directions.size()]));
+            AllLines = linesDAO.selectAll();
+            for (Line i : AllLines) {
+                ArrayList<Direction> directions = directionDAO.getDirectionsOfLine(i.getId());
+                i.setDirectionList(directions.toArray(new Direction[directions.size()]));
+            }
+            daTAGase.setTransactionSuccessful();
+            daTAGase.endTransaction();
         }
-        daTAGase.setTransactionSuccessful();
-        daTAGase.endTransaction();
-        return allLinesArrayList;
+        return AllLines;
     }
 
-    public ArrayList<LineStop> getStops(Line line, Direction direction) {
+    public static ArrayList<LineStop> getStops(long lineId, int directionId, Context context) {
         DatabaseHelper dbHelper = DatabaseHelper.getInstance(context);
         SQLiteDatabase daTAGase = dbHelper.getReadableDatabase();
         daTAGase.beginTransaction();
@@ -45,10 +47,28 @@ public class ReadSQL {
         LineStopsDAO lineStopsDAO = new LineStopsDAO(daTAGase);
 
         ArrayList<LineStop> stopsArrayList = lineStopsDAO
-                .stopsFromLineAndDirection(line.getId(), direction.getDirection());
+                .stopsFromLineAndDirection(lineId, directionId);
 
         daTAGase.setTransactionSuccessful();
         daTAGase.endTransaction();
         return stopsArrayList;
+    }
+
+    public static void setSelectedLineAndDirection(Line line, Direction direction) {
+        selectedLine = line;
+        selectedDirection = direction;
+    }
+    public static void setSelectedLineStop(LineStop lineStop) {
+        selectedLineStop = lineStop;
+    }
+
+    public static Line      getSelectedLine() {
+        return selectedLine;
+    }
+    public static Direction getSelectedDirection() {
+        return selectedDirection;
+    }
+    public static LineStop  getSelectedLineStop() {
+        return selectedLineStop;
     }
 }

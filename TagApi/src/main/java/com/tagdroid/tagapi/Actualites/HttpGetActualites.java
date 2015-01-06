@@ -16,7 +16,7 @@ public class HttpGetActualites extends AsyncTask<Void, Void, Integer> {
 
     private Exception exception;
 
-    private List<Actualite> ActualitésList = new ArrayList<>();
+    private static List<Actualite> ActualitésList = new ArrayList<>();
 
     public HttpGetActualites(int FluxId, ProgressionInterface progressionInterface) {
         this.progressionInterface = progressionInterface;
@@ -86,7 +86,7 @@ public class HttpGetActualites extends AsyncTask<Void, Void, Integer> {
             progressionInterface.onDownloadFailed(exception);
     }
 
-    public List<Actualite> getResult() {
+    public static List<Actualite> getResult() {
         return ActualitésList;
     }
 }

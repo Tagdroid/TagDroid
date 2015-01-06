@@ -10,6 +10,10 @@ import com.tagdroid.tagapi.SQLApi.DAO;
 import java.util.ArrayList;
 
 public class DirectionDAO extends DAO<Direction> {
+    @Override
+    protected String ID() {
+        return "Direction";
+    }
     public static final String DIRECTION = "Direction", NAME = "Name", LINE_ID = "LineId";
 
     public DirectionDAO(SQLiteDatabase bdd) {

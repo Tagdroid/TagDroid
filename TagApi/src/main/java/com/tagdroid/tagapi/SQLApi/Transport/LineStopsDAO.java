@@ -10,7 +10,11 @@ import com.tagdroid.tagapi.SQLApi.DAO;
 import java.util.ArrayList;
 
 public class LineStopsDAO extends DAO<LineStop> {
-    public static final String ID = "Id", NAME = "Name", POSITION = "Position", LOGICALSTOPID = "LogicalStopId",
+    @Override
+    protected String ID() {
+        return "Id";
+    }
+    public static final String NAME = "Name", POSITION = "Position", LOGICALSTOPID = "LogicalStopId",
             LOCALITYID = "LocalityId", LATITUDE = "Latitude", LONGITUDE = "Longitude",
             LINE_ID = "LineId", DIRECTION = "Direction";
 
@@ -25,7 +29,7 @@ public class LineStopsDAO extends DAO<LineStop> {
 
     @Override
     protected String COLUMNS() {
-        return "(" + ID     + " INTEGER, " +
+        return "(" + ID()   + " INTEGER, " +
                 NAME        + " TEXT, " +
                 POSITION    + " INTEGER, " +
                 LOGICALSTOPID+" INTEGER, " +
@@ -38,13 +42,13 @@ public class LineStopsDAO extends DAO<LineStop> {
 
     @Override
     protected String[] AllColumns() {
-        return new String[]{ID, NAME, POSITION, LOGICALSTOPID, LOCALITYID, LATITUDE, LONGITUDE, LINE_ID, DIRECTION,};
+        return new String[]{ID(), NAME, POSITION, LOGICALSTOPID, LOCALITYID, LATITUDE, LONGITUDE, LINE_ID, DIRECTION,};
     }
 
     @Override
     protected ContentValues createValues(LineStop m) {
         ContentValues values = new ContentValues();
-        values.put(ID, m.getId());
+        values.put(ID(), m.getId());
         values.put(NAME, m.getName());
         values.put(POSITION, m.getPosition());
         values.put(LOGICALSTOPID, m.getLogicalStopId());

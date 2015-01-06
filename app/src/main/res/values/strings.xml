@@ -150,7 +150,7 @@
 
     <!-- Settings -->
     <string name="change_langue">Langue actuelle :</string>
-
+    <string name="direction">direction</string>
 
 
 </resources>

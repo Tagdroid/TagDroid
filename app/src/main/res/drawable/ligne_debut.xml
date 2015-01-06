@@ -13,13 +13,13 @@
 
     <!-- Top circle -->
     <item android:id="@+id/station"
-        android:top="10dp"
-        android:bottom="10dp"
-        android:left="10dp"
-        android:right="10dp">
+        android:top="6dp"
+        android:bottom="6dp"
+        android:left="6dp"
+        android:right="6dp">
         <shape android:shape="oval" >
             <solid android:color="@color/ligne_default" />
-            <stroke android:color="@android:color/white" android:width="4dp"/>
+            <stroke android:color="@android:color/white" android:width="2dp"/>
         </shape>
     </item>
 </layer-list>

@@ -8,7 +8,11 @@ import com.tagdroid.tagapi.JSonApi.Transport.Line;
 import com.tagdroid.tagapi.SQLApi.DAO;
 
 public class LinesDAO extends DAO<Line> {
-    public static final String ID = "Id", NUMBER = "Number", NAME = "Name", IS_ACTIVE = "IsActive";
+    @Override
+    protected String ID() {
+        return "Id";
+    }
+    public static final String NUMBER = "Number", NAME = "Name", IS_ACTIVE = "IsActive";
 
 
     public LinesDAO(SQLiteDatabase bdd) {
@@ -22,7 +26,7 @@ public class LinesDAO extends DAO<Line> {
 
     @Override
     protected String COLUMNS() {
-        return "(" + ID     + " INTEGER PRIMARY KEY, "
+        return "(" + ID()   + " INTEGER PRIMARY KEY, "
                 + NUMBER    + " TEXT, "
                 + NAME      + " TEXT, "
                 + IS_ACTIVE + " INTEGER);";
@@ -30,13 +34,14 @@ public class LinesDAO extends DAO<Line> {
 
     @Override
     protected String[] AllColumns() {
-        return new String[]{ID, NUMBER, NAME, IS_ACTIVE};
+        return new String[]{ID(), NUMBER, NAME, IS_ACTIVE};
     }
+
 
     @Override
     protected ContentValues createValues(Line m) {
         ContentValues values = new ContentValues();
-        values.put(ID, m.getId());
+        values.put(ID(), m.getId());
         values.put(NUMBER, m.getNumber());
         values.put(NAME, m.getName());
         values.put(IS_ACTIVE, m.getIsActive());
@@ -49,15 +54,5 @@ public class LinesDAO extends DAO<Line> {
                 cursor.getString(1),
                 cursor.getString(2),
                 cursor.getInt(3) != 0);
-    }
-
-    public Line select(long id) {
-        Cursor cursor = bdd.query(TABLE_NAME(), AllColumns(),
-                ID + " = ?",
-                new String[]{String.valueOf(id)},
-                null, null, null);
-        if (!cursor.moveToFirst())
-            return null;
-        return fromCursor(cursor);
     }
 }

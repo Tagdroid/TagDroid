@@ -12,18 +12,18 @@ import java.util.ArrayList;
 /* Will download the whole Database at first start or at update */
 
 public class HttpGetDatabase implements ProgressionInterface {
-    private final Context context;
-    public boolean isFinished = false;
-    ProgressionInterface progressionInterface;
-    ArrayList<Line> linesList;
-    private boolean isHttpGetLinesListFinished = false;
-    private int linesCount,
+    private final  Context context;
+    public  static boolean isFinished = false;
+    private static ProgressionInterface progressionInterface;
+    private static ArrayList<Line> linesList;
+    private static boolean isHttpGetLinesListFinished = false;
+    private static int linesCount,
             linesProgression = 0,
             directionsProgression = 0;
 
     public HttpGetDatabase(Context context, ProgressionInterface progressionInterface) {
         this.context = context;
-        this.progressionInterface = progressionInterface;
+        HttpGetDatabase.progressionInterface = progressionInterface;
     }
 
     public void execute() {
@@ -40,7 +40,6 @@ public class HttpGetDatabase implements ProgressionInterface {
     }
     @Override
     public void onDownloadProgression(int progression, int total) {
-
     }
 
     @Override
@@ -51,7 +50,7 @@ public class HttpGetDatabase implements ProgressionInterface {
             downloadNext();
         } else {
             isHttpGetLinesListFinished = true;
-            linesList = (new ReadSQL(context)).getAllLines();
+            linesList = ReadSQL.getAllLines(context);
             linesCount = linesList.size();
             downloadNext();
         }

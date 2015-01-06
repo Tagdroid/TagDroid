@@ -3,7 +3,6 @@ package com.tagdroid.tagapi.SQLApi;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -15,6 +14,7 @@ public abstract class DAO<T> {
     }
     protected abstract String COLUMNS();
     protected abstract String[] AllColumns();
+    protected abstract String ID();
 
     public DAO(SQLiteDatabase bdd) {
         this.bdd = bdd;
@@ -24,8 +24,10 @@ public abstract class DAO<T> {
         return this;
     }
     public DAO<T> update(int oldVersion, int newVersion) {
-        bdd.execSQL(TABLE_DROP());
-        bdd.execSQL("CREATE TABLE " + TABLE_NAME() + " " + COLUMNS());
+        if (oldVersion < newVersion) {
+            bdd.execSQL(TABLE_DROP());
+            bdd.execSQL("CREATE TABLE " + TABLE_NAME() + " " + COLUMNS());
+        }
         return this;
     }
 
