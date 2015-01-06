@@ -1,5 +1,6 @@
 package com.tagdroid.android;
 
+import android.app.FragmentManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -7,7 +8,6 @@ import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
@@ -24,6 +24,7 @@ import com.tagdroid.android.Drawer.DrawerFragment;
 import com.tagdroid.android.Pages.AboutFragment;
 import com.tagdroid.android.Pages.Actualites.ActualitesFragment;
 import com.tagdroid.android.Pages.LignesGridFragment;
+import com.tagdroid.android.Pages.SettingsFragment;
 import com.tagdroid.android.Pages.StationDetail.StationDetailFragment;
 import com.tagdroid.android.Pages.TarifsFragment;
 import com.tagdroid.android.Welcome.WelcomeActivity;
@@ -124,8 +125,8 @@ public class MainActivity extends ActionBarActivity implements DrawerFragment.Dr
             case  7: page = new TarifsFragment();
                 break;
             case  8: return; //divider
-            // case  9: page = new SettingsFragment();
-            //     break;
+            case  9: page = new SettingsFragment();
+                break;
             case 10: page = new AboutFragment();
                 break;
             case 11: startActivity(new Intent(Intent.ACTION_VIEW,

@@ -17,6 +17,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -31,6 +32,8 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
     HttpGetDatabase httpGetDatabase = new HttpGetDatabase(this, this);
     private int total=0;
     private ProgressBar progressBar;
+    private TextView load_value;
+    private boolean finalbutton=false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -59,6 +62,7 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
         indicator.setStrokeWidth(0);
 
         progressBar = (ProgressBar)findViewById(R.id.progressBar);
+        load_value = (TextView) findViewById(R.id.load_value);
         startDownloadTask();
     }
 
@@ -93,12 +97,16 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
 
     @Override
     public void onFinalButtonClicked() {
+        finalbutton = true;
         if (httpGetDatabase.isFinished) {
             PreferenceManager.getDefaultSharedPreferences(this).edit()
                     .putBoolean("AppAlreadyLaunched", true).apply();
             startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
             finish();
         } else{//TODO Need to implement some "waiting" window
+            setContentView(R.layout.welcome_activity_load);
+            progressBar = (ProgressBar)findViewById(R.id.progressBar);
+            load_value = (TextView) findViewById(R.id.load_value);
             Toast.makeText(this,R.string.wait_for_download_to_finish, Toast.LENGTH_SHORT).show();
         }
     }
@@ -127,6 +135,11 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
     @Override
     public void onDownloadProgression(int progression, int total) {
         Log.d("WelcomeActivity", "downloadline " + progression + "/" + total);
+
+        int pourcent = (progression*100)/total;
+        Log.d("WelcomeActivity", "downloadline% " + pourcent + " %");
+
+        load_value.setText(pourcent+ " %");
         this.total = total;
         progressBar.setMax(total);
 
@@ -138,6 +151,14 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
     public void onDownloadComplete() {
         Log.d("WelcomeActivity", "onDownloadComplete");
         progressBar.setProgress(total);
+        load_value.setText("Chargement terminé");
+
+        if(finalbutton){
+            PreferenceManager.getDefaultSharedPreferences(this).edit()
+                    .putBoolean("AppAlreadyLaunched", true).apply();
+            startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
+            finish();
+        }
     }
 
     public class WelcomeAdapter extends FragmentStatePagerAdapter {

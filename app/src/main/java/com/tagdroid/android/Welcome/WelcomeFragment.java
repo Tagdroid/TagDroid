@@ -46,10 +46,12 @@ public class WelcomeFragment extends Fragment {
 
         if (position == 5) {
             welcomeFragment.findViewById(R.id.next).setVisibility(View.GONE);
-            View finalButton = welcomeFragment.findViewById(R.id.final_button);
+            final View finalButton = welcomeFragment.findViewById(R.id.final_button);
             finalButton.setVisibility(View.VISIBLE);
             finalButton.setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View v) { onButtonClicked.onFinalButtonClicked(); }
+                    public void onClick(View v) {
+                        onButtonClicked.onFinalButtonClicked();
+                    }
                 });
         }
         return welcomeFragment;
