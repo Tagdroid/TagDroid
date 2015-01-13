@@ -1,6 +1,7 @@
 package com.tagdroid.tagapi.HttpGet;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.tagdroid.tagapi.ProgressionInterface;
 
@@ -10,16 +11,19 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class HttpGetNextStopTimes extends HttpGetTask {
-    public HttpGetNextStopTimes(int stopId, int lineId, int direction,
+    public HttpGetNextStopTimes(long stopId, long lineId, int direction,
                                 ProgressionInterface progressionInterface, Context context) {
         super("http://transinfoservice.ws.cityway.fr/TAG/api/TimeTables/v1/GetNextStopHours/json?key=TAGDEV"
-                        +"&StopId=" + stopId
-                        +"&DateTime=" + formatedDate(),
+                        + "&StopId=" + stopId
+                        + "&LineId=" + lineId
+                        + "&LineDirection=" + direction
+                        + "&DateTime=" + formatedDate(),
                 progressionInterface, context);
     }
 
-    public static String formatedDate() {
+    public static String formatedDate() {;
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd_HH-mm");
+        Log.d("date", sdf.format(new Date(System.currentTimeMillis())));
         return sdf.format(new Date(System.currentTimeMillis()));
     }
 
