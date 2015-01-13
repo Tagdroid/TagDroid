@@ -14,7 +14,9 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.LatLng;
 import com.tagdroid.android.Page;
 import com.tagdroid.android.R;
 import com.tagdroid.tagapi.JSonApi.Transport.Direction;
@@ -30,12 +32,12 @@ public class StationDetailFragment extends Page implements ProgressionInterface 
     private Direction direction, direction2;
     private Handler handler = new Handler();
     private SwipeRefreshLayout swipeLayout;
-    private GoogleMap map;
-    private GoogleMap mMap;
     private CardView cardview1, cardview2;
     private ProgressDialog progression;
     private boolean other_direction;
     private TextView direction_tv1, direction_tv2;
+
+    private GoogleMap map;
 
     @Override
     public String getTitle() {
@@ -58,6 +60,7 @@ public class StationDetailFragment extends Page implements ProgressionInterface 
         if(ReadSQL.getSelectedDirection().getDirection()==1) dir2=1; else dir2=0;
         direction2= ReadSQL.getSelectedLine().getDirectionList()[dir2];
         lineStop = ReadSQL.getSelectedLineStop();
+
     }
 
 
@@ -65,6 +68,12 @@ public class StationDetailFragment extends Page implements ProgressionInterface 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.station_detail, container, false);
+
+        if (GooglePlayServicesUtil.isGooglePlayServicesAvailable(getActivity().getApplicationContext()) == ConnectionResult.SUCCESS){
+            //setUpMapIfNeeded();
+        }else{
+            Toast.makeText(getActivity(), "Please install google play services", Toast.LENGTH_LONG).show();
+        }
 
         cardview2 = (CardView)view.findViewById(R.id.card_view2);
         direction_tv1 = (TextView)view.findViewById(R.id.direction);
@@ -75,7 +84,7 @@ public class StationDetailFragment extends Page implements ProgressionInterface 
 
         direction_tv1.setText(direction.getName());
 
-        //TODO Check if other direction then get other direction's name
+        //TODO Check if other direction exists
         if(other_direction){
             cardview2.setVisibility(View.VISIBLE);
             direction_tv2.setText(direction2.getName());
@@ -101,25 +110,6 @@ public class StationDetailFragment extends Page implements ProgressionInterface 
                 }, 2500);
             }
         });
-
-        if (GooglePlayServicesUtil.isGooglePlayServicesAvailable(getActivity().getApplicationContext()) == ConnectionResult.SUCCESS) {
-
-            //setUpMapIfNeeded();
-
-
-//            map = ((SupportMapFragment)getFragmentManager().findFragmentById(R.id.map2)).getMap();
-            /*
-            map.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
-            map.getUiSettings().setMyLocationButtonEnabled(false);
-            map.getUiSettings().setAllGesturesEnabled(false);
-            map.getUiSettings().setCompassEnabled(false);
-            map.getUiSettings().setZoomControlsEnabled(false);
-
-            LatLng place = new LatLng(45.189831, 5.725025);
-            map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(place.latitude + 0.001, place.longitude), 15));*/
-        } else {
-            Toast.makeText(getActivity(), "Please install google play services", Toast.LENGTH_LONG).show();
-        }
 
         return view;
     }
@@ -148,15 +138,18 @@ public class StationDetailFragment extends Page implements ProgressionInterface 
         progression.dismiss();
     }
 
-    public void onItemClick(View view, int position) {}
-   /* private void setUpMapIfNeeded() {
-        mMap = (MapFragment)getFragmentManager().findFragmentById(R.id.map2).getMap();
-        if (mMap != null) {
-            LatLng place = new LatLng(45.189831, 5.725025);
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(place.latitude + 0.001, place.longitude), 15));
-            mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
-            mMap.getUiSettings().setAllGesturesEnabled(false);
-            mMap.getUiSettings().setZoomControlsEnabled(false);
+    private void setUpMapIfNeeded() {
+        MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
+        //if(mapFragment!=null) map = mapFragment.getMap();
+        if (map != null) {
+            LatLng place = new LatLng(lineStop.getLatitude(), lineStop.getLongitude());
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(place.latitude + 0.001, place.longitude), 15));
+            map.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+            map.getUiSettings().setAllGesturesEnabled(false);
+            map.getUiSettings().setZoomControlsEnabled(false);
+            map.getUiSettings().setMyLocationButtonEnabled(false);
+            map.getUiSettings().setCompassEnabled(false);
         }
-    }*/
+    }
+
 }

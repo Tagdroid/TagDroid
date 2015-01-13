@@ -167,7 +167,7 @@ public class StationDetailFragment extends Fragment {
 
     @SuppressLint("NewApi")
     private void setUpMapIfNeeded() {
-        MapFragment fm = (MapFragment) getFragmentManager().findFragmentById(R.id.map2);
+        MapFragment fm = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
         mMap = fm.getMap();
         if (mMap != null) {
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(place.latitude + 0.001, place.longitude), 15));

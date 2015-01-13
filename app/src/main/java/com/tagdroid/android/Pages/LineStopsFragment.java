@@ -70,7 +70,8 @@ public class LineStopsFragment extends Page{
 
     @Override
     public String getTitle() {
-        return ligne.getNumber() + ", "+getResources().getString(R.string.direction)+" "+direction.getName();
+        return getResources().getString(R.string.ligne)+" "+ligne.getNumber();
+        //direction.getName();
     }
     @Override
     public Integer getMenuId() {

@@ -68,7 +68,7 @@
             android:layout_marginLeft="160dp" />
 
         <fragment class="com.google.android.gms.maps.MapFragment"
-            android:id="@+id/map2"
+            android:id="@+id/map"
             android:layout_width="match_parent"
             android:layout_height="140dp"/>
 
@@ -110,16 +110,23 @@
                     android:id="@+id/alert_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:background="@android:color/holo_orange_light">
+                    android:background="@android:color/holo_orange_light"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageView4"
+                        android:src="@drawable/ic_alert"
+                        android:layout_marginRight="5dp" />
 
                     <TextView
                         android:id="@+id/alert"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="left"
+                        android:layout_gravity="center_vertical"
                         android:text="Alertes Info Traffic"
-                        android:textColor="@color/gris_fonce"
+                        android:textColor="@android:color/black"
                         android:fontFamily="sans-serif-condensed"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -141,14 +148,16 @@
                     android:id="@+id/horaires_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="10dp">
+                    android:orientation="vertical">
 
                     <LinearLayout
                         android:id="@+id/horaires_body"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical" >
+                        android:orientation="vertical"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp">
 
                                 <LinearLayout
                                     android:layout_width="wrap_content"
@@ -157,11 +166,10 @@
                                     android:orientation="horizontal" >
 
                                     <ImageView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
+                                        android:layout_width="24dp"
+                                        android:layout_height="24dp"
                                         android:layout_gravity="center_vertical"
-                                        android:src="@drawable/arrow_left"
-                                        android:layout_margin="5dp" />
+                                        android:src="@drawable/ic_arrow_left" />
 
                                     <TextView
                                         android:id="@+id/direction"
@@ -170,11 +178,12 @@
                                         android:layout_gravity="center_vertical"
                                         android:ellipsize="end"
                                         android:lines="1"
-                                        android:fontFamily="sans-serif-light"
+                                        android:fontFamily="sans-serif-condensed"
                                         android:text="dir1"
-                                        android:textColor="@color/gris_fonce"
-                                        android:textSize="12dp"
-                                        android:textStyle="bold" />
+                                        android:textColor="@android:color/black"
+                                        android:textSize="14sp"
+                                        android:textStyle="bold"
+                                        android:layout_marginBottom="1dp" />
                                 </LinearLayout>
 
                                 <LinearLayout
@@ -210,6 +219,13 @@
                                         android:fontFamily="sans-serif-condensed"
                                         android:textSize="16sp" />
                                 </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="1px"
+                            android:background="@color/darker_gray"
+                            android:orientation="vertical"
+                            android:layout_marginTop="10dp">
+                        </LinearLayout>
                     </LinearLayout>
 
                     <LinearLayout
@@ -218,11 +234,11 @@
                         android:clickable="true"
                         android:foreground="?android:attr/selectableItemBackground"
                         android:id="@+id/theoric1"
-                        android:layout_marginTop="10dp">
+                        android:padding="10dp">
 
                         <ImageView
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
                             android:src="@drawable/ic_timetable"
                             android:layout_gravity="center_vertical"
                             android:layout_marginRight="5dp" />
@@ -233,7 +249,7 @@
                             android:text="Afficher les horaires théoriques"
                             android:layout_gravity="center_vertical"
                             android:textSize="14sp"
-                            android:textStyle="bold" />
+                            android:textColor="@android:color/black" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -252,14 +268,16 @@
                     android:id="@+id/horaires_layout2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="10dp">
+                    android:orientation="vertical">
 
                     <LinearLayout
                         android:id="@+id/horaires_body2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical" >
+                        android:orientation="vertical"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp">
 
                                 <LinearLayout
                                     android:layout_width="wrap_content"
@@ -275,18 +293,18 @@
                                         android:layout_marginLeft="3dp"
                                         android:ellipsize="end"
                                         android:lines="1"
-                                        android:fontFamily="sans-serif-light"
+                                        android:fontFamily="sans-serif-condensed"
                                         android:text="dir2"
-                                        android:textColor="@color/gris_fonce"
-                                        android:textSize="12dp"
-                                        android:textStyle="bold" />
+                                        android:textColor="@android:color/black"
+                                        android:textSize="14sp"
+                                        android:textStyle="bold"
+                                        android:layout_marginBottom="1dp" />
 
                                     <ImageView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
+                                        android:layout_width="24dp"
+                                        android:layout_height="24dp"
                                         android:layout_gravity="center_vertical"
-                                        android:src="@drawable/arrow_right"
-                                        android:layout_margin="5dp" />
+                                        android:src="@drawable/ic_arrow_right"/>
                                 </LinearLayout>
 
                                 <LinearLayout
@@ -296,13 +314,13 @@
                                     android:orientation="vertical" >
                                 </LinearLayout>
 
-                                <LinearLayout
+                        <LinearLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center_horizontal"
                                     android:layout_marginTop="10dp">
 
-                                    <TextView
+                            <TextView
                                         android:id="@+id/horaire3"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -322,6 +340,14 @@
                                         android:fontFamily="sans-serif-condensed"
                                         android:textSize="16sp" />
                                 </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="1px"
+                            android:background="@color/darker_gray"
+                            android:orientation="vertical"
+                            android:layout_marginTop="10dp">
+                        </LinearLayout>
                     </LinearLayout>
 
                     <LinearLayout
@@ -330,11 +356,11 @@
                         android:clickable="true"
                         android:foreground="?android:attr/selectableItemBackground"
                         android:id="@+id/theoric2"
-                        android:layout_marginTop="10dp">
+                        android:padding="10dp">
 
                         <ImageView
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
                             android:src="@drawable/ic_timetable"
                             android:layout_gravity="center_vertical"
                             android:layout_marginRight="5dp" />
@@ -345,9 +371,8 @@
                             android:text="Afficher les horaires théoriques"
                             android:layout_gravity="center_vertical"
                             android:textSize="14sp"
-                            android:textStyle="bold" />
+                            android:textColor="@android:color/black" />
                     </LinearLayout>
-
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 

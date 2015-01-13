@@ -194,6 +194,7 @@ public class LignesGridFragment extends Page {
                 directionNames.add(direction.getName());
 
             builder.setTitle(R.string.choix_directions)
+                    .setIcon(getResources().getDrawable(R.drawable.ic_direction))
                     .setItems(directionNames.toArray(new String[2]),
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {

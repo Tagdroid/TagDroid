@@ -55,6 +55,5 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:layout_margin="10dp"
-        android:src="@drawable/arrow_right" />
+        android:layout_margin="10dp" />
 </RelativeLayout>

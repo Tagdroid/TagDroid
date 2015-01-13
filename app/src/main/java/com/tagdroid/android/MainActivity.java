@@ -18,8 +18,6 @@ import android.view.MenuItem;
 import com.arellomobile.android.push.BasePushMessageReceiver;
 import com.arellomobile.android.push.PushManager;
 import com.arellomobile.android.push.utils.RegisterBroadcastReceiver;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.drive.Drive;
 import com.tagdroid.android.Drawer.DrawerFragment;
 import com.tagdroid.android.Pages.AboutFragment;
 import com.tagdroid.android.Pages.Actualites.ActualitesFragment;
@@ -31,12 +29,12 @@ import com.tagdroid.android.Welcome.WelcomeActivity;
 public class MainActivity extends ActionBarActivity implements DrawerFragment.DrawerCallbacks,
         Page.ChangeFragmentInterface {
     public static boolean firstSee=true;
-    private GoogleApiClient mGoogleApiClient;
 
     // Used to store the last screen title. For use in {@link #restoreActionBar()}.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if ( !PreferenceManager.getDefaultSharedPreferences(this).getBoolean("AppAlreadyLaunched", false)) {
             startActivity(new Intent(this, WelcomeActivity.class));
             finish();
@@ -48,12 +46,6 @@ public class MainActivity extends ActionBarActivity implements DrawerFragment.Dr
             firstSee=false;
         }
         setContentView(R.layout.main_activity);
-
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .addApi(Drive.API)
-                .addScope(Drive.SCOPE_FILE)
-                .build();
-
 
         registerReceivers(); //Register receivers for push notifications
         PushManager pushManager = PushManager.getInstance(this);  //Create and start push manager
@@ -242,4 +234,6 @@ public class MainActivity extends ActionBarActivity implements DrawerFragment.Dr
         setIntent(intent);
         checkMessage(intent);
     }
+
+
 }

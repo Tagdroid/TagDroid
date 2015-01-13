@@ -145,12 +145,14 @@
     <string name="proximo">Proximo</string>
     <string name="flexo">Flexo</string>
     <string name="other_lines">Autres lignes</string>
-    <string name="choix_directions">Choisissez votre direction</string>
+    <string name="choix_directions">Choisissez votre direction :</string>
     <string name="lines">Toutes les lignes</string>
+    <string name="direction">direction</string>
+    <string name="ligne">Ligne</string>
 
     <!-- Settings -->
     <string name="change_langue">Langue actuelle :</string>
-    <string name="direction">direction</string>
+
 
 
 </resources>
