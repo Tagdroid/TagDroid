@@ -25,10 +25,13 @@ import com.tagdroid.tagapi.JSonApi.Transport.LineStop;
 import com.tagdroid.tagapi.ProgressionInterface;
 import com.tagdroid.tagapi.ReadSQL;
 
+import java.util.ArrayList;
+
 
 public class StationDetailFragment extends Page implements ProgressionInterface {
     private LineStop lineStop;
     private Line ligne;
+    private ArrayList<Direction> directions;
     private Direction direction, direction2;
     private Handler handler = new Handler();
     private SwipeRefreshLayout swipeLayout;
@@ -60,7 +63,7 @@ public class StationDetailFragment extends Page implements ProgressionInterface 
         if(ReadSQL.getSelectedDirection().getDirection()==1) dir2=1; else dir2=0;
         direction2= ReadSQL.getSelectedLine().getDirectionList()[dir2];
         lineStop = ReadSQL.getSelectedLineStop();
-
+        directions = ReadSQL.getDirections(ligne.getId(),lineStop.getName(),getActivity());
     }
 
 
@@ -80,12 +83,13 @@ public class StationDetailFragment extends Page implements ProgressionInterface 
         direction_tv2 = (TextView)view.findViewById(R.id.direction2);
 
 
+
         other_direction=true;
 
         direction_tv1.setText(direction.getName());
 
-        //TODO Check if other direction exists
-        if(other_direction){
+        Log.d("Directions SIZE", directions.size()+"");
+        if(directions.size()>1){
             cardview2.setVisibility(View.VISIBLE);
             direction_tv2.setText(direction2.getName());
         }else{

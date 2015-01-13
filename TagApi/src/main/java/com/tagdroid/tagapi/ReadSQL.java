@@ -54,6 +54,22 @@ public class ReadSQL {
         return stopsArrayList;
     }
 
+    public static ArrayList<Direction> getDirections(long lineId, String name, Context context) {
+        DatabaseHelper dbHelper = DatabaseHelper.getInstance(context);
+        SQLiteDatabase daTAGase = dbHelper.getReadableDatabase();
+        daTAGase.beginTransaction();
+
+        LineStopsDAO lineStopsDAO = new LineStopsDAO(daTAGase);
+
+        ArrayList<Direction> directionsArrayList = lineStopsDAO.directionsFromLineAndStops(lineId,name);
+
+        daTAGase.setTransactionSuccessful();
+        daTAGase.endTransaction();
+        return directionsArrayList;
+    }
+
+
+
     public static void setSelectedLineAndDirection(Line line, Direction direction) {
         selectedLine = line;
         selectedDirection = direction;

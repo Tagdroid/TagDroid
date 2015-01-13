@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -26,6 +27,11 @@ import com.tagdroid.android.Pages.SettingsFragment;
 import com.tagdroid.android.Pages.TarifsFragment;
 import com.tagdroid.android.Welcome.WelcomeActivity;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.nio.channels.FileChannel;
+
 public class MainActivity extends ActionBarActivity implements DrawerFragment.DrawerCallbacks,
         Page.ChangeFragmentInterface {
     public static boolean firstSee=true;
@@ -34,6 +40,28 @@ public class MainActivity extends ActionBarActivity implements DrawerFragment.Dr
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        try {
+            File sd = Environment.getExternalStorageDirectory();
+            File data = Environment.getDataDirectory();
+
+            if (sd.canWrite()) {
+                String currentDBPath = "/data/" + getPackageName() + "/databases/TagDatabase.db";
+                String backupDBPath = "TagDatabase.db.db";
+                File currentDB = new File(currentDBPath);
+                File backupDB = new File(sd, backupDBPath);
+
+                if (currentDB.exists()) {
+                    FileChannel src = new FileInputStream(currentDB).getChannel();
+                    FileChannel dst = new FileOutputStream(backupDB).getChannel();
+                    dst.transferFrom(src, 0, src.size());
+                    src.close();
+                    dst.close();
+                }
+            }
+        } catch (Exception e) {
+
+        }
 
         if ( !PreferenceManager.getDefaultSharedPreferences(this).getBoolean("AppAlreadyLaunched", false)) {
             startActivity(new Intent(this, WelcomeActivity.class));
@@ -234,6 +262,4 @@ public class MainActivity extends ActionBarActivity implements DrawerFragment.Dr
         setIntent(intent);
         checkMessage(intent);
     }
-
-
 }

@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.tagdroid.tagapi.JSonApi.Transport.Direction;
 import com.tagdroid.tagapi.JSonApi.Transport.LineStop;
 import com.tagdroid.tagapi.SQLApi.DAO;
 
@@ -73,6 +74,12 @@ public class LineStopsDAO extends DAO<LineStop> {
                 cursor.getInt(7));
     }
 
+    protected Direction fromCursor2(Cursor cursor){
+        return new Direction(cursor.getInt(0),
+                cursor.getString(1),
+                cursor.getLong(2));
+    }
+
     public ArrayList<LineStop> stopsFromLineAndDirection(long lineId, int directionId) {
         ArrayList<LineStop> stopsFromLineAndDirection = new ArrayList<>();
         Cursor cursor = bdd.query(TABLE_NAME(), AllColumns(),
@@ -83,5 +90,18 @@ public class LineStopsDAO extends DAO<LineStop> {
             stopsFromLineAndDirection.add(fromCursor(cursor));
         cursor.close();
         return stopsFromLineAndDirection;
+    }
+
+    public ArrayList<Direction> directionsFromLineAndStops(long lineId, String name){
+        ArrayList<Direction> directionsFromLineAndStops = new ArrayList<>();
+        Cursor cursor = bdd.query(TABLE_NAME(), AllColumns(),
+                LINE_ID + " = ? AND " + NAME + " = ?",
+                new String[]{String.valueOf(lineId),String.valueOf(name)},
+                null,null,null);
+        while(cursor.moveToNext())
+            directionsFromLineAndStops.add(fromCursor2(cursor));
+        cursor.close();
+
+        return directionsFromLineAndStops;
     }
 }
