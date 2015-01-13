@@ -1,14 +1,11 @@
 package com.tagdroid.android.Pages;
 
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,9 +13,8 @@ import com.tagdroid.android.Page;
 import com.tagdroid.android.R;
 
 import java.io.File;
-import java.util.Locale;
 
-public class SettingsFragment extends Page implements RadioGroup.OnCheckedChangeListener{
+public class SettingsFragment extends Page{
     private TextView langue;
     @Override
     public String getTitle() {
@@ -34,12 +30,6 @@ public class SettingsFragment extends Page implements RadioGroup.OnCheckedChange
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.d("page", "onCreateView");
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
-
-        langue = (TextView) view.findViewById(R.id.language);
-        langue.setText(Locale.getDefault().getDisplayLanguage().toUpperCase());
-
-        RadioGroup radioGroup = (RadioGroup) view.findViewById(R.id.radiogroupe);
-        radioGroup.setOnCheckedChangeListener(this);
 
         CardView reload = (CardView) view.findViewById(R.id.reload);
         reload.setOnClickListener(new View.OnClickListener() {
@@ -59,39 +49,6 @@ public class SettingsFragment extends Page implements RadioGroup.OnCheckedChange
         });
         return view;
     }
-
-    @Override
-    public void onCheckedChanged(RadioGroup group, int checkedId) {
-        Locale locale;
-        switch(checkedId) {
-            case R.id.radioAuto:
-                locale = Locale.FRANCE;
-                break;
-            case R.id.radioFR:
-                locale = Locale.FRANCE;
-                break;
-            case R.id.radioEN:
-                locale = Locale.ENGLISH;
-                break;
-            case R.id.radioES:
-                locale = new Locale("es","ES");
-                break;
-            case R.id.radioIT:
-                locale = Locale.ITALIAN;
-                break;
-            default:
-                locale = new Locale("fr_FR");
-                break;
-        }
-
-        Locale.setDefault(locale);
-        Configuration config = new Configuration();
-        DisplayMetrics dm = getActivity().getResources().getDisplayMetrics();
-        config.locale = locale;
-        getActivity().getResources().updateConfiguration(config, dm);
-        langue.setText(Locale.getDefault().getDisplayLanguage().toUpperCase());
-    }
-
 
     public void clearApplicationData(){
         File cache = getActivity().getCacheDir();

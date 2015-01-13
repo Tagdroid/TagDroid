@@ -37,7 +37,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':viewpagerindicator')
     compile project(':TagApi')
     compile 'com.android.support:appcompat-v7:21.0.2'
@@ -48,4 +48,5 @@ dependencies {
     compile 'org.jsoup:jsoup:1.8.1'
     compile 'info.hoang8f:fbutton:1.0.5'
     compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
+    compile 'com.github.lzyzsd:circleprogress:1.0.1'
 }

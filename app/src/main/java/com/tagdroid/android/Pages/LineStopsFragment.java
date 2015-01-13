@@ -16,7 +16,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.tagdroid.android.Page;
-import com.tagdroid.android.Pages.StationDetail.StationDetailFragment;
 import com.tagdroid.android.R;
 import com.tagdroid.tagapi.JSonApi.Transport.Direction;
 import com.tagdroid.tagapi.JSonApi.Transport.Line;

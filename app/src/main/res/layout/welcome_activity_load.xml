@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bleu_tag_clair1">
@@ -15,35 +16,29 @@
             android:layout_height="wrap_content"
             android:id="@+id/imageView3"
             android:layout_gravity="center_horizontal"
-            android:src="@drawable/tagdroid_about"
+            android:src="@drawable/tagdroid_white"
             android:layout_marginLeft="80dp"
             android:layout_marginRight="80dp"
-            android:layout_marginBottom="50dp" />
+            android:layout_marginBottom="20dp" />
+
+        <com.github.lzyzsd.circleprogress.ArcProgress
+            android:id="@+id/arc_progress"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
+            custom:arc_stroke_width="10dp"
+            custom:arc_unfinished_color="@color/bleu_tag_c25"
+            custom:arc_text_color="@android:color/white" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Chargement des données"
-            android:id="@+id/textView"
-            android:layout_gravity="center_horizontal" />
-
-        <ProgressBar
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/progressBar"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_gravity="center_horizontal" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Small Text"
+            android:text="CHARGEMENT"
             android:id="@+id/load_value"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+
     </LinearLayout>
 
 </LinearLayout>

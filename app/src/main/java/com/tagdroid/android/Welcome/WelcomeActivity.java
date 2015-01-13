@@ -20,6 +20,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.lzyzsd.circleprogress.ArcProgress;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.tagdroid.android.MainActivity;
 import com.tagdroid.android.R;
@@ -32,6 +33,7 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
     HttpGetDatabase httpGetDatabase = new HttpGetDatabase(this, this);
     private int total=0;
     private ProgressBar progressBar;
+    private ArcProgress arcProgress;
     private TextView load_value;
     private boolean finalbutton=false;
 
@@ -105,7 +107,7 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
             finish();
         } else{//TODO Need to implement some "waiting" window
             setContentView(R.layout.welcome_activity_load);
-            progressBar = (ProgressBar)findViewById(R.id.progressBar);
+            arcProgress = (ArcProgress)findViewById(R.id.arc_progress);
             load_value = (TextView) findViewById(R.id.load_value);
             Toast.makeText(this,R.string.wait_for_download_to_finish, Toast.LENGTH_SHORT).show();
         }
@@ -134,23 +136,29 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
 
     @Override
     public void onDownloadProgression(int progression, int total) {
-        Log.d("WelcomeActivity", "downloadline " + progression + "/" + total);
-
+        this.total = total;
         int pourcent = (progression*100)/total;
+
+        Log.d("WelcomeActivity", "downloadline " + progression + "/" + total);
         Log.d("WelcomeActivity", "downloadline% " + pourcent + " %");
 
-        load_value.setText(pourcent+ " %");
-        this.total = total;
-        progressBar.setMax(total);
+        if(progressBar!=null){
+            progressBar.setMax(total);
+            progressBar.setProgress(progression);
+            progressBar.setSecondaryProgress(progression);
+        }
 
-        progressBar.setProgress(progression);
-        progressBar.setSecondaryProgress(progression);
+
+        if(arcProgress!=null){
+            arcProgress.setProgress(pourcent);
+            load_value.setText("Chargement en cours");
+            load_value.setAllCaps(true);
+        }
     }
 
     @Override
     public void onDownloadComplete() {
         Log.d("WelcomeActivity", "onDownloadComplete");
-        progressBar.setProgress(total);
         load_value.setText("Chargement terminé");
 
         if(finalbutton){

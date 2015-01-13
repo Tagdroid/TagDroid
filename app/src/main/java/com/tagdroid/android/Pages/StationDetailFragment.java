@@ -1,16 +1,15 @@
-package com.tagdroid.android.Pages.StationDetail;
+package com.tagdroid.android.Pages;
 
 import android.app.ProgressDialog;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -24,14 +23,19 @@ import com.tagdroid.tagapi.JSonApi.Transport.LineStop;
 import com.tagdroid.tagapi.ProgressionInterface;
 import com.tagdroid.tagapi.ReadSQL;
 
-import java.util.ArrayList;
-import java.util.List;
 
-
-public class StationDetailFragment extends Page implements ProgressionInterface, StationCardAdapter.OnItemClickListener {
+public class StationDetailFragment extends Page implements ProgressionInterface {
     private LineStop lineStop;
     private Line ligne;
-    private Direction direction;
+    private Direction direction, direction2;
+    private Handler handler = new Handler();
+    private SwipeRefreshLayout swipeLayout;
+    private GoogleMap map;
+    private GoogleMap mMap;
+    private CardView cardview1, cardview2;
+    private ProgressDialog progression;
+    private boolean other_direction;
+    private TextView direction_tv1, direction_tv2;
 
     @Override
     public String getTitle() {
@@ -50,30 +54,35 @@ public class StationDetailFragment extends Page implements ProgressionInterface,
         Log.d("Details","getDetailsFromSQL");
         ligne = ReadSQL.getSelectedLine();
         direction = ReadSQL.getSelectedDirection();
+        int dir2;
+        if(ReadSQL.getSelectedDirection().getDirection()==1) dir2=1; else dir2=0;
+        direction2= ReadSQL.getSelectedLine().getDirectionList()[dir2];
         lineStop = ReadSQL.getSelectedLineStop();
     }
 
-    private Handler handler = new Handler();
-    private SwipeRefreshLayout swipeLayout;
-    private GoogleMap map;
-    private GoogleMap mMap;
-    RecyclerView recycler_view;
-    private List<StationCard> StationCardList;
-    private GetHoraires gethoraires;
-    private ProgressDialog progression;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.station_detail, container, false);
 
-        gethoraires = new GetHoraires(this);
+        cardview2 = (CardView)view.findViewById(R.id.card_view2);
+        direction_tv1 = (TextView)view.findViewById(R.id.direction);
+        direction_tv2 = (TextView)view.findViewById(R.id.direction2);
 
-        recycler_view = (RecyclerView) view.findViewById(R.id.stationCardList);
-        recycler_view.setLayoutManager(new LinearLayoutManager(getActivity()));
-        if (StationCardList == null) {
-            gethoraires.execute();
-            recycler_view.setAdapter(new StationCardAdapter(new ArrayList<StationCard>(),getActivity()));
+
+        other_direction=true;
+
+        direction_tv1.setText(direction.getName());
+
+        //TODO Check if other direction then get other direction's name
+        if(other_direction){
+            cardview2.setVisibility(View.VISIBLE);
+            direction_tv2.setText(direction2.getName());
+        }else{
+            cardview2.setVisibility(View.GONE);
         }
+
 
         swipeLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_layout);
         swipeLayout.setColorSchemeResources(android.R.color.holo_blue_bright,
@@ -87,11 +96,7 @@ public class StationDetailFragment extends Page implements ProgressionInterface,
                     @Override
                     public void run() {
                         //TODO ne veut pas s'excuter une seconde fois ?!
-                        //gethoraires.execute();
-
-                        recycler_view.setAdapter(new StationCardAdapter(new ArrayList<StationCard>(), getActivity()));
-                        if (gethoraires.getStatus() == AsyncTask.Status.FINISHED)
-                            swipeLayout.setRefreshing(false);
+                        swipeLayout.setRefreshing(false);
                     }
                 }, 2500);
             }
@@ -128,8 +133,7 @@ public class StationDetailFragment extends Page implements ProgressionInterface,
     @Override
     public void onDownloadFailed(Exception e) {
         progression.dismiss();
-        recycler_view.setAdapter(new StationCardAdapter(new ArrayList<StationCard>(),getActivity()));
-        getActivity().findViewById(R.id.noNews).setVisibility(View.VISIBLE);
+
         Toast.makeText(getActivity(), "Erreur de chargement :\n" + e.getLocalizedMessage(),
                 Toast.LENGTH_LONG).show();
     }
@@ -142,15 +146,9 @@ public class StationDetailFragment extends Page implements ProgressionInterface,
     @Override
     public void onDownloadComplete() {
         progression.dismiss();
-        StationCardList = gethoraires.getResult();
-        StationCardAdapter stationCardAdapter = new StationCardAdapter(StationCardList, getActivity());
-        //StationCardAdapter.setOnItemClickListener(this);
-        recycler_view.setAdapter(stationCardAdapter);
     }
 
-    @Override
     public void onItemClick(View view, int position) {}
-
    /* private void setUpMapIfNeeded() {
         mMap = (MapFragment)getFragmentManager().findFragmentById(R.id.map2).getMap();
         if (mMap != null) {

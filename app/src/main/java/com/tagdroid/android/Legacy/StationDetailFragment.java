@@ -98,9 +98,6 @@ public class StationDetailFragment extends Fragment {
         id_station = this.getArguments().getString("id_station");
 
 
-
-        case1 = (LinearLayout) view.findViewById(R.id.case1);
-
         /*LinearLayout map_click_layout = (LinearLayout) view.findViewById(R.id.map_click_layout);
         map_click_layout.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
