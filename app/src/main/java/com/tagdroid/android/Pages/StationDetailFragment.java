@@ -32,12 +32,12 @@ public class StationDetailFragment extends Page implements ProgressionInterface 
     private LineStop lineStop;
     private Line ligne;
     private ArrayList<Direction> directions;
+    private LineStop reverse_lineStop;
     private Direction direction, direction2;
     private Handler handler = new Handler();
     private SwipeRefreshLayout swipeLayout;
     private CardView cardview1, cardview2;
     private ProgressDialog progression;
-    private boolean other_direction;
     private TextView direction_tv1, direction_tv2;
 
     private GoogleMap map;
@@ -60,10 +60,11 @@ public class StationDetailFragment extends Page implements ProgressionInterface 
         ligne = ReadSQL.getSelectedLine();
         direction = ReadSQL.getSelectedDirection();
         int dir2;
-        if(ReadSQL.getSelectedDirection().getDirection()==1) dir2=1; else dir2=0;
+        if(ReadSQL.getSelectedDirection().getDirectionId()==1) dir2=1; else dir2=0;
         direction2= ReadSQL.getSelectedLine().getDirectionList()[dir2];
         lineStop = ReadSQL.getSelectedLineStop();
         directions = ReadSQL.getDirections(ligne.getId(),lineStop.getName(),getActivity());
+        if(directions.size()>1) reverse_lineStop = ReadSQL.getOtherStops(ligne.getId(),lineStop.getName(),direction2.getDirectionId(),getActivity()).get(0);
     }
 
 
@@ -78,20 +79,26 @@ public class StationDetailFragment extends Page implements ProgressionInterface 
             Toast.makeText(getActivity(), "Please install google play services", Toast.LENGTH_LONG).show();
         }
 
+        Log.d("### LIGNE", "\nLigne "+ ligne.getNumber() + "/ ID:" + ligne.getId() +
+                "\n Terminus : \n -"+ligne.getDirectionList()[0].getName()+
+                "\n -"+ligne.getDirectionList()[1].getName());
+        Log.d("### STATION", "la station " + lineStop.getName() + " possède " + directions.size() + " direction(s)");
+        Log.d("### STATION", "ID "+ lineStop.getId()+ " pour la direction "+ direction.getDirectionId() +" : "+direction.getName());
+
+
+
+
         cardview2 = (CardView)view.findViewById(R.id.card_view2);
         direction_tv1 = (TextView)view.findViewById(R.id.direction);
         direction_tv2 = (TextView)view.findViewById(R.id.direction2);
 
-
-
-        other_direction=true;
-
         direction_tv1.setText(direction.getName());
 
-        Log.d("Directions SIZE", directions.size()+"");
+
         if(directions.size()>1){
             cardview2.setVisibility(View.VISIBLE);
             direction_tv2.setText(direction2.getName());
+            Log.d("### STATION", "ID "+ reverse_lineStop.getId()+ " pour la direction "+ direction2.getDirectionId() +" : "+direction2.getName());
         }else{
             cardview2.setVisibility(View.GONE);
         }

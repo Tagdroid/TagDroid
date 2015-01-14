@@ -30,7 +30,7 @@ public class Direction {
     }
 
 
-    public int getDirection() {
+    public int getDirectionId() {
         return Direction;
     }
     public String getName() {

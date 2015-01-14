@@ -40,7 +40,7 @@ public class DirectionDAO extends DAO<Direction> {
     @Override
     protected ContentValues createValues(Direction m) {
         ContentValues values = new ContentValues();
-        values.put(DIRECTION, m.getDirection());
+        values.put(DIRECTION, m.getDirectionId());
         values.put(NAME, m.getName());
         values.put(LINE_ID, m.getLineId());
         return values;

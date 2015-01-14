@@ -104,4 +104,16 @@ public class LineStopsDAO extends DAO<LineStop> {
 
         return directionsFromLineAndStops;
     }
+
+    public ArrayList<LineStop> stopsFromLineAndStopsAndDirection(long lineId, String name, int directionId){
+        ArrayList<LineStop> stopsFromLineAndStopsAndDirection = new ArrayList<>();
+        Cursor cursor = bdd.query(TABLE_NAME(), AllColumns(),
+                LINE_ID + " = ? AND "+ NAME + "= ? AND " + DIRECTION + " = ?",
+                new String[]{String.valueOf(lineId),String.valueOf(name),String.valueOf(directionId)},
+                null, null, null);
+        while (cursor.moveToNext())
+            stopsFromLineAndStopsAndDirection.add(fromCursor(cursor));
+        cursor.close();
+        return stopsFromLineAndStopsAndDirection;
+    }
 }

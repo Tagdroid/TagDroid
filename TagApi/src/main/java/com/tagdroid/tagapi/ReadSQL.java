@@ -68,6 +68,21 @@ public class ReadSQL {
         return directionsArrayList;
     }
 
+    public static ArrayList<LineStop> getOtherStops(long lineId, String name, int directionId, Context context) {
+        DatabaseHelper dbHelper = DatabaseHelper.getInstance(context);
+        SQLiteDatabase daTAGase = dbHelper.getReadableDatabase();
+        daTAGase.beginTransaction();
+
+        LineStopsDAO lineStopsDAO = new LineStopsDAO(daTAGase);
+
+        ArrayList<LineStop> otherStopsArrayList = lineStopsDAO
+                .stopsFromLineAndStopsAndDirection(lineId, name, directionId);
+
+        daTAGase.setTransactionSuccessful();
+        daTAGase.endTransaction();
+        return otherStopsArrayList;
+    }
+
 
 
     public static void setSelectedLineAndDirection(Line line, Direction direction) {

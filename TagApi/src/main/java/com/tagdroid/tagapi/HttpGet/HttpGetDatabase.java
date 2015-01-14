@@ -62,7 +62,7 @@ public class HttpGetDatabase implements ProgressionInterface {
         if (directionsProgression < directionsCount) {
             // On continue sur la même ligne
             new HttpGetLineStops(actualLine.getId(),
-                    actualLine.getDirectionList()[directionsProgression].getDirection(),
+                    actualLine.getDirectionList()[directionsProgression].getDirectionId(),
                     this, context).execute();
             directionsProgression++;
         } else if (linesProgression < linesCount - 1) {

@@ -34,7 +34,7 @@ public class LineStopsFragment extends Page{
         Log.d("Details", "getDetailsFromSQL");
         ligne = ReadSQL.getSelectedLine();
         direction = ReadSQL.getSelectedDirection();
-        lineStops = ReadSQL.getStops(ligne.getId(), direction.getDirection(), getActivity());
+        lineStops = ReadSQL.getStops(ligne.getId(), direction.getDirectionId(), getActivity());
     }
 
     public LineStopsFragment() {

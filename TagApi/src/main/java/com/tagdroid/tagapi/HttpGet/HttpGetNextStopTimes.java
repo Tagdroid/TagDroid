@@ -11,20 +11,19 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class HttpGetNextStopTimes extends HttpGetTask {
-    public HttpGetNextStopTimes(long stopId, long lineId, int direction,
-                                ProgressionInterface progressionInterface, Context context) {
+    public HttpGetNextStopTimes(long stopId, ProgressionInterface progressionInterface, Context context) {
         super("http://transinfoservice.ws.cityway.fr/TAG/api/TimeTables/v1/GetNextStopHours/json?key=TAGDEV"
                         + "&StopId=" + stopId
-                        + "&LineId=" + lineId
-                        + "&LineDirection=" + direction
-                        + "&DateTime=" + formatedDate(),
+                        + "&Date=" + formatedDate(), //Pas besoin du Time vu que c'est les derniers horaires de la journée
                 progressionInterface, context);
     }
 
     public static String formatedDate() {;
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd_HH-mm");
-        Log.d("date", sdf.format(new Date(System.currentTimeMillis())));
-        return sdf.format(new Date(System.currentTimeMillis()));
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String date = dateFormat.format(new Date(System.currentTimeMillis()));
+
+        Log.d("date", date);
+        return date;
     }
 
     @Override
