@@ -13,6 +13,7 @@ public class Time {
 
     public Time(JSONObject jsonTime) throws JSONException {
         Log.d("JSON TIME",jsonTime.toString());
+        //TODO -->
         this.PassingTime = StopPassingTimeList(jsonTime).getInt("PassingTime");
         this.VehicleJourneyId = StopPassingTimeList(jsonTime).getLong("VehicleJourneyId");
         this.VehicleJourneyRef = StopPassingTimeList(jsonTime).getString("VehicleJourneyRef");

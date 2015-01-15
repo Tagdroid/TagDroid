@@ -66,6 +66,14 @@
     <string name="soon">Prochainement…</string>
     <string name="mapstype">Types de carte :</string>
 
+    <!-- Actualites -->
+    <string name="nonews">Pas d\'Actualités !</string>
+
+    <!-- Disruptions -->
+    <string name="nodisruptions">Pas d\'alerte sur le réseau !</string>
+
+
+
     <!-- Flux RSS -->
     <string name="more">Plus d\'informations</string>
     <string name="details">Détails</string>
@@ -137,7 +145,7 @@
     <string name="menu_skip">Passer</string>
     <string name="ns_menu_main_header2">Informations</string>
     <string name="ns_menu_reseau_header">Réseau</string>
-    <string name="nonews">Pas d\'Actualités !</string>
+
     <string name="mensuel">Mensuel</string>
     <string name="annuel">Annuel</string>
     <string name="wait_for_download_to_finish">Veuillez attendre la fin du téléchargement de la base de données…</string>

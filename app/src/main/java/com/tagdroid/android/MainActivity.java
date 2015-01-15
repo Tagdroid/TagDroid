@@ -22,6 +22,7 @@ import com.arellomobile.android.push.utils.RegisterBroadcastReceiver;
 import com.tagdroid.android.Drawer.DrawerFragment;
 import com.tagdroid.android.Pages.AboutFragment;
 import com.tagdroid.android.Pages.Actualites.ActualitesFragment;
+import com.tagdroid.android.Pages.Disruptions.DisruptionsFragment;
 import com.tagdroid.android.Pages.LignesGridFragment;
 import com.tagdroid.android.Pages.SettingsFragment;
 import com.tagdroid.android.Pages.TarifsFragment;
@@ -129,8 +130,8 @@ public class MainActivity extends ActionBarActivity implements DrawerFragment.Dr
             //    break;
             // case  4: page = new MapFragment();
             //     break;
-            // case  5: page = new TraficInfosFragment();
-            //     break;
+            case  5: page = new DisruptionsFragment();
+                 break;
             case  6: page = new ActualitesFragment();
                 break;
             case  7: page = new TarifsFragment();

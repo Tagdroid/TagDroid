@@ -3,7 +3,7 @@ package com.tagdroid.tagapi.HttpGet;
 import android.content.Context;
 import android.util.Log;
 
-import com.tagdroid.tagapi.JSonApi.TimeTable.Time;
+import com.tagdroid.tagapi.JSonApi.Disruption.Disruption;
 import com.tagdroid.tagapi.ProgressionInterface;
 import com.tagdroid.tagapi.ReadSQL;
 
@@ -11,25 +11,23 @@ import java.util.ArrayList;
 
 /* Will download the whole Database at first start or at update */
 
-public class HttpGetDatabaseTime implements ProgressionInterface {
+public class HttpGetDatabaseDisruption implements ProgressionInterface {
     private final  Context context;
-    private final long stopId;
     public  static boolean isFinished = false;
     private static ProgressionInterface progressionInterface;
-    private static ArrayList<Time> timesList;
-    private static boolean isHttpGetTimesListFinished = false;
-    private static int timesCount,timesProgression = 0;
+    private static ArrayList<Disruption> DisruptionsList;
+    private static boolean isHttpGetDisruptionsFinished = false;
+    private static int disruptionsCount,disruptionsProgression = 0;
 
-    public HttpGetDatabaseTime(long stopId,Context context, ProgressionInterface progressionInterface) {
+    public HttpGetDatabaseDisruption(Context context, ProgressionInterface progressionInterface) {
         this.context = context;
-        this.stopId = stopId;
-        HttpGetDatabaseTime.progressionInterface = progressionInterface;
+        HttpGetDatabaseDisruption.progressionInterface = progressionInterface;
     }
 
     public void execute() {
         progressionInterface.onDownloadStart();
-        HttpGetNextStopTimes httpGetNextStopTimes = new HttpGetNextStopTimes(stopId,this, context);
-        httpGetNextStopTimes.execute();
+        HttpGetDisruptions httpGetDisruptions = new HttpGetDisruptions(this, context);
+        httpGetDisruptions.execute();
     }
 
     @Override
@@ -45,14 +43,14 @@ public class HttpGetDatabaseTime implements ProgressionInterface {
     @Override
     public void onDownloadComplete() {
         Log.d("ondowloadcomplete", "ondownloadcomplete");
-        if (isHttpGetTimesListFinished) {
-            progressionInterface.onDownloadProgression(timesProgression, timesCount);
+        if (isHttpGetDisruptionsFinished) {
+            progressionInterface.onDownloadProgression(disruptionsProgression, disruptionsCount);
         } else {
-            isHttpGetTimesListFinished = true;
-            timesList = ReadSQL.getAllTimes(context);
-            timesCount = timesList.size();
+            isHttpGetDisruptionsFinished = true;
+            DisruptionsList = ReadSQL.getAllDisruptions(context);
+            disruptionsCount = DisruptionsList.size();
             isFinished = true;
-            timesProgression++;
+            disruptionsProgression++;
             progressionInterface.onDownloadComplete();
         }
     }

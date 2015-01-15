@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class Timetable1DAO extends DAO<Time> {
     @Override
     protected String ID() {
-        return "TimeTable1";
+        return "Id";
     }
     public static final String PASSINGTIME = "PassingTime", VEHICLE_JOURNEY_ID = "VehicleJourneyId", VEHICLE_JOURNEY_REF = "VehicleJourneyRef";
 

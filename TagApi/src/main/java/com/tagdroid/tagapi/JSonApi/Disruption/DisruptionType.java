@@ -9,8 +9,6 @@ import org.json.JSONObject;
     (C'est une norme comme une autre quoi…)
  */
 
-// J'ai modifié ton code pour avoir un ordre alphabétique ;) Tu peux virer ce comm dès que tu l'as lu !
-
 public class DisruptionType {
     private long Code;
     private long Id;
