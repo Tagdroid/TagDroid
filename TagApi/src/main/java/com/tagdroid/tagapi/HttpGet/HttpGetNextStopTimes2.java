@@ -7,7 +7,7 @@ import android.util.Log;
 import com.tagdroid.tagapi.JSonApi.TimeTable.Time;
 import com.tagdroid.tagapi.ProgressionInterface;
 import com.tagdroid.tagapi.SQLApi.DatabaseHelper;
-import com.tagdroid.tagapi.SQLApi.TimeTable.Timetable1DAO;
+import com.tagdroid.tagapi.SQLApi.TimeTable.Timetable2DAO;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -15,16 +15,12 @@ import org.json.JSONException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class HttpGetNextStopTimes extends HttpGetTask {
-    public HttpGetNextStopTimes(long stopId, ProgressionInterface progressionInterface, Context context) {
+public class HttpGetNextStopTimes2 extends HttpGetTask {
+    public HttpGetNextStopTimes2(long stopId, ProgressionInterface progressionInterface, Context context) {
         super("http://transinfoservice.ws.cityway.fr/TAG/api/TimeTables/v1/GetNextStopHours/json?key=TAGDEV"
                         + "&StopId=" + stopId
                         + "&Date=" + formatedDate(), //Pas besoin du Time vu que c'est les derniers horaires de la journée
                 progressionInterface, context);
-
-        Log.d("URL STOP TIME","http://transinfoservice.ws.cityway.fr/TAG/api/TimeTables/v1/GetNextStopHours/json?key=TAGDEV"
-                + "&StopId=" + stopId
-                + "&Date=" + formatedDate());
     }
 
     public static String formatedDate() {;
@@ -41,7 +37,7 @@ public class HttpGetNextStopTimes extends HttpGetTask {
         SQLiteDatabase daTAGase = dbHelper.getWritableDatabase();
         daTAGase.beginTransaction();
 
-        Timetable1DAO timetable1DAO = (Timetable1DAO)new Timetable1DAO(daTAGase).create();
+        Timetable2DAO timetable2DAO = (Timetable2DAO)new Timetable2DAO(daTAGase).create();
 
         Time time;
 
@@ -49,7 +45,7 @@ public class HttpGetNextStopTimes extends HttpGetTask {
         for (int i = 0; i < length; i++)
             try {
                 time = new Time(jsonData.getJSONObject(i));
-                timetable1DAO.update(time);
+                timetable2DAO.update(time);
 
                 publishProgress(i, length);
             } catch (JSONException e) {

@@ -1,6 +1,9 @@
 package com.tagdroid.android.Pages;
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -19,6 +22,8 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 import com.tagdroid.android.Page;
 import com.tagdroid.android.R;
+import com.tagdroid.tagapi.HttpGet.HttpGetDatabaseTime;
+import com.tagdroid.tagapi.JSonApi.TimeTable.Time;
 import com.tagdroid.tagapi.JSonApi.Transport.Direction;
 import com.tagdroid.tagapi.JSonApi.Transport.Line;
 import com.tagdroid.tagapi.JSonApi.Transport.LineStop;
@@ -39,6 +44,8 @@ public class StationDetailFragment extends Page implements ProgressionInterface 
     private CardView cardview1, cardview2;
     private ProgressDialog progression;
     private TextView direction_tv1, direction_tv2;
+    private Time firstTime;
+    HttpGetDatabaseTime httpGetDatabaseTime;
 
     private GoogleMap map;
 
@@ -65,6 +72,8 @@ public class StationDetailFragment extends Page implements ProgressionInterface 
         lineStop = ReadSQL.getSelectedLineStop();
         directions = ReadSQL.getDirections(ligne.getId(),lineStop.getName(),getActivity());
         if(directions.size()>1) reverse_lineStop = ReadSQL.getOtherStops(ligne.getId(),lineStop.getName(),direction2.getDirectionId(),getActivity()).get(0);
+
+        httpGetDatabaseTime = new HttpGetDatabaseTime(lineStop.getId(),getActivity(), this);
     }
 
 
@@ -73,11 +82,15 @@ public class StationDetailFragment extends Page implements ProgressionInterface 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.station_detail, container, false);
 
+        startDownloadTask();
+
         if (GooglePlayServicesUtil.isGooglePlayServicesAvailable(getActivity().getApplicationContext()) == ConnectionResult.SUCCESS){
             //setUpMapIfNeeded();
         }else{
             Toast.makeText(getActivity(), "Please install google play services", Toast.LENGTH_LONG).show();
         }
+
+
 
         Log.d("### LIGNE", "\nLigne "+ ligne.getNumber() + "/ ID:" + ligne.getId() +
                 "\n Terminus : \n -"+ligne.getDirectionList()[0].getName()+
@@ -102,6 +115,12 @@ public class StationDetailFragment extends Page implements ProgressionInterface 
         }else{
             cardview2.setVisibility(View.GONE);
         }
+
+
+
+
+
+
 
 
         swipeLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_layout);
@@ -141,12 +160,14 @@ public class StationDetailFragment extends Page implements ProgressionInterface 
 
     @Override
     public void onDownloadProgression(int progression, int total) {
-
+        Log.d("StationDetail", "Download Time " + progression + "/" + total);
     }
 
     @Override
     public void onDownloadComplete() {
         progression.dismiss();
+        firstTime = ReadSQL.getAllTimes(getActivity()).get(0);
+        Log.d("### HORAIRES !!!!!!", firstTime.getPassingTime() + " minutes");
     }
 
     private void setUpMapIfNeeded() {
@@ -160,6 +181,21 @@ public class StationDetailFragment extends Page implements ProgressionInterface 
             map.getUiSettings().setZoomControlsEnabled(false);
             map.getUiSettings().setMyLocationButtonEnabled(false);
             map.getUiSettings().setCompassEnabled(false);
+        }
+    }
+
+    public void startDownloadTask() {
+        // We check if we are able to download DB
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+
+        if (activeNetworkInfo == null || !activeNetworkInfo.isConnectedOrConnecting()) {
+            Log.d("StationDetail", "Internet connection problem");
+
+        } else {
+            Log.d("StationDetail", "Start of Downloading database");
+            httpGetDatabaseTime.execute();
         }
     }
 

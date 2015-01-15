@@ -5,8 +5,10 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.tagdroid.tagapi.JSonApi.Transport.Direction;
 import com.tagdroid.tagapi.JSonApi.Transport.Line;
+import com.tagdroid.tagapi.JSonApi.TimeTable.Time;
 import com.tagdroid.tagapi.JSonApi.Transport.LineStop;
 import com.tagdroid.tagapi.SQLApi.DatabaseHelper;
+import com.tagdroid.tagapi.SQLApi.TimeTable.Timetable1DAO;
 import com.tagdroid.tagapi.SQLApi.Transport.DirectionDAO;
 import com.tagdroid.tagapi.SQLApi.Transport.LineStopsDAO;
 import com.tagdroid.tagapi.SQLApi.Transport.LinesDAO;
@@ -15,6 +17,7 @@ import java.util.ArrayList;
 
 public class ReadSQL {
     private static ArrayList<Line> AllLines;
+    private static ArrayList<Time> AllTimes;
     private static Line         selectedLine;
     private static Direction    selectedDirection;
     private static LineStop     selectedLineStop;
@@ -37,6 +40,20 @@ public class ReadSQL {
             daTAGase.endTransaction();
         }
         return AllLines;
+    }
+
+    public static ArrayList<Time> getAllTimes(Context context) {
+        if (AllTimes == null) {
+            DatabaseHelper dbHelper = DatabaseHelper.getInstance(context);
+            SQLiteDatabase daTAGase = dbHelper.getReadableDatabase();
+            daTAGase.beginTransaction();
+
+            AllTimes = new Timetable1DAO(daTAGase).selectAll();
+
+            daTAGase.setTransactionSuccessful();
+            daTAGase.endTransaction();
+        }
+        return AllTimes;
     }
 
     public static ArrayList<LineStop> getStops(long lineId, int directionId, Context context) {
