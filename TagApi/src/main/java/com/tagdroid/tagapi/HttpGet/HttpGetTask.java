@@ -4,8 +4,6 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.tagdroid.tagapi.ProgressionInterface;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,6 +13,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+
+import com.tagdroid.tagapi.ProgressionInterface;
 
 public abstract class HttpGetTask extends AsyncTask<Void, Integer, Void> {
     protected Context context;
@@ -37,9 +37,8 @@ public abstract class HttpGetTask extends AsyncTask<Void, Integer, Void> {
     @Override
     protected Void doInBackground(Void... params) {
         downloadTask();
-        if (responseString.equals("")) {
-            return null; // There has been an error to manage.
-        }
+        if (responseString.equals(""))
+            return null; //TODO There has been an error to manage.
         readJsonTask();
         return null;
     }

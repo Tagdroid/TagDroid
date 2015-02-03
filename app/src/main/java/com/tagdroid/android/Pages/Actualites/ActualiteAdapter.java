@@ -19,8 +19,8 @@ public class ActualiteAdapter extends RecyclerView.Adapter<ActualiteAdapter.Actu
     private List<Actualite> actualiteList;
     private ImageLoader imageLoader;
 
-    public ActualiteAdapter(List<Actualite> actualitéList, Context context) {
-        this.actualiteList = actualitéList;
+    public ActualiteAdapter(List<Actualite> actualiteList, Context context) {
+        this.actualiteList = actualiteList;
         imageLoader = new ImageLoader(context);
     }
     public void setOnItemClickListener(final OnItemClickListener onItemClickListener) {

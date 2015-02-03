@@ -22,7 +22,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 import com.tagdroid.android.Page;
 import com.tagdroid.android.R;
-import com.tagdroid.tagapi.HttpGet.HttpGetDatabaseTime;
+import com.tagdroid.tagapi.HttpGet.HttpGetNextStopTimes;
 import com.tagdroid.tagapi.JSonApi.TimeTable.Time;
 import com.tagdroid.tagapi.JSonApi.Transport.Direction;
 import com.tagdroid.tagapi.JSonApi.Transport.Line;
@@ -45,7 +45,7 @@ public class StationDetailFragment extends Page implements ProgressionInterface 
     private ProgressDialog progression;
     private TextView direction_tv1, direction_tv2;
     private Time firstTime;
-    HttpGetDatabaseTime httpGetDatabaseTime;
+    HttpGetNextStopTimes httpGetDatabaseTime;
 
     private GoogleMap map;
 
@@ -73,7 +73,7 @@ public class StationDetailFragment extends Page implements ProgressionInterface 
         directions = ReadSQL.getDirections(ligne.getId(),lineStop.getName(),getActivity());
         if(directions.size()>1) reverse_lineStop = ReadSQL.getOtherStops(ligne.getId(),lineStop.getName(),direction2.getDirectionId(),getActivity()).get(0);
 
-        httpGetDatabaseTime = new HttpGetDatabaseTime(lineStop.getId(),getActivity(), this);
+        httpGetDatabaseTime = new HttpGetNextStopTimes(lineStop.getId(), this, getActivity());
     }
 
 

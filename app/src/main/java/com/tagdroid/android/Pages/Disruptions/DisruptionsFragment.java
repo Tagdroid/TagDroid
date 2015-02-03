@@ -13,13 +13,13 @@ import android.view.ViewGroup;
 
 import com.tagdroid.android.Page;
 import com.tagdroid.android.R;
-import com.tagdroid.tagapi.HttpGet.HttpGetDatabaseDisruption;
+import com.tagdroid.tagapi.HttpGet.HttpGetDisruptions;
 import com.tagdroid.tagapi.ProgressionInterface;
 import com.tagdroid.tagapi.ReadSQL;
 
 public class DisruptionsFragment extends Page implements ProgressionInterface {
     private ProgressDialog progression;
-    HttpGetDatabaseDisruption httpGetDatabaseDisruption;
+    HttpGetDisruptions httpGetDatabaseDisruption;
 
     @Override
     public String getTitle() {
@@ -38,7 +38,7 @@ public class DisruptionsFragment extends Page implements ProgressionInterface {
 
     private void getDetailsFromSQL() {
         Log.d("Disruptions", "getDetailsFromSQL");
-        httpGetDatabaseDisruption = new HttpGetDatabaseDisruption(getActivity(), this);
+        httpGetDatabaseDisruption = new HttpGetDisruptions(this, getActivity());
     }
 
     @Override

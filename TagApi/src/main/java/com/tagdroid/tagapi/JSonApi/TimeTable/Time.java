@@ -7,16 +7,17 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Time {
-    private int PassingTime;
-    private long VehicleJourneyId;
-    private String VehicleJourneyRef;
+    private int PassingTime = 0;
+    private long VehicleJourneyId =0;
+    private String VehicleJourneyRef ="";
 
     public Time(JSONObject jsonTime) throws JSONException {
         Log.d("JSON TIME",jsonTime.toString());
         //TODO -->
-        this.PassingTime = StopPassingTimeList(jsonTime).getInt("PassingTime");
+        /*this.PassingTime = StopPassingTimeList(jsonTime).getInt("PassingTime");
         this.VehicleJourneyId = StopPassingTimeList(jsonTime).getLong("VehicleJourneyId");
         this.VehicleJourneyRef = StopPassingTimeList(jsonTime).getString("VehicleJourneyRef");
+        */
     }
 
     public Time(int PassingTime, long VehicleJourneyId, String VehicleJourneyRef) {

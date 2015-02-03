@@ -1,10 +1,10 @@
 package com.tagdroid.android.Pages.Actualites;
 
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.app.FragmentTransaction;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -25,12 +25,13 @@ import java.util.List;
 
 public class ActualitesFragment extends Page implements ProgressionInterface, ActualiteAdapter.OnItemClickListener {
     private List<Actualite> actualitésList;
+    private ActualiteAdapter actualiteAdapter;
 
     private int RSSChannel;
-    private ProgressDialog progression;
 
     private HttpGetActualites httpGetActualites;
     RecyclerView actuCardList;
+    SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     public String getTitle() {
@@ -46,16 +47,35 @@ public class ActualitesFragment extends Page implements ProgressionInterface, Ac
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.actualites_fragment, container, false);
         RSSChannel = getRSSChannel();
-        httpGetActualites = new HttpGetActualites(RSSChannel, this);
+
+        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.actuCardSwipeRefresh);
+        swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_dark,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refreshActualites();
+            }
+        });
+
 
         actuCardList = (RecyclerView) view.findViewById(R.id.actuCardList);
         actuCardList.setLayoutManager(new LinearLayoutManager(getActivity()));
+        actualiteAdapter = new ActualiteAdapter(new ArrayList<Actualite>(),getActivity());
+        actuCardList.setAdapter(actualiteAdapter);
 
-        if (actualitésList == null) {
-            actuCardList.setAdapter(new ActualiteAdapter(new ArrayList<Actualite>(),getActivity()));
-            httpGetActualites.execute();
-        }
+        if (actualitésList == null)
+            refreshActualites();
+
         return view;
+    }
+
+    private void refreshActualites() {
+        swipeRefreshLayout.setRefreshing(true);
+        httpGetActualites = new HttpGetActualites(RSSChannel, this);
+        httpGetActualites.execute();
     }
 
     private int getRSSChannel() {
@@ -94,17 +114,15 @@ public class ActualitesFragment extends Page implements ProgressionInterface, Ac
 
     @Override
     public void onDownloadStart() {
-        progression = ProgressDialog.show(getActivity(), "",
-                getResources().getString(R.string.loading), true);
     }
 
     @Override
     public void onDownloadFailed(Exception e) {
-        progression.dismiss();
         actuCardList.setAdapter(new ActualiteAdapter(new ArrayList<Actualite>(),getActivity()));
         getActivity().findViewById(R.id.noNews).setVisibility(View.VISIBLE);
         Toast.makeText(getActivity(), "Erreur de chargement :\n" + e.getLocalizedMessage(),
                 Toast.LENGTH_LONG).show();
+        swipeRefreshLayout.setRefreshing(false);
     }
 
     @Override
@@ -114,11 +132,13 @@ public class ActualitesFragment extends Page implements ProgressionInterface, Ac
 
     @Override
     public void onDownloadComplete() {
-        progression.dismiss();
         actualitésList = httpGetActualites.getResult();
-        ActualiteAdapter actualiteAdapter = new ActualiteAdapter(actualitésList, getActivity());
+        actualiteAdapter = new ActualiteAdapter(actualitésList, getActivity());
         actualiteAdapter.setOnItemClickListener(this);
+        actuCardList.removeAllViews();
+        actuCardList.removeAllViewsInLayout();
         actuCardList.setAdapter(actualiteAdapter);
+        swipeRefreshLayout.setRefreshing(false);
     }
 
     @Override
