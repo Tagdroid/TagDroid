@@ -160,7 +160,7 @@
 
     <!-- Settings -->
     <string name="change_langue">Langue actuelle :</string>
-
+    <string name="afficher_horaires_theoriques">Afficher les horaires théoriques</string>
 
 
 </resources>

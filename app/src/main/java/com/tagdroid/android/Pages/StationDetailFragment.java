@@ -41,7 +41,6 @@ public class StationDetailFragment extends Page implements ProgressionInterface 
     private Direction direction, direction2;
     private Handler handler = new Handler();
     private SwipeRefreshLayout swipeLayout;
-    private CardView cardview1, cardview2;
     private ProgressDialog progression;
     private TextView direction_tv1, direction_tv2;
     private Time firstTime;
@@ -101,20 +100,12 @@ public class StationDetailFragment extends Page implements ProgressionInterface 
 
 
 
-        cardview2 = (CardView)view.findViewById(R.id.card_view2);
         direction_tv1 = (TextView)view.findViewById(R.id.direction);
         direction_tv2 = (TextView)view.findViewById(R.id.direction2);
 
         direction_tv1.setText(direction.getName());
 
-
-        if(directions.size()>1){
-            cardview2.setVisibility(View.VISIBLE);
-            direction_tv2.setText(direction2.getName());
-            Log.d("### STATION", "ID "+ reverse_lineStop.getId()+ " pour la direction "+ direction2.getDirectionId() +" : "+direction2.getName());
-        }else{
-            cardview2.setVisibility(View.GONE);
-        }
+        direction_tv2.setText(direction2.getName());
 
 
 
@@ -123,7 +114,7 @@ public class StationDetailFragment extends Page implements ProgressionInterface 
 
 
 
-        swipeLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_layout);
+        swipeLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshTimes);
         swipeLayout.setColorSchemeResources(android.R.color.holo_blue_bright,
                 android.R.color.holo_green_light,
                 android.R.color.holo_orange_light,
