@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.tagdroid.android.Pages.Favoris.FavorisHelper;
 import com.tagdroid.android.R;
@@ -42,7 +43,7 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.Comparator;
 
-public class StationDetailFragment extends Fragment {
+public class StationDetailFragment extends Fragment implements OnMapReadyCallback {
     protected static String titre;
     protected static String id_jour1 = "null";
     private static View view, view2;
@@ -288,6 +289,11 @@ public class StationDetailFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+
     }
 
     private class Calcul_ID_Jour extends AsyncTask<Void, Void, String> {
