@@ -15,7 +15,7 @@ public class LineStopsDAO extends DAO<LineStop> {
     protected String ID() {
         return "Id";
     }
-    public static final String NAME = "Name", POSITION = "Position", LOGICALSTOPID = "LogicalStopId",
+    public static final String NAME = "Name", POSITION = "Position", LOGICALID = "LogicalStopId",
             LOCALITYID = "LocalityId", LATITUDE = "Latitude", LONGITUDE = "Longitude",
             LINE_ID = "LineId", DIRECTION = "Direction";
 
@@ -33,7 +33,7 @@ public class LineStopsDAO extends DAO<LineStop> {
         return "(" + ID()   + " INTEGER, " +
                 NAME        + " TEXT, " +
                 POSITION    + " INTEGER, " +
-                LOGICALSTOPID+" INTEGER, " +
+                LOGICALID   + " INTEGER, " +
                 LOCALITYID  + " INTEGER, " +
                 LATITUDE    + " REAL, " +
                 LONGITUDE   + " REAL, " +
@@ -43,7 +43,7 @@ public class LineStopsDAO extends DAO<LineStop> {
 
     @Override
     protected String[] AllColumns() {
-        return new String[]{ID(), NAME, POSITION, LOGICALSTOPID, LOCALITYID, LATITUDE, LONGITUDE, LINE_ID, DIRECTION,};
+        return new String[]{ID(), NAME, POSITION, LOGICALID, LOCALITYID, LATITUDE, LONGITUDE, LINE_ID, DIRECTION,};
     }
 
     @Override
@@ -52,7 +52,7 @@ public class LineStopsDAO extends DAO<LineStop> {
         values.put(ID(), m.getId());
         values.put(NAME, m.getName());
         values.put(POSITION, m.getPosition());
-        values.put(LOGICALSTOPID, m.getLogicalStopId());
+        values.put(LOGICALID, m.getLogicalStopId());
         values.put(LOCALITYID, m.getLocalityId());
         values.put(LATITUDE, m.getLatitude());
         values.put(LONGITUDE, m.getLongitude());
@@ -63,15 +63,16 @@ public class LineStopsDAO extends DAO<LineStop> {
 
     @Override
     protected LineStop fromCursor(Cursor cursor) {
-        return new LineStop(cursor.getLong(0),
-                cursor.getString(1),
-                cursor.getInt(2),
-                cursor.getLong(2),
-                cursor.getInt(3),
-                cursor.getDouble(4),
-                cursor.getDouble(5),
-                cursor.getInt(6),
-                cursor.getInt(7));
+        int i=0;
+        return new LineStop(cursor.getLong(i++),
+                cursor.getString(i++),
+                cursor.getInt(i++),
+                cursor.getLong(i++),
+                cursor.getInt(i++),
+                cursor.getDouble(i++),
+                cursor.getDouble(i++),
+                cursor.getInt(i++),
+                cursor.getInt(i));
     }
 
     protected Direction fromCursor2(Cursor cursor){

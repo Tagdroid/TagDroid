@@ -20,7 +20,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.tagdroid.android.Page;
 import com.tagdroid.android.R;
 
-public class MapFragment extends Page {
+public class ProximityMapFragment extends Page {
     @Override
     public String getTitle() {
         return getString(R.string.map);
