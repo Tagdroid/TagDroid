@@ -35,7 +35,7 @@ public class SettingsFragment extends Page{
         reload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(),"Chargement des données",Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(),getString(R.string.database_download),Toast.LENGTH_LONG).show();
             }
         });
 
@@ -43,7 +43,7 @@ public class SettingsFragment extends Page{
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(),"Données cache supprimées",Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(),getString(R.string.cache_cleared),Toast.LENGTH_LONG).show();
                 clearApplicationData();
             }
         });
@@ -57,7 +57,8 @@ public class SettingsFragment extends Page{
             String[] children = appDir.list();
             for (String s : children) {
                 if (!s.equals("lib")) {
-                    deleteDir(new File(appDir, s));Log.i("TAG", "**************** File /data/data/com.tagdroid.android/" + s + " DELETED *******************");
+                    deleteDir(new File(appDir, s));
+                    Log.i("TAG", "File /data/data/com.tagdroid.android/" + s + " DELETED");
                 }
             }
         }

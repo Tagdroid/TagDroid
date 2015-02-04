@@ -120,7 +120,7 @@ public class ActualitesFragment extends Page implements ProgressionInterface, Ac
     public void onDownloadFailed(Exception e) {
         actuCardList.setAdapter(new ActualiteAdapter(new ArrayList<Actualite>(),getActivity()));
         getActivity().findViewById(R.id.noNews).setVisibility(View.VISIBLE);
-        Toast.makeText(getActivity(), "Erreur de chargement :\n" + e.getLocalizedMessage(),
+        Toast.makeText(getActivity(), getString(R.string.loading_error) + e.getLocalizedMessage(),
                 Toast.LENGTH_LONG).show();
         swipeRefreshLayout.setRefreshing(false);
     }

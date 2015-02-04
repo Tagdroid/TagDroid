@@ -31,7 +31,6 @@ import com.viewpagerindicator.CirclePageIndicator;
 public class WelcomeActivity extends FragmentActivity implements WelcomeFragment.OnButtonClicked, ProgressionInterface {
     ViewPager mPager;
     HttpGetDatabase httpGetDatabase = new HttpGetDatabase(this, this);
-    private int total=0;
     private ProgressBar progressBar;
     private ArcProgress arcProgress;
     private TextView load_value;
@@ -43,9 +42,9 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
 
         // We check for Google Play Services… CyanogenMod without GApps for example
         if (GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext()) != 0) {
-            Toast.makeText(this, "Google Play Service non détecté. Dysfonctionnement de l'application possible.",
+            Toast.makeText(this, getString(R.string.googleplay_not_detected),
                     Toast.LENGTH_LONG).show();
-            Log.d("WelcomeActivity", "Google Play Service undetected");
+            Log.d("WelcomeActivity", getString(R.string.googleplay_not_detected));
         }
 
         setContentView(R.layout.welcome_activity);
@@ -77,11 +76,8 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
         if (activeNetworkInfo == null || !activeNetworkInfo.isConnectedOrConnecting()) {
             Log.d("WelcomeActivity", "Internet connection problem");
             new AlertDialog.Builder(this)
-                    .setTitle("Pas de connexion Internet")
-                    .setMessage("L'application n'est pas en mesure de télécharger la base de données "
-                            + "nécessaire au bon fonctionnement de l'application.\n\n"
-                            + "TAGdroid va se fermer.\n\nActivez votre connexion Internet "
-                            + "par WIFI ou données mobiles (4G, 3G, Edge) et relancez l'application.")
+                    .setTitle(getString(R.string.welcome_internet_connexion_problem_alerttitle))
+                    .setMessage(getString(R.string.welcome_internet_connexion_problem_alertdialog))
 
                     .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
@@ -100,12 +96,12 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
     @Override
     public void onFinalButtonClicked() {
         finalbutton = true;
-        if (httpGetDatabase.isFinished) {
+        if (HttpGetDatabase.isFinished) {
             PreferenceManager.getDefaultSharedPreferences(this).edit()
                     .putBoolean("AppAlreadyLaunched", true).apply();
             startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
             finish();
-        } else{//TODO Need to implement some "waiting" window
+        } else{
             setContentView(R.layout.welcome_activity_load);
             arcProgress = (ArcProgress)findViewById(R.id.arc_progress);
             load_value = (TextView) findViewById(R.id.load_value);
@@ -136,7 +132,6 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
 
     @Override
     public void onDownloadProgression(int progression, int total) {
-        this.total = total;
         int pourcent = (progression*100)/total;
 
         Log.d("WelcomeActivity", "downloadline " + progression + "/" + total);
@@ -151,15 +146,14 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
 
         if(arcProgress!=null){
             arcProgress.setProgress(pourcent);
-            load_value.setText("Chargement en cours");
+            load_value.setText(getString(R.string.loading_in_progress));
             load_value.setAllCaps(true);
         }
     }
 
     @Override
     public void onDownloadComplete() {
-        Log.d("WelcomeActivity", "onDownloadComplete");
-        load_value.setText("Chargement terminé");
+        load_value.setText(getString(R.string.welcome_load_finished));
 
         if(finalbutton){
             PreferenceManager.getDefaultSharedPreferences(this).edit()

@@ -28,8 +28,7 @@ public class ReadSQL {
 
     public static ArrayList<Line> getAllLines(Context context) {
         if (AllLines == null) {
-            DatabaseHelper dbHelper = DatabaseHelper.getInstance(context);
-            SQLiteDatabase daTAGase = dbHelper.getReadableDatabase();
+            SQLiteDatabase daTAGase = DatabaseHelper.getInstance(context).getReadableDatabase();
             daTAGase.beginTransaction();
 
             LinesDAO linesDAO = new LinesDAO(daTAGase);
@@ -47,8 +46,7 @@ public class ReadSQL {
     }
 
     public static ArrayList<LineStop> getStops(long lineId, int directionId, Context context) {
-        DatabaseHelper dbHelper = DatabaseHelper.getInstance(context);
-        SQLiteDatabase daTAGase = dbHelper.getReadableDatabase();
+        SQLiteDatabase daTAGase = DatabaseHelper.getInstance(context).getReadableDatabase();
         daTAGase.beginTransaction();
 
         LineStopsDAO lineStopsDAO = new LineStopsDAO(daTAGase);
@@ -61,35 +59,20 @@ public class ReadSQL {
         return stopsArrayList;
     }
 
-    public static ArrayList<Direction> getDirections(long lineId, String name, Context context) {
-        DatabaseHelper dbHelper = DatabaseHelper.getInstance(context);
-        SQLiteDatabase daTAGase = dbHelper.getReadableDatabase();
+    public static ArrayList<LineStop> getStopsOfLineAndLogicalAndDirection(long lineId, long logicalStopId,
+                                                                           int direction,
+                                                                           Context context) {
+        SQLiteDatabase daTAGase = DatabaseHelper.getInstance(context).getReadableDatabase();
         daTAGase.beginTransaction();
-
         LineStopsDAO lineStopsDAO = new LineStopsDAO(daTAGase);
 
-        ArrayList<Direction> directionsArrayList = lineStopsDAO.directionsFromLineAndStops(lineId,name);
+        ArrayList<LineStop> lineStopsOfLogicalAndLine = lineStopsDAO
+                .stopsFromLineAndLogicalAndDirection(lineId, logicalStopId, direction);
 
         daTAGase.setTransactionSuccessful();
         daTAGase.endTransaction();
-        return directionsArrayList;
+        return lineStopsOfLogicalAndLine;
     }
-
-    public static ArrayList<LineStop> getOtherStops(long lineId, String name, int directionId, Context context) {
-        DatabaseHelper dbHelper = DatabaseHelper.getInstance(context);
-        SQLiteDatabase daTAGase = dbHelper.getReadableDatabase();
-        daTAGase.beginTransaction();
-
-        LineStopsDAO lineStopsDAO = new LineStopsDAO(daTAGase);
-
-        ArrayList<LineStop> otherStopsArrayList = lineStopsDAO
-                .stopsFromLineAndStopsAndDirection(lineId, name, directionId);
-
-        daTAGase.setTransactionSuccessful();
-        daTAGase.endTransaction();
-        return otherStopsArrayList;
-    }
-
 
     public static ArrayList<Time> getAllTimes(Context context) {
         if (AllTimes == null) {

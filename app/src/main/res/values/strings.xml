@@ -161,6 +161,24 @@
     <!-- Settings -->
     <string name="change_langue">Langue actuelle :</string>
     <string name="afficher_horaires_theoriques">Afficher les horaires théoriques</string>
+    <string name="default_horaires_string">…</string>
+    <string name="minutes_abr">min</string>
+    <string name="loading_in_progress">Chargement en cours</string>
+    <string name="googleplay_not_detected">Google Play Service non détecté. Dysfonctionnement de l\'application possible.</string>
+    <string name="welcome_internet_connexion_problem_alertdialog">L\'application n\'est pas en mesure de télécharger la base de données nécessaire au bon fonctionnement de l\'application.\n\nTAGdroid va se fermer.\n\nActivez votre connexion Internet par WIFI ou données mobiles (4G, 3G, Edge) et relancez l\'application.</string>
+    <string name="welcome_internet_connexion_problem_alerttitle">Pas de connexion Internet</string>
+    <string name="welcome_load_finished">Chargement terminé</string>
+    <string name="toast_example_action">Example action.</string>
+    <string name="loading_error">Erreur de chargement :\n</string>
+    <string name="tagdroid_changelog">Changelog de TagDroid</string>
+    <string name="version_">"Version "</string>
+    <string name="apropos_website_quentin">http://www.quentindesbois.fr</string>
+    <string name="apropos_tagdroid_mail">tagdroid.grenoble@gmail.com</string>
+    <string name="apropos_felix_mail">felix@piedallu.me</string>
+    <string name="apropos_felix_website">http://84.100.10.90</string>
+    <string name="unsupported_device">This device is not supported.</string>
+    <string name="database_download">Chargement des données</string>
+    <string name="cache_cleared">Données cache supprimées</string>
 
 
 </resources>

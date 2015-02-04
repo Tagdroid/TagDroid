@@ -200,7 +200,7 @@ public class DrawerFragment extends Fragment implements ListView.OnItemClickList
             return true;
 
         if (item.getItemId() == R.id.action_example) {
-            Toast.makeText(getActivity(), "Example action.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), getString(R.string.toast_example_action), Toast.LENGTH_SHORT).show();
             return true;
         }
 

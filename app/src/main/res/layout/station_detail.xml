@@ -1,242 +1,234 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fbutton="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <FrameLayout
+    android:layout_height="match_parent">
+    <info.hoang8f.widget.FButton android:id="@+id/LigneIndicateur1"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        fbutton:cornerRadius="30dp"
+        fbutton:shadowHeight="2dp"
+        fbutton:buttonColor="@color/ligne_default" />
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/bleu_tag_f40">
-
-     <!--   <info.hoang8f.widget.FButton
-            android:id="@+id/ligne1"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:text="B"
-            android:textColor="@android:color/white"
-            android:textSize="20sp"
-            fbutton:cornerRadius="30dp"
-            fbutton:shadowHeight="1dp"
-            fbutton:buttonColor="@color/ligne_default"
-            android:layout_marginTop="110dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp" />
--->
+        android:layout_height="match_parent"
+        android:orientation="vertical">
         <fragment xmlns:android="http://schemas.android.com/apk/res/android"
             android:name="com.google.android.gms.maps.MapFragment"
             android:id="@+id/StationMap"
             android:layout_width="match_parent"
             android:layout_height="170dp"/>
-
-    </FrameLayout>
-
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/swipeRefreshTimes"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <ScrollView
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefreshTimes"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <LinearLayout
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="20dp">
-
-                <android.support.v7.widget.CardView
+                android:layout_height="match_parent">
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    card_view:cardCornerRadius="4dp"
-                    android:layout_marginBottom="20dp">
-                    <LinearLayout
-                        android:id="@+id/horaires_body"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <android.support.v7.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_margin="10dp">
+                        card_view:cardCornerRadius="4dp"
+                        android:layout_marginBottom="20dp">
                         <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="start"
-                            android:orientation="horizontal" >
-
-                            <ImageView
-                                android:layout_width="24dp"
-                                android:layout_height="24dp"
-                                android:layout_gravity="center_vertical"
-                                android:src="@drawable/ic_arrow_left" />
-
-                            <TextView android:id="@+id/directionA"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:gravity="center_vertical"
-                                android:fontFamily="sans-serif-condensed"
-                                android:textColor="@android:color/black"
-                                android:textSize="14sp"
-                                android:textStyle="bold"/>
-                        </LinearLayout>
-                        <View
+                            android:id="@+id/horaires_body"
                             android:layout_width="match_parent"
-                            android:layout_height="1px"
-                            android:layout_marginBottom="10dp"
-                            android:background="@color/darker_gray"
-                            android:orientation="vertical" />
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal" >
-                            <TextView android:id="@+id/horaire1"
+                            android:orientation="vertical"
+                            android:layout_margin="10dp">
+                            <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="sans-serif-condensed"
-                                android:text="5 min"
-                                android:textSize="26sp"
-                                android:textStyle="bold"
-                                android:layout_marginRight="50dp"
-                                android:layout_marginEnd="50dp"
-                                android:textColor="@color/fbutton_color_turquoise" />
+                                android:layout_gravity="start"
+                                android:orientation="horizontal" >
 
-                            <TextView android:id="@+id/horaire2"
+                                <ImageView
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp"
+                                    android:layout_gravity="center_vertical"
+                                    android:src="@drawable/ic_arrow_left" />
+
+                                <TextView android:id="@+id/directionA"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center_vertical"
+                                    android:fontFamily="sans-serif-condensed"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"/>
+                            </LinearLayout>
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1px"
+                                android:layout_marginBottom="10dp"
+                                android:background="@color/darker_gray"
+                                android:orientation="vertical" />
+
+                            <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="17 min"
-                                android:textColor="@color/fbutton_color_green_sea"
-                                android:fontFamily="sans-serif-condensed"
-                                android:textSize="16sp" />
+                                android:layout_gravity="center_horizontal" >
+                                <TextView android:id="@+id/horaireA_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="sans-serif-condensed"
+                                    android:text="@string/default_horaires_string"
+                                    android:textSize="26sp"
+                                    android:textStyle="bold"
+                                    android:layout_marginRight="50dp"
+                                    android:layout_marginEnd="50dp"
+                                    android:textColor="@color/fbutton_color_turquoise" />
+
+                                <TextView android:id="@+id/horaireA_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/default_horaires_string"
+                                    android:textColor="@color/fbutton_color_green_sea"
+                                    android:fontFamily="sans-serif-condensed"
+                                    android:textSize="16sp" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1px"
+                                android:background="@color/darker_gray"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="10dp"/>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:clickable="true"
+                                android:foreground="?android:attr/selectableItemBackground"
+                                android:id="@+id/theoric1" >
+
+                                <ImageView
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp"
+                                    android:src="@drawable/ic_timetable"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginRight="5dp"
+                                    android:layout_marginEnd="5dp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:text="@string/afficher_horaires_theoriques"
+                                    android:gravity="center_vertical"
+                                    android:textColor="@android:color/black"/>
+                            </LinearLayout>
                         </LinearLayout>
+                    </android.support.v7.widget.CardView>
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1px"
-                            android:background="@color/darker_gray"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="10dp"/>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:clickable="true"
-                            android:foreground="?android:attr/selectableItemBackground"
-                            android:id="@+id/theoric1" >
-
-                            <ImageView
-                                android:layout_width="24dp"
-                                android:layout_height="24dp"
-                                android:src="@drawable/ic_timetable"
-                                android:layout_gravity="center_vertical"
-                                android:layout_marginRight="5dp"
-                                android:layout_marginEnd="5dp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:text="@string/afficher_horaires_theoriques"
-                                android:gravity="center_vertical"
-                                android:textColor="@android:color/black"/>
-                        </LinearLayout>
-                    </LinearLayout>
-                </android.support.v7.widget.CardView>
-
-                <android.support.v7.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    card_view:cardCornerRadius="4dp"
-                    android:layout_marginBottom="20dp">
-                    <LinearLayout
+                    <android.support.v7.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_margin="10dp">
+                        card_view:cardCornerRadius="4dp"
+                        android:layout_marginBottom="20dp">
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="end"
-                            android:orientation="horizontal" >
+                            android:orientation="vertical"
+                            android:layout_margin="10dp">
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="end"
+                                android:orientation="horizontal" >
 
-                            <TextView android:id="@+id/directionB"
+                                <TextView android:id="@+id/directionB"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center_vertical"
+                                    android:fontFamily="sans-serif-condensed"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"/>
+
+                                <ImageView
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp"
+                                    android:layout_gravity="center_vertical"
+                                    android:src="@drawable/ic_arrow_right"/>
+                            </LinearLayout>
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1px"
+                                android:layout_marginBottom="10dp"
+                                android:background="@color/darker_gray"
+                                android:orientation="vertical" />
+
+                            <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
-                                android:gravity="center_vertical"
-                                android:fontFamily="sans-serif-condensed"
-                                android:textColor="@android:color/black"
-                                android:textSize="14sp"
-                                android:textStyle="bold"/>
+                                android:layout_gravity="center_horizontal" >
+                                <TextView android:id="@+id/horaireB_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="sans-serif-condensed"
+                                    android:text="@string/default_horaires_string"
+                                    android:textSize="26sp"
+                                    android:textStyle="bold"
+                                    android:layout_marginRight="50dp"
+                                    android:layout_marginEnd="50dp"
+                                    android:textColor="@color/fbutton_color_turquoise" />
 
-                            <ImageView
-                                android:layout_width="24dp"
-                                android:layout_height="24dp"
-                                android:layout_gravity="center_vertical"
-                                android:src="@drawable/ic_arrow_right"/>
-                        </LinearLayout>
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1px"
-                            android:layout_marginBottom="10dp"
-                            android:background="@color/darker_gray"
-                            android:orientation="vertical" />
+                                <TextView android:id="@+id/horaireB_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/default_horaires_string"
+                                    android:textColor="@color/fbutton_color_green_sea"
+                                    android:fontFamily="sans-serif-condensed"
+                                    android:textSize="16sp" />
+                            </LinearLayout>
 
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center_horizontal" >
-                            <TextView android:id="@+id/horaire3"
-                                android:layout_width="wrap_content"
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1px"
+                                android:background="@color/darker_gray"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="10dp"/>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="sans-serif-condensed"
-                                android:text="8 min"
-                                android:textSize="26sp"
-                                android:textStyle="bold"
-                                android:layout_marginRight="50dp"
-                                android:layout_marginEnd="50dp"
-                                android:textColor="@color/fbutton_color_turquoise" />
+                                android:clickable="true"
+                                android:foreground="?android:attr/selectableItemBackground"
+                                android:id="@+id/theoric2" >
 
-                            <TextView android:id="@+id/horaire4"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="23 min"
-                                android:textColor="@color/fbutton_color_green_sea"
-                                android:fontFamily="sans-serif-condensed"
-                                android:textSize="16sp" />
+                                <ImageView
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp"
+                                    android:src="@drawable/ic_timetable"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginRight="5dp"
+                                    android:layout_marginEnd="5dp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/afficher_horaires_theoriques"
+                                    android:layout_gravity="center_vertical"
+                                    android:textColor="@android:color/black" />
+                            </LinearLayout>
                         </LinearLayout>
+                    </android.support.v7.widget.CardView>
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1px"
-                            android:background="@color/darker_gray"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="10dp"/>
+                </LinearLayout>
+            </ScrollView>
+        </android.support.v4.widget.SwipeRefreshLayout>
+    </LinearLayout>
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:clickable="true"
-                            android:foreground="?android:attr/selectableItemBackground"
-                            android:id="@+id/theoric2" >
-
-                            <ImageView
-                                android:layout_width="24dp"
-                                android:layout_height="24dp"
-                                android:src="@drawable/ic_timetable"
-                                android:layout_gravity="center_vertical"
-                                android:layout_marginRight="5dp"
-                                android:layout_marginEnd="5dp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/afficher_horaires_theoriques"
-                                android:layout_gravity="center_vertical"
-                                android:textColor="@android:color/black" />
-                        </LinearLayout>
-                    </LinearLayout>
-                </android.support.v7.widget.CardView>
-
-            </LinearLayout>
-        </ScrollView>
-    </android.support.v4.widget.SwipeRefreshLayout>
-</LinearLayout>
+</FrameLayout>

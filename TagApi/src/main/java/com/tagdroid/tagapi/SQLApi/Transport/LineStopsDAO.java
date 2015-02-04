@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.tagdroid.tagapi.JSonApi.Transport.Direction;
 import com.tagdroid.tagapi.JSonApi.Transport.LineStop;
 import com.tagdroid.tagapi.SQLApi.DAO;
 
@@ -75,12 +74,6 @@ public class LineStopsDAO extends DAO<LineStop> {
                 cursor.getInt(i));
     }
 
-    protected Direction fromCursor2(Cursor cursor){
-        return new Direction(cursor.getInt(0),
-                cursor.getString(1),
-                cursor.getLong(2));
-    }
-
     public ArrayList<LineStop> stopsFromLineAndDirection(long lineId, int directionId) {
         ArrayList<LineStop> stopsFromLineAndDirection = new ArrayList<>();
         Cursor cursor = bdd.query(TABLE_NAME(), AllColumns(),
@@ -93,28 +86,16 @@ public class LineStopsDAO extends DAO<LineStop> {
         return stopsFromLineAndDirection;
     }
 
-    public ArrayList<Direction> directionsFromLineAndStops(long lineId, String name){
-        ArrayList<Direction> directionsFromLineAndStops = new ArrayList<>();
+    public ArrayList<LineStop> stopsFromLineAndLogicalAndDirection(long lineId, long logicalStopId, int direction){
+        ArrayList<LineStop> stopsFromLineAndLogical = new ArrayList<>();
         Cursor cursor = bdd.query(TABLE_NAME(), AllColumns(),
-                LINE_ID + " = ? AND " + NAME + " = ?",
-                new String[]{String.valueOf(lineId),String.valueOf(name)},
+                LINE_ID + " = ? AND " + LOGICALID + " = ? AND " + DIRECTION + " = ?",
+                new String[]{String.valueOf(lineId),String.valueOf(logicalStopId),String.valueOf(direction)},
                 null,null,null);
         while(cursor.moveToNext())
-            directionsFromLineAndStops.add(fromCursor2(cursor));
+            stopsFromLineAndLogical.add(fromCursor(cursor));
         cursor.close();
 
-        return directionsFromLineAndStops;
-    }
-
-    public ArrayList<LineStop> stopsFromLineAndStopsAndDirection(long lineId, String name, int directionId){
-        ArrayList<LineStop> stopsFromLineAndStopsAndDirection = new ArrayList<>();
-        Cursor cursor = bdd.query(TABLE_NAME(), AllColumns(),
-                LINE_ID + " = ? AND "+ NAME + "= ? AND " + DIRECTION + " = ?",
-                new String[]{String.valueOf(lineId),String.valueOf(name),String.valueOf(directionId)},
-                null, null, null);
-        while (cursor.moveToNext())
-            stopsFromLineAndStopsAndDirection.add(fromCursor(cursor));
-        cursor.close();
-        return stopsFromLineAndStopsAndDirection;
+        return stopsFromLineAndLogical;
     }
 }

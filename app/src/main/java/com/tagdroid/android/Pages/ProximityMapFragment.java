@@ -139,7 +139,7 @@ public class ProximityMapFragment extends Page {
             if (GooglePlayServicesUtil.isUserRecoverableError(status)) {
                 showErrorDialog(status);
             } else {
-                Toast.makeText(mActivity, "This device is not supported.",Toast.LENGTH_LONG).show();
+                Toast.makeText(mActivity, getString(R.string.unsupported_device),Toast.LENGTH_LONG).show();
                 //TODO : Back to previous fragment
             }
             return false;

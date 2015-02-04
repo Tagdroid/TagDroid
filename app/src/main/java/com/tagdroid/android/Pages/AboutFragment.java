@@ -37,10 +37,10 @@ public class AboutFragment extends Page implements View.OnClickListener {
         view.findViewById(R.id.mailFélix).setOnClickListener(this);
 
         try {
-            ((Button) view.findViewById(R.id.showlog)).setText("Version " +
+            ((Button) view.findViewById(R.id.showlog)).setText(getString(R.string.version_) +
                     getActivity().getPackageManager().getPackageInfo(getActivity().getPackageName(), 0).versionName);
         } catch (PackageManager.NameNotFoundException e) {
-            ((Button) view.findViewById(R.id.showlog)).setText("Changelog de TagDroid");
+            ((Button) view.findViewById(R.id.showlog)).setText(getString(R.string.tagdroid_changelog));
             Toast.makeText(getActivity(), "Nom de l'application non trouvé… Étrange !", Toast.LENGTH_SHORT).show();
         }
         return view;
@@ -55,17 +55,17 @@ public class AboutFragment extends Page implements View.OnClickListener {
                 (new ChangeLog(getActivity())).show(true);
                 break;
             case R.id.websiteQuentin:
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.quentindesbois.fr")));
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.apropos_website_quentin))));
                 break;
             case R.id.mailQuentin:
-                intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"tagdroid.grenoble@gmail.com"});
+                intent.putExtra(Intent.EXTRA_EMAIL, new String[]{getString(R.string.apropos_tagdroid_mail)});
                 startActivity(Intent.createChooser(intent, getResources().getString(R.string.mail)));
                 break;
             case R.id.websiteFélix:
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://84.100.10.90")));
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.apropos_felix_website))));
                 break;
             case R.id.mailFélix:
-                intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"felix@piedallu.me"});
+                intent.putExtra(Intent.EXTRA_EMAIL, new String[]{getString(R.string.apropos_felix_mail)});
                 startActivity(Intent.createChooser(intent, getResources().getString(R.string.mail)));
                 break;
             default:
