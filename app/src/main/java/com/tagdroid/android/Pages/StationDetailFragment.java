@@ -39,6 +39,7 @@ public class StationDetailFragment extends Page implements SwipeRefreshLayout.On
     private Line selectedLine;
     private Direction directionA, directionB;   // directionA est la sélectionnée, directionB l'autre.
     private LineStop selectedLineStop;
+    private boolean is_reverse_lineStop_existing = true;
     private LineStop reverse_lineStop;      // Le LineStop correspondant à la direction opposée (si existe)
 
     private SwipeRefreshLayout swipeLayout;
@@ -46,9 +47,6 @@ public class StationDetailFragment extends Page implements SwipeRefreshLayout.On
 
     HttpGetNextStopTimes httpGetNextStopTimes;
 
-    public StationDetailFragment() {
-        getDetails();
-    }
     @Override
     public String getTitle() {
         return selectedLineStop.getName();
@@ -56,6 +54,27 @@ public class StationDetailFragment extends Page implements SwipeRefreshLayout.On
     @Override
     public Integer getMenuId() {
         return null;
+    }
+
+    public StationDetailFragment() {
+        getDetails();
+    }
+    private void getDetails() {
+        selectedLine = ReadSQL.getSelectedLine();
+
+        directionA = ReadSQL.getSelectedDirection();
+        directionB = selectedLine.getDirectionList()[2-directionA.getDirectionId()];
+
+        selectedLineStop = ReadSQL.getSelectedLineStop();
+
+        int reverse_direction = 3-selectedLineStop.getDirection();
+
+        ArrayList<LineStop> reverseDirectionStopsList = ReadSQL.getStopsOfLineAndLogicalAndDirection(
+                selectedLine.getId(),selectedLineStop.getLogicalStopId(), reverse_direction,getActivity());
+        if (reverseDirectionStopsList.size()>=1)
+            reverse_lineStop = reverseDirectionStopsList.get(0);
+        else
+            is_reverse_lineStop_existing = false;
     }
 
     @Override
@@ -88,6 +107,9 @@ public class StationDetailFragment extends Page implements SwipeRefreshLayout.On
             }
         });
 
+        if (!is_reverse_lineStop_existing)
+            view.findViewById(R.id.secondaryStopCardView).setVisibility(View.GONE);
+
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             MapFragment mapFragment = (MapFragment) getChildFragmentManager().findFragmentById(R.id.StationMap);
             mapFragment.getMapAsync(this);
@@ -96,20 +118,6 @@ public class StationDetailFragment extends Page implements SwipeRefreshLayout.On
         return view;
     }
 
-    private void getDetails() {
-        selectedLine = ReadSQL.getSelectedLine();
-
-        directionA = ReadSQL.getSelectedDirection();
-        directionB = selectedLine.getDirectionList()[2-directionA.getDirectionId()];
-
-        selectedLineStop = ReadSQL.getSelectedLineStop();
-
-        int reverse_direction = 3-selectedLineStop.getDirection();
-
-        ArrayList<LineStop> reverseDirectionStopsList = ReadSQL.getStopsOfLineAndLogicalAndDirection(
-                selectedLine.getId(),selectedLineStop.getLogicalStopId(), reverse_direction,getActivity());
-        reverse_lineStop = reverseDirectionStopsList.get(0);
-    }
 
     @Override
     public void onRefresh() {
