@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.GridView;
 
 import com.tagdroid.android.Page;
@@ -24,8 +26,6 @@ import com.tagdroid.tagapi.JSonApi.Transport.Line;
 import com.tagdroid.tagapi.ReadSQL;
 
 import java.util.ArrayList;
-
-import info.hoang8f.widget.FButton;
 
 public class LignesGridFragment extends Page {
     private ArrayList<Line> allLines;
@@ -146,20 +146,15 @@ public class LignesGridFragment extends Page {
             String nom = ligne.getNumber();
             int couleur = ligne.color;
 
-            FButton lineButton = new FButton(context);
+            Button lineButton = new Button(context);
+            lineButton.setHeight(lineButton.getWidth());
             lineButton.setText(nom);
-
             if (nom.length() > 3)
                 lineButton.setTextSize(14);
             else
                 lineButton.setTextSize(16);
-
             lineButton.setTextColor(BlackorWhite(couleur));
-
-            lineButton.setButtonColor(couleur);
-            lineButton.setShadowEnabled(true);
-            lineButton.setShadowHeight(7);
-            lineButton.setCornerRadius(12);
+            lineButton.getBackground().setColorFilter(couleur, PorterDuff.Mode.SRC_OVER);
 
             lineButton.setOnClickListener(new View.OnClickListener() {
                 @Override

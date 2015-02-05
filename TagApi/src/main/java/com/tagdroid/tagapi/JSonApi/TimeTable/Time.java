@@ -11,7 +11,7 @@ public class Time {
     private long VehicleJourneyId =0;
     private String VehicleJourneyRef ="";
 
-    public Time(JSONObject jsonTime) throws JSONException {
+    public Time(JSONObject jsonTime) {
         Log.d("JSON TIME",jsonTime.toString());
         //TODO -->
         /*this.PassingTime = StopPassingTimeList(jsonTime).getInt("PassingTime");
@@ -30,7 +30,7 @@ public class Time {
         JSONArray jsonTimeArray = jsonTime.getJSONArray("StopPassingTimeList");
         int length = jsonTimeArray.length();
         JSONArray StopPassingTimeList = new JSONArray();
-        JSONObject obj = null;
+        JSONObject obj;
         for (int i = 0; i < length; i++) {
             obj = new JSONObject();
             obj.put("PassingTime", jsonTimeArray.getJSONObject(i).getInt("PassingTime"));

@@ -23,6 +23,7 @@ import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
 import android.support.v4.view.MotionEventCompat;
 import android.support.v4.view.ViewConfigurationCompat;
 import android.support.v4.view.ViewPager;
@@ -178,7 +179,7 @@ public class UnderlinePageIndicator extends View implements PageIndicator {
         canvas.drawRect(left, top, right, bottom, mPaint);
     }
 
-    public boolean onTouchEvent(MotionEvent ev) {
+    public boolean onTouchEvent(@NonNull MotionEvent ev) {
         if (super.onTouchEvent(ev)) {
             return true;
         }
@@ -381,7 +382,7 @@ public class UnderlinePageIndicator extends View implements PageIndicator {
         }
 
         @Override
-        public void writeToParcel(Parcel dest, int flags) {
+        public void writeToParcel(@NonNull Parcel dest, int flags) {
             super.writeToParcel(dest, flags);
             dest.writeInt(currentPage);
         }

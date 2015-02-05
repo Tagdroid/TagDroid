@@ -27,7 +27,7 @@ public class HttpGetNextStopTimes extends HttpGetTask {
                 + "&Date=" + formatedDate());
     }
 
-    public static String formatedDate() {;
+    public static String formatedDate() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String date = dateFormat.format(new Date(System.currentTimeMillis()));
 

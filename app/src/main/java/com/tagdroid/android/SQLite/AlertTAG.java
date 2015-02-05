@@ -52,7 +52,7 @@ public class AlertTAG extends SQLiteOpenHelper {
     }
     
     public ArrayList fetchData(){
-        ArrayList<String>stringArrayList=new ArrayList<String>();
+        ArrayList<String>stringArrayList=new ArrayList<>();
         String fetchdata="select * from AlertTAG";
         SQLiteDatabase sqLiteDatabase=this.getReadableDatabase();
         Cursor cursor=sqLiteDatabase.rawQuery(fetchdata, null);

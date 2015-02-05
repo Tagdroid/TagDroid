@@ -32,11 +32,8 @@ public class RssHandler extends DefaultHandler {
 	public void startDocument() {
 		rssFeed = new RssFeed();
 	}
-	
-	/**
-	 * Return the parsed RssFeed with it's RssItems
-	 * @return
-	 */
+
+
 	public RssFeed getResult() {
 		return rssFeed;
 	}

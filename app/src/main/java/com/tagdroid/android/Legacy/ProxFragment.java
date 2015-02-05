@@ -122,7 +122,7 @@ public class ProxFragment extends Fragment implements LocationListener{
 
 	    
         
-        ArrayList<HashMap<String, String>> listItem = new ArrayList<HashMap<String, String>>();
+        ArrayList<HashMap<String, String>> listItem = new ArrayList<>();
         HashMap<String, String> map;
         double latitude;
     	double longitude;
@@ -142,7 +142,7 @@ public class ProxFragment extends Fragment implements LocationListener{
 					
 		        	double distance = (int)lm.getLastKnownLocation(getBestProvider()).distanceTo(convertGpToLoc(point));
 		        	           	
-	            	map = new HashMap<String, String>();
+	            	map = new HashMap<>();
 	                map.put("titre", station[1]);
 	                map.put("id_station", "id="+station[0]);
 	                map.put("distance", distance+" m");  

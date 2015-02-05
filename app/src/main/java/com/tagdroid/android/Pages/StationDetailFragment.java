@@ -1,14 +1,17 @@
 package com.tagdroid.android.Pages;
 
 import android.content.Context;
+import android.graphics.PorterDuff;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,7 +33,6 @@ import com.tagdroid.tagapi.ReadSQL;
 
 import java.util.ArrayList;
 
-import info.hoang8f.widget.FButton;
 
 public class StationDetailFragment extends Page implements SwipeRefreshLayout.OnRefreshListener,
         ProgressionInterface, OnMapReadyCallback {
@@ -62,8 +64,9 @@ public class StationDetailFragment extends Page implements SwipeRefreshLayout.On
 
         ((TextView) view.findViewById(R.id.directionA)).setText(directionA.getName());
         ((TextView) view.findViewById(R.id.directionB)).setText(directionB.getName());
-        ((FButton)  view.findViewById(R.id.LigneIndicateur1)).setButtonColor(selectedLine.color);
-        ((FButton)  view.findViewById(R.id.LigneIndicateur1)).setText(selectedLine.getNumber());
+        view.findViewById(R.id.LigneIndicateur1).getBackground()
+                .setColorFilter(selectedLine.color, PorterDuff.Mode.SRC_OVER);
+        ((Button)view.findViewById(R.id.LigneIndicateur1)).setText(selectedLine.getNumber());
 
         horairesA = new TextView[]{
                 ((TextView) view.findViewById(R.id.horaireA_1)),
@@ -85,9 +88,11 @@ public class StationDetailFragment extends Page implements SwipeRefreshLayout.On
             }
         });
 
-        MapFragment mapFragment = (MapFragment) getChildFragmentManager().findFragmentById(R.id.StationMap);
-        mapFragment.getMapAsync(this);
-        
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            MapFragment mapFragment = (MapFragment) getChildFragmentManager().findFragmentById(R.id.StationMap);
+            mapFragment.getMapAsync(this);
+        }
+
         return view;
     }
 

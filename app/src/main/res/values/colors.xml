@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="fbutton_default_color">#3eadeb</color>
+    <color name="fbutton_default_shadow_color">#ff3493c8</color>
+    <color name="fbutton_color_turquoise">#1abc9c</color>
     <!-- APPLICATION COLOR -->
     <!--V = 40, 50, 75-->
     <color name="bleu_tag_f40">#004a66</color>

@@ -29,9 +29,9 @@
                     android:id="@+id/tramGrid"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:verticalSpacing="15dp"
-                    android:horizontalSpacing="15dp"
-                    android:columnWidth="48dp"
+                    android:verticalSpacing="@dimen/grid_vertical_spacing"
+                    android:horizontalSpacing="@dimen/grid_horizontal_spacing"
+                    android:columnWidth="@dimen/grid_column_width"
                     android:numColumns="auto_fit" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
@@ -56,9 +56,9 @@
                     android:id="@+id/chronoGrid"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:verticalSpacing="15dp"
-                    android:horizontalSpacing="15dp"
-                    android:columnWidth="48dp"
+                    android:verticalSpacing="@dimen/grid_vertical_spacing"
+                    android:horizontalSpacing="@dimen/grid_horizontal_spacing"
+                    android:columnWidth="@dimen/grid_column_width"
                     android:numColumns="auto_fit" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
@@ -84,9 +84,9 @@
                     android:id="@+id/proximoGrid"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:verticalSpacing="15dp"
-                    android:horizontalSpacing="15dp"
-                    android:columnWidth="48dp"
+                    android:verticalSpacing="@dimen/grid_vertical_spacing"
+                    android:horizontalSpacing="@dimen/grid_horizontal_spacing"
+                    android:columnWidth="@dimen/grid_column_width"
                     android:numColumns="auto_fit" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
@@ -112,9 +112,9 @@
                     android:id="@+id/flexoGrid"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:verticalSpacing="15dp"
-                    android:horizontalSpacing="15dp"
-                    android:columnWidth="48dp"
+                    android:verticalSpacing="@dimen/grid_vertical_spacing"
+                    android:horizontalSpacing="@dimen/grid_horizontal_spacing"
+                    android:columnWidth="@dimen/grid_column_width"
                     android:numColumns="auto_fit" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
@@ -142,9 +142,9 @@
                     android:id="@+id/unknownGrid"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:verticalSpacing="15dp"
-                    android:horizontalSpacing="15dp"
-                    android:columnWidth="48dp"
+                    android:verticalSpacing="@dimen/grid_vertical_spacing"
+                    android:horizontalSpacing="@dimen/grid_horizontal_spacing"
+                    android:columnWidth="@dimen/grid_column_width"
                     android:numColumns="auto_fit" />
             </LinearLayout>
         </android.support.v7.widget.CardView>

@@ -26,14 +26,13 @@ import java.util.ArrayList;
 
 public class LineStopsFragment extends Page{
     private static Line ligne;
-    private static Direction direction;
 
     private ArrayList<LineStop> lineStops;
 
     private void getDetailsFromSQL() {
         Log.d("Details", "getDetailsFromSQL");
         ligne = ReadSQL.getSelectedLine();
-        direction = ReadSQL.getSelectedDirection();
+        Direction direction = ReadSQL.getSelectedDirection();
         lineStops = ReadSQL.getStops(ligne.getId(), direction.getDirectionId(), getActivity());
     }
 

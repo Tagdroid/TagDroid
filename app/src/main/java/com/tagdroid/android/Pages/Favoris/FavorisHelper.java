@@ -1,12 +1,11 @@
 package com.tagdroid.android.Pages.Favoris;
 
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
 
-import com.tagdroid.tagapi.JSonApi.Favori;
-import com.tagdroid.tagapi.SQLApi.FavorisDAO;
-import com.tagdroid.tagapi.SQLApi.DatabaseHelper;
 import com.tagdroid.android.R;
+import com.tagdroid.tagapi.JSonApi.Favori;
+import com.tagdroid.tagapi.SQLApi.DatabaseHelper;
+import com.tagdroid.tagapi.SQLApi.FavorisDAO;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,9 +31,9 @@ public class FavorisHelper {
 
     public ArrayList<HashMap<String, String>> getFavorisAdaptedArray() {
         if (favorisAdaptedArray == null) {
-            favorisAdaptedArray = new ArrayList<HashMap<String, String>>();
+            favorisAdaptedArray = new ArrayList<>();
             for (Favori i : getFavoris()) {
-                HashMap<String, String> temp = new HashMap<String, String>();
+                HashMap<String, String> temp = new HashMap<>();
                 temp.put("nom", i.Name);
                 temp.put("ligne", i.Ligne);
                 temp.put("id", i.Id.toString());

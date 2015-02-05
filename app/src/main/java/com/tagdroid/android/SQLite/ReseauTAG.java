@@ -33,7 +33,7 @@ public class ReseauTAG extends SQLiteOpenHelper {
     }
     
     public ArrayList fetchData(){
-        ArrayList<String>stringArrayList=new ArrayList<String>();
+        ArrayList<String>stringArrayList=new ArrayList<>();
         String fetchdata="select * from ReseauTAG";
         SQLiteDatabase sqLiteDatabase=this.getReadableDatabase();
         Cursor cursor=sqLiteDatabase.rawQuery(fetchdata, null);

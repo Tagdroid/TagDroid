@@ -116,11 +116,6 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
     }
 
     @Override
-    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-    }
-
-    @Override
     public void onDownloadStart() {
         Log.d("WelcomeActivity", "onDownloadStart");
     }

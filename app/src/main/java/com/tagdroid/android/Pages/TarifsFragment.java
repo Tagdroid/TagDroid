@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +20,6 @@ import android.widget.TextView;
 import com.astuetz.PagerSlidingTabStrip;
 import com.tagdroid.android.Page;
 import com.tagdroid.android.R;
-
 
 public class TarifsFragment extends Page {
     @Override
@@ -48,9 +48,6 @@ public class TarifsFragment extends Page {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if (savedInstanceState != null)
-            return super.onCreateView(inflater, container, savedInstanceState);
-
         View view = inflater.inflate(R.layout.fragment_tarif, container, false);
 
         /**** SLIDING PAGER ****/
@@ -59,6 +56,13 @@ public class TarifsFragment extends Page {
         pager.setAdapter(new ViewPagerAdapter());
         ((PagerSlidingTabStrip) view.findViewById(R.id.tabs)).setViewPager(pager);
         return view;
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        ((ActionBarActivity) getActivity()).getSupportActionBar().setElevation(0);
+        view.findViewById(R.id.tabs).setElevation(getResources().getDimension(R.dimen.toolbar_elevation));
     }
 
     class ViewPagerAdapter extends PagerAdapter {

@@ -68,12 +68,12 @@ public class SettingsFragment extends Page{
     {
         if (dir != null && dir.isDirectory()) {
         String[] children = dir.list();
-        for (int i = 0; i < children.length; i++) {
-            boolean success = deleteDir(new File(dir, children[i]));
-            if (!success) {
-                return false;
+            for (String aChildren : children) {
+                boolean success = deleteDir(new File(dir, aChildren));
+                if (!success) {
+                    return false;
+                }
             }
-        }
     }
         return dir.delete();
     }

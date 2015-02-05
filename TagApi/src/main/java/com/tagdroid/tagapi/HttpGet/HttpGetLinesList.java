@@ -51,9 +51,4 @@ public class HttpGetLinesList extends HttpGetTask {
         daTAGase.setTransactionSuccessful();
         daTAGase.endTransaction();
     }
-
-    @Override
-    protected void onPostExecute(Void result) {
-        super.onPostExecute(result);
-    }
 }

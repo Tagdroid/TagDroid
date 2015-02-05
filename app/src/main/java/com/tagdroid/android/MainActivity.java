@@ -44,7 +44,6 @@ public class MainActivity extends ActionBarActivity implements DrawerFragment.Dr
 
         try {
             File sd = Environment.getExternalStorageDirectory();
-            File data = Environment.getDataDirectory();
 
             if (sd.canWrite()) {
                 String currentDBPath = "/data/" + getPackageName() + "/databases/TagDatabase.db";

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    xmlns:linebutton="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -40,17 +40,16 @@
                 android:id="@+id/description"
                 android:typeface="serif" />
 
-            <info.hoang8f.widget.FButton android:id="@+id/button_more"
+            <com.tagdroid.android.LineButton android:id="@+id/button_more"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/more"
                 android:textColor="@android:color/white"
-                fbutton:buttonColor="@color/bleu_tag_f50"
-                fbutton:shadowHeight="2dp"
-                fbutton:cornerRadius="8dp"
-                fbutton:shadowEnabled="true"/>
-
+                linebutton:buttonColor="@color/bleu_tag_f50"
+                linebutton:shadowHeight="2dp"
+                linebutton:cornerRadius="8dp"
+                linebutton:shadowEnabled="true"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
