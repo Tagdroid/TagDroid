@@ -56,7 +56,7 @@
 	
 	<string name="addfavoris">Estación añadir de favoritos</string>
 	<string name="delfavoris">Estación eliminado de favoritos</string>
-	<string name="loading">Cargando ...</string>
+	<string name="loading">Cargando…</string>
 	<string name="nohoraire">No hay horarios disponibles</string>
 
     <!-- Proximite et Favoris -->
@@ -64,13 +64,13 @@
 	<string name="nofavs">Ningún Favorito</string>	
 	<string name="noproxs">No Ubicación</string>
 	<string name="noaddress">No se han encontrado dirección</string>
-	<string name="searchaddress">Buscar por la dirección ...</string>
+	<string name="searchaddress">Buscar por la dirección…</string>
 	
 	<!-- Plan-->	
 	<string name="tramlines">Líneas de tranvía :</string>
 	<string name="buslines">Líneas de Autobuses :</string>
 	<string name="places">Lugares :</string>
-	<string name="soon">Pronto ...</string>
+	<string name="soon">Pronto…</string>
 	<string name="mapstype">Tipo de plan :</string>	
 
 	<!-- Flux RSS -->	
@@ -80,7 +80,7 @@
 	
 	<!-- Changelog -->	
 	<string name="changelog_title">Actualizaciones :</string>
-    <string name="changelog_show_full">mas...</string>
+    <string name="changelog_show_full">mas…</string>
     <string name="changelog_full_title">Change Log</string>
 	<string name="changelog_ok_button">OK</string>
     
@@ -93,7 +93,7 @@
 	<string name="pass_annuel">ANUAL</string>
 	<string name="pass_2mois">2 meses gratis</string>
 	<string name="pass_4mois">4 meses gratis</string>
-	<string name="cannelle">Muévete con total libertad 08:30-17:30 de lunes a sábado y todo el día los domingos y días festivos.</string>
+	<string name="cannelle">Muévete con total libertad 08:30–17:30 de lunes a sábado y todo el día los domingos y días festivos.</string>
 	<string name="soleil">Reservado para los empleados de las empresas que participan en un proceso de Plan de Viajes de Negocios proporciona. Consulte con su empleador!</string>
 	
 	<!-- About -->
@@ -116,7 +116,7 @@
 	<string name="welcome_texte3">Los datos provienen de Mobitrans servicio web gestionado por TAG.</string>
 	<string name="welcome_texte4">En caso de problemas, no dude en enviar por correo electrónico.</string>
 	<string name="welcome_texte5">la aplicación cuenta con un menú de deslizamiento en el lado izquierdo de la interfaz. Deslice hacia la derecha para que se muestre o haga clic en el botón del menú superior izquierda.</string>
-	<string name="welcome_texte6">Añade tus estaciones favoritas ...</string>
+	<string name="welcome_texte6">Añade tus estaciones favoritas…</string>
     <string name="allons_y">Allons-y !</string>
     <string name="other_lines">Autres lignes</string>
     <string name="choix_directions">Choisissez votre direction</string>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="auteur">Autor</string>
+    <string name="auteur">Author</string>
     <string name="other_lines">Autres lignes</string>
     <string name="about">About</string>
     <string name="choix_directions">Choisissez votre direction</string>
