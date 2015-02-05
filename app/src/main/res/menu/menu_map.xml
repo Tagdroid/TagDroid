@@ -18,7 +18,7 @@
         android:title="@string/menu_others"/>
      <item
         android:id="@+id/menu_map"
-        android:icon="@drawable/menu_map"
+        android:icon="@android:drawable/ic_dialog_map"
         app:showAsAction="ifRoom"
         android:title="@string/menu_map"/>
 </menu>

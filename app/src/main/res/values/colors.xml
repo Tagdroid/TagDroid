@@ -4,13 +4,17 @@
     <color name="fbutton_default_shadow_color">#ff3493c8</color>
     <color name="fbutton_color_turquoise">#1abc9c</color>
     <!-- APPLICATION COLOR -->
+    <color name="bleu_tag_700">#ff0288d1</color>
+    <color name="bleu_tag_500">#ff03a9f4</color>
+
+
     <!--V = 40, 50, 75-->
     <color name="bleu_tag_f40">#004a66</color>
     <color name="bleu_tag_f50">#005d80</color>
     <color name="bleu_tag_f75">#008bbf</color>
     <color name="bleu_tag_f85">#029cd6</color>
 
-    <color name="bleu_tag">#00b9ff</color>
+    <color name="bleu_tag">#ff03a9f4</color>
 
     <!-- S = , 50, -->
     <color name="bleu_tag_clair1">#40cbff</color>

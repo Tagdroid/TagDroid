@@ -90,9 +90,6 @@ public class ActualitesFragment extends Page implements ProgressionInterface, Ac
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.rss_reload:
-                httpGetActualites.execute();
-                break;
             case R.id.menu_rss:
                 new AlertDialog.Builder(getActivity())
                         .setTitle(R.string.fluxchoice)
@@ -156,7 +153,7 @@ public class ActualitesFragment extends Page implements ProgressionInterface, Ac
 
         changeFragmentInterface.onChangeFragment(actualitesDetailsFragment);
 
-        fragmentTransaction.setCustomAnimations(R.anim.fadein, R.anim.fadeout, R.anim.fadein, R.anim.fadeout);
+        fragmentTransaction.setCustomAnimations(R.anim.fragment_fadein, R.anim.fragment_fadeout, R.anim.fragment_fadein, R.anim.fragment_fadeout);
         fragmentTransaction.replace(R.id.pager, actualitesDetailsFragment);
         fragmentTransaction.commit();
     }

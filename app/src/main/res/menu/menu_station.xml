@@ -5,10 +5,4 @@
         android:checkable="true"
         app:showAsAction="ifRoom"
         android:title="Add to Bookmark"/> 
-        
-     <item
-        android:id="@+id/menu_refresh"
-        android:icon="@drawable/ic_menu_refresh"
-        app:showAsAction="ifRoom"
-        android:title="Refresh"/>
 </menu>

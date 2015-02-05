@@ -111,10 +111,10 @@
     </array>
 
     <array name="combines_image">
-        <item>@drawable/citelib</item>
-        <item>@drawable/ter</item>
-        <item>@drawable/transisere</item>
-        <item>@drawable/metrovelo</item>
+        <item>@drawable/logo_citelib</item>
+        <item>@drawable/logo_ter</item>
+        <item>@drawable/logo_transisere</item>
+        <item>@drawable/logo_metrovelo</item>
     </array>
 
     <array name="combines_text">

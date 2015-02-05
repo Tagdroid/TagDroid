@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">TAGDroid</string>
-    <string name="authorName">Quentin DESBOIS</string>
-    <string name="author2Name">Félix PIÉDALLU</string>
-    <string name="collaboName">Alexandre LOUVRIER</string>
+    <string name="app_name" translatable="false">TAGDroid</string>
+    <string name="authorName" translatable="false">Quentin DESBOIS</string>
+    <string name="author2Name" translatable="false">Félix PIÉDALLU</string>
+    <string name="collaboName" translatable="false">Alexandre LOUVRIER</string>
 
-    <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Fermer le panneau</string>
 
     <string name="menu_pdf">Plan PDF</string>
@@ -149,9 +148,9 @@
     <string name="mensuel">Mensuel</string>
     <string name="annuel">Annuel</string>
     <string name="wait_for_download_to_finish">Veuillez attendre la fin du téléchargement de la base de données…</string>
-    <string name="chrono">Chrono</string>
-    <string name="proximo">Proximo</string>
-    <string name="flexo">Flexo</string>
+    <string name="chrono" translatable="false">Chrono</string>
+    <string name="proximo" translatable="false">Proximo</string>
+    <string name="flexo" translatable="false">Flexo</string>
     <string name="other_lines">Autres lignes</string>
     <string name="choix_directions">Choisissez votre direction :</string>
     <string name="lines">Toutes les lignes</string>
@@ -161,7 +160,7 @@
     <!-- Settings -->
     <string name="change_langue">Langue actuelle :</string>
     <string name="afficher_horaires_theoriques">Afficher les horaires théoriques</string>
-    <string name="default_horaires_string">…</string>
+    <string name="default_horaires_string" translatable="false">…</string>
     <string name="minutes_abr">min</string>
     <string name="loading_in_progress">Chargement en cours</string>
     <string name="googleplay_not_detected">Google Play Service non détecté. Dysfonctionnement de l\'application possible.</string>
@@ -172,13 +171,13 @@
     <string name="loading_error">Erreur de chargement :\n</string>
     <string name="tagdroid_changelog">Changelog de TagDroid</string>
     <string name="version_">"Version "</string>
-    <string name="apropos_website_quentin">http://www.quentindesbois.fr</string>
-    <string name="apropos_tagdroid_mail">tagdroid.grenoble@gmail.com</string>
-    <string name="apropos_felix_mail">felix@piedallu.me</string>
-    <string name="apropos_felix_website">http://84.100.10.90</string>
+    <string name="apropos_website_quentin" translatable="false">http://www.quentindesbois.fr</string>
+    <string name="apropos_tagdroid_mail" translatable="false">tagdroid.grenoble@gmail.com</string>
+    <string name="apropos_felix_mail" translatable="false">felix@piedallu.me</string>
+    <string name="apropos_felix_website" translatable="false">http://84.100.10.90</string>
     <string name="unsupported_device">This device is not supported.</string>
     <string name="database_download">Chargement des données</string>
     <string name="cache_cleared">Données cache supprimées</string>
-
-
+    <string name="collaborateur">Collaborateur</string>
+    <string name="drawer_open">Ouvrir le panneau</string>
 </resources>

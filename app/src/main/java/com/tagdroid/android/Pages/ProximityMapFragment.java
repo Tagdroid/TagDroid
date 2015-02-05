@@ -62,10 +62,10 @@ public class ProximityMapFragment extends Page {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View inflatedView = inflater.inflate(R.layout.legacy_fragment_map, container, false);
+        View inflatedView = inflater.inflate(R.layout.station_detail, container, false);
 
         MapsInitializer.initialize(mActivity);
-        mMapView = (MapView) inflatedView.findViewById(R.id.map);
+        mMapView = (MapView) inflatedView.findViewById(R.id.StationMap);
         mMapView.onCreate(mBundle);
         setUpMapIfNeeded(inflatedView);
 
@@ -84,7 +84,7 @@ public class ProximityMapFragment extends Page {
 
     private void setUpMapIfNeeded(View inflatedView) {
         if (mMap == null) {
-            mMap = ((MapView) inflatedView.findViewById(R.id.map)).getMap();
+            mMap = ((MapView) inflatedView.findViewById(R.id.StationMap)).getMap();
             if (mMap != null) {
                 setUpMap();
             }

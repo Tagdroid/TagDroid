@@ -58,8 +58,8 @@ public class LineStopsFragment extends Page{
 
                 changeFragmentInterface.onChangeFragment(stationDetailFragment);
 
-                fragmentTransaction.setCustomAnimations(R.anim.fadein, R.anim.fadeout,
-                        R.anim.fadein, R.anim.fadeout);
+                fragmentTransaction.setCustomAnimations(R.anim.fragment_fadein, R.anim.fragment_fadeout,
+                        R.anim.fragment_fadein, R.anim.fragment_fadeout);
                 fragmentTransaction.replace(R.id.pager, stationDetailFragment);
                 fragmentTransaction.commit();
             }

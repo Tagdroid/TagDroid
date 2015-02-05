@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>	
-    <string name="app_name">TAGDroid</string>
+<resources>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="menu_pdf">PDF Map</string>
@@ -59,9 +58,8 @@
 	<string name="delfavoris">Stazione cancellazione dei segnalibri</string>
 	<string name="loading">Caricamento ...</string>
 	<string name="nohoraire">Nessun pianificazioni disponibili</string>
-	<string name="travauxE">Linea E è attualmente in costruzione. Messa: 28 Giugno 2014</string>
-	
-	<!-- Proximite et Favoris -->
+
+    <!-- Proximite et Favoris -->
 	<string name="please_turn_on_gps">Per favore, accendere il GPS</string>
 	<string name="nofavs">Nessuna Scelta</string>	
 	<string name="noproxs">No Localizzazione</string>
@@ -95,8 +93,7 @@
 	<string name="pass_annuel">ANNUALE</string>
 	<string name="pass_2mois">2 mesi gratis</string>
 	<string name="pass_4mois">4 mesi gratis</string>
-	<string name="newtarif">Nuove tariffe a partire dal 1 settembre 2013</string>
-	<string name="cannelle">Muoversi liberamente 8:30-17:30 Lunedi al Sabato e domenica tutto il giorno e nei giorni festivi.</string>
+    <string name="cannelle">Muoversi liberamente 8:30-17:30 Lunedi al Sabato e domenica tutto il giorno e nei giorni festivi.</string>
 	<string name="soleil">Riservato ai dipendenti delle aziende impegnate in un processo di Plan Business Travel offre. Verificare con il proprio datore di lavoro!</string>
 	
 	<!-- About -->
@@ -114,10 +111,6 @@
 	<!-- Welcome -->	
 	<string name="menu_skip">Saltare</string>
 	<string name="welcome_bienvenue">Benvenuto !</string>
-	<string name="welcome_navigation">Navigazione</string>
-	<string name="welcome_favoris">Preferiti</string>
-	<string name="welcome_proximite">Vicinanza &amp; Mappa</string>
-	<string name="welcome_pdf">PDF Mappa &amp; Widget</string>
 	<string name="welcome_texte1">Grazie per installare TAGdroid, l\'applicazione non ufficiale dei trasporti pubblici a Grenoble.</string>
 	<string name="welcome_texte2">TAGdroid è un\'applicazione gratuita che non è affiliato con la società SEMITAG, TAG et SMTC.</string>
 	<string name="welcome_texte3">I dati provengono da Mobitrans webservice gestita da TAG.</string>
@@ -126,9 +119,6 @@
 	<string name="welcome_texte6">Aggiungi le tue stazioni preferite ...</string>
 
     <string name="allons_y">Allons-y !</string>
-    <string name="chrono">Chrono</string>
-    <string name="proximo">Proximo</string>
-    <string name="flexo">Flexo</string>
     <string name="other_lines">Autres lignes</string>
     <string name="choix_directions">Choisissez votre direction</string>
     <string name="lines">Toutes les lignes</string>

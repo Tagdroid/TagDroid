@@ -2,11 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/rss_reload"
-        android:icon="@drawable/ic_menu_refresh"
-        app:showAsAction="ifRoom"
-        android:title="Refresh"/>
-    <item
         android:id="@+id/menu_rss"
         android:icon="@drawable/menu_rss"
         app:showAsAction="ifRoom"

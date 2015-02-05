@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">TAGDroid</string>
     <string name="auteur">Autor</string>
-    <string name="chrono">Chrono</string>
-    <string name="proximo">Proximo</string>
-    <string name="flexo">Flexo</string>
     <string name="other_lines">Autres lignes</string>
     <string name="about">About</string>
     <string name="choix_directions">Choisissez votre direction</string>
@@ -13,5 +9,6 @@
     <!-- Settings -->
     <string name="change_langue">Current language :</string>
     <string name="direction">direction</string>
+    <string name="about_desc">Non official Application</string>
 
 </resources>

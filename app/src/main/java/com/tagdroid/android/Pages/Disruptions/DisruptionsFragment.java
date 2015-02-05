@@ -67,8 +67,6 @@ public class DisruptionsFragment extends Page implements ProgressionInterface {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.rss_reload:
-                break;
             case R.id.menu_rss:
                 break;
             default:
