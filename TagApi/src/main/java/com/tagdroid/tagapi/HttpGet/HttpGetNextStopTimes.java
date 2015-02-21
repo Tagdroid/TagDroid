@@ -11,6 +11,7 @@ import com.tagdroid.tagapi.SQLApi.TimeTable.Timetable1DAO;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -36,7 +37,8 @@ public class HttpGetNextStopTimes extends HttpGetTask {
     }
 
     @Override
-    public void readData(JSONArray jsonData) {
+    public void readData(JSONObject jsonObject) throws JSONException {
+        JSONArray jsonData = jsonObject.getJSONArray("Data");
         DatabaseHelper dbHelper = DatabaseHelper.getInstance(context);
         SQLiteDatabase daTAGase = dbHelper.getWritableDatabase();
         daTAGase.beginTransaction();

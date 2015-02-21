@@ -2,6 +2,7 @@ package com.tagdroid.tagapi;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.tagdroid.tagapi.JSonApi.Disruption.Disruption;
 import com.tagdroid.tagapi.JSonApi.TimeTable.Time;
@@ -10,7 +11,6 @@ import com.tagdroid.tagapi.JSonApi.Transport.Line;
 import com.tagdroid.tagapi.JSonApi.Transport.LineStop;
 import com.tagdroid.tagapi.SQLApi.DatabaseHelper;
 import com.tagdroid.tagapi.SQLApi.Disruption.DisruptionDAO;
-import com.tagdroid.tagapi.SQLApi.TimeTable.Timetable1DAO;
 import com.tagdroid.tagapi.SQLApi.Transport.DirectionDAO;
 import com.tagdroid.tagapi.SQLApi.Transport.LineStopsDAO;
 import com.tagdroid.tagapi.SQLApi.Transport.LinesDAO;
@@ -19,12 +19,15 @@ import java.util.ArrayList;
 
 public class ReadSQL {
     private static ArrayList<Line> AllLines;
-    private static ArrayList<Time> AllTimes;
     private static ArrayList<Disruption> AllDisruptions;
 
     private static Line         selectedLine;
     private static Direction    selectedDirection;
     private static LineStop     selectedLineStop;
+
+
+    private static ArrayList<Time> HorairesPrincipaux;
+    private static ArrayList<Time> HorairesSecondaires;
 
     public static ArrayList<Line> getAllLines(Context context) {
         if (AllLines == null) {
@@ -74,18 +77,20 @@ public class ReadSQL {
         return lineStopsOfLogicalAndLine;
     }
 
-    public static ArrayList<Time> getAllTimes(Context context) {
-        if (AllTimes == null) {
-            DatabaseHelper dbHelper = DatabaseHelper.getInstance(context);
-            SQLiteDatabase daTAGase = dbHelper.getReadableDatabase();
-            daTAGase.beginTransaction();
 
-            AllTimes = new Timetable1DAO(daTAGase).selectAll();
+    public static void setHorairesPrincipaux(ArrayList<Time> horairesPrincipaux) {
+        Log.d("readsql", "sethorairespr "+horairesPrincipaux.size());
+        HorairesPrincipaux = horairesPrincipaux;
+    }
+    public static ArrayList<Time> getHorairesPrincipaux() {
+        return HorairesPrincipaux;
+    }
 
-            daTAGase.setTransactionSuccessful();
-            daTAGase.endTransaction();
-        }
-        return AllTimes;
+    public static void setHorairesSecondaires(ArrayList<Time> horairesSecondaires) {
+        HorairesSecondaires = horairesSecondaires;
+    }
+    public static ArrayList<Time> getHorairesSecondaires() {
+        return HorairesSecondaires;
     }
 
     public static ArrayList<Disruption> getAllDisruptions(Context context) {

@@ -31,7 +31,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.tagdroid.android.R;
 
 public class GMapFragment extends Fragment {
-
+/*
 	private Activity mActivity;
 	static final int REQUEST_CODE_RECOVER_PLAY_SERVICES = 1001;
 	final CharSequence[] items_tram = {"Ligne A","Ligne B","Ligne C","Ligne D","Ligne E"}; 
@@ -63,7 +63,7 @@ public class GMapFragment extends Fragment {
     	private final View mContents;
     	
 	    CustomInfoWindowAdapter() {
-	        mContents = mActivity.getLayoutInflater().inflate(R.layout.legacy_custom_info_contents, null);
+	       // mContents = mActivity.getLayoutInflater().inflate(R.layout.legacy_custom_info_contents, null);
 	    }
 	    
 	    public View getInfoContents(Marker marker) {
@@ -81,11 +81,11 @@ public class GMapFragment extends Fragment {
 	        String snippet0[] = marker.getSnippet().split("\n");   
 	        String snippet = snippet0[0];
 	        Log.e("456", snippet);
-	        TextView snippetUi = ((TextView) view.findViewById(R.id.snippet));
-	        snippetUi.setText(snippet);
+	      //  TextView snippetUi = ((TextView) view.findViewById(R.id.snippet));
+	     //   snippetUi.setText(snippet);
 	        
 	        int image_ligne = getResources().getIdentifier(snippet0[0].toLowerCase().replace(" ", "")+"_default", "drawable",  mActivity.getPackageName());
-	        ((ImageView) view.findViewById(R.id.badge)).setImageResource(image_ligne);
+	     //   ((ImageView) view.findViewById(R.id.badge)).setImageResource(image_ligne);
 	    }
 
 		@Override
@@ -109,6 +109,7 @@ public class GMapFragment extends Fragment {
 
         checkPlayServices(); 
         return inflatedView;
+        return null;
     }
 
     
@@ -123,7 +124,7 @@ public class GMapFragment extends Fragment {
 
     private void setUpMapIfNeeded(View inflatedView) {
         if (mMap == null) {
-            mMap = ((MapView) inflatedView.findViewById(R.id.map)).getMap();
+         //   mMap = ((MapView) inflatedView.findViewById(R.id.map)).getMap();
             if (mMap != null) {
                 setUpMap();
             }
@@ -169,7 +170,7 @@ public class GMapFragment extends Fragment {
 		        startActivity(new Intent(mActivity, MainActivityOLD.class));
 		        mActivity.finish();
 			}  		
-        }); */
+        });
     }
 
     @Override
@@ -199,7 +200,7 @@ public class GMapFragment extends Fragment {
     		case R.id.menu_map:  
     			   DialogFragmentMAP newFragment4 = new DialogFragmentMAP();
     		       newFragment4.show(ft, "dialog");
-    			return true;*/
+    			return true;
     		default:
     			return super.onOptionsItemSelected(item);
     	}
@@ -265,7 +266,7 @@ public class GMapFragment extends Fragment {
     void showErrorDialog(int code) {
     	  GooglePlayServicesUtil.getErrorDialog(code, mActivity, REQUEST_CODE_RECOVER_PLAY_SERVICES).show();
     }
-    
+    */
    /* class DialogFragmentTRAM extends DialogFragment {
         @NonNull
         public Dialog onCreateDialog(Bundle savedInstanceState) {

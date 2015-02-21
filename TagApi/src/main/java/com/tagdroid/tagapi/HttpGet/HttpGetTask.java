@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -63,11 +62,12 @@ public abstract class HttpGetTask extends AsyncTask<Void, Integer, Void> {
         try {
             JSONObject jsonObj = new JSONObject(responseString);
             String message = jsonObj.getString("Message");
+            //Log.d("httpgettask","RequestURL" + RequestUrl);
             switch (jsonObj.getInt("StatusCode")) {
                 case 200:
-                    readData(jsonObj.getJSONArray("Data"));
+                    readData(jsonObj);
                     break;
-               /* case 300:
+                /*case 300:
                     onVoidResult();
                     break;
                 case 400:
@@ -89,7 +89,7 @@ public abstract class HttpGetTask extends AsyncTask<Void, Integer, Void> {
             e.printStackTrace();
         }
     }
-    public abstract void readData(JSONArray jsonData);
+    public abstract void readData(JSONObject jsonObject) throws JSONException;
 
     @Override
     protected void onPostExecute(Void result) {

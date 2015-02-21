@@ -15,6 +15,7 @@ import com.tagdroid.tagapi.SQLApi.Transport.LogicalStopDAO;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 public class HttpGetLineStops extends HttpGetTask {
     private long lineId;
@@ -28,7 +29,8 @@ public class HttpGetLineStops extends HttpGetTask {
     }
 
     @Override
-    public void readData(JSONArray jsonData) {
+    public void readData(JSONObject jsonObject) throws JSONException {
+        JSONArray jsonData = jsonObject.getJSONArray("Data");
         DatabaseHelper dbHelper = DatabaseHelper.getInstance(context);
         SQLiteDatabase daTAGase = dbHelper.getWritableDatabase();
         daTAGase.beginTransaction();

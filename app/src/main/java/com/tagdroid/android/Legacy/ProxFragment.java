@@ -36,13 +36,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ProxFragment extends Fragment implements LocationListener{
+public class ProxFragment extends Fragment {
 	private ListView ListViewProx;
 	protected LocationManager lm = null;
 	private TextView myadress;
 	private static View view;
 	private Bundle mBundle;
-
+/*
 	
 	public static ProxFragment newInstance() {
         return new ProxFragment();
@@ -201,6 +201,7 @@ public class ProxFragment extends Fragment implements LocationListener{
 			MainActivityOLD.adapter.notifyDataSetChanged();
          }
      });*/
+    /*
 	}
 
 	
@@ -297,5 +298,6 @@ public class ProxFragment extends Fragment implements LocationListener{
     			return super.onOptionsItemSelected(item);
     	}
     }
+        */
 }
 
