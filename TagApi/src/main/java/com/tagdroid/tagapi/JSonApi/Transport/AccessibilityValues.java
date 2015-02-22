@@ -4,10 +4,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class AccessibilityValues {
-    private int BlindAccess,
-            DeafAccess,
-            MentalIllnessAccess,
-            WheelChairAccess;
+    private int BlindAccess, DeafAccess, MentalIllnessAccess, WheelChairAccess;
 
     public AccessibilityValues(JSONObject jsonAccessibilityValues) throws JSONException {
         this.BlindAccess = jsonAccessibilityValues.getInt("BlindAccess");

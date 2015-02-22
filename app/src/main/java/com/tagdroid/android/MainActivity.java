@@ -59,7 +59,7 @@ public class MainActivity extends ActionBarActivity implements DrawerFragment.Dr
                     dst.close();
                 }
             }
-        } catch (Exception e) {
+        } catch (Exception ignored) {
 
         }
 

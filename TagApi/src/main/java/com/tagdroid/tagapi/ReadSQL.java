@@ -41,6 +41,24 @@ public class ReadSQL {
         }
         return AllLines;
     }
+    public static ArrayList<Line> getLinesByType(Context context, int LineType) {
+        SQLiteDatabase daTAGase = DatabaseHelper.getInstance(context).getReadableDatabase();
+        daTAGase.beginTransaction();
+
+        LinesDAO linesDAO = new LinesDAO(daTAGase);
+        DirectionDAO directionDAO = new DirectionDAO(daTAGase);
+
+        ArrayList<Line> ThisType = linesDAO.selectByType(LineType);
+        for (Line i : ThisType) {
+            ArrayList<Direction> directions = directionDAO.getDirectionsOfLine(i.getId());
+            i.setDirectionList(directions.toArray(new Direction[directions.size()]));
+        }
+        daTAGase.setTransactionSuccessful();
+        daTAGase.endTransaction();
+
+        return ThisType;
+
+    }
 
     public static ArrayList<LineStop> getStops(long lineId, int directionId, Context context) {
         SQLiteDatabase daTAGase = DatabaseHelper.getInstance(context).getReadableDatabase();

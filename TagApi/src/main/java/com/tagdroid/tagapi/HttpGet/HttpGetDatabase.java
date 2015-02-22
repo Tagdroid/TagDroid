@@ -13,8 +13,8 @@ import java.util.ArrayList;
 
 public class HttpGetDatabase implements HttpGetInterface {
     private final  Context context;
-    public  static boolean isFinished = false;
     private static ProgressionInterface progressionInterface;
+    public  static boolean isFinished = false;
     private static ArrayList<Line> linesList;
     private static boolean isHttpGetLinesListFinished = false;
     private static int linesCount,

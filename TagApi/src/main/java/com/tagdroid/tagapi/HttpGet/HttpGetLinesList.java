@@ -2,11 +2,13 @@ package com.tagdroid.tagapi.HttpGet;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.util.Log;
+import android.util.Pair;
 
 import com.tagdroid.tagapi.JSonApi.Transport.Direction;
 import com.tagdroid.tagapi.JSonApi.Transport.Line;
-import com.tagdroid.tagapi.ProgressionInterface;
+import com.tagdroid.tagapi.LinesColors;
 import com.tagdroid.tagapi.SQLApi.DatabaseHelper;
 import com.tagdroid.tagapi.SQLApi.Transport.DirectionDAO;
 import com.tagdroid.tagapi.SQLApi.Transport.LinesDAO;
@@ -32,11 +34,15 @@ public class HttpGetLinesList extends HttpGetTask {
         DirectionDAO directionDAO = (DirectionDAO)new DirectionDAO(daTAGase).create();
 
         Line line;
+        Pair<Integer, String> TypeAndColor;
 
         int length = jsonData.length();
         for (int i = 0; i < length; i++)
             try {
                 line = new Line(jsonData.getJSONObject(i));
+                TypeAndColor = LinesColors.matchALine(line.getNumber());
+                line.setLineType(TypeAndColor.first);
+                line.setColor(Color.parseColor(TypeAndColor.second));
                 linesDAO.add(line);
 
                 // Saving the directions
@@ -53,4 +59,5 @@ public class HttpGetLinesList extends HttpGetTask {
         daTAGase.setTransactionSuccessful();
         daTAGase.endTransaction();
     }
+
 }

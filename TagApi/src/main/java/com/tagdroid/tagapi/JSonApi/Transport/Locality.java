@@ -18,11 +18,7 @@ public class Locality {
         this.Name = jsonLocality.getString("Name");
     }
 
-    public Locality(long Id,
-                    int InseeCode,
-                    int Latitude,
-                    int Longitude,
-                    String Name) {
+    public Locality(long Id, int InseeCode, int Latitude, int Longitude, String Name) {
         this.Id = Id;
         this.InseeCode = InseeCode;
         this.Latitude = Latitude;
