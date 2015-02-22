@@ -155,6 +155,11 @@ public class StationDetailFragment extends Page implements SwipeRefreshLayout.On
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
 
+        horaire1Direct.setText(R.string.default_horaires_string);
+        horaire1Reverse.setText(R.string.default_horaires_string);
+        horairesDirects.removeAllViews();
+        horairesReverses.removeAllViews();
+
         if (activeNetworkInfo == null || !activeNetworkInfo.isConnectedOrConnecting())
             Log.d("StationDetail", "Internet connection problem");
         else {
@@ -188,10 +193,16 @@ public class StationDetailFragment extends Page implements SwipeRefreshLayout.On
         Calendar cal = Calendar.getInstance();
         int now = 60 * cal.get(Calendar.HOUR_OF_DAY) + cal.get(Calendar.MINUTE);
 
-        if (timeMinutes == -1)
-            horaire.setText("Service terminé !");
-        else
-            horaire.setText((timeMinutes-now) + " " + getString(R.string.minutes_abr));
+        switch (timeMinutes) {
+            case -1:
+                horaire.setText("Service terminé !");
+                break;
+            case 0:
+                horaire.setText("À l'approche !");
+                break;
+            default:
+                horaire.setText(" "+(timeMinutes-now) + " " + getString(R.string.minutes_abr)+" ");
+        }
     }
 
     @Override
@@ -221,13 +232,14 @@ public class StationDetailFragment extends Page implements SwipeRefreshLayout.On
                 setTime(download_is_primary_stop, (i==0), horaires.get(i).getPassingTime());
 
         if (download_is_primary_stop) {
-            download_is_primary_stop = false;
             if (is_reverse_lineStop_existing) {
                 httpGetStopHours = new HttpGetStopHours(reverse_lineStop.getId(),
                         selectedLine.getId(), directionB.getDirectionId(), this, getActivity());
                 httpGetStopHours.execute();
             }
         }
+
+        download_is_primary_stop = !download_is_primary_stop;
     }
 
     @Override
