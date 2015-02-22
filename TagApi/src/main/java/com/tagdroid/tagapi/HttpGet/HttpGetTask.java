@@ -14,35 +14,41 @@ import java.net.URL;
 import java.net.URLConnection;
 
 import com.tagdroid.tagapi.ProgressionInterface;
+import com.tagdroid.tagapi.JSonApi.JSonStatusCodes;
 
 public abstract class HttpGetTask extends AsyncTask<Void, Integer, Void> {
     protected Context context;
-    private String RequestUrl;
-    protected String responseString = "";
+    protected String RequestUrl;
+    protected HttpGetInterface httpGetInterface;
 
-    protected ProgressionInterface progressionInterface;
-    public HttpGetTask(String RequestUrl, ProgressionInterface progressionInterface, Context context) {
+    public HttpGetTask(String RequestUrl, HttpGetInterface httpGetInterface, Context context) {
         this.context = context;
         this.RequestUrl = RequestUrl;
-        this.progressionInterface = progressionInterface;
+        this.httpGetInterface = httpGetInterface;
     }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        progressionInterface.onDownloadStart();
+        httpGetInterface.onHttpGetStart();
     }
-
     @Override
     protected Void doInBackground(Void... params) {
-        downloadTask();
-        if (responseString.equals(""))
-            return null; //TODO There has been an error to manage.
-        readJsonTask();
+        String responseString = downloadTask();
+        if (responseString.equals("")) {
+            httpGetInterface.onHttpGetDownloadFailed();
+            return null;
+        }
+        readJSonTask(responseString);
         return null;
     }
+    @Override
+    protected void onPostExecute(Void result) {
+        httpGetInterface.onHttpGetReadJSonFinished();
+    }
 
-    private void downloadTask() {
+    private String downloadTask() {
+        String responseString="";
         try {
             URL url = new URL(RequestUrl);
             URLConnection connection = url.openConnection();
@@ -56,43 +62,25 @@ public abstract class HttpGetTask extends AsyncTask<Void, Integer, Void> {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return responseString;
     }
 
-    private void readJsonTask() {
+    private void readJSonTask(String responseString) {
         try {
-            JSONObject jsonObj = new JSONObject(responseString);
-            String message = jsonObj.getString("Message");
-            //Log.d("httpgettask","RequestURL" + RequestUrl);
-            switch (jsonObj.getInt("StatusCode")) {
-                case 200:
-                    readData(jsonObj);
-                    break;
-                /*case 300:
-                    onVoidResult();
-                    break;
-                case 400:
-                    onBadRequest();
-                    break;
-                case 500:
-                    onRequestError();
-                    break;*/
-                default:
-                    throw new Exception("Response StatusCode is " + jsonObj.getInt("StatusCode")
-                            +" with the message : " + message);
-                    //onUnknownStatusCode();
+            JSONObject jsonObject = new JSONObject(responseString);
+            int StatusCode = jsonObject.getInt("StatusCode");
+            if (StatusCode == JSonStatusCodes.NO_ERROR) {
+                readData(jsonObject);
+                            } else {
+                String message = jsonObject.getString("Message");
+                (new Exception("StatusCode "+StatusCode + " and message : "+message)).printStackTrace();
+                httpGetInterface.onHttpGetBadStatusCode(StatusCode, message);
             }
         } catch (JSONException e) {
-            Log.e("JSonParsing", "Could not correctly parse received JSon");
-            Log.e("JSonParsingcontent : ", responseString);
             e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
+            httpGetInterface.onHttpGetReadJSonFailed(e);
         }
     }
     public abstract void readData(JSONObject jsonObject) throws JSONException;
 
-    @Override
-    protected void onPostExecute(Void result) {
-        progressionInterface.onDownloadComplete();
-    }
 }

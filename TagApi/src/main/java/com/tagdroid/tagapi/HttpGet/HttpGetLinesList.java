@@ -16,9 +16,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class HttpGetLinesList extends HttpGetTask {
-    public HttpGetLinesList(ProgressionInterface progressionInterface, Context context) {
+    public HttpGetLinesList(HttpGetInterface httpGetInterface, Context context) {
         super("http://transinfoservice.ws.cityway.fr/TAG/api/transport/v2/GetLines/json?key=TAGDEV&OperatorId=1",
-                progressionInterface, context);
+                httpGetInterface, context);
     }
 
     @Override

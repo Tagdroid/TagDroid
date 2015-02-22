@@ -25,19 +25,20 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.tagdroid.android.Page;
 import com.tagdroid.android.R;
+import com.tagdroid.tagapi.HttpGet.HttpGetInterface;
 import com.tagdroid.tagapi.HttpGet.HttpGetStopHours;
 import com.tagdroid.tagapi.JSonApi.TimeTable.Time;
 import com.tagdroid.tagapi.JSonApi.Transport.Direction;
 import com.tagdroid.tagapi.JSonApi.Transport.Line;
 import com.tagdroid.tagapi.JSonApi.Transport.LineStop;
-import com.tagdroid.tagapi.ProgressionInterface;
 import com.tagdroid.tagapi.ReadSQL;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 
 public class StationDetailFragment extends Page implements SwipeRefreshLayout.OnRefreshListener,
-        ProgressionInterface, OnMapReadyCallback {
+        HttpGetInterface, OnMapReadyCallback {
     // Général
     private Line selectedLine;
     private SwipeRefreshLayout swipeLayout;
@@ -53,7 +54,7 @@ public class StationDetailFragment extends Page implements SwipeRefreshLayout.On
     private LineStop reverse_lineStop;      // Le LineStop correspondant à la direction opposée (si existe)
     private Direction directionB;
     private TextView horaire1Reverse;
-    private LinearLayout horairesReverse;
+    private LinearLayout horairesReverses;
 
     HttpGetStopHours httpGetStopHours;
     private boolean download_is_primary_stop = true;
@@ -101,10 +102,8 @@ public class StationDetailFragment extends Page implements SwipeRefreshLayout.On
         horaire1Direct = (TextView)view.findViewById(R.id.horaire1Direct);
         horairesDirects = (LinearLayout)view.findViewById(R.id.horairesDirects);
 
-//        horairesA = new TextView[]{((TextView) view.findViewById(R.id.horaireA_1)),
-//                ((TextView) view.findViewById(R.id.horaireA_2))};
         horaire1Reverse = (TextView) view.findViewById(R.id.horaireB_1);
-
+        horairesReverses = (LinearLayout)view.findViewById(R.id.horairesReverses);
 
         swipeLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshTimes);
         swipeLayout.setColorSchemeResources(android.R.color.holo_blue_bright, android.R.color.holo_green_light,
@@ -160,77 +159,86 @@ public class StationDetailFragment extends Page implements SwipeRefreshLayout.On
             Log.d("StationDetail", "Internet connection problem");
         else {
             httpGetStopHours = new HttpGetStopHours(selectedLineStop.getId(),
-                    selectedLine.getId(), directionA.getDirectionId(), true, this, getActivity());
+                    selectedLine.getId(), directionA.getDirectionId(), this, getActivity());
             httpGetStopHours.execute();
         }
     }
 
     private void setTime(boolean direct, boolean principal, int timeMinutes) {
-        if (direct)
-            if (principal) {
-                if (timeMinutes == -1)
-                    horaire1Direct.setText("Service terminé !");
-                else
-                    horaire1Direct.setText(timeMinutes + " " + getString(R.string.minutes_abr));
-            }
-            else {
-                TextView horaire = new TextView(getActivity());
-                horaire.setTextColor(getResources().getColor(R.color.fbutton_color_turquoise));
-                horaire.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
-                horaire.setText("  " + timeMinutes + getString(R.string.minutes_abr));
-                horairesDirects.addView(horaire);
-            }
-        else
-            if (principal)
-                horaire1Reverse.setText(timeMinutes + " " +getString(R.string.minutes_abr));
-            else {
-                //TextView horaire = new TextView(getActivity());
-                //horaire.setTextColor(getResources().getColor(R.color.fbutton_color_turquoise));
-                //horaire.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
-                //horaire.setText(timeMinutes + " " + getString(R.string.minutes_abr));
-                //horairesDirects.addView(horaire);
-            }
+        TextView horaire;
 
+        if (principal)
+            if (direct)
+                horaire = horaire1Direct;
+            else
+                horaire = horaire1Reverse;
+        else {
+            LinearLayout others;
+            if (direct)
+                others = horairesDirects;
+            else
+                others = horairesReverses;
+            horaire = new TextView(getActivity());
+            horaire.setTextColor(getResources().getColor(R.color.fbutton_color_turquoise));
+            horaire.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
+            others.addView(horaire);
+        }
+
+        // L'heure actuelle
+        Calendar cal = Calendar.getInstance();
+        int now = 60 * cal.get(Calendar.HOUR_OF_DAY) + cal.get(Calendar.MINUTE);
+
+        if (timeMinutes == -1)
+            horaire.setText("Service terminé !");
+        else
+            horaire.setText((timeMinutes-now) + " " + getString(R.string.minutes_abr));
     }
 
-
     @Override
-    public void onDownloadStart() {
+    public void onHttpGetStart() {
         swipeLayout.setRefreshing(true);
     }
-    @Override
-    public void onDownloadProgression(int progression, int total) {
-    }
-    @Override
-    public void onDownloadComplete() {
-        swipeLayout.setRefreshing(false);
-        if (download_is_primary_stop) {
-            ArrayList<Time> horairesPrincipaux = ReadSQL.getHorairesPrincipaux();
-            int horairesCount = horairesPrincipaux.size();
-            if (horairesCount == 0 )
-                setTime(true, true, -1);
-            else {
-                for (int i = 0; i < horairesPrincipaux.size(); i++)
-                    setTime(true, (i==0), horairesPrincipaux.get(i).getPassingTime());
-            }
 
+    @Override
+    public void onHttpGetDownloadFinished() {
+    }
+
+    @Override
+    public void onHttpGetDownloadFailed() {
+    }
+
+    @Override
+    public void onHttpGetReadJSonFinished() {
+        swipeLayout.setRefreshing(false);
+        ArrayList<Time> horaires = httpGetStopHours.StopPassingTimeList;
+
+        int horairesCount = horaires.size();
+
+        if (horairesCount == 0 )
+            setTime(download_is_primary_stop, true, -1);
+        else
+            for (int i = 0; i < horaires.size(); i++)
+                setTime(download_is_primary_stop, (i==0), horaires.get(i).getPassingTime());
+
+        if (download_is_primary_stop) {
             download_is_primary_stop = false;
             if (is_reverse_lineStop_existing) {
                 httpGetStopHours = new HttpGetStopHours(reverse_lineStop.getId(),
-                        selectedLine.getId(), directionB.getDirectionId(), false, this, getActivity());
+                        selectedLine.getId(), directionB.getDirectionId(), this, getActivity());
                 httpGetStopHours.execute();
             }
-        } else {
-            ArrayList<Time> horairesSecondaires = ReadSQL.getHorairesSecondaires();
-            setTime(false,  true, horairesSecondaires.get(0).getPassingTime());
-            setTime(false,  false, horairesSecondaires.get(1).getPassingTime());
         }
     }
+
     @Override
-    public void onDownloadFailed(Exception e) {
+    public void onHttpGetReadJSonFailed(Exception e) {
         swipeLayout.setRefreshing(false);
         Log.d("stationdetailfragment", "ondownloadfailed");
         Toast.makeText(getActivity(), "Erreur de chargement :\n" + e.getLocalizedMessage(), Toast.LENGTH_LONG)
                 .show();
+    }
+
+    @Override
+    public void onHttpGetBadStatusCode(int statusCode, String message) {
     }
 }

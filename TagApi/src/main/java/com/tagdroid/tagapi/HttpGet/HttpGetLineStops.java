@@ -20,10 +20,10 @@ import org.json.JSONObject;
 public class HttpGetLineStops extends HttpGetTask {
     private long lineId;
     private int direction;
-    public HttpGetLineStops(long lineId, int direction, ProgressionInterface progressionInterface, Context context) {
+    public HttpGetLineStops(long lineId, int direction, HttpGetInterface httpGetInterface, Context context) {
         super("http://transinfoservice.ws.cityway.fr/TAG/api/transport/v2/GetLineStops/json?key=TAGDEV"
                         +"&LineId=" + lineId + "&Direction=" + direction,
-                progressionInterface, context);
+                httpGetInterface, context);
         this.lineId = lineId;
         this.direction = direction;
     }

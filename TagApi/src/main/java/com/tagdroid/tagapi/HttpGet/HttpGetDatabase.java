@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 /* Will download the whole Database at first start or at update */
 
-public class HttpGetDatabase implements ProgressionInterface {
+public class HttpGetDatabase implements HttpGetInterface {
     private final  Context context;
     public  static boolean isFinished = false;
     private static ProgressionInterface progressionInterface;
@@ -32,30 +32,6 @@ public class HttpGetDatabase implements ProgressionInterface {
         httpGetLinesList.execute();
     }
 
-    @Override
-    public void onDownloadStart() {
-    }
-    @Override
-    public void onDownloadFailed(Exception e) {
-    }
-    @Override
-    public void onDownloadProgression(int progression, int total) {
-    }
-
-    @Override
-    public void onDownloadComplete() {
-        Log.d("ondowloadcomplete", "ondownloadcomplete");
-        if (isHttpGetLinesListFinished) {
-            progressionInterface.onDownloadProgression(linesProgression, linesCount);
-            downloadNext();
-        } else {
-            isHttpGetLinesListFinished = true;
-            linesList = ReadSQL.getAllLines(context);
-            linesCount = linesList.size();
-            downloadNext();
-        }
-    }
-
     private void downloadNext() {
         Line actualLine = linesList.get(linesProgression);
         int directionsCount = actualLine.getDirectionList().length;
@@ -74,5 +50,44 @@ public class HttpGetDatabase implements ProgressionInterface {
             isFinished = true;
             progressionInterface.onDownloadComplete();
         }
+    }
+
+    @Override
+    public void onHttpGetStart() {
+
+    }
+
+    @Override
+    public void onHttpGetDownloadFinished() {
+
+    }
+
+    @Override
+    public void onHttpGetDownloadFailed() {
+
+    }
+
+    @Override
+    public void onHttpGetReadJSonFinished() {
+        Log.d("ondowloadcomplete", "ondownloadcomplete");
+        if (isHttpGetLinesListFinished) {
+            progressionInterface.onDownloadProgression(linesProgression, linesCount);
+            downloadNext();
+        } else {
+            isHttpGetLinesListFinished = true;
+            linesList = ReadSQL.getAllLines(context);
+            linesCount = linesList.size();
+            downloadNext();
+        }
+    }
+
+    @Override
+    public void onHttpGetReadJSonFailed(Exception e) {
+
+    }
+
+    @Override
+    public void onHttpGetBadStatusCode(int statusCode, String message) {
+
     }
 }

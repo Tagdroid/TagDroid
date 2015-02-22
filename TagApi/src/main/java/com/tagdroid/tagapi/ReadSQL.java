@@ -2,10 +2,8 @@ package com.tagdroid.tagapi;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import com.tagdroid.tagapi.JSonApi.Disruption.Disruption;
-import com.tagdroid.tagapi.JSonApi.TimeTable.Time;
 import com.tagdroid.tagapi.JSonApi.Transport.Direction;
 import com.tagdroid.tagapi.JSonApi.Transport.Line;
 import com.tagdroid.tagapi.JSonApi.Transport.LineStop;
@@ -24,10 +22,6 @@ public class ReadSQL {
     private static Line         selectedLine;
     private static Direction    selectedDirection;
     private static LineStop     selectedLineStop;
-
-
-    private static ArrayList<Time> HorairesPrincipaux;
-    private static ArrayList<Time> HorairesSecondaires;
 
     public static ArrayList<Line> getAllLines(Context context) {
         if (AllLines == null) {
@@ -75,22 +69,6 @@ public class ReadSQL {
         daTAGase.setTransactionSuccessful();
         daTAGase.endTransaction();
         return lineStopsOfLogicalAndLine;
-    }
-
-
-    public static void setHorairesPrincipaux(ArrayList<Time> horairesPrincipaux) {
-        Log.d("readsql", "sethorairespr "+horairesPrincipaux.size());
-        HorairesPrincipaux = horairesPrincipaux;
-    }
-    public static ArrayList<Time> getHorairesPrincipaux() {
-        return HorairesPrincipaux;
-    }
-
-    public static void setHorairesSecondaires(ArrayList<Time> horairesSecondaires) {
-        HorairesSecondaires = horairesSecondaires;
-    }
-    public static ArrayList<Time> getHorairesSecondaires() {
-        return HorairesSecondaires;
     }
 
     public static ArrayList<Disruption> getAllDisruptions(Context context) {

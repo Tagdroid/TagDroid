@@ -14,9 +14,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class HttpGetDisruptions extends HttpGetTask {
-    public HttpGetDisruptions(ProgressionInterface progressionInterface, Context context) {
+    public HttpGetDisruptions(HttpGetInterface httpGetInterface, Context context) {
         super("http://transinfoservice.ws.cityway.fr/TAG/api/disruption/v1/GetActualAndFutureDisruptions/json?key=TAGDEV",
-                progressionInterface, context);
+                httpGetInterface, context);
     }
 
 
