@@ -11,15 +11,18 @@ import com.tagdroid.tagapi.SQLApi.Disruption.DisruptionDAO;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 public class HttpGetDisruptions extends HttpGetTask {
-    public HttpGetDisruptions(ProgressionInterface progressionInterface, Context context) {
-        super("http://transinfoservice.ws.cityway.fr/TAG/api/disruption/v1/GetActualAndFutureDisruptions/json?key=TAGDEV",progressionInterface, context);
+    public HttpGetDisruptions(HttpGetInterface httpGetInterface, Context context) {
+        super("http://transinfoservice.ws.cityway.fr/TAG/api/disruption/v1/GetActualAndFutureDisruptions/json?key=TAGDEV",
+                httpGetInterface, context);
     }
 
 
     @Override
-    public void readData(JSONArray jsonData) {
+    public void readData(JSONObject jsonObject) throws JSONException {
+        JSONArray jsonData = jsonObject.getJSONArray("Data");
         DatabaseHelper dbHelper = DatabaseHelper.getInstance(context);
         SQLiteDatabase daTAGase = dbHelper.getWritableDatabase();
         daTAGase.beginTransaction();

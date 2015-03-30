@@ -14,10 +14,10 @@ import android.view.ViewGroup;
 import com.tagdroid.android.Page;
 import com.tagdroid.android.R;
 import com.tagdroid.tagapi.HttpGet.HttpGetDisruptions;
-import com.tagdroid.tagapi.ProgressionInterface;
+import com.tagdroid.tagapi.HttpGet.HttpGetInterface;
 import com.tagdroid.tagapi.ReadSQL;
 
-public class DisruptionsFragment extends Page implements ProgressionInterface {
+public class DisruptionsFragment extends Page implements HttpGetInterface {
     private ProgressDialog progression;
     HttpGetDisruptions httpGetDatabaseDisruption;
 
@@ -76,27 +76,36 @@ public class DisruptionsFragment extends Page implements ProgressionInterface {
     }
 
     @Override
-    public void onDownloadStart() {
+    public void onHttpGetStart() {
         progression = ProgressDialog.show(getActivity(), "",
                 getResources().getString(R.string.loading), true);
+
     }
 
     @Override
-    public void onDownloadFailed(Exception e) {
+    public void onHttpGetDownloadFinished() {
+
+    }
+
+    @Override
+    public void onHttpGetDownloadFailed() {
         progression.dismiss();
     }
 
     @Override
-    public void onDownloadProgression(int progression, int total) {
-
-    }
-
-    @Override
-    public void onDownloadComplete() {
+    public void onHttpGetReadJSonFinished() {
         progression.dismiss();
         String text = ReadSQL.getAllDisruptions(getActivity()).size()+"";
         Log.d("### DISRUPTIONS !!!!!!", text);
     }
 
+    @Override
+    public void onHttpGetReadJSonFailed(Exception e) {
+        progression.dismiss();
+    }
 
+    @Override
+    public void onHttpGetBadStatusCode(int statusCode, String message) {
+        progression.dismiss();
+    }
 }

@@ -3,10 +3,8 @@ package com.tagdroid.android.Pages;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
@@ -28,20 +26,6 @@ import com.tagdroid.tagapi.ReadSQL;
 import java.util.ArrayList;
 
 public class LignesGridFragment extends Page {
-    private ArrayList<Line> allLines;
-    private ArrayList<String> allLinesNumbers;
-
-    private static int BlackorWhite(int color) {
-        double brightness = Math.sqrt(
-                Color.red(color) * Color.red(color) * 241 +
-                        Color.green(color) * Color.green(color) * 691 +
-                        Color.blue(color) * Color.blue(color) * 68);
-        if (brightness < 4690)
-            return Color.WHITE;
-        else
-            return Color.BLACK;
-    }
-
     @Override
     public String getTitle() {
         return getString(R.string.lines);
@@ -62,59 +46,42 @@ public class LignesGridFragment extends Page {
         }
     }
 
-    private ArrayList<Line> matchKnownLines(int known_names, int known_colors, int LineType) {
-        // Pour chaque type de ligne, si elle est dans la base de données on l'ajoute à l'arraylist correspondante.
-        // On la supprime de allLines pour voir si il nous reste des lignes non connues.
-        TypedArray knownNames = getResources().obtainTypedArray(known_names);
-        TypedArray knownColors = getResources().obtainTypedArray(known_colors);
-
-        ArrayList<Line> matchedLines = new ArrayList<>();
-
-        for (int i = 0; i < knownNames.length(); i++) {
-            int a;
-            if ((a = allLinesNumbers.indexOf(knownNames.getString(i))) >= 0) {
-                matchedLines.add(allLines.get(a).setColor(knownColors.getColor(i, 0)).setLineType(LineType));
-                allLines.remove(a);
-                allLinesNumbers.remove(a);
-            }
-        }
-        return matchedLines;
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_lignes_grid, container, false);
 
-        // Get all Lines from SQLite
-        allLines = new ArrayList<>(ReadSQL.getAllLines(getActivity()));
-
-        allLinesNumbers = new ArrayList<>();
-        // Plus pratique pour contains()
-        for (Line i : allLines) {
-            allLinesNumbers.add(i.getNumber());
-        }
-
-        ArrayList<Line> tramways = matchKnownLines(R.array.known_tramways, R.array.known_tramways_colors, Line.TRAM);
+        ArrayList<Line> tramways = ReadSQL.getLinesByType(getActivity(), Line.TRAM);
         ((GridView) view.findViewById(R.id.tramGrid)).setAdapter(new LigneAdapter(getActivity(), tramways));
 
-        ArrayList<Line> chrono = matchKnownLines(R.array.known_chrono, R.array.known_chrono_colors, Line.CHRONO);
+        ArrayList<Line> chrono = ReadSQL.getLinesByType(getActivity(), Line.CHRONO);
         ((GridView) view.findViewById(R.id.chronoGrid)).setAdapter(new LigneAdapter(getActivity(), chrono));
 
-        ArrayList<Line> proximo = matchKnownLines(R.array.known_proximo, R.array.known_proximo_colors, Line.PROXIMO);
+        ArrayList<Line> proximo = ReadSQL.getLinesByType(getActivity(), Line.PROXIMO);
         ((GridView) view.findViewById(R.id.proximoGrid)).setAdapter(new LigneAdapter(getActivity(), proximo));
 
-        ArrayList<Line> flexo = matchKnownLines(R.array.known_flexo, R.array.known_flexo_colors, Line.FLEXO);
+        ArrayList<Line> flexo = ReadSQL.getLinesByType(getActivity(), Line.FLEXO);
         ((GridView) view.findViewById(R.id.flexoGrid)).setAdapter(new LigneAdapter(getActivity(), flexo));
 
-        if (allLines.size() > 0) {
+        ArrayList<Line> unknown = ReadSQL.getLinesByType(getActivity(), Line.UNKNOWN);
+        ((GridView) view.findViewById(R.id.unknownGrid)).setAdapter(new LigneAdapter(getActivity(), unknown));
+
+        if (unknown.size() > 0)
             view.findViewById(R.id.unknownCardView).setVisibility(View.VISIBLE);
-            for (Line i : allLines)
-                i.setColor(getResources().getColor(R.color.ligne_default));
-            ((GridView) view.findViewById(R.id.unknownGrid)).setAdapter(new LigneAdapter(getActivity(), allLines));
-        } else
+        else
             Log.d("LignesGridFragment", "No unknown lines");
 
         return view;
+    }
+
+    private static int BlackorWhite(int color) {
+        double brightness = Math.sqrt(
+                Color.red(color) * Color.red(color) * 241 +
+                        Color.green(color) * Color.green(color) * 691 +
+                        Color.blue(color) * Color.blue(color) * 68);
+        if (brightness < 4690)
+            return Color.WHITE;
+        else
+            return Color.BLACK;
     }
 
     public class LigneAdapter extends BaseAdapter {
@@ -159,37 +126,34 @@ public class LignesGridFragment extends Page {
             lineButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    DialogFragment directionsDialogFragment = new DirectionsDialogFragment()
-                            .setDetails(ligne, ligne.getDirectionList());
-                    directionsDialogFragment.show(getFragmentManager().beginTransaction(), "directions");
+                    new DirectionsDialogFragment().setDetails(ligne, ligne.getDirectionList())
+                            .show(getFragmentManager().beginTransaction(), "directions");
                 }
             });
             return lineButton;
         }
     }
 
+
     public static class DirectionsDialogFragment extends DialogFragment {
         private Direction[] directions;
         private Line line;
 
-        public DirectionsDialogFragment() {
-        }
         public DirectionsDialogFragment setDetails(Line line, Direction[] directions) {
-            this.line = line;
+            this.setRetainInstance(true);
+            this.line       = line;
             this.directions = directions;
             return this;
         }
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
-            // Use the Builder class for convenient dialog construction
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             ArrayList<String> directionNames = new ArrayList<>();
             for (Direction direction : directions)
                 directionNames.add(direction.getName());
 
-            builder.setTitle(R.string.choix_directions)
-                    .setIcon(getResources().getDrawable(android.R.drawable.ic_menu_directions))
+            return new AlertDialog.Builder(getActivity())
+                    .setTitle(R.string.choix_directions)
                     .setItems(directionNames.toArray(new String[2]),
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
@@ -198,13 +162,11 @@ public class LignesGridFragment extends Page {
                                     LineStopsFragment lineStopsFragment = new LineStopsFragment();
                                     changeFragmentInterface.onChangeFragment(lineStopsFragment);
 
-                                    FragmentTransaction fragmentTransaction = getActivity()
-                                            .getFragmentManager().beginTransaction();
-                                    fragmentTransaction.replace(R.id.pager, lineStopsFragment);
-                                    fragmentTransaction.commit();
+                                    getActivity().getFragmentManager().beginTransaction()
+                                            .replace(R.id.pager, lineStopsFragment).commit();
                                 }
-                            });
-            return builder.create();
+                            })
+                    .create();
         }
     }
 }

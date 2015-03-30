@@ -6,18 +6,17 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Time {
-    private int PassingTime = 0;
-    private long VehicleJourneyId =0;
-    private String VehicleJourneyRef ="";
+import java.util.ArrayList;
 
-    public Time(JSONObject jsonTime) {
-        Log.d("JSON TIME",jsonTime.toString());
-        //TODO -->
-        /*this.PassingTime = StopPassingTimeList(jsonTime).getInt("PassingTime");
-        this.VehicleJourneyId = StopPassingTimeList(jsonTime).getLong("VehicleJourneyId");
-        this.VehicleJourneyRef = StopPassingTimeList(jsonTime).getString("VehicleJourneyRef");
-        */
+public class Time {
+    private int PassingTime;
+    private long VehicleJourneyId;
+    private String VehicleJourneyRef;
+
+    public Time(JSONObject jsonTime) throws JSONException {
+        this.PassingTime = jsonTime.getInt("PassingTime");
+        this.VehicleJourneyId = jsonTime.getLong("VehicleJourneyId");
+        this.VehicleJourneyRef = jsonTime.getString("VehicleJourneyRef");
     }
 
     public Time(int PassingTime, long VehicleJourneyId, String VehicleJourneyRef) {
@@ -26,21 +25,13 @@ public class Time {
         this.VehicleJourneyRef = VehicleJourneyRef;
     }
 
-    public static JSONArray StopPassingTimeList(JSONObject jsonTime) throws JSONException {
-        JSONArray jsonTimeArray = jsonTime.getJSONArray("StopPassingTimeList");
-        int length = jsonTimeArray.length();
-        JSONArray StopPassingTimeList = new JSONArray();
-        JSONObject obj;
-        for (int i = 0; i < length; i++) {
-            obj = new JSONObject();
-            obj.put("PassingTime", jsonTimeArray.getJSONObject(i).getInt("PassingTime"));
-            obj.put("VehicleJourneyId", jsonTimeArray.getJSONObject(i).getLong("VehicleJourneyId"));
-            obj.put("VehicleJourneyRef", jsonTimeArray.getJSONObject(i).getString("VehicleJourneyRef"));
-            StopPassingTimeList.put(obj);
-        }
-        return StopPassingTimeList;
+    public static ArrayList<Time> StopPassingTimeList(JSONArray jsonArray) throws JSONException {
+        int length = jsonArray.length();
+        ArrayList<Time > StopPassingTimeArray = new ArrayList<>();
+        for (int i=0; i < length; i++)
+            StopPassingTimeArray.add(new Time(jsonArray.getJSONObject(i)));
+        return StopPassingTimeArray;
     }
-
 
     public int getPassingTime() {
         return PassingTime;

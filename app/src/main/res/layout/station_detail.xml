@@ -3,14 +3,6 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <Button android:id="@+id/LigneIndicateur1"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="140dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
-        android:textColor="@android:color/white"
-        android:textSize="20sp" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -72,29 +64,24 @@
                                 android:background="@color/darker_gray"
                                 android:orientation="vertical" />
 
-                            <LinearLayout
+                            <TextView android:id="@+id/horaire1Direct"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal" >
-                                <TextView android:id="@+id/horaireA_1"
+                                android:layout_gravity="center_horizontal"
+                                android:fontFamily="sans-serif-condensed"
+                                android:text="@string/default_horaires_string"
+                                android:textSize="26sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/fbutton_color_turquoise" />
+                            <HorizontalScrollView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" >
+                                <LinearLayout android:id="@+id/horairesDirects"
+                                    android:gravity="bottom"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="sans-serif-condensed"
-                                    android:text="@string/default_horaires_string"
-                                    android:textSize="26sp"
-                                    android:textStyle="bold"
-                                    android:layout_marginRight="50dp"
-                                    android:layout_marginEnd="50dp"
-                                    android:textColor="@color/fbutton_color_turquoise" />
-
-                                <TextView android:id="@+id/horaireA_2"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/default_horaires_string"
-                                    android:textColor="@color/fbutton_color_turquoise"
-                                    android:fontFamily="sans-serif-condensed"
-                                    android:textSize="16sp" />
-                            </LinearLayout>
+                                    android:layout_height="48dp"
+                                    android:orientation="horizontal" />
+                            </HorizontalScrollView>
 
                             <View
                                 android:layout_width="match_parent"
@@ -166,29 +153,25 @@
                                 android:background="@color/darker_gray"
                                 android:orientation="vertical" />
 
-                            <LinearLayout
+                            <TextView android:id="@+id/horaireB_1"
                                 android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="center_horizontal" >
-                                <TextView android:id="@+id/horaireB_1"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="sans-serif-condensed"
-                                    android:text="@string/default_horaires_string"
-                                    android:textSize="26sp"
-                                    android:textStyle="bold"
-                                    android:layout_marginRight="50dp"
-                                    android:layout_marginEnd="50dp"
-                                    android:textColor="@color/fbutton_color_turquoise" />
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:fontFamily="sans-serif-condensed"
+                                android:text="@string/default_horaires_string"
+                                android:textSize="26sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/fbutton_color_turquoise" />
 
-                                <TextView android:id="@+id/horaireB_2"
+                            <HorizontalScrollView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" >
+                                <LinearLayout android:id="@+id/horairesReverses"
+                                    android:gravity="bottom"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/default_horaires_string"
-                                    android:textColor="@color/fbutton_color_turquoise"
-                                    android:fontFamily="sans-serif-condensed"
-                                    android:textSize="16sp" />
-                            </LinearLayout>
+                                    android:layout_height="48dp"
+                                    android:orientation="horizontal" />
+                            </HorizontalScrollView>
 
                             <View
                                 android:layout_width="match_parent"
@@ -227,4 +210,12 @@
         </android.support.v4.widget.SwipeRefreshLayout>
     </LinearLayout>
 
+    <Button android:id="@+id/LigneIndicateur1"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:textColor="@android:color/white"
+        android:textSize="20sp" />
 </FrameLayout>
