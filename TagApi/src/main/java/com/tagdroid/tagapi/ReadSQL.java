@@ -31,13 +31,11 @@ public class ReadSQL {
             SQLiteDatabase daTAGase = DatabaseHelper.getInstance(context).getReadableDatabase();
             daTAGase.beginTransaction();
 
-            LinesDAO linesDAO = new LinesDAO(daTAGase);
-            DirectionDAO directionDAO = new DirectionDAO(daTAGase);
-
-            AllLines = linesDAO.selectAll();
-            for (Line i : AllLines) {
-                ArrayList<Direction> directions = directionDAO.getDirectionsOfLine(i.getId());
-                i.setDirectionList(directions.toArray(new Direction[directions.size()]));
+            AllLines = (new LinesDAO(daTAGase)).selectAll();
+            for (Line line : AllLines) {
+                ArrayList<Direction> directions = (new DirectionDAO(daTAGase))
+                        .getDirectionsOfLine(line.getId());
+                line.setDirectionList(directions.toArray(new Direction[directions.size()]));
             }
             daTAGase.setTransactionSuccessful();
             daTAGase.endTransaction();
@@ -49,29 +47,25 @@ public class ReadSQL {
         SQLiteDatabase daTAGase = DatabaseHelper.getInstance(context).getReadableDatabase();
         daTAGase.beginTransaction();
 
-        LineStopsDAO lineStopsDAO = new LineStopsDAO(daTAGase);
-
-        ArrayList<LineStop> stopsArrayList = lineStopsDAO
+        ArrayList<LineStop> stopArrayList = (new LineStopsDAO(daTAGase))
                 .stopsFromLineAndDirection(lineId, directionId);
 
         daTAGase.setTransactionSuccessful();
         daTAGase.endTransaction();
-        return stopsArrayList;
+        return stopArrayList;
     }
 
-    public static ArrayList<LineStop> getStopsOfLineAndLogicalAndDirection(long lineId, long logicalStopId,
-                                                                           int direction,
-                                                                           Context context) {
+    public static ArrayList<LineStop> getStopsOfLineAndLogicalAndDirection(
+            long lineId, long logicalStopId, int direction, Context context) {
         SQLiteDatabase daTAGase = DatabaseHelper.getInstance(context).getReadableDatabase();
         daTAGase.beginTransaction();
-        LineStopsDAO lineStopsDAO = new LineStopsDAO(daTAGase);
 
-        ArrayList<LineStop> lineStopsOfLogicalAndLine = lineStopsDAO
+        ArrayList<LineStop> stopArrayList = (new LineStopsDAO(daTAGase))
                 .stopsFromLineAndLogicalAndDirection(lineId, logicalStopId, direction);
 
         daTAGase.setTransactionSuccessful();
         daTAGase.endTransaction();
-        return lineStopsOfLogicalAndLine;
+        return stopArrayList;
     }
 
     public static ArrayList<Time> getAllTimes(Context context) {
@@ -101,8 +95,6 @@ public class ReadSQL {
         }
         return AllDisruptions;
     }
-
-
 
     public static void setSelectedLineAndDirection(Line line, Direction direction) {
         selectedLine = line;
