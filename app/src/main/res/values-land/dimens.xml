@@ -14,18 +14,18 @@
 
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_statusbar_height">25dp</dimen>
-    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_horizontal_margin">64dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
     <dimen name="activity_vertical_spacing">10dp</dimen>
 
     <!-- Per the design guidelines, navigation drawers should be between 240dp and 320dp:
          https://developer.android.com/design/patterns/navigation-drawer.html -->
-    <dimen name="navigation_drawer_width">240dp</dimen>
+    <dimen name="navigation_drawer_width">320dp</dimen>
 
     <!-- Some dimensions -->
-    <dimen name="station_detail_map_height">170dp</dimen>
-    <dimen name="station_detail_line_icon_top_position">140dp</dimen>
+    <dimen name="station_detail_map_height">100dp</dimen>
+    <dimen name="station_detail_line_icon_top_position">70dp</dimen>
 
     <dimen name="fbutton_default_conner_radius">8dp</dimen>
     <dimen name="fbutton_default_padding_left">10dp</dimen>
