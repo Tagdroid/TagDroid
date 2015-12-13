@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -114,6 +115,9 @@ public class LignesGridFragment extends Page {
             int couleur = ligne.color;
 
             Button lineButton = new Button(context);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+                lineButton.setStateListAnimator(null);
+
             lineButton.setHeight(lineButton.getWidth());
             lineButton.setText(nom);
             if (nom.length() > 3)
