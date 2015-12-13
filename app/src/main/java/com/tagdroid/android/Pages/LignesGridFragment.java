@@ -25,6 +25,8 @@ import com.tagdroid.tagapi.JSonApi.Transport.Line;
 import com.tagdroid.tagapi.ReadSQL;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class LignesGridFragment extends Page {
     @Override
@@ -92,6 +94,12 @@ public class LignesGridFragment extends Page {
         public LigneAdapter(Context context, ArrayList<Line> lignes) {
             this.context = context;
             this.lignes = lignes;
+            Collections.sort(this.lignes, new Comparator<Line>() {
+                @Override
+                public int compare(Line l1, Line l2) {
+                    return l1.getNumber().compareTo(l2.getNumber());
+                }
+            });
         }
 
         public int getCount() {
