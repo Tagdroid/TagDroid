@@ -35,6 +35,7 @@ import com.tagdroid.tagapi.ReadSQL;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Formatter;
 
 
 public class StationDetailFragment extends Page implements SwipeRefreshLayout.OnRefreshListener,
@@ -193,6 +194,7 @@ public class StationDetailFragment extends Page implements SwipeRefreshLayout.On
         Calendar cal = Calendar.getInstance();
         int now = 60 * cal.get(Calendar.HOUR_OF_DAY) + cal.get(Calendar.MINUTE);
 
+
         switch (timeMinutes) {
             case -1:
                 horaire.setText("Service terminé !");
@@ -201,7 +203,14 @@ public class StationDetailFragment extends Page implements SwipeRefreshLayout.On
                 horaire.setText("À l'approche !");
                 break;
             default:
-                horaire.setText(" "+(timeMinutes-now) + " " + getString(R.string.minutes_abr)+" ");
+                if (timeMinutes-now < 20)
+                    horaire.setText(" "+(timeMinutes-now) + " " + getString(R.string.minutes_abr)+" ");
+                else {
+                    int minutes = timeMinutes%60;
+                    int heures  = (timeMinutes - minutes)/60;
+                    String time = new Formatter().format("%d:%2d",heures, minutes).toString();
+                    horaire.setText(" " + time + " ("+(timeMinutes-now) + " " + getString(R.string.minutes_abr)+") ");
+                }
         }
     }
 
