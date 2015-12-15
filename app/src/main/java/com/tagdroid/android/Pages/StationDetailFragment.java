@@ -207,8 +207,9 @@ public class StationDetailFragment extends Page implements SwipeRefreshLayout.On
                     horaire.setText(" "+(timeMinutes-now) + " " + getString(R.string.minutes_abr)+" ");
                 else {
                     int minutes = timeMinutes%60;
-                    int heures  = (timeMinutes - minutes)/60;
-                    String time = new Formatter().format("%d:%2d",heures, minutes).toString();
+                    int heures  = ((timeMinutes - minutes)/60)%24;
+
+                    String time = new Formatter().format("%02d:%02d",heures, minutes).toString();
                     horaire.setText(" " + time + " ("+(timeMinutes-now) + " " + getString(R.string.minutes_abr)+") ");
                 }
         }
