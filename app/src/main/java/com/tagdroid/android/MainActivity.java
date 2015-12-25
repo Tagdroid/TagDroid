@@ -1,6 +1,7 @@
 package com.tagdroid.android;
 
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -148,8 +149,11 @@ public class MainActivity extends ActionBarActivity implements DrawerFragment.Dr
         }
         onChangeFragment(page);
         // update the main content by replacing fragments
-        FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.pager, page).commit();
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.pager, page);
+        if(position != 1)//TODO rajouter "si on est sur la page d'accueil"
+            fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 
     @Override
