@@ -8,5 +8,4 @@ build
 /captures
 gradlew
 gradlew.bat
-
-
+*.log
