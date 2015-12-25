@@ -174,8 +174,9 @@ public class LignesGridFragment extends Page {
                                     LineStopsFragment lineStopsFragment = new LineStopsFragment();
                                     changeFragmentInterface.onChangeFragment(lineStopsFragment);
 
-                                    getActivity().getFragmentManager().beginTransaction()
-                                            .replace(R.id.pager, lineStopsFragment).commit();
+                                    getFragmentManager().beginTransaction()
+                                            .replace(R.id.pager, lineStopsFragment)
+                                            .addToBackStack(null).commit();
                                 }
                             })
                     .create();

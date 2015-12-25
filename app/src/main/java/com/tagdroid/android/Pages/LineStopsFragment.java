@@ -52,16 +52,15 @@ public class LineStopsFragment extends Page{
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 ReadSQL.setSelectedLineStop(lineStops.get(i));
 
-                FragmentTransaction fragmentTransaction = getActivity()
-                        .getFragmentManager().beginTransaction();
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 StationDetailFragment stationDetailFragment = new StationDetailFragment();
 
                 changeFragmentInterface.onChangeFragment(stationDetailFragment);
 
                 fragmentTransaction.setCustomAnimations(R.anim.fragment_fadein, R.anim.fragment_fadeout,
                         R.anim.fragment_fadein, R.anim.fragment_fadeout);
-                fragmentTransaction.replace(R.id.pager, stationDetailFragment);
-                fragmentTransaction.commit();
+                fragmentTransaction.replace(R.id.pager, stationDetailFragment)
+                        .addToBackStack(null).commit();
             }
         });
         return view;
