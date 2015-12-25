@@ -235,21 +235,22 @@ public class StationDetailFragment extends Page implements SwipeRefreshLayout.On
 
         int horairesCount = horaires.size();
 
-        if (horairesCount == 0 )
-            setTime(download_is_primary_stop, true, -1);
-        else
-            for (int i = 0; i < horaires.size(); i++)
-                setTime(download_is_primary_stop, (i==0), horaires.get(i).getPassingTime());
+        try {
+            if (horairesCount == 0 )
+                setTime(download_is_primary_stop, true, -1);
+            else
+                for (int i = 0; i < horaires.size(); i++)
+                    setTime(download_is_primary_stop, (i==0), horaires.get(i).getPassingTime());
 
-        if (download_is_primary_stop) {
-            if (is_reverse_lineStop_existing) {
-                httpGetStopHours = new HttpGetStopHours(reverse_lineStop.getId(),
-                        selectedLine.getId(), directionB.getDirectionId(), this, getActivity());
-                httpGetStopHours.execute();
+            if (download_is_primary_stop) {
+                if (is_reverse_lineStop_existing) {
+                    httpGetStopHours = new HttpGetStopHours(reverse_lineStop.getId(),
+                            selectedLine.getId(), directionB.getDirectionId(), this, getActivity());
+                    httpGetStopHours.execute();
+                }
             }
-        }
-
-        download_is_primary_stop = !download_is_primary_stop;
+            download_is_primary_stop = !download_is_primary_stop;
+        } catch (Exception ignored) { }
     }
 
     @Override
